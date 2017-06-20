@@ -12,6 +12,10 @@ public class MonoGameKernalTest : MonoBehaviour {
 
         gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
 
+        GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
+
+        gameKernal.SetupStage(new StageDesc(stagePrototype));
+
         gameKernal.Startup();
 	}
 }

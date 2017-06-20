@@ -34,7 +34,12 @@ namespace GameKernal
     // The Description of the Stage
     public struct StageDesc
     {
+        public GameObject prototype;
 
+        public StageDesc(GameObject prototype)
+        {
+            this.prototype = prototype;
+        }
     }
 
     public enum GameKernalErrorCode

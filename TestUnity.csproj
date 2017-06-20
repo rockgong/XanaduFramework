@@ -80,10 +80,13 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Kernal\BaseGameKernal.cs" />
     <Compile Include="Assets\Script\Kernal\BasePlayer.cs" />
+    <Compile Include="Assets\Script\Kernal\BaseStage.cs" />
     <Compile Include="Assets\Script\Kernal\Factories.cs" />
     <Compile Include="Assets\Script\Kernal\GameKernal.cs" />
     <Compile Include="Assets\Script\Kernal\KernalInterfaceDefine.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
     <Compile Include="Assets\Script\Kernal\Player.cs" />
+    <Compile Include="Assets\Script\Kernal\Stage.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
   </ItemGroup>

@@ -5,33 +5,75 @@ namespace GameKernal
     abstract class BaseGameKernal : IGameKernal
     {
         // Interface implement
-        public abstract INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc);
+        public virtual INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc)
+        {
+            return null;
+        }
 
-        public abstract IPropObject AddPropObject(string name, PropObjectDesc desc);
+        public virtual IPropObject AddPropObject(string name, PropObjectDesc desc)
+        {
+            return null;
+        }
 
-        public abstract INonPlayerCharacter GetNonPlayerCharacter(string name);
+        public virtual INonPlayerCharacter GetNonPlayerCharacter(string name)
+        {
+            return null;
+        }
 
-        public abstract IPlayerCharacter GetPlayerCharaccter();
+        public virtual IPlayerCharacter GetPlayerCharaccter()
+        {
+            return null;
+        }
 
-        public abstract IPropObject GetPropObject(string name);
+        public virtual IPropObject GetPropObject(string name)
+        {
+            return null;
+        }
 
-        public abstract void RemoveNonPlayerCharacter(string name);
+        public virtual void RemoveNonPlayerCharacter(string name)
+        {
+            return;
+        }
 
-        public abstract void RemoveNonPlayerCharacter(INonPlayerCharacter handler);
+        public virtual void RemoveNonPlayerCharacter(INonPlayerCharacter handler)
+        {
+            return;
+        }
 
-        public abstract void RemovePropObject(string name);
+        public virtual void RemovePropObject(string name)
+        {
+            return;
+        }
 
-        public abstract void RemovePropObject(IPropObject desc);
+        public virtual void RemovePropObject(IPropObject desc)
+        {
+            return;
+        }
 
-        public abstract IPlayerCharacter SetupPlayerCharacter(PlayerCharacterDesc desc);
+        public virtual IPlayerCharacter SetupPlayerCharacter(PlayerCharacterDesc desc)
+        {
+            return null;
+        }
 
-        public abstract GameKernalErrorCode Shutdown();
+        public virtual GameKernalErrorCode Shutdown()
+        {
+            return GameKernalErrorCode.OK;
+        }
 
-        public abstract GameKernalErrorCode Startup();
+        public virtual GameKernalErrorCode Startup()
+        {
+            return GameKernalErrorCode.OK;
+        }
 
-        public abstract IStage SetupStage(StageDesc desc);
+        public virtual IStage SetupStage(StageDesc desc)
+        {
+            return null;
+        }
 
-        public abstract IStage GetStage();
+        public virtual IStage GetStage()
+        {
+            return null;
+        }
 
         // Class public method
         public abstract void Initialize(GameKernalDesc desc);
