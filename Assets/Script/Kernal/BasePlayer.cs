@@ -8,7 +8,7 @@ namespace GameKernal
         // TODO
     }
 
-    abstract class BasePlayer : IPlayerCharacter
+    abstract class BasePlayer : IPlayerCharacter, INonPlayerCharacter
     {
         private IPlayerHost _host;
 
@@ -36,6 +36,7 @@ namespace GameKernal
         }
 
         public abstract void Initialize(PlayerCharacterDesc desc);
+        public abstract void Initialize(NonPlayerCharacterDesc desc);
         public abstract void Uninitialize();
     }
 }

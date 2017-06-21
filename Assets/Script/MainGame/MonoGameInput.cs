@@ -9,6 +9,7 @@ namespace MainGame
 		void OnMouseMove(Vector3 newPosition);
 		void OnMouseButtonDown();
 		void OnMouseButtonUp();
+		void OnMouseButtonRightDown();
 	}
 
 	class MonoGameInput : MonoBehaviour
@@ -30,6 +31,8 @@ namespace MainGame
 					listener.OnMouseButtonDown();
 				if (Input.GetButtonUp("Fire1"))
 					listener.OnMouseButtonUp();
+				if (Input.GetButtonDown("Fire2"))
+					listener.OnMouseButtonRightDown();
 				if (Input.mousePosition != _lastMousePosition)
 					listener.OnMouseMove(Input.mousePosition);
 			}

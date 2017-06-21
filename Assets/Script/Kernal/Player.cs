@@ -3,7 +3,7 @@ using System;
 
 namespace GameKernal
 {
-    class Player : BasePlayer, IMonoEntityHost
+    class Player : BasePlayer, IMonoEntityHost, IInteractSubject, IInteractObject
     {
         private MonoEntity _entity;
         private Rigidbody _rigidbody;
@@ -16,6 +16,20 @@ namespace GameKernal
             _entity.SetHost(this);
 
             _rigidbody = gameObject.GetComponent<Rigidbody>();
+            _rigidbody.isKinematic = false;
+            _animator = gameObject.GetComponentInChildren<Animator>();
+
+            return;
+        }
+
+        public override void Initialize(NonPlayerCharacterDesc desc)
+        {
+            GameObject gameObject = GameObject.Instantiate(desc.prototype);
+            _entity = gameObject.AddComponent<MonoEntity>();
+            _entity.SetHost(this);
+
+            _rigidbody = gameObject.GetComponent<Rigidbody>();
+            _rigidbody.isKinematic = true;
             _animator = gameObject.GetComponentInChildren<Animator>();
 
             return;
@@ -118,6 +132,34 @@ namespace GameKernal
                 return _entity.transform;
 
             return null;
+        }
+
+        public void OnGetReadyToInteract(IInteractObject obj)
+        {
+            Debug.Log(string.Format("{0} is ready to act with ?", _entity.gameObject.name));
+        }
+
+        public void OnGetOutOfReadyToInteract(IInteractObject obj)
+        {
+            Debug.Log(string.Format("{0} is out of ready to act with ?", _entity.gameObject.name));
+        }
+
+        public void OnInteractWith(IInteractObject obj)
+        {
+
+        }
+
+        public void OnGetReadyToBeInteracted(IInteractSubject sub)
+        {
+
+        }
+        public void OnGetOutOfReadyToBeInteracted(IInteractSubject sub)
+        {
+
+        }
+        public void OnInteractedBy(IInteractSubject sub)
+        {
+
         }
     }
 }

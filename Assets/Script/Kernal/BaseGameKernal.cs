@@ -101,6 +101,11 @@ namespace GameKernal
             return;
         }
 
+        public virtual void TryInteract()
+        {
+            return;
+        }
+
         // Class public method
         public abstract void Initialize(GameKernalDesc desc);
 

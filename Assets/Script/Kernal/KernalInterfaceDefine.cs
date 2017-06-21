@@ -22,7 +22,12 @@ namespace GameKernal
     // The Description of the Non Player Character
     public struct NonPlayerCharacterDesc
     {
+        public GameObject prototype;
 
+        public NonPlayerCharacterDesc(GameObject prototype)
+        {
+            this.prototype = prototype;
+        }
     }
 
     // The Description of the Prop Object
@@ -68,6 +73,8 @@ namespace GameKernal
         ICamera GetCamera();
         void SetGameState(IGameState state);
         void SetCameraFollowPlayer(bool enable);
+
+        void TryInteract();
     }
 
     // Player Character
@@ -81,7 +88,9 @@ namespace GameKernal
     // Non Player Character
     public interface INonPlayerCharacter
     {
-
+        Vector3 position{get; set;}
+        float yaw{get; set;}
+        float velocity{get; set;}
     }
 
     // Property Character

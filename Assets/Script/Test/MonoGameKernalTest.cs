@@ -23,6 +23,10 @@ public class MonoGameKernalTest : MonoBehaviour {
 
         gameKernal.SetupStage(new StageDesc(stagePrototype));
 
+        INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
+
+        nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
+
         ICamera cam = gameKernal.GetCamera();
 
         cam.lookPosition = Vector3.zero;

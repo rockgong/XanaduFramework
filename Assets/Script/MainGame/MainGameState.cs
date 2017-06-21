@@ -11,6 +11,7 @@ namespace MainGame
 		private IPlayerCharacter _player;
 		private ICamera _camera;
 		private bool _mouseDown;
+		private IGameKernal _kernal;
 
 		public void EnterState(IGameKernal kernal)
 		{
@@ -24,7 +25,7 @@ namespace MainGame
 			_camera = kernal.GetCamera();
 			_camera.offset = new Vector3(0.0f, 10.0f, -10.0f);
 			kernal.SetCameraFollowPlayer(true);
-
+			_kernal = kernal;
 
 			return;
 		}
@@ -52,16 +53,19 @@ namespace MainGame
 
 		public void OnMouseButtonUp()
 		{
-			Debug.Log(string.Format("Mouse Up : {0}", _input.GetMousePosition()));
 			_player.velocity = 0.0f;
 			_mouseDown = false;
+		}
+
+		public void OnMouseButtonRightDown()
+		{
+			_kernal.TryInteract();
 		}
 
 		private void SetPlayerYawFromMousePosition()
 		{
 			Ray cameraRay = Camera.main.ScreenPointToRay(_input.GetMousePosition());
 			Plane groundPlane = new Plane(Vector3.up, _player.position.y);
-			Debug.Log(string.Format("Plane : {0},{1}", groundPlane.distance, groundPlane.normal));
 			float enter;
 			if (groundPlane.Raycast(cameraRay, out enter))
 			{
@@ -70,7 +74,6 @@ namespace MainGame
 				float angle = Mathf.Atan(dir.x / dir.z) / Mathf.PI * 180.0f;
 				if (dir.z < 0.0f)
 					angle += 180.0f;
-				Debug.Log(string.Format("Angle : {0}", angle));
 				_player.yaw = angle;
 			}
 		}

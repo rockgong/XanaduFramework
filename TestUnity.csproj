@@ -78,15 +78,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
     <Compile Include="Assets\Script\Kernal\BaseGameKernal.cs" />
     <Compile Include="Assets\Script\Kernal\BasePlayer.cs" />
     <Compile Include="Assets\Script\Kernal\BaseStage.cs" />
     <Compile Include="Assets\Script\Kernal\Factories.cs" />
+    <Compile Include="Assets\Script\Kernal\GameCamera.cs" />
     <Compile Include="Assets\Script\Kernal\GameKernal.cs" />
+    <Compile Include="Assets\Script\Kernal\InteractSystem.cs" />
     <Compile Include="Assets\Script\Kernal\KernalInterfaceDefine.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
     <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
     <Compile Include="Assets\Script\Kernal\Player.cs" />
     <Compile Include="Assets\Script\Kernal\Stage.cs" />
+    <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
+    <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
+    <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
   </ItemGroup>
