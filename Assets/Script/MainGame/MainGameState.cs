@@ -9,6 +9,8 @@ namespace MainGame
 	{
 		private MonoGameInput _input;
 		private IPlayerCharacter _player;
+		private ICamera _camera;
+		private bool _mouseDown;
 
 		public void EnterState(IGameKernal kernal)
 		{
@@ -19,6 +21,10 @@ namespace MainGame
 			}
 			_input.listener = this;
 			_player = kernal.GetPlayerCharacter();
+			_camera = kernal.GetCamera();
+			_camera.offset = new Vector3(0.0f, 10.0f, -10.0f);
+			kernal.SetCameraFollowPlayer(true);
+
 
 			return;
 		}
@@ -26,11 +32,32 @@ namespace MainGame
 		public void ExitState(IGameKernal kernal)
 		{
 			_input.listener = null;
+			kernal.SetCameraFollowPlayer(false);
 
 			return;
 		}
 
+		public void OnMouseMove(Vector3 newPosition)
+		{
+			if (_mouseDown)
+				SetPlayerYawFromMousePosition();
+		}
+
 		public void OnMouseButtonDown()
+		{
+			SetPlayerYawFromMousePosition();
+			_player.velocity = 5.0f;
+			_mouseDown = true;
+		}
+
+		public void OnMouseButtonUp()
+		{
+			Debug.Log(string.Format("Mouse Up : {0}", _input.GetMousePosition()));
+			_player.velocity = 0.0f;
+			_mouseDown = false;
+		}
+
+		private void SetPlayerYawFromMousePosition()
 		{
 			Ray cameraRay = Camera.main.ScreenPointToRay(_input.GetMousePosition());
 			Plane groundPlane = new Plane(Vector3.up, _player.position.y);
@@ -46,11 +73,6 @@ namespace MainGame
 				Debug.Log(string.Format("Angle : {0}", angle));
 				_player.yaw = angle;
 			}
-		}
-
-		public void OnMouseButtonUp()
-		{
-			Debug.Log(string.Format("Mouse Up : {0}", _input.GetMousePosition()));
 		}
 	}
 }

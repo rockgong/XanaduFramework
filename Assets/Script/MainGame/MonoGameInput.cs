@@ -6,6 +6,7 @@ namespace MainGame
 {
 	interface IInputEventListener
 	{
+		void OnMouseMove(Vector3 newPosition);
 		void OnMouseButtonDown();
 		void OnMouseButtonUp();
 	}
@@ -13,6 +14,8 @@ namespace MainGame
 	class MonoGameInput : MonoBehaviour
 	{
 		public IInputEventListener listener;
+
+		private Vector3 _lastMousePosition = Vector3.zero;
 
 		public Vector3 GetMousePosition()
 		{
@@ -27,7 +30,10 @@ namespace MainGame
 					listener.OnMouseButtonDown();
 				if (Input.GetButtonUp("Fire1"))
 					listener.OnMouseButtonUp();
+				if (Input.mousePosition != _lastMousePosition)
+					listener.OnMouseMove(Input.mousePosition);
 			}
+			_lastMousePosition = Input.mousePosition;
 		}
 	}
 }

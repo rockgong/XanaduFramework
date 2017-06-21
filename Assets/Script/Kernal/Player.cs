@@ -16,7 +16,7 @@ namespace GameKernal
             _entity.SetHost(this);
 
             _rigidbody = gameObject.GetComponent<Rigidbody>();
-            _animator = gameObject.GetComponent<Animator>();
+            _animator = gameObject.GetComponentInChildren<Animator>();
 
             return;
         }

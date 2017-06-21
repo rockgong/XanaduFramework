@@ -15,7 +15,7 @@ namespace GameKernal
 				transform.position = lookAtPosition + offset;
 			else
 			{
-				transform.position = lookAtTransform.position;
+				transform.position = lookAtTransform.position + offset;
 				lookAtPosition = lookAtTransform.position;
 			}
 			transform.LookAt(lookAtPosition);
