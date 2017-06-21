@@ -6,6 +6,8 @@ namespace GameKernal
     class Player : BasePlayer, IMonoEntityHost
     {
         private MonoEntity _entity;
+        private Rigidbody _rigidbody;
+        private Animator _animator;
 
         public override void Initialize(PlayerCharacterDesc desc)
         {
@@ -13,7 +15,25 @@ namespace GameKernal
             _entity = gameObject.AddComponent<MonoEntity>();
             _entity.SetHost(this);
 
+            _rigidbody = gameObject.GetComponent<Rigidbody>();
+            _animator = gameObject.GetComponent<Animator>();
+
             return;
+        }
+
+        public override Vector3 position
+        {
+            get
+            {
+                if (_entity != null)
+                    return _entity.transform.position;
+                return Vector3.zero;
+            }
+            set
+            {
+                if (_entity != null)
+                    _entity.transform.position = value;
+            }
         }
 
         public void OnCollisionEnter(MonoEntity entity, Collision collision)
@@ -72,7 +92,15 @@ namespace GameKernal
 
         public void OnUpdate(MonoEntity entity, float deltaTime)
         {
-            //Do nothing...
+            if (entity != null && entity == _entity)
+            {
+                entity.transform.eulerAngles = new Vector3(0.0f, yaw, 0.0f);
+                if (_rigidbody != null)
+                    _rigidbody.velocity = entity.transform.forward * velocity;
+
+                if (_animator != null)
+                    _animator.SetFloat("velocity", velocity);
+            }
             return;
         }
 

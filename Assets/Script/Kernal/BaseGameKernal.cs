@@ -22,7 +22,7 @@ namespace GameKernal
             return null;
         }
 
-        public virtual IPlayerCharacter GetPlayerCharaccter()
+        public virtual IPlayerCharacter GetPlayerCharacter()
         {
             return null;
         }

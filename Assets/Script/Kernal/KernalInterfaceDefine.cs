@@ -54,7 +54,7 @@ namespace GameKernal
         GameKernalErrorCode Startup();
         GameKernalErrorCode Shutdown();
         IPlayerCharacter SetupPlayerCharacter(PlayerCharacterDesc desc);
-        IPlayerCharacter GetPlayerCharaccter();
+        IPlayerCharacter GetPlayerCharacter();
         INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc);
         INonPlayerCharacter GetNonPlayerCharacter(string name);
         void RemoveNonPlayerCharacter(string name);
@@ -74,6 +74,8 @@ namespace GameKernal
     public interface IPlayerCharacter
     {
         Vector3 position{get; set;}
+        float yaw{get; set;}
+        float velocity{get; set;}
     }
 
     // Non Player Character

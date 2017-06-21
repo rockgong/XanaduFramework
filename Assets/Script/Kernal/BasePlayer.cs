@@ -13,7 +13,20 @@ namespace GameKernal
         private IPlayerHost _host;
 
         // Interface implement
-        public Vector3 position{get; set;}
+        public virtual Vector3 position
+        {
+            get
+            {
+                return Vector3.zero;
+            }
+            set
+            {
+                return;
+            }
+        }
+
+        public float yaw{get; set;}
+        public float velocity{get; set;}
 
         public void SetHost(IPlayerHost host)
         {

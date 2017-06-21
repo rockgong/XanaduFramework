@@ -8,7 +8,7 @@ namespace GameKernal
         private Stage _stage;
         private GameCamera _camera;
 
-        public override IPlayerCharacter GetPlayerCharaccter()
+        public override IPlayerCharacter GetPlayerCharacter()
         {
             return _player;
         }
