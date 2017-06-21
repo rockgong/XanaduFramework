@@ -1,4 +1,6 @@
-﻿namespace GameKernal
+﻿using UnityEngine;
+
+namespace GameKernal
 {
     // For interact with the player host
     interface IPlayerHost
@@ -9,6 +11,9 @@
     abstract class BasePlayer : IPlayerCharacter
     {
         private IPlayerHost _host;
+
+        // Interface implement
+        public Vector3 position{get; set;}
 
         public void SetHost(IPlayerHost host)
         {

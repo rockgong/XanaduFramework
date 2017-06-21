@@ -65,12 +65,14 @@ namespace GameKernal
         void RemovePropObject(IPropObject handler);
         IStage SetupStage(StageDesc desc);
         IStage GetStage();
+        ICamera GetCamera();
+        void SetCameraFollowPlayer(bool enable);
     }
 
     // Player Character
     public interface IPlayerCharacter
     {
-
+        Vector3 position{get; set;}
     }
 
     // Non Player Character
@@ -89,6 +91,13 @@ namespace GameKernal
     public interface IStage
     {
 
+    }
+
+    //Camera
+    public interface ICamera
+    {
+        Vector3 lookPosition{get; set;}
+        Vector3 offset{get; set;}
     }
 
     // Game State

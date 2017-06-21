@@ -75,6 +75,16 @@ namespace GameKernal
             return null;
         }
 
+        public virtual ICamera GetCamera()
+        {
+            return null;
+        }
+
+        public virtual void SetCameraFollowPlayer(bool enable)
+        {
+            return;
+        }
+
         // Class public method
         public abstract void Initialize(GameKernalDesc desc);
 

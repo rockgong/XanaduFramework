@@ -83,5 +83,13 @@ namespace GameKernal
 
             return;
         }
+
+        public Transform GetPlayerTransform()
+        {
+            if (_entity != null)
+                return _entity.transform;
+
+            return null;
+        }
     }
 }

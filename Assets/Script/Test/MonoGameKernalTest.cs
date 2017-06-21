@@ -4,6 +4,8 @@ using UnityEngine;
 using GameKernal;
 
 public class MonoGameKernalTest : MonoBehaviour {
+	public Vector3 cameraOffset;
+
     private IGameKernal gameKernal;
 	void Start () {
         gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc());
@@ -15,6 +17,12 @@ public class MonoGameKernalTest : MonoBehaviour {
         GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
 
         gameKernal.SetupStage(new StageDesc(stagePrototype));
+
+        ICamera cam = gameKernal.GetCamera();
+
+        cam.lookPosition = Vector3.zero;
+
+        cam.offset = cameraOffset;
 
         gameKernal.Startup();
 	}

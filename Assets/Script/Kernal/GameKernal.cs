@@ -6,6 +6,7 @@ namespace GameKernal
     {
         private Player _player;
         private Stage _stage;
+        private GameCamera _camera;
 
         public override IPlayerCharacter GetPlayerCharaccter()
         {
@@ -14,6 +15,9 @@ namespace GameKernal
 
         public override void Initialize(GameKernalDesc desc)
         {
+            _camera = new GameCamera();
+            _camera.Initialize();
+
             return;
         }
 
@@ -39,6 +43,24 @@ namespace GameKernal
             _stage = newStage;
 
             return _stage;
+        }
+
+        public override ICamera GetCamera()
+        {
+            return _camera;
+        }
+
+        public override void SetCameraFollowPlayer(bool enable)
+        {
+            if (_camera == null || _player == null)
+                return;
+
+            if (enable)
+                _camera.SetFollowTransform(_player.GetPlayerTransform());
+            else
+                _camera.SetFollowTransform(null);
+
+            return;
         }
 
         public override void Uninitialize()
