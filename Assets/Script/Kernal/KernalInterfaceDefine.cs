@@ -66,6 +66,7 @@ namespace GameKernal
         IStage SetupStage(StageDesc desc);
         IStage GetStage();
         ICamera GetCamera();
+        void SetGameState(IGameState state);
         void SetCameraFollowPlayer(bool enable);
     }
 
@@ -101,8 +102,9 @@ namespace GameKernal
     }
 
     // Game State
-    public interface GameState
+    public interface IGameState
     {
-
+        void EnterState(IGameKernal kernal);
+        void ExitState(IGameKernal kernal);
     }
 }

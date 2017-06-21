@@ -58,6 +58,8 @@
      <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
      <Compile Include="Assets\Script\Kernal\Player.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\TestBehavior.cs" />
  <Reference Include="UnityEngine.UI">

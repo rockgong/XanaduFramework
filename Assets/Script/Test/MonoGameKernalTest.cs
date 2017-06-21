@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
+using MainGame;
 
 public class MonoGameKernalTest : MonoBehaviour {
 	public Vector3 cameraOffset;
 
     private IGameKernal gameKernal;
+
+    private MainGameState _mainGameState = new MainGameState();
+    private InteractGameState _interactGameState = new InteractGameState();
+
 	void Start () {
         gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc());
 
@@ -25,5 +30,16 @@ public class MonoGameKernalTest : MonoBehaviour {
         cam.offset = cameraOffset;
 
         gameKernal.Startup();
+
+        gameKernal.SetGameState(_mainGameState);
+	}
+
+	void OnGUI()
+	{
+		if (GUILayout.Button("MainGameState"))
+			gameKernal.SetGameState(_mainGameState);
+
+		if (GUILayout.Button("InteractGameState"))
+			gameKernal.SetGameState(_interactGameState);
 	}
 }

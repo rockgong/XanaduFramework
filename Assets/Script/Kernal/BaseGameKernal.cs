@@ -4,6 +4,8 @@ namespace GameKernal
 {
     abstract class BaseGameKernal : IGameKernal
     {
+        protected IGameState _currentState;
+
         // Interface implement
         public virtual INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc)
         {
@@ -82,6 +84,20 @@ namespace GameKernal
 
         public virtual void SetCameraFollowPlayer(bool enable)
         {
+            return;
+        }
+
+        public virtual void SetGameState(IGameState state)
+        {
+            if (_currentState == state)
+                return;
+
+            if (_currentState != null)
+                _currentState.ExitState(this);
+
+            _currentState = state;
+            _currentState.EnterState(this);
+
             return;
         }
 
