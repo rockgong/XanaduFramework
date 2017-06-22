@@ -23,7 +23,6 @@ namespace MainGame
 			_input.listener = this;
 			_player = kernal.GetPlayerCharacter();
 			_camera = kernal.GetCamera();
-			_camera.offset = new Vector3(0.0f, 10.0f, -10.0f);
 			kernal.SetCameraFollowPlayer(true);
 			_kernal = kernal;
 
@@ -34,6 +33,7 @@ namespace MainGame
 		{
 			_input.listener = null;
 			kernal.SetCameraFollowPlayer(false);
+            _player.velocity = 0.0f;
 
 			return;
 		}

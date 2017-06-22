@@ -41,8 +41,7 @@ namespace GameKernal
 
 		public void SetFollowTransform(Transform target)
 		{
-			if (_monoCamera != null)
-				_monoCamera.lookAtTransform = target;
+			_monoCamera.lookAtTransform = target;
 		}
 
         public override void Initialize()
@@ -55,6 +54,15 @@ namespace GameKernal
         public override void Uninitialize()
         {
         	_mainCamera = null;
+
+        	return;
+        }
+
+        public override void EasingMoveTo(Vector3 target, System.Action onFinish = null)
+        {
+        	_monoCamera.easingMoving = true;
+        	_monoCamera.easingTargetPosition = target;
+        	_monoCamera.onFinish = onFinish;
 
         	return;
         }

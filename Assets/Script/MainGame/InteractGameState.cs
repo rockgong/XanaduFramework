@@ -74,10 +74,13 @@ namespace MainGame
 			_kernal = kernal;
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
-			_camera.lookPosition = _nonPlayer.position;
-			Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
-			Debug.Log(string.Format("Screen Point : {0}", position));
-			_interactView.ShowDialog("InteractInteractInteract !", position);
+			//_camera.lookPosition = _nonPlayer.position;
+			_camera.EasingMoveTo(_nonPlayer.position, () =>
+			{
+				Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
+				Debug.Log(string.Format("Screen Point : {0}", position));
+				_interactView.ShowDialog("InteractInteractInteract !", position);
+			});
 		}
 
 		public void ExitState(IGameKernal kernal)

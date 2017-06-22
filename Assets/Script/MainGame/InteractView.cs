@@ -33,6 +33,7 @@ namespace MainGame
 							CloseDialog();
 							if (_listener != null)
 								_listener.OnViewClosed();
+                            bgButton.gameObject.SetActive(false);
 						});
 				}
 			}
@@ -48,8 +49,12 @@ namespace MainGame
 		public void ShowMessage(string msg)
 		{
 			Transform trans = _monoView.GetWidget<Transform>("message_root");
-			if (trans != null)
-				trans.gameObject.SetActive(true);
+            if (trans != null)
+            {
+                trans.gameObject.SetActive(true);
+                Button bgButton = _monoView.GetWidget<Button>("bg_button");
+                bgButton.gameObject.SetActive(true);
+            }
 
 			Text msgText = _monoView.GetWidget<Text>("message_msg");
 			if (msgText != null)
@@ -86,7 +91,10 @@ namespace MainGame
 				RectTransform rectTrans = trans as RectTransform;
 				if (rectTrans != null)
 					rectTrans.anchoredPosition = position;
-			}
+
+                Button bgButton = _monoView.GetWidget<Button>("bg_button");
+                bgButton.gameObject.SetActive(true);
+            }
 
 			Text msgText = _monoView.GetWidget<Text>("dialog_msg");
 			if (msgText != null)
