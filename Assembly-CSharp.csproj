@@ -69,6 +69,7 @@
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\TestBehavior.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
+     <Compile Include="Assets\Script\UI\UIUtils.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity55/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

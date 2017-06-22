@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
+using UIUtil;
 
 namespace MainGame
 {
@@ -74,7 +75,9 @@ namespace MainGame
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
 			_camera.lookPosition = _nonPlayer.position;
-			_interactView.ShowMessage("InteractInteractInteract !");
+			Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
+			Debug.Log(string.Format("Screen Point : {0}", position));
+			_interactView.ShowDialog("InteractInteractInteract !", position);
 		}
 
 		public void ExitState(IGameKernal kernal)

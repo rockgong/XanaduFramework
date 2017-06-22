@@ -30,6 +30,7 @@ namespace MainGame
 						bgButton.onClick.AddListener(() =>
 						{
 							CloseMessage();
+							CloseDialog();
 							if (_listener != null)
 								_listener.OnViewClosed();
 						});
@@ -67,6 +68,43 @@ namespace MainGame
 		public void CloseMessage()
 		{
 			Transform trans = _monoView.GetWidget<Transform>("message_root");
+			if (trans != null)
+				trans.gameObject.SetActive(false);
+
+			if (_listener != null)
+				_listener.OnViewClosed();
+
+			return;
+		}
+
+		public void ShowDialog(string msg, Vector2 position)
+		{
+			Transform trans = _monoView.GetWidget<Transform>("dialog_root");
+			if (trans != null)
+			{
+				trans.gameObject.SetActive(true);
+				RectTransform rectTrans = trans as RectTransform;
+				if (rectTrans != null)
+					rectTrans.anchoredPosition = position;
+			}
+
+			Text msgText = _monoView.GetWidget<Text>("dialog_msg");
+			if (msgText != null)
+			{
+				msgText.text = msg;
+				RectTransform msgTrans = msgText.transform as RectTransform;
+				if (msgTrans != null)
+				{
+					msgTrans.sizeDelta = new Vector2(msgText.preferredWidth, msgText.preferredHeight);
+				}
+			}
+
+			return;
+		}
+
+		public void CloseDialog()
+		{
+			Transform trans = _monoView.GetWidget<Transform>("dialog_root");
 			if (trans != null)
 				trans.gameObject.SetActive(false);
 

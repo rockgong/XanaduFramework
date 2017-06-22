@@ -90,13 +90,18 @@
     <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
     <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
     <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoTimer.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoView.cs" />
     <Compile Include="Assets\Script\Kernal\Player.cs" />
     <Compile Include="Assets\Script\Kernal\Stage.cs" />
     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
+    <Compile Include="Assets\Script\MainGame\InteractView.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
     <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
+    <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
+    <Compile Include="Assets\Script\UI\UIUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
