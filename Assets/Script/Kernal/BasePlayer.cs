@@ -11,6 +11,7 @@ namespace GameKernal
     abstract class BasePlayer : IPlayerCharacter, INonPlayerCharacter
     {
         private IPlayerHost _host;
+        public string name{get; set;}
 
         // Interface implement
         public virtual Vector3 position

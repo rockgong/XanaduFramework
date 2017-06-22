@@ -11,6 +11,7 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
 
     private MainGameState _mainGameState = new MainGameState();
     private InteractGameState _interactGameState = new InteractGameState();
+    private InteractView _interactView = new InteractView();
 
 	void Start () {
         gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
@@ -27,6 +28,10 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
 
         nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
 
+        nonPlayer = gameKernal.AddNonPlayerCharacter("nono", new NonPlayerCharacterDesc(playerPrototype));
+
+        nonPlayer.position = new Vector3(0.0f, 0.0f, -5.0f);
+
         ICamera cam = gameKernal.GetCamera();
 
         cam.lookPosition = Vector3.zero;
@@ -38,15 +43,11 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
         gameKernal.SetGameState(_mainGameState);
 
         _interactGameState.SetHost(this);
-	}
 
-	void OnGUI()
-	{
-		if (GUILayout.Button("MainGameState"))
-			gameKernal.SetGameState(_mainGameState);
+        _interactView.Initialize();
 
-		if (GUILayout.Button("InteractGameState"))
-			gameKernal.SetGameState(_interactGameState);
+        _interactGameState.SetInteractView(_interactView);
+        _interactView.SetListener(_interactGameState);
 	}
 
     public void OnInteractEnd()

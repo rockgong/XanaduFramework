@@ -10,7 +10,7 @@ namespace MainGame
 		void OnInteractEnd();
 	}
 
-	class InteractGameState : IGameState
+	class InteractGameState : IGameState, IInteractViewListener
 	{
 		private IPlayerCharacter _player;
 		private INonPlayerCharacter _nonPlayer;
@@ -18,6 +18,15 @@ namespace MainGame
 		private IInteractGameStateHost _host;
 		private IGameKernal _kernal;
 		private ICamera _camera;
+
+		private InteractView _interactView;
+
+		public void SetInteractView(InteractView view)
+		{
+			_interactView = view;
+
+			return;
+		}
 
 		public void SetHost(IInteractGameStateHost host)
 		{
@@ -52,6 +61,7 @@ namespace MainGame
 
 		public void EnterState(IGameKernal kernal)
 		{
+			/*
 			GameObject go = new GameObject("Timer");
 			MonoTimer timer = go.AddComponent<MonoTimer>();
 			timer.Setup(1.0f, () =>
@@ -59,15 +69,22 @@ namespace MainGame
 				if (_host != null)
 					_host.OnInteractEnd();
 			});
+			*/
 			_kernal = kernal;
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
 			_camera.lookPosition = _nonPlayer.position;
+			_interactView.ShowMessage("InteractInteractInteract !");
 		}
 
 		public void ExitState(IGameKernal kernal)
 		{
 
+		}
+
+		public void OnViewClosed()
+		{
+			_host.OnInteractEnd();
 		}
 	}
 }

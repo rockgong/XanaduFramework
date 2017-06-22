@@ -93,6 +93,7 @@ namespace GameKernal
     // Non Player Character
     public interface INonPlayerCharacter
     {
+        string name {get;set;}
         Vector3 position{get; set;}
         float yaw{get; set;}
         float velocity{get; set;}

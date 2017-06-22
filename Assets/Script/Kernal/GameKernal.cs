@@ -6,14 +6,8 @@ namespace GameKernal
 {
     class GameKernal : BaseGameKernal, IInteractListener
     {
-        class NonPlayerEntry
-        {
-            public string name;
-            public Player nonPlayer;
-        }
-
         private Player _player;
-        private List<NonPlayerEntry> _nonPlayer = new List<NonPlayerEntry>();
+        private List<Player> _nonPlayer = new List<Player>();
         private Stage _stage;
         private GameCamera _camera;
 
@@ -60,14 +54,11 @@ namespace GameKernal
                     return null;
             }
 
-            NonPlayerEntry entry = new NonPlayerEntry();
-            entry.name = name;
-
             Player newPlayer = new Player();
+            newPlayer.name = name;
             newPlayer.Initialize(desc);
-            entry.nonPlayer = newPlayer;
 
-            _nonPlayer.Add(entry);
+            _nonPlayer.Add(newPlayer);
             _interactSystem.AddInteractObject(newPlayer);
 
             return newPlayer;
