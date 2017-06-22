@@ -58,6 +58,7 @@
      <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
      <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
      <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
+     <Compile Include="Assets\Script\Kernal\MonoTimer.cs" />
      <Compile Include="Assets\Script\Kernal\Player.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
      <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />

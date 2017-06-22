@@ -25,17 +25,14 @@ namespace MainGame
 
 		private void Update()
 		{
-			if (listener != null)
-			{
-				if (Input.GetButtonDown("Fire1"))
-					listener.OnMouseButtonDown();
-				if (Input.GetButtonUp("Fire1"))
-					listener.OnMouseButtonUp();
-				if (Input.GetButtonDown("Fire2"))
-					listener.OnMouseButtonRightDown();
-				if (Input.mousePosition != _lastMousePosition)
-					listener.OnMouseMove(Input.mousePosition);
-			}
+			if (Input.GetButtonDown("Fire1"))
+				if (listener != null) listener.OnMouseButtonDown();
+			if (Input.GetButtonUp("Fire1"))
+				if (listener != null) listener.OnMouseButtonUp();
+			if (Input.GetButtonDown("Fire2"))
+				if (listener != null) listener.OnMouseButtonRightDown();
+			if (Input.mousePosition != _lastMousePosition)
+				if (listener != null) listener.OnMouseMove(Input.mousePosition);
 			_lastMousePosition = Input.mousePosition;
 		}
 	}

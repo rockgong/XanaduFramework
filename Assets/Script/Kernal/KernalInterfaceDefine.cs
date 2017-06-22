@@ -53,6 +53,11 @@ namespace GameKernal
         NoPlayer,
     }
 
+    public interface IGameKernalHost
+    {
+        void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer);
+    }
+
     // Game kernal itself
     public interface IGameKernal
     {

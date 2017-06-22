@@ -4,7 +4,7 @@ using UnityEngine;
 using GameKernal;
 using MainGame;
 
-public class MonoGameKernalTest : MonoBehaviour {
+public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost {
 	public Vector3 cameraOffset;
 
     private IGameKernal gameKernal;
@@ -13,7 +13,7 @@ public class MonoGameKernalTest : MonoBehaviour {
     private InteractGameState _interactGameState = new InteractGameState();
 
 	void Start () {
-        gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc());
+        gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 
         GameObject playerPrototype = Resources.Load<GameObject>("Character/Player/Player");
 
@@ -36,6 +36,8 @@ public class MonoGameKernalTest : MonoBehaviour {
         gameKernal.Startup();
 
         gameKernal.SetGameState(_mainGameState);
+
+        _interactGameState.SetHost(this);
 	}
 
 	void OnGUI()
@@ -46,4 +48,16 @@ public class MonoGameKernalTest : MonoBehaviour {
 		if (GUILayout.Button("InteractGameState"))
 			gameKernal.SetGameState(_interactGameState);
 	}
+
+    public void OnInteractEnd()
+    {
+        gameKernal.SetGameState(_mainGameState);
+    }
+
+    public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
+    {
+        _interactGameState.player = player;
+        _interactGameState.nonPlayer = nonPlayer;
+        gameKernal.SetGameState(_interactGameState);
+    }
 }

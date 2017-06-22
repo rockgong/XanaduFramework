@@ -120,7 +120,17 @@ namespace GameKernal
 
         public void OnInteractHappen(IInteractSubject sub, IInteractObject obj)
         {
-            Debug.Log("Action !");
+            if (host != null)
+            {
+                if (sub is IPlayerCharacter)
+                {
+                    IPlayerCharacter pc = (IPlayerCharacter)sub;
+                    if (obj is INonPlayerCharacter)
+                    {
+                        host.OnInteract(pc, (INonPlayerCharacter)obj);
+                    }
+                }
+            }
         }
     }
 }

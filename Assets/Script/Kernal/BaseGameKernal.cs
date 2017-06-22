@@ -5,6 +5,19 @@ namespace GameKernal
     abstract class BaseGameKernal : IGameKernal
     {
         protected IGameState _currentState;
+        private IGameKernalHost _host;
+
+        public IGameKernalHost host
+        {
+            protected get
+            {
+                return _host;
+            }
+            set
+            {
+                _host = value;
+            }
+        }
 
         // Interface implement
         public virtual INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc)
