@@ -153,6 +153,9 @@ namespace MainGame
                 callback(i);
                 CloseSelect();
             });
+            MonoViewOpenAnim anim = _selectPanel.GetComponent<MonoViewOpenAnim>();
+            if (anim != null)
+                anim.Play(null);
 
             return;
         }
