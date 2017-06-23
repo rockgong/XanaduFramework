@@ -19,6 +19,7 @@ namespace MainGame
 
         private MonoTypewriter _dialogTypewriter = null;
         private MonoTypewriter _messageTypewriter = null;
+        private MonoSelectPanel _selectPanel = null;
 
 		public void Initialize()
 		{
@@ -52,7 +53,7 @@ namespace MainGame
 						});
                     _dialogTypewriter = _monoView.GetWidget<MonoTypewriter>("dialog_root");
                     _messageTypewriter = _monoView.GetWidget<MonoTypewriter>("message_root");
-
+                    _selectPanel = _monoView.GetWidget<MonoSelectPanel>("select_root");
                 }
 			}
 		}
@@ -143,5 +144,22 @@ namespace MainGame
 
 			return;
 		}
+
+        public void ShowSelect(string title, string[] options, System.Action<int> callback)
+        {
+            _selectPanel.gameObject.SetActive(true);
+            _selectPanel.Setup(title, options, (i) =>
+            {
+                callback(i);
+                CloseSelect();
+            });
+
+            return;
+        }
+
+        public void CloseSelect()
+        {
+            _selectPanel.gameObject.SetActive(false);
+        }
 	}
 }

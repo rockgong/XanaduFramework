@@ -6,6 +6,7 @@ using MainGame;
 
 public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost {
 	public Vector3 cameraOffset;
+    public string[] selectOptions;
 
     private IGameKernal gameKernal;
 
@@ -53,6 +54,18 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
     public void OnInteractEnd()
     {
         gameKernal.SetGameState(_mainGameState);
+    }
+
+    public void OnGUI()
+    {
+        if (GUILayout.Button("Select"))
+        {
+            _interactView.ShowSelect("My Select", selectOptions, (i) =>
+            {
+                if (i == 0)
+                    Application.Quit();
+            });
+        }
     }
 
     public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
