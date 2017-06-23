@@ -96,9 +96,10 @@ namespace MainGame
 			Transform trans = _monoView.GetWidget<Transform>("message_root");
 			if (trans != null)
 				trans.gameObject.SetActive(false);
-
+            /*
 			if (_listener != null)
 				_listener.OnViewClosed();
+            */
 
 			return;
 		}
@@ -138,9 +139,10 @@ namespace MainGame
 			Transform trans = _monoView.GetWidget<Transform>("dialog_root");
 			if (trans != null)
 				trans.gameObject.SetActive(false);
-
+            /*
 			if (_listener != null)
 				_listener.OnViewClosed();
+            */
 
 			return;
 		}
@@ -163,6 +165,9 @@ namespace MainGame
         public void CloseSelect()
         {
             _selectPanel.gameObject.SetActive(false);
+
+            if (_listener != null)
+                _listener.OnViewClosed();
         }
 	}
 }

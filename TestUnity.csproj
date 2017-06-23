@@ -96,6 +96,7 @@
     <Compile Include="Assets\Script\Kernal\MonoView.cs" />
     <Compile Include="Assets\Script\Kernal\Player.cs" />
     <Compile Include="Assets\Script\Kernal\Stage.cs" />
+    <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
     <Compile Include="Assets\Script\MainGame\InteractView.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />

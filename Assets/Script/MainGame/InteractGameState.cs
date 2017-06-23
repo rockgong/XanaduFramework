@@ -11,6 +11,11 @@ namespace MainGame
 		void OnInteractEnd();
 	}
 
+    abstract class BaseInteractCommand
+    {
+        public abstract void Excute(InteractView view);
+    }
+
 	class InteractGameState : IGameState, IInteractViewListener
 	{
 		private IPlayerCharacter _player;
@@ -21,6 +26,14 @@ namespace MainGame
 		private ICamera _camera;
 
 		private InteractView _interactView;
+
+        private List<BaseInteractCommand> _commandList;
+        private int _commandIndex;
+
+        public void SetCommandList(List<BaseInteractCommand> list)
+        {
+            _commandList = list;
+        }
 
 		public void SetInteractView(InteractView view)
 		{
@@ -65,13 +78,15 @@ namespace MainGame
 			_kernal = kernal;
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
+
 			_camera.EasingMoveTo(_nonPlayer.viewPosition, () =>
 			{
 				Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
 				Debug.Log(string.Format("Screen Point : {0}", position));
-                _interactView.ShowDialog("InteractInteractInteractFafdafdfdafdafdafdaf !", position);
-                // _interactView.ShowMessage("InteractInteractInteractFafdafdfdafdafdafdaf !");
+                ProcessCommand();
             });
+
+            _commandIndex = 0;
 		}
 
 		public void ExitState(IGameKernal kernal)
@@ -81,7 +96,16 @@ namespace MainGame
 
 		public void OnViewClosed()
 		{
-			_host.OnInteractEnd();
-		}
+            ProcessCommand();
+        }
+
+        private void ProcessCommand()
+        {
+            if (_commandIndex >= _commandList.Count)
+                _host.OnInteractEnd();
+            else
+                _commandList[_commandIndex].Excute(_interactView);
+            _commandIndex++;
+        }
 	}
 }
