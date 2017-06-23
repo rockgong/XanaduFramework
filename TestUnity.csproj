@@ -87,6 +87,7 @@
     <Compile Include="Assets\Script\Kernal\GameKernal.cs" />
     <Compile Include="Assets\Script\Kernal\InteractSystem.cs" />
     <Compile Include="Assets\Script\Kernal\KernalInterfaceDefine.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoAnimation.cs" />
     <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
     <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
     <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
     <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
+    <Compile Include="Assets\Script\UI\MonoViewOpenAnim.cs" />
     <Compile Include="Assets\Script\UI\UIUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

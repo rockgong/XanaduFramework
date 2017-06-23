@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
 using UnityEngine.UI;
+using UIUtil;
 
 namespace MainGame
 {
@@ -52,8 +53,15 @@ namespace MainGame
             if (trans != null)
             {
                 trans.gameObject.SetActive(true);
-                Button bgButton = _monoView.GetWidget<Button>("bg_button");
-                bgButton.gameObject.SetActive(true);
+                MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+                if (anim != null)
+                {
+	                anim.Play(() =>
+	                {
+		                Button bgButton = _monoView.GetWidget<Button>("bg_button");
+		                bgButton.gameObject.SetActive(true);
+	                });
+            	}
             }
 
 			Text msgText = _monoView.GetWidget<Text>("message_msg");
@@ -92,8 +100,15 @@ namespace MainGame
 				if (rectTrans != null)
 					rectTrans.anchoredPosition = position;
 
-                Button bgButton = _monoView.GetWidget<Button>("bg_button");
-                bgButton.gameObject.SetActive(true);
+                MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+                if (anim != null)
+                {
+                    anim.Play(() =>
+                    {
+                        Button bgButton = _monoView.GetWidget<Button>("bg_button");
+                        bgButton.gameObject.SetActive(true);
+                    });
+                }
             }
 
 			Text msgText = _monoView.GetWidget<Text>("dialog_msg");
