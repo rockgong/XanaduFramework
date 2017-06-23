@@ -87,7 +87,7 @@ namespace GameKernal
                 return;
 
             if (enable)
-                _camera.SetFollowTransform(_player.GetPlayerTransform());
+                _camera.SetFollowTransform(_player.GetViewTransform());
             else
                 _camera.SetFollowTransform(null);
 

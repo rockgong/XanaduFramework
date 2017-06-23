@@ -91,6 +91,7 @@
     <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
     <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
     <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
+    <Compile Include="Assets\Script\Kernal\MonoPlayerConfig.cs" />
     <Compile Include="Assets\Script\Kernal\MonoTimer.cs" />
     <Compile Include="Assets\Script\Kernal\MonoView.cs" />
     <Compile Include="Assets\Script\Kernal\Player.cs" />

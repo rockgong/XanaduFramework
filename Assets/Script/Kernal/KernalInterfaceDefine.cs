@@ -86,6 +86,7 @@ namespace GameKernal
     public interface IPlayerCharacter
     {
         Vector3 position{get; set;}
+        Vector3 viewPosition{get; set;}
         float yaw{get; set;}
         float velocity{get; set;}
     }
@@ -94,7 +95,8 @@ namespace GameKernal
     public interface INonPlayerCharacter
     {
         string name {get;set;}
-        Vector3 position{get; set;}
+        Vector3 position{get; set; }
+        Vector3 viewPosition { get; set; }
         float yaw{get; set;}
         float velocity{get; set;}
     }

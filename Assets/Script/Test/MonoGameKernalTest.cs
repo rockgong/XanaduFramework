@@ -18,7 +18,7 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
 
         GameObject playerPrototype = Resources.Load<GameObject>("Character/Player/Player");
 
-        gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
+        IPlayerCharacter player = gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
 
         GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
 
@@ -34,7 +34,7 @@ public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKe
 
         ICamera cam = gameKernal.GetCamera();
 
-        cam.lookPosition = Vector3.zero;
+        cam.lookPosition = player.viewPosition;
 
         cam.offset = cameraOffset;
 

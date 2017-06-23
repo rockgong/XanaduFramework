@@ -50,6 +50,20 @@ namespace GameKernal
             }
         }
 
+        public override Vector3 viewPosition
+        {
+            get
+            {
+                if (_entity != null)
+                {
+                    MonoPlayerConfig config = _entity.GetComponent<MonoPlayerConfig>();
+                    if (config != null)
+                        return config.viewTransform.position;
+                }
+                return Vector3.zero;
+            }
+        }
+
         public void OnCollisionEnter(MonoEntity entity, Collision collision)
         {
             //Do nothing...
@@ -131,6 +145,17 @@ namespace GameKernal
             if (_entity != null)
                 return _entity.transform;
 
+            return null;
+        }
+
+        public Transform GetViewTransform()
+        {
+            if (_entity != null)
+            {
+                MonoPlayerConfig config = _entity.GetComponent<MonoPlayerConfig>();
+                if (config != null)
+                    return config.viewTransform;
+            }
             return null;
         }
 
