@@ -102,6 +102,7 @@
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
     <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
+    <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />
     <Compile Include="Assets\Script\UI\MonoViewOpenAnim.cs" />
     <Compile Include="Assets\Script\UI\UIUtils.cs" />
   </ItemGroup>

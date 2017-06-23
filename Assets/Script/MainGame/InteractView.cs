@@ -17,6 +17,9 @@ namespace MainGame
 		private MonoView _monoView;
 		private IInteractViewListener _listener;
 
+        private MonoTypewriter _dialogTypewriter = null;
+        private MonoTypewriter _messageTypewriter = null;
+
 		public void Initialize()
 		{
 			GameObject viewProto = Resources.Load<GameObject>("UI/InteractView");
@@ -30,13 +33,27 @@ namespace MainGame
 					if (bgButton != null)
 						bgButton.onClick.AddListener(() =>
 						{
-							CloseMessage();
-							CloseDialog();
-							if (_listener != null)
-								_listener.OnViewClosed();
-                            bgButton.gameObject.SetActive(false);
+                            if (_dialogTypewriter.typing)
+                            {
+                                _dialogTypewriter.EndType();
+                            }
+                            else if (_messageTypewriter.typing)
+                            {
+                                _messageTypewriter.EndType();
+                            }
+                            else
+                            {
+                                CloseMessage();
+                                CloseDialog();
+                                if (_listener != null)
+                                    _listener.OnViewClosed();
+                                bgButton.gameObject.SetActive(false);
+                            }
 						});
-				}
+                    _dialogTypewriter = _monoView.GetWidget<MonoTypewriter>("dialog_root");
+                    _messageTypewriter = _monoView.GetWidget<MonoTypewriter>("message_root");
+
+                }
 			}
 		}
 
@@ -62,18 +79,13 @@ namespace MainGame
 		                bgButton.gameObject.SetActive(true);
 	                });
             	}
-            }
 
-			Text msgText = _monoView.GetWidget<Text>("message_msg");
-			if (msgText != null)
-			{
-				msgText.text = msg;
-				RectTransform msgTrans = msgText.transform as RectTransform;
-				if (msgTrans != null)
-				{
-					msgTrans.sizeDelta = new Vector2(msgText.preferredWidth, msgText.preferredHeight);
-				}
-			}
+                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
+                if (tw != null)
+                {
+                    tw.PlayTypewrite(msg);
+                }
+            }
 
 			return;
 		}
@@ -109,18 +121,13 @@ namespace MainGame
                         bgButton.gameObject.SetActive(true);
                     });
                 }
-            }
 
-			Text msgText = _monoView.GetWidget<Text>("dialog_msg");
-			if (msgText != null)
-			{
-				msgText.text = msg;
-				RectTransform msgTrans = msgText.transform as RectTransform;
-				if (msgTrans != null)
-				{
-					msgTrans.sizeDelta = new Vector2(msgText.preferredWidth, msgText.preferredHeight);
-				}
-			}
+                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
+                if (tw != null)
+                {
+                    tw.PlayTypewrite(msg);
+                }
+            }
 
 			return;
 		}

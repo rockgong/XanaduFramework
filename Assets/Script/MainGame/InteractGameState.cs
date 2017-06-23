@@ -62,25 +62,16 @@ namespace MainGame
 
 		public void EnterState(IGameKernal kernal)
 		{
-			/*
-			GameObject go = new GameObject("Timer");
-			MonoTimer timer = go.AddComponent<MonoTimer>();
-			timer.Setup(1.0f, () =>
-			{
-				if (_host != null)
-					_host.OnInteractEnd();
-			});
-			*/
 			_kernal = kernal;
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
-			//_camera.lookPosition = _nonPlayer.position;
 			_camera.EasingMoveTo(_nonPlayer.position, () =>
 			{
 				Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
 				Debug.Log(string.Format("Screen Point : {0}", position));
-				_interactView.ShowDialog("InteractInteractInteract !", position);
-			});
+                _interactView.ShowDialog("InteractInteractInteractFafdafdfdafdafdafdaf !", position);
+                // _interactView.ShowMessage("InteractInteractInteractFafdafdfdafdafdafdaf !");
+            });
 		}
 
 		public void ExitState(IGameKernal kernal)
