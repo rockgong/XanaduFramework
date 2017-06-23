@@ -22,14 +22,20 @@ namespace UIUtil
         // Update is called once per frame
         void Update()
         {
-            if (targetText != null &&_typing)
+            if (targetText != null && _typing)
             {
                 _letterCount += speed * Time.deltaTime;
                 int length = (int)_letterCount;
-                if (targetText.text.Length < length)
-                    targetText.text = _content.Substring(0, length);
-                if (length == _content.Length)
+                if (length >= _content.Length)
+                {
                     _typing = false;
+                    targetText.text = _content;
+                }
+                else
+                {
+                    if (targetText.text.Length < length)
+                        targetText.text = _content.Substring(0, length);
+                }
             }
         }
 
