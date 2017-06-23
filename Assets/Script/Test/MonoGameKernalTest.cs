@@ -68,32 +68,41 @@ namespace MainGame
             //Temp Code
             List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
-            InteractCommandDialog dialog = new InteractCommandDialog();
-            dialog.content = "OK! OK! OK! Yes";
-            dialog.position = nonPlayer.position;
-            commandList.Add(dialog);
-            dialog = new InteractCommandDialog();
-            dialog.content = "Hahahaha";
-            dialog.position = nonPlayer.position;
-            commandList.Add(dialog);
-            dialog = new InteractCommandDialog();
-            dialog.content = "Go Away !";
-            dialog.position = nonPlayer.position;
-            commandList.Add(dialog);
+            if (nonPlayer.name == "nono")
+            {
+                InteractCommandDialog dialog = new InteractCommandDialog();
+                dialog.content = "OK! OK! OK! Yes";
+                dialog.position = nonPlayer.position;
+                commandList.Add(dialog);
+                dialog = new InteractCommandDialog();
+                dialog.content = "Hahahaha";
+                dialog.position = nonPlayer.position;
+                commandList.Add(dialog);
+                dialog = new InteractCommandDialog();
+                dialog.content = "Go Away !";
+                dialog.position = nonPlayer.position;
+                commandList.Add(dialog);
 
-            InteractCommandMessage msg = new InteractCommandMessage();
-            msg.content = "Warning";
-            commandList.Add(msg);
-            msg = new InteractCommandMessage();
-            msg.content = "Boss";
-            commandList.Add(msg);
+                InteractCommandMessage msg = new InteractCommandMessage();
+                msg.content = "Warning";
+                commandList.Add(msg);
+                msg = new InteractCommandMessage();
+                msg.content = "Boss";
+                commandList.Add(msg);
 
-            InteractCommandSelect slct = new InteractCommandSelect();
-            slct.title = "Exit ?";
-            slct.options = new string[] { "Yes", "No" };
-            slct.callback = (i) => { if (i == 0) Application.Quit(); };
-            commandList.Add(slct);
-
+                InteractCommandSelect slct = new InteractCommandSelect();
+                slct.title = "Exit ?";
+                slct.options = new string[] { "Yes", "No" };
+                slct.callback = (i) => { if (i == 0) Application.Quit(); };
+                commandList.Add(slct);
+            }
+            else if (nonPlayer.name == "nana")
+            {
+                InteractCommandDialog dialog = new InteractCommandDialog();
+                dialog.content = "Fuck";
+                dialog.position = nonPlayer.position;
+                commandList.Add(dialog);
+            }
             _interactGameState.SetCommandList(commandList);
 
             gameKernal.SetGameState(_interactGameState);

@@ -72,20 +72,20 @@ namespace MainGame
             {
                 trans.gameObject.SetActive(true);
                 MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
+                if (tw != null)
+                    tw.Setup(msg);
                 if (anim != null)
                 {
 	                anim.Play(() =>
 	                {
 		                Button bgButton = _monoView.GetWidget<Button>("bg_button");
 		                bgButton.gameObject.SetActive(true);
-	                });
-            	}
 
-                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
-                if (tw != null)
-                {
-                    tw.PlayTypewrite(msg);
-                }
+                        if (tw != null)
+                            tw.PlayTypewrite();
+                    });
+            	}
             }
 
 			return;
@@ -115,19 +115,19 @@ namespace MainGame
 					rectTrans.anchoredPosition = position;
 
                 MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
+                if (tw != null)
+                    tw.Setup(msg);
                 if (anim != null)
                 {
                     anim.Play(() =>
                     {
                         Button bgButton = _monoView.GetWidget<Button>("bg_button");
                         bgButton.gameObject.SetActive(true);
-                    });
-                }
 
-                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
-                if (tw != null)
-                {
-                    tw.PlayTypewrite(msg);
+                        if (tw != null)
+                            tw.PlayTypewrite();
+                    });
                 }
             }
 

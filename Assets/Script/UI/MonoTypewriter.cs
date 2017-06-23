@@ -33,7 +33,7 @@ namespace UIUtil
             }
         }
 
-        public void PlayTypewrite(string content)
+        public void Setup(string content)
         {
             if (targetText == null)
                 return;
@@ -42,6 +42,10 @@ namespace UIUtil
             targetText.rectTransform.sizeDelta = new Vector2(Mathf.Min(maxWidth, targetText.preferredWidth), targetText.preferredHeight);
             targetText.rectTransform.sizeDelta = new Vector2(targetText.rectTransform.sizeDelta.x, targetText.preferredHeight);
             targetText.text = string.Empty;
+        }
+
+        public void PlayTypewrite()
+        {
             _typing = true;
             _letterCount = 0.0f;
         }
