@@ -115,6 +115,9 @@ namespace MainGame
             }
             else if (nonPlayer.name == "nana")
             {
+                InteractCommandNonPlayerFace face = new InteractCommandNonPlayerFace();
+                commandList.Add(face);
+
                 InteractCommandDialog dialog = new InteractCommandDialog();
                 dialog.content = "Fuck";
                 dialog.position = nonPlayer.position;

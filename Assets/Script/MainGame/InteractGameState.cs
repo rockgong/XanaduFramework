@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
 using UIUtil;
+using Helper;
 
 namespace MainGame
 {
@@ -112,7 +113,19 @@ namespace MainGame
 
             _commandIndex = 0;
 
+            FacePlayerToTarget();
 		}
+
+        private void FacePlayerToTarget()
+        {
+            if (_player != null)
+            {
+                if (_nonPlayer != null)
+                    _player.yaw = MathHelper.Vector3ToYaw(_nonPlayer.position - _player.position);
+                else if (_propObject != null)
+                    _player.yaw = MathHelper.Vector3ToYaw(_propObject.position - _player.position);
+            }
+        }
 
 		public void ExitState(IGameKernal kernal)
 		{

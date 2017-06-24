@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using GameKernal;
 using UnityEngine;
+using Helper;
 
 namespace MainGame
 {
@@ -91,6 +92,24 @@ namespace MainGame
                 nonPlayer.PlayAnimation(animationName);
             else if (target == CommandTarget.PropObject && player != null)
                 prop.PlayAnimation(animationName);
+        }
+
+        public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+        {
+            return true;
+        }
+    }
+
+    class InteractCommandNonPlayerFace : BaseInteractCommand
+    {
+        public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+        {
+            if (player != null && nonPlayer != null)
+            {
+                Vector3 deltaPos = player.position - nonPlayer.position;
+                nonPlayer.yaw = MathHelper.Vector3ToYaw(deltaPos);
+            }
+
         }
 
         public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
