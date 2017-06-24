@@ -80,7 +80,7 @@ namespace GameKernal
 			IInteractObject result = null;
 			for (int i = 0; i < _objectList.Count; i++)
 			{
-				if ((_objectList[i].position - _subject.position).magnitude < 2.0f)
+				if ((_objectList[i].position - _subject.position).magnitude < 3.0f)
 				{
 					result = _objectList[i];
 					break;
