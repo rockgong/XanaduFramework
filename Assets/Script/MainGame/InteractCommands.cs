@@ -6,6 +6,13 @@ using UnityEngine;
 
 namespace MainGame
 {
+    enum CommandTarget
+    {
+        Player,
+        NonPlayer,
+        PropObject
+    }
+
     class InteractCommandDialog : BaseInteractCommand
     {
         public string content = string.Empty;
@@ -68,6 +75,27 @@ namespace MainGame
         {
             _timeCount += Time.deltaTime;
             return _timeCount > time;
+        }
+    }
+
+    class InteractCommandAnimation : BaseInteractCommand
+    {
+        public CommandTarget target;
+        public string animationName;
+
+        public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+        {
+            if (target == CommandTarget.Player && player != null)
+                player.PlayAnimation(animationName);
+            else if (target == CommandTarget.NonPlayer && player != null)
+                nonPlayer.PlayAnimation(animationName);
+            else if (target == CommandTarget.PropObject && player != null)
+                prop.PlayAnimation(animationName);
+        }
+
+        public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+        {
+            return true;
         }
     }
 }

@@ -86,8 +86,13 @@ namespace MainGame
                 dialog.position = nonPlayer.position;
                 commandList.Add(dialog);
 
+                InteractCommandAnimation anim = new InteractCommandAnimation();
+                anim.target = CommandTarget.NonPlayer;
+                anim.animationName = "Talk";
+                commandList.Add(anim);
+
                 InteractCommandWait wait = new InteractCommandWait();
-                wait.time = 1.0f;
+                wait.time = 1.8f;
                 commandList.Add(wait);
 
                 dialog = new InteractCommandDialog();

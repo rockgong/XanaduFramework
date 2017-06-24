@@ -40,6 +40,8 @@ namespace GameKernal
         public float yaw{get; set;}
         public float velocity{get; set;}
 
+        public abstract void PlayAnimation(string name);
+
         public void SetHost(IPlayerHost host)
         {
             _host = host;

@@ -39,6 +39,8 @@ namespace GameKernal
 
         public float yaw { get; set; }
 
+        public abstract void PlayAnimation(string name);
+
         public void SetHost(IPropObjectHost host)
         {
             _host = host;

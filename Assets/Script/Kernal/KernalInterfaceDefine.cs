@@ -95,6 +95,7 @@ namespace GameKernal
         Vector3 viewPosition{get; set;}
         float yaw{get; set;}
         float velocity{get; set;}
+        void PlayAnimation(string name);
     }
 
     // Non Player Character
@@ -104,7 +105,8 @@ namespace GameKernal
         Vector3 position{get; set; }
         Vector3 viewPosition { get; set; }
         float yaw{get; set;}
-        float velocity{get; set;}
+        float velocity{get; set; }
+        void PlayAnimation(string name);
     }
 
     // Property Character
@@ -114,6 +116,7 @@ namespace GameKernal
         Vector3 position { get; set; }
         Vector3 viewPosition { get; set; }
         float yaw { get; set; }
+        void PlayAnimation(string name);
     }
 
     // Stage

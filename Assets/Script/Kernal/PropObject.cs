@@ -49,6 +49,12 @@ namespace GameKernal
             }
         }
 
+        public override void PlayAnimation(string name)
+        {
+            if (_animator != null)
+                _animator.CrossFade(name, 0.3f);
+        }
+
         public void OnCollisionEnter(MonoEntity entity, Collision collision)
         {
 

@@ -35,6 +35,12 @@ namespace GameKernal
             return;
         }
 
+        public override void PlayAnimation(string name)
+        {
+            if (_animator != null)
+                _animator.CrossFade(name, 0.3f);
+        }
+
         public override Vector3 position
         {
             get
