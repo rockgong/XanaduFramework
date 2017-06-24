@@ -55,7 +55,7 @@ namespace MainGame
             _interactView.SetListener(_interactGameState);
         }
 
-        public void OnInteractEnd()
+        public void OnCommandProcessEnd()
         {
             gameKernal.SetGameState(_mainGameState);
         }
@@ -78,6 +78,11 @@ namespace MainGame
                 dialog.content = "Hahahaha";
                 dialog.position = nonPlayer.position;
                 commandList.Add(dialog);
+
+                InteractCommandWait wait = new InteractCommandWait();
+                wait.time = 1.0f;
+                commandList.Add(wait);
+
                 dialog = new InteractCommandDialog();
                 dialog.content = "Go Away !";
                 dialog.position = nonPlayer.position;

@@ -14,12 +14,29 @@ namespace MainGame
 
 	class InteractView
 	{
+        public enum ViewState
+        {
+            None,
+            Message,
+            Dialog,
+            Select,
+        }
+
 		private MonoView _monoView;
 		private IInteractViewListener _listener;
 
         private MonoTypewriter _dialogTypewriter = null;
         private MonoTypewriter _messageTypewriter = null;
         private MonoSelectPanel _selectPanel = null;
+
+        private ViewState _viewState;
+        public ViewState viewState
+        {
+            get
+            {
+                return _viewState;
+            }
+        }
 
 		public void Initialize()
 		{
@@ -85,6 +102,7 @@ namespace MainGame
                         if (tw != null)
                             tw.PlayTypewrite();
                     });
+                    _viewState = ViewState.Message;
             	}
             }
 
@@ -101,7 +119,9 @@ namespace MainGame
 				_listener.OnViewClosed();
             */
 
-			return;
+            _viewState = ViewState.None;
+
+            return;
 		}
 
 		public void ShowDialog(string msg, Vector2 position)
@@ -128,6 +148,8 @@ namespace MainGame
                         if (tw != null)
                             tw.PlayTypewrite();
                     });
+
+                    _viewState = ViewState.Dialog;
                 }
             }
 
@@ -143,8 +165,9 @@ namespace MainGame
 			if (_listener != null)
 				_listener.OnViewClosed();
             */
+            _viewState = ViewState.None;
 
-			return;
+            return;
 		}
 
         public void ShowSelect(string title, string[] options, System.Action<int> callback)
@@ -157,7 +180,10 @@ namespace MainGame
             });
             MonoViewOpenAnim anim = _selectPanel.GetComponent<MonoViewOpenAnim>();
             if (anim != null)
+            {
                 anim.Play(null);
+                _viewState = ViewState.Select;
+            }
 
             return;
         }
@@ -168,6 +194,7 @@ namespace MainGame
 
             if (_listener != null)
                 _listener.OnViewClosed();
+            _viewState = ViewState.None;
         }
 	}
 }
