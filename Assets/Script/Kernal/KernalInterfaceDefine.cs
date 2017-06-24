@@ -33,7 +33,12 @@ namespace GameKernal
     // The Description of the Prop Object
     public struct PropObjectDesc
     {
+        public GameObject prototype;
 
+        public PropObjectDesc(GameObject prototype)
+        {
+            this.prototype = prototype;
+        }
     }
 
     // The Description of the Stage
@@ -56,6 +61,7 @@ namespace GameKernal
     public interface IGameKernalHost
     {
         void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer);
+        void OnInteract(IPlayerCharacter player, IPropObject nonPlayer);
     }
 
     // Game kernal itself
@@ -104,7 +110,10 @@ namespace GameKernal
     // Property Character
     public interface IPropObject
     {
-
+        string name { get; set; }
+        Vector3 position { get; set; }
+        Vector3 viewPosition { get; set; }
+        float yaw { get; set; }
     }
 
     // Stage

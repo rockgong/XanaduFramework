@@ -96,10 +96,14 @@ namespace MainGame
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
 
-			_camera.EasingMoveTo(_nonPlayer.viewPosition, () =>
+            Vector3 theViewPosition = Vector3.zero;
+            if (_nonPlayer != null)
+                theViewPosition = _nonPlayer.viewPosition;
+            else if (_propObject != null)
+                theViewPosition = _propObject.position;
+
+			_camera.EasingMoveTo(theViewPosition, () =>
 			{
-				Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(_nonPlayer.position + new Vector3(0.0f, 5.0f, 0.0f), new Vector2(1280.0f, 720.0f));
-				Debug.Log(string.Format("Screen Point : {0}", position));
                 if (_commandList.Count != 0)
                     _commandList[0].Excute(_interactView, _player, _nonPlayer, _propObject);
                 _monoDelegate = MonoDelegate.Create(ProcessCommand, "InteractDelegate");
@@ -131,7 +135,7 @@ namespace MainGame
             */
             if (!_commandProcessing)
                 return;
-            if (_commandList == null)
+            if (_commandList == null || _commandList.Count == 0)
             {
                 _host.OnCommandProcessEnd();
                 _commandProcessing = false;

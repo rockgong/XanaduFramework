@@ -8,6 +8,7 @@ namespace GameKernal
     {
         private Player _player;
         private List<Player> _nonPlayer = new List<Player>();
+        private List<PropObject> _propObject = new List<PropObject>();
         private Stage _stage;
         private GameCamera _camera;
 
@@ -62,6 +63,39 @@ namespace GameKernal
             _interactSystem.AddInteractObject(newPlayer);
 
             return newPlayer;
+        }
+
+        public override IPropObject AddPropObject(string name, PropObjectDesc desc)
+        {
+            for (int i = 0; i < _nonPlayer.Count; i++)
+            {
+                if (_nonPlayer[i].name == name)
+                    return null;
+            }
+
+            PropObject newProp = new PropObject();
+            newProp.name = name;
+            newProp.Initialize(desc);
+
+            _propObject.Add(newProp);
+            _interactSystem.AddInteractObject(newProp);
+
+            return newProp;
+        }
+
+        public override IPropObject GetPropObject(string name)
+        {
+            return base.GetPropObject(name);
+        }
+
+        public override void RemovePropObject(string name)
+        {
+            base.RemovePropObject(name);
+        }
+
+        public override void RemovePropObject(IPropObject desc)
+        {
+            base.RemovePropObject(desc);
         }
 
         public override IStage SetupStage(StageDesc desc)
@@ -119,6 +153,10 @@ namespace GameKernal
                     if (obj is INonPlayerCharacter)
                     {
                         host.OnInteract(pc, (INonPlayerCharacter)obj);
+                    }
+                    else if (obj is IPropObject)
+                    {
+                        host.OnInteract(pc, (IPropObject)obj);
                     }
                 }
             }

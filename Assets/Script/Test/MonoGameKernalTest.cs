@@ -37,6 +37,12 @@ namespace MainGame
 
             nonPlayer.position = new Vector3(0.0f, 0.0f, -5.0f);
 
+            GameObject propPrototype = Resources.Load<GameObject>("PropObject/TestProp");
+
+            IPropObject prop = gameKernal.AddPropObject("testprop", new PropObjectDesc(propPrototype));
+
+            prop.position = new Vector3(0.0f, 0.0f, -10.0f);
+
             ICamera cam = gameKernal.GetCamera();
 
             cam.lookPosition = player.viewPosition;
@@ -64,6 +70,7 @@ namespace MainGame
         {
             _interactGameState.player = player;
             _interactGameState.nonPlayer = nonPlayer;
+            _interactGameState.propObject = null;
 
             //Temp Code
             List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
@@ -108,6 +115,23 @@ namespace MainGame
                 dialog.position = nonPlayer.position;
                 commandList.Add(dialog);
             }
+            _interactGameState.SetCommandList(commandList);
+
+            gameKernal.SetGameState(_interactGameState);
+        }
+
+        public void OnInteract(IPlayerCharacter player, IPropObject prop)
+        {
+            _interactGameState.player = player;
+            _interactGameState.nonPlayer = null;
+            _interactGameState.propObject = prop;
+
+            //Temp Code
+            List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
+
+            InteractCommandMessage msg = new InteractCommandMessage();
+            msg.content = "This is a Cube";
+            commandList.Add(msg);
             _interactGameState.SetCommandList(commandList);
 
             gameKernal.SetGameState(_interactGameState);
