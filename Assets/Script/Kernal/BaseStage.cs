@@ -12,6 +12,7 @@ namespace GameKernal
         protected IStageHost _host;
 
         public abstract Vector3 GetStagePoint(string name);
+        public abstract Vector3 GetStagePointSize(string name);
         
         public void SetHost(IStageHost host)
         {

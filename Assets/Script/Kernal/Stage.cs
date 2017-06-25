@@ -16,6 +16,14 @@ namespace GameKernal
             return Vector3.zero;
         }
 
+        public override Vector3 GetStagePointSize(string name)
+        {
+            if (_stage != null)
+                return _stage.GetPointTrans(name).localScale;
+
+            return Vector3.zero;
+        }
+
         public override void Initialize(StageDesc desc)
         {
             GameObject newGameObject = GameObject.Instantiate<GameObject>(desc.prototype);

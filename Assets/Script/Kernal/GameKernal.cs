@@ -72,6 +72,7 @@ namespace GameKernal
             {
                 if (_nonPlayer[i].name == name)
                 {
+                    _nonPlayer[i].Uninitialize();
                     _nonPlayer.RemoveAt(i);
                     return;
                 }
@@ -80,8 +81,11 @@ namespace GameKernal
 
         public override void RemoveNonPlayerCharacter(INonPlayerCharacter handler)
         {
-            if (handler is INonPlayerCharacter && _nonPlayer.Contains((Player)handler))
+            if (handler is Player && _nonPlayer.Contains((Player)handler))
+            {
+                ((Player)handler).Uninitialize();
                 _nonPlayer.Remove((Player)handler);
+            }
         }
 
         public override IPropObject AddPropObject(string name, PropObjectDesc desc)
@@ -119,6 +123,7 @@ namespace GameKernal
             {
                 if (_propObject[i].name == name)
                 {
+                    _propObject[i].Uninitialize();
                     _propObject.RemoveAt(i);
                     return;
                 }
@@ -128,7 +133,10 @@ namespace GameKernal
         public override void RemovePropObject(IPropObject handler)
         {
             if (handler is PropObject && _propObject.Contains((PropObject)handler))
+            {
+                ((PropObject)handler).Uninitialize();
                 _propObject.Remove((PropObject)handler);
+            }
         }
 
         public override void ClearNonPlayer()
@@ -170,17 +178,31 @@ namespace GameKernal
 
         public override void RemoveTrigger(string name)
         {
-            
+            for (int i = 0; i < _trigger.Count; i++)
+            {
+                if (_trigger[i].name == name)
+                {
+                    _trigger[i].Uninitialize();
+                    _trigger.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
         public override void RemoveTrigger(ITrigger handler)
         {
-            
+            if (handler is Trigger && _trigger.Contains((Trigger)handler))
+            {
+                ((Trigger)handler).Uninitialize();
+                _trigger.Remove((Trigger)handler);
+            }
         }
 
         public override void ClearTrigger()
         {
-            
+            for (int i = 0; i < _trigger.Count; i++)
+                _trigger[i].Uninitialize();
+            _trigger.Clear();
         }
 
         public override IStage SetupStage(StageDesc desc)

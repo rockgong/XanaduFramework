@@ -20,6 +20,7 @@ namespace MainGame
         private PlayerStageManager _playerStageManager = new PlayerStageManager();
         private NonPlayerManager _nonPlayerManager = new NonPlayerManager();
         private PropObjectManager _propObjectManager = new PropObjectManager();
+        private TriggerManager _triggerManager = new TriggerManager();
 
         private string _swapStageId = "1";
         private string _swapPointName = "4";
@@ -50,11 +51,9 @@ namespace MainGame
             _propObjectManager.Initialize(propObjectDb, gameKernal);
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
-            ITrigger trigger = gameKernal.AddTrigger("myTrigger", new TriggerDesc(Vector3.zero, Vector3.one));
-            trigger.onTriggerEnter = () =>
-            {
-                _playerStageManager.SwapPlayer(2, "4");
-            };
+            _triggerManager.Initialize(gameKernal);
+            _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _playerStageManager.SwapPlayer(2, "4"));
+            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _playerStageManager.SwapPlayer(1, "4"));
 
             _playerStageManager.SwapPlayer(1, "4");
             /*
@@ -199,6 +198,7 @@ namespace MainGame
         {
             _nonPlayerManager.SetupAllNonPlayers(stageId);
             _propObjectManager.SetupAllPropObjects(stageId);
+            _triggerManager.SetupTrigger(stageId);
         }
     }
 }

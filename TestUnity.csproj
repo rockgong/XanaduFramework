@@ -112,6 +112,7 @@
     <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
     <Compile Include="Assets\Script\MainGame\PlayerStageManager.cs" />
     <Compile Include="Assets\Script\MainGame\PropObjectManager.cs" />
+    <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />

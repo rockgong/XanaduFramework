@@ -141,6 +141,7 @@ namespace GameKernal
     public interface IStage
     {
         Vector3 GetStagePoint(string name);
+        Vector3 GetStagePointSize(string name);
     }
 
     //Camera
