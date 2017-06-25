@@ -84,6 +84,7 @@
     <Compile Include="Assets\Script\Kernal\BasePlayer.cs" />
     <Compile Include="Assets\Script\Kernal\BasePropObject.cs" />
     <Compile Include="Assets\Script\Kernal\BaseStage.cs" />
+    <Compile Include="Assets\Script\Kernal\BaseTrigger.cs" />
     <Compile Include="Assets\Script\Kernal\Factories.cs" />
     <Compile Include="Assets\Script\Kernal\GameCamera.cs" />
     <Compile Include="Assets\Script\Kernal\GameKernal.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Assets\Script\Kernal\Player.cs" />
     <Compile Include="Assets\Script\Kernal\PropObject.cs" />
     <Compile Include="Assets\Script\Kernal\Stage.cs" />
+    <Compile Include="Assets\Script\Kernal\Trigger.cs" />
     <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
     <Compile Include="Assets\Script\MainGame\InteractView.cs" />

@@ -65,7 +65,7 @@ namespace GameKernal
             return;
         }
 
-        public virtual void RemovePropObject(IPropObject desc)
+        public virtual void RemovePropObject(IPropObject handler)
         {
             return;
         }
@@ -78,6 +78,26 @@ namespace GameKernal
         public virtual IPlayerCharacter SetupPlayerCharacter(PlayerCharacterDesc desc)
         {
             return null;
+        }
+
+        public virtual ITrigger AddTrigger(string name, TriggerDesc desc)
+        {
+            return null;
+        }
+
+        public virtual void RemoveTrigger(string name)
+        {
+            return;
+        }
+
+        public virtual void RemoveTrigger(ITrigger handler)
+        {
+            return;
+        }
+
+        public virtual void ClearTrigger()
+        {
+            return;
         }
 
         public virtual GameKernalErrorCode Shutdown()

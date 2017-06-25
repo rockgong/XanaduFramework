@@ -50,6 +50,12 @@ namespace MainGame
             _propObjectManager.Initialize(propObjectDb, gameKernal);
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
+            ITrigger trigger = gameKernal.AddTrigger("myTrigger", new TriggerDesc(Vector3.zero, Vector3.one));
+            trigger.onTriggerEnter = () =>
+            {
+                _playerStageManager.SwapPlayer(2, "4");
+            };
+
             _playerStageManager.SwapPlayer(1, "4");
             /*
             INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));

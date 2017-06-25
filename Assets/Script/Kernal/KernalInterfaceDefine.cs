@@ -52,6 +52,18 @@ namespace GameKernal
         }
     }
 
+    public struct TriggerDesc
+    {
+        public Vector3 position;
+        public Vector3 size;
+        
+        public TriggerDesc(Vector3 position, Vector3 size)
+        {
+            this.position = position;
+            this.size = size;
+        }
+    }
+
     public enum GameKernalErrorCode
     {
         OK = 0,
@@ -81,6 +93,10 @@ namespace GameKernal
         void RemovePropObject(string name);
         void RemovePropObject(IPropObject handler);
         void ClearPropObject();
+        ITrigger AddTrigger(string name, TriggerDesc desc);
+        void RemoveTrigger(string name);
+        void RemoveTrigger(ITrigger handler);
+        void ClearTrigger();
         IStage SetupStage(StageDesc desc);
         IStage GetStage();
         ICamera GetCamera();
@@ -133,6 +149,16 @@ namespace GameKernal
         Vector3 lookPosition{get; set;}
         Vector3 offset{get; set;}
         void EasingMoveTo(Vector3 position, System.Action onFinish = null);
+    }
+
+    //Trigger
+    public interface ITrigger
+    {
+        string name { get; set; }
+        Vector3 position { get; set; }
+        Vector3 size { get; set; }
+        System.Action onTriggerEnter { get; set; }
+        System.Action onTriggerExit { get; set; }
     }
 
     // Game State

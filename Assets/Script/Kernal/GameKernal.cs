@@ -9,6 +9,7 @@ namespace GameKernal
         private Player _player;
         private List<Player> _nonPlayer = new List<Player>();
         private List<PropObject> _propObject = new List<PropObject>();
+        private List<Trigger> _trigger = new List<Trigger>();
         private Stage _stage;
         private GameCamera _camera;
 
@@ -65,6 +66,24 @@ namespace GameKernal
             return newPlayer;
         }
 
+        public override void RemoveNonPlayerCharacter(string name)
+        {
+            for (int i = 0; i < _nonPlayer.Count; i++)
+            {
+                if (_nonPlayer[i].name == name)
+                {
+                    _nonPlayer.RemoveAt(i);
+                    return;
+                }
+            }
+        }
+
+        public override void RemoveNonPlayerCharacter(INonPlayerCharacter handler)
+        {
+            if (handler is INonPlayerCharacter && _nonPlayer.Contains((Player)handler))
+                _nonPlayer.Remove((Player)handler);
+        }
+
         public override IPropObject AddPropObject(string name, PropObjectDesc desc)
         {
             for (int i = 0; i < _nonPlayer.Count; i++)
@@ -85,17 +104,31 @@ namespace GameKernal
 
         public override IPropObject GetPropObject(string name)
         {
-            return base.GetPropObject(name);
+            for (int i = 0; i < _propObject.Count; i++)
+            {
+                if (_propObject[i].name == name)
+                    return _propObject[i];
+            }
+
+            return null;
         }
 
         public override void RemovePropObject(string name)
         {
-            base.RemovePropObject(name);
+            for (int i = 0; i < _propObject.Count; i++)
+            {
+                if (_propObject[i].name == name)
+                {
+                    _propObject.RemoveAt(i);
+                    return;
+                }
+            }
         }
 
-        public override void RemovePropObject(IPropObject desc)
+        public override void RemovePropObject(IPropObject handler)
         {
-            base.RemovePropObject(desc);
+            if (handler is PropObject && _propObject.Contains((PropObject)handler))
+                _propObject.Remove((PropObject)handler);
         }
 
         public override void ClearNonPlayer()
@@ -116,6 +149,38 @@ namespace GameKernal
                 _interactSystem.RemoveInteractObject(_propObject[i]);
             }
             _propObject.Clear();
+        }
+
+        public override ITrigger AddTrigger(string name, TriggerDesc desc)
+        {
+            for (int i = 0; i < _trigger.Count; i++)
+            {
+                if (_trigger[i].name == name)
+                    return null;
+            }
+
+            Trigger newTrigger = new Trigger();
+            newTrigger.name = name;
+            newTrigger.Initialize(desc);
+
+            _trigger.Add(newTrigger);
+
+            return newTrigger;
+        }
+
+        public override void RemoveTrigger(string name)
+        {
+            
+        }
+
+        public override void RemoveTrigger(ITrigger handler)
+        {
+            
+        }
+
+        public override void ClearTrigger()
+        {
+            
         }
 
         public override IStage SetupStage(StageDesc desc)
