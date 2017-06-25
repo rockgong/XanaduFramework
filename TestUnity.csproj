@@ -107,7 +107,9 @@
     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
     <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
     <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
+    <Compile Include="Assets\Script\MainGame\PlayerStageManager.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
+    <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
     <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
     <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />

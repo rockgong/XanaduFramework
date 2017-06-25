@@ -16,6 +16,10 @@ namespace MainGame
         private MainGameState _mainGameState = new MainGameState();
         private InteractGameState _interactGameState = new InteractGameState();
         private InteractView _interactView = new InteractView();
+        private PlayerStageManager _playerStageManager = new PlayerStageManager();
+
+        private string _swapStageId = "1";
+        private string _swapPointName = "4";
 
         void Start()
         {
@@ -25,10 +29,15 @@ namespace MainGame
 
             IPlayerCharacter player = gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
 
-            GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
+            // GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
 
-            IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
-
+            // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
+            
+            TestStageDatabase stageDb = GetComponent<TestStageDatabase>();
+            _playerStageManager.SetDatabase(stageDb);
+            _playerStageManager.SetGameKernal(gameKernal);
+            _playerStageManager.SwapPlayer(1, "4");
+            /*
             INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
 
             // nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
@@ -45,6 +54,7 @@ namespace MainGame
 
             // prop.position = new Vector3(0.0f, 0.0f, -10.0f);
             prop.position = stage.GetStagePoint("3");
+            */
 
             ICamera cam = gameKernal.GetCamera();
 
@@ -146,6 +156,18 @@ namespace MainGame
             _interactGameState.SetCommandList(commandList);
 
             gameKernal.SetGameState(_interactGameState);
+        }
+
+        private void OnGUI()
+        {
+            _swapStageId = GUILayout.TextField(_swapStageId);
+            _swapPointName = GUILayout.TextField(_swapPointName);
+
+            if (GUILayout.Button("Move"))
+            {
+                int swapStageId = int.Parse(_swapStageId);
+                _playerStageManager.SwapPlayer(swapStageId, _swapPointName);
+            }
         }
     }
 }

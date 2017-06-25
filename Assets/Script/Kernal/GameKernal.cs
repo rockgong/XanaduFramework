@@ -110,6 +110,11 @@ namespace GameKernal
             return _stage;
         }
 
+        public override IStage GetStage()
+        {
+            return _stage;
+        }
+
         public override ICamera GetCamera()
         {
             return _camera;
