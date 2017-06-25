@@ -100,7 +100,9 @@ namespace MainGame
                     GameObject proto = Resources.Load<GameObject>(string.Format("NonPlayer/{0}", _nonPlayerInfoList[i].data.prefabName));
                     if (proto == null)
                         Debug.LogError(string.Format("Missing NonPlayer player : {0}", _nonPlayerInfoList[i].data.prefabName));
-                    _gameKernal.AddNonPlayerCharacter(_nonPlayerInfoList[i].data.name, new NonPlayerCharacterDesc(proto));
+                    INonPlayerCharacter nonPlayer = _gameKernal.AddNonPlayerCharacter(_nonPlayerInfoList[i].data.name, new NonPlayerCharacterDesc(proto));
+                    IStage stage = _gameKernal.GetStage();
+                    nonPlayer.position = stage.GetStagePoint(_nonPlayerInfoList[i].stagePointName);
                 }
             }
         }

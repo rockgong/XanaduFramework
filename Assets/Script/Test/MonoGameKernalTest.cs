@@ -19,6 +19,7 @@ namespace MainGame
         private InteractView _interactView = new InteractView();
         private PlayerStageManager _playerStageManager = new PlayerStageManager();
         private NonPlayerManager _nonPlayerManager = new NonPlayerManager();
+        private PropObjectManager _propObjectManager = new PropObjectManager();
 
         private string _swapStageId = "1";
         private string _swapPointName = "4";
@@ -44,6 +45,10 @@ namespace MainGame
             _nonPlayerManager.Initialize(nonPlayerDb, gameKernal);
             _nonPlayerManager.SetNonPlayerPosition(1, 1, "1");
             _nonPlayerManager.SetNonPlayerPosition(2, 2, "2");
+
+            TestPropObjectDatabase propObjectDb = GetComponent<TestPropObjectDatabase>();
+            _propObjectManager.Initialize(propObjectDb, gameKernal);
+            _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
             _playerStageManager.SwapPlayer(1, "4");
             /*
@@ -187,6 +192,7 @@ namespace MainGame
         public void OnStageChanged(int stageId)
         {
             _nonPlayerManager.SetupAllNonPlayers(stageId);
+            _propObjectManager.SetupAllPropObjects(stageId);
         }
     }
 }
