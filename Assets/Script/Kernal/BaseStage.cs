@@ -1,4 +1,6 @@
-﻿namespace GameKernal
+﻿using UnityEngine;
+
+namespace GameKernal
 {
     interface IStageHost
     {
@@ -7,7 +9,9 @@
 
     abstract class BaseStage : IStage
     {
-        private IStageHost _host;
+        protected IStageHost _host;
+
+        public abstract Vector3 GetStagePoint(string name);
         
         public void SetHost(IStageHost host)
         {

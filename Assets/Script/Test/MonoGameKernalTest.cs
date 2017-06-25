@@ -27,21 +27,24 @@ namespace MainGame
 
             GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
 
-            gameKernal.SetupStage(new StageDesc(stagePrototype));
+            IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
 
             INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
 
-            nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
+            // nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
+            nonPlayer.position = stage.GetStagePoint("1");
 
             nonPlayer = gameKernal.AddNonPlayerCharacter("nono", new NonPlayerCharacterDesc(playerPrototype));
 
-            nonPlayer.position = new Vector3(0.0f, 0.0f, -5.0f);
+            // nonPlayer.position = new Vector3(0.0f, 0.0f, -5.0f);
+            nonPlayer.position = stage.GetStagePoint("2");
 
             GameObject propPrototype = Resources.Load<GameObject>("PropObject/TestProp");
 
             IPropObject prop = gameKernal.AddPropObject("testprop", new PropObjectDesc(propPrototype));
 
-            prop.position = new Vector3(0.0f, 0.0f, -10.0f);
+            // prop.position = new Vector3(0.0f, 0.0f, -10.0f);
+            prop.position = stage.GetStagePoint("3");
 
             ICamera cam = gameKernal.GetCamera();
 

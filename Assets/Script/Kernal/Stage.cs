@@ -5,13 +5,23 @@ namespace GameKernal
 {
     class Stage : BaseStage, IMonoEntityHost
     {
-        public MonoEntity _entity;
+        private MonoEntity _entity;
+        private MonoStage _stage;
+
+        public override Vector3 GetStagePoint(string name)
+        {
+            if (_stage != null)
+                return _stage.GetPointTrans(name).position;
+
+            return Vector3.zero;
+        }
 
         public override void Initialize(StageDesc desc)
         {
             GameObject newGameObject = GameObject.Instantiate<GameObject>(desc.prototype);
             _entity = newGameObject.AddComponent<MonoEntity>();
             _entity.SetHost(this);
+            _stage = _entity.GetComponent<MonoStage>();
 
             return;
         }

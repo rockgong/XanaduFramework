@@ -122,7 +122,7 @@ namespace GameKernal
     // Stage
     public interface IStage
     {
-
+        Vector3 GetStagePoint(string name);
     }
 
     //Camera
