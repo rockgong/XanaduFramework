@@ -98,6 +98,26 @@ namespace GameKernal
             base.RemovePropObject(desc);
         }
 
+        public override void ClearNonPlayer()
+        {
+            for (int i = 0; i < _nonPlayer.Count; i++)
+            {
+                _nonPlayer[i].Uninitialize();
+                _interactSystem.RemoveInteractObject(_nonPlayer[i]);
+            }
+            _nonPlayer.Clear();
+        }
+
+        public override void ClearPropObject()
+        {
+            for (int i = 0; i < _propObject.Count; i++)
+            {
+                _propObject[i].Uninitialize();
+                _interactSystem.RemoveInteractObject(_propObject[i]);
+            }
+            _propObject.Clear();
+        }
+
         public override IStage SetupStage(StageDesc desc)
         {
             if (_stage != null)

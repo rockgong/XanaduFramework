@@ -55,12 +55,22 @@ namespace GameKernal
             return;
         }
 
+        public virtual void ClearNonPlayer()
+        {
+            return;
+        }
+
         public virtual void RemovePropObject(string name)
         {
             return;
         }
 
         public virtual void RemovePropObject(IPropObject desc)
+        {
+            return;
+        }
+
+        public virtual void ClearPropObject()
         {
             return;
         }

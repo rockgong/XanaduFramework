@@ -47,6 +47,6 @@ namespace GameKernal
         }
 
         public abstract void Initialize(PropObjectDesc desc);
-        public abstract void Uninitialize(PropObjectDesc desc);
+        public abstract void Uninitialize();
     }
 }

@@ -47,7 +47,7 @@ namespace GameKernal
 
 		public void RemoveInteractObject(IInteractObject interObject)
 		{
-			if (!_objectList.Contains(interObject))
+			if (_objectList.Contains(interObject))
 				_objectList.Remove(interObject);
 		}
 

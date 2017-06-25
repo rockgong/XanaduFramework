@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
 using MainGame;
+using System;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -17,6 +18,7 @@ namespace MainGame
         private InteractGameState _interactGameState = new InteractGameState();
         private InteractView _interactView = new InteractView();
         private PlayerStageManager _playerStageManager = new PlayerStageManager();
+        private NonPlayerManager _nonPlayerManager = new NonPlayerManager();
 
         private string _swapStageId = "1";
         private string _swapPointName = "4";
@@ -25,7 +27,7 @@ namespace MainGame
         {
             gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 
-            GameObject playerPrototype = Resources.Load<GameObject>("Character/Player/Player");
+            GameObject playerPrototype = Resources.Load<GameObject>("Player/Player");
 
             IPlayerCharacter player = gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
 
@@ -36,6 +38,13 @@ namespace MainGame
             TestStageDatabase stageDb = GetComponent<TestStageDatabase>();
             _playerStageManager.SetDatabase(stageDb);
             _playerStageManager.SetGameKernal(gameKernal);
+            _playerStageManager.RegisterListener(this);
+
+            TestNonPlayerDatabase nonPlayerDb = GetComponent<TestNonPlayerDatabase>();
+            _nonPlayerManager.Initialize(nonPlayerDb, gameKernal);
+            _nonPlayerManager.SetNonPlayerPosition(1, 1, "1");
+            _nonPlayerManager.SetNonPlayerPosition(2, 2, "2");
+
             _playerStageManager.SwapPlayer(1, "4");
             /*
             INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
@@ -168,6 +177,16 @@ namespace MainGame
                 int swapStageId = int.Parse(_swapStageId);
                 _playerStageManager.SwapPlayer(swapStageId, _swapPointName);
             }
+        }
+
+        public void OnPlayerSwapped(int stageId, string stagePointName)
+        {
+
+        }
+
+        public void OnStageChanged(int stageId)
+        {
+            _nonPlayerManager.SetupAllNonPlayers(stageId);
         }
     }
 }

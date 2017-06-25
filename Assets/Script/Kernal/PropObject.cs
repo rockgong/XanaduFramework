@@ -120,7 +120,7 @@ namespace GameKernal
 
         }
 
-        public override void Uninitialize(PropObjectDesc desc)
+        public override void Uninitialize()
         {
             _entity.SetHost(null);
             GameObject.Destroy(_entity.gameObject);

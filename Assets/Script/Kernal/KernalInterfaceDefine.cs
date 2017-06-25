@@ -74,11 +74,13 @@ namespace GameKernal
         INonPlayerCharacter AddNonPlayerCharacter(string name, NonPlayerCharacterDesc desc);
         INonPlayerCharacter GetNonPlayerCharacter(string name);
         void RemoveNonPlayerCharacter(string name);
+        void ClearNonPlayer();
         void RemoveNonPlayerCharacter(INonPlayerCharacter handler);
         IPropObject AddPropObject(string name, PropObjectDesc desc);
         IPropObject GetPropObject(string name);
         void RemovePropObject(string name);
         void RemovePropObject(IPropObject handler);
+        void ClearPropObject();
         IStage SetupStage(StageDesc desc);
         IStage GetStage();
         ICamera GetCamera();
