@@ -21,9 +21,10 @@ namespace MainGame
         private NonPlayerManager _nonPlayerManager = new NonPlayerManager();
         private PropObjectManager _propObjectManager = new PropObjectManager();
         private TriggerManager _triggerManager = new TriggerManager();
+        private MainGameCommandManager _mainGameCommandManager = new MainGameCommandManager();
+        private MainGameCommandBuilder _mainGameCommandBuilder = new MainGameCommandBuilder();
 
-        private string _swapStageId = "1";
-        private string _swapPointName = "4";
+        private string _commonEventName = "TestEvent";
 
         void Start()
         {
@@ -54,6 +55,9 @@ namespace MainGame
             _triggerManager.Initialize(gameKernal);
             _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _playerStageManager.SwapPlayer(2, "4"));
             _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _playerStageManager.SwapPlayer(1, "4"));
+
+            _mainGameCommandBuilder.Initialize();
+            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>());
 
             _playerStageManager.SwapPlayer(1, "4");
             /*
@@ -179,13 +183,10 @@ namespace MainGame
 
         private void OnGUI()
         {
-            _swapStageId = GUILayout.TextField(_swapStageId);
-            _swapPointName = GUILayout.TextField(_swapPointName);
-
-            if (GUILayout.Button("Move"))
+            _commonEventName = GUILayout.TextField(_commonEventName);
+            if (GUILayout.Button("Excute"))
             {
-                int swapStageId = int.Parse(_swapStageId);
-                _playerStageManager.SwapPlayer(swapStageId, _swapPointName);
+                _mainGameCommandManager.DoCommand(_commonEventName);
             }
         }
 

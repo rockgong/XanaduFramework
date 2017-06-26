@@ -103,9 +103,12 @@
     <Compile Include="Assets\Script\Kernal\PropObject.cs" />
     <Compile Include="Assets\Script\Kernal\Stage.cs" />
     <Compile Include="Assets\Script\Kernal\Trigger.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEvents\TestCommonEvent.cs" />
     <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
     <Compile Include="Assets\Script\MainGame\InteractView.cs" />
+    <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
+    <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
     <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
     <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
@@ -114,6 +117,7 @@
     <Compile Include="Assets\Script\MainGame\PropObjectManager.cs" />
     <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
+    <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
