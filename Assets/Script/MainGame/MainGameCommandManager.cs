@@ -10,6 +10,11 @@ namespace MainGame
         
     }
 
+    public class BaseCommonInteger
+    {
+
+    }
+
     public interface ICommonEventDatabase
     {
         BaseCommonEvent GetCommonEvent(string name);
@@ -18,6 +23,11 @@ namespace MainGame
     abstract class BaseMainGameCommand
     {
         public abstract void Excute(MainGameCommandManager mgr);
+    }
+
+    abstract class BaseMainGameInteger
+    {
+        public abstract int Evaluate();
     }
 
     class MainGameCommandManager
