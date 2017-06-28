@@ -26,6 +26,7 @@ namespace MainGame
                 result.members[1] = dia;
                 dia = new InteractCommandDialogData();
                 dia.content = "Hit me again";
+                dia.commandTarget = 0;
                 result.members[2] = dia;
                 return result;
             }

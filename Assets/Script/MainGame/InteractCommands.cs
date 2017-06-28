@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace MainGame
 {
-    enum CommandTarget
+    public enum CommandTarget
     {
         Player = 0,
         NonPlayer = 1,
