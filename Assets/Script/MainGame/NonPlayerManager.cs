@@ -119,6 +119,15 @@ namespace MainGame
             return 0;
         }
 
+        public void SetInteractCommandIdByName(int id, int commandId)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.id == id)
+                    _nonPlayerInfoList[i].interactCommandId = commandId;
+            }
+        }
+
         private NonPlayerInfo GetNonPlayerInfo(int id)
         {
             for (int i = 0; i < _nonPlayerInfoList.Count; i++)

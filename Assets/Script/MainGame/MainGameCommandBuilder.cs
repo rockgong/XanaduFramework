@@ -10,7 +10,7 @@ namespace MainGame
 
         public void Initialize()
         {
-            _handlers[typeof(TestCommonEvent)] = TestMainGameCommand.BuildHandler;
+            _handlers[typeof(CommonEventNonPlayerSetDialog)] = MainGameCommandNonPlayerSetDialog.BuildHandler;
         }
 
         public BaseMainGameCommand Build(BaseCommonEvent evt)

@@ -26,7 +26,7 @@ namespace MainGame
             return view.viewState == InteractView.ViewState.None;
         }
 
-        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data)
+        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data, InteractCommandBuilder builder)
         {
             InteractCommandDialogData target = (InteractCommandDialogData)data;
             InteractCommandDialog result = new InteractCommandDialog();

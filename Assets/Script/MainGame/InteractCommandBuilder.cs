@@ -6,7 +6,7 @@ namespace MainGame
 {
     class InteractCommandBuilder
     {
-        private Dictionary<System.Type, System.Func<BaseInteractCommandData, BaseInteractCommand>> _handlers = new Dictionary<System.Type, System.Func<BaseInteractCommandData, BaseInteractCommand>>();
+        private Dictionary<System.Type, System.Func<BaseInteractCommandData, InteractCommandBuilder, BaseInteractCommand>> _handlers = new Dictionary<System.Type, System.Func<BaseInteractCommandData, InteractCommandBuilder, BaseInteractCommand>>();
 
         public void Initialize()
         {
@@ -16,13 +16,15 @@ namespace MainGame
             _handlers[typeof(InteractCommandWaitData)] = InteractCommandWait.BuildHandler;
             _handlers[typeof(InteractCommandAnimationData)] = InteractCommandAnimation.BuildHandler;
             _handlers[typeof(InteractCommandNonPlayerFaceData)] = InteractCommandDialog.BuildHandler;
+            _handlers[typeof(InteractCommandCommonEventData)] = InteractCommandCommonEvent.BuildHandler;
+            _handlers[typeof(InteractCommandGroupData)] = InteractCommandGroup.BuildHandler;
         }
 
         public BaseInteractCommand Build(BaseInteractCommandData evt)
         {
             System.Type evtType = evt.GetType();
             if (_handlers.ContainsKey(evtType))
-                return _handlers[evtType](evt);
+                return _handlers[evtType](evt, this);
 
             return null;
         }

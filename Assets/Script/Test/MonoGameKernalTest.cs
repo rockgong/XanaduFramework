@@ -63,6 +63,8 @@ namespace MainGame
             _interactCommandBuilder.Initialize();
             _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
 
+            _mainGameCommandManager.DoCommand("Change1");
+
             _playerStageManager.SwapPlayer(1, "4");
             /*
             INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
@@ -117,6 +119,7 @@ namespace MainGame
 
             int interactCommandId = _nonPlayerManager.GetInteractCommandIdByName(nonPlayer.name);
             BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
+            command.Setup(_mainGameCommandManager, _interactCommandManager);
             commandList.Add(command);
             _interactGameState.SetCommandList(commandList);
 

@@ -17,7 +17,7 @@ namespace MainGame
         protected MainGameCommandManager _mainGameCommandManager;
         protected InteractCommandManager _interactCommandManager;
 
-        public void Initialize(MainGameCommandManager mgcMgr, InteractCommandManager icMgr)
+        public virtual void Setup(MainGameCommandManager mgcMgr, InteractCommandManager icMgr)
         {
             _mainGameCommandManager = mgcMgr;
             _interactCommandManager = icMgr;

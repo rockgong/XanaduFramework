@@ -27,7 +27,7 @@ namespace MainGame
             return _timeCount > time;
         }
 
-        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data)
+        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data,InteractCommandBuilder builder)
         {
         	InteractCommandWaitData target = (InteractCommandWaitData)data;
         	InteractCommandWait result = new InteractCommandWait();

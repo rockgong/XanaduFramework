@@ -71,12 +71,14 @@
      <Compile Include="Assets\Script\Kernal\PropObject.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
      <Compile Include="Assets\Script\Kernal\Trigger.cs" />
-     <Compile Include="Assets\Script\MainGame\CommonEvents\TestCommonEvent.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandAnimation.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandCommonEvent.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandDialog.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandGroup.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandMessage.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandNonPlayerFace.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandSelect.cs" />

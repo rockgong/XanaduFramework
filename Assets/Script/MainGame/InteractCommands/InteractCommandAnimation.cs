@@ -31,7 +31,7 @@ namespace MainGame
             return true;
         }
 
-        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data)
+        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data, InteractCommandBuilder builder)
         {
         	InteractCommandAnimationData target = (InteractCommandAnimationData)data;
         	InteractCommandAnimation result = new InteractCommandAnimation();

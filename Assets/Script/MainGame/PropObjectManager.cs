@@ -107,7 +107,7 @@ namespace MainGame
                 }
             }
         }
-        
+
         public int GetInteractCommandIdByName(string name)
         {
             for (int i = 0; i < _propObjectInfoList.Count; i++)
@@ -117,6 +117,15 @@ namespace MainGame
             }
 
             return 0;
+        }
+
+        public void SetInteractCommandIdByName(int id, int commandId)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.id == id)
+                    _propObjectInfoList[i].interactCommandId = commandId;
+            }
         }
 
         private PropObjectInfo GetPropObjectObject(int id)

@@ -9,11 +9,19 @@ namespace MainGame
     {
         public BaseCommonEvent GetCommonEvent(string name)
         {
-            if (name == "TestEvent")
+            if (name == "Change1")
             {
-                TestCommonEvent evt = new TestCommonEvent();
-                evt.integer = 20;
-                evt.strName = "MyAge";
+                CommonEventNonPlayerSetDialog evt = new CommonEventNonPlayerSetDialog();
+                evt.nonPlayerId = 1;
+                evt.dialogId = 1;
+
+                return evt;
+            }
+            else if (name == "Change2")
+            {
+                CommonEventNonPlayerSetDialog evt = new CommonEventNonPlayerSetDialog();
+                evt.nonPlayerId = 1;
+                evt.dialogId = 2;
 
                 return evt;
             }

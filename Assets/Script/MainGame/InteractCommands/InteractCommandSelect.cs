@@ -31,7 +31,7 @@ namespace MainGame
 	            		BaseInteractCommand command = _interactCommandManager.GetCommandById(commandIDs[i]);
 	            		if (command != null)
 	            		{
-	            			command.Initialize(_mainGameCommandManager, _interactCommandManager);
+	            			command.Setup(_mainGameCommandManager, _interactCommandManager);
 	            			command.Excute(view, player, nonPlayer, prop);
 	            		}
 	            		_selectCommand = command;
@@ -54,7 +54,7 @@ namespace MainGame
 
 	        }
 
-	        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data)
+	        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data, InteractCommandBuilder builder)
 	        {
 	        	InteractCommandSelectData target = (InteractCommandSelectData)data;
 	        	InteractCommandSelect result = new InteractCommandSelect();
