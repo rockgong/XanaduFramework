@@ -10,7 +10,12 @@ namespace MainGame
 
         public void Initialize()
         {
-
+            _handlers[typeof(InteractCommandDialogData)] = InteractCommandDialog.BuildHandler;
+            _handlers[typeof(InteractCommandMessageData)] = InteractCommandMessage.BuildHandler;
+            _handlers[typeof(InteractCommandSelectData)] = InteractCommandSelect.BuildHandler;
+            _handlers[typeof(InteractCommandWaitData)] = InteractCommandWait.BuildHandler;
+            _handlers[typeof(InteractCommandAnimationData)] = InteractCommandAnimation.BuildHandler;
+            _handlers[typeof(InteractCommandNonPlayerFaceData)] = InteractCommandDialog.BuildHandler;
         }
 
         public BaseInteractCommand Build(BaseInteractCommandData evt)

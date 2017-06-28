@@ -94,6 +94,7 @@
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
+     <Compile Include="Assets\Script\Test\TestInteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />

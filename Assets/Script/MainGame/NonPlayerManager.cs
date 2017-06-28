@@ -23,6 +23,7 @@ namespace MainGame
         public INonPlayerDatabaseEntry data;
         public int stageId;
         public string stagePointName;
+        public int interactCommandId;
     }
 
     interface INonPlayerManagerListener
@@ -105,6 +106,17 @@ namespace MainGame
                     nonPlayer.position = stage.GetStagePoint(_nonPlayerInfoList[i].stagePointName);
                 }
             }
+        }
+
+        public int GetInteractCommandIdByName(string name)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.name == name)
+                    return _nonPlayerInfoList[i].interactCommandId;
+            }
+
+            return 0;
         }
 
         private NonPlayerInfo GetNonPlayerInfo(int id)

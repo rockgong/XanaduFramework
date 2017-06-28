@@ -23,6 +23,7 @@ namespace MainGame
         public IPropObjectDatabaseEntry data;
         public int stageId;
         public string stagePointName;
+        public int interactCommandId;
     }
 
     interface IPropObjectManagerListener
@@ -105,6 +106,17 @@ namespace MainGame
                     propObj.position = stage.GetStagePoint(_propObjectInfoList[i].stagePointName);
                 }
             }
+        }
+        
+        public int GetInteractCommandIdByName(string name)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.name == name)
+                    return _propObjectInfoList[i].interactCommandId;
+            }
+
+            return 0;
         }
 
         private PropObjectInfo GetPropObjectObject(int id)

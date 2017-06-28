@@ -23,6 +23,8 @@ namespace MainGame
         private TriggerManager _triggerManager = new TriggerManager();
         private MainGameCommandManager _mainGameCommandManager = new MainGameCommandManager();
         private MainGameCommandBuilder _mainGameCommandBuilder = new MainGameCommandBuilder();
+        private InteractCommandManager _interactCommandManager = new InteractCommandManager();
+        private InteractCommandBuilder _interactCommandBuilder = new InteractCommandBuilder();
 
         private string _commonEventName = "TestEvent";
 
@@ -58,6 +60,8 @@ namespace MainGame
 
             _mainGameCommandBuilder.Initialize();
             _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>());
+            _interactCommandBuilder.Initialize();
+            _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
 
             _playerStageManager.SwapPlayer(1, "4");
             /*
@@ -111,55 +115,9 @@ namespace MainGame
             //Temp Code
             List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
-            if (nonPlayer.name == "nono")
-            {
-                InteractCommandDialog dialog = new InteractCommandDialog();
-                dialog.content = "OK! OK! OK! Yes";
-                dialog.position = nonPlayer.position;
-                commandList.Add(dialog);
-                dialog = new InteractCommandDialog();
-                dialog.content = "Hahahaha";
-                dialog.position = nonPlayer.position;
-                commandList.Add(dialog);
-
-                InteractCommandAnimation anim = new InteractCommandAnimation();
-                anim.target = CommandTarget.NonPlayer;
-                anim.animationName = "Talk";
-                commandList.Add(anim);
-
-                InteractCommandWait wait = new InteractCommandWait();
-                wait.time = 1.8f;
-                commandList.Add(wait);
-
-                dialog = new InteractCommandDialog();
-                dialog.content = "Go Away !";
-                dialog.position = nonPlayer.position;
-                commandList.Add(dialog);
-
-                InteractCommandMessage msg = new InteractCommandMessage();
-                msg.content = "Warning";
-                commandList.Add(msg);
-                msg = new InteractCommandMessage();
-                msg.content = "Boss";
-                commandList.Add(msg);
-
-                InteractCommandSelect slct = new InteractCommandSelect();
-                slct.title = "Exit ?";
-                slct.options = new string[] { "Yes", "No" };
-                //slct.callback = (i) => { if (i == 0) Application.Quit(); };
-                slct.commandIDs = new int[0];
-                commandList.Add(slct);
-            }
-            else if (nonPlayer.name == "nana")
-            {
-                InteractCommandNonPlayerFace face = new InteractCommandNonPlayerFace();
-                commandList.Add(face);
-
-                InteractCommandDialog dialog = new InteractCommandDialog();
-                dialog.content = "Fuck";
-                dialog.position = nonPlayer.position;
-                commandList.Add(dialog);
-            }
+            int interactCommandId = _nonPlayerManager.GetInteractCommandIdByName(nonPlayer.name);
+            BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
+            commandList.Add(command);
             _interactGameState.SetCommandList(commandList);
 
             gameKernal.SetGameState(_interactGameState);
