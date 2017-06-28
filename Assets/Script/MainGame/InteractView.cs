@@ -175,8 +175,8 @@ namespace MainGame
             _selectPanel.gameObject.SetActive(true);
             _selectPanel.Setup(title, options, (i) =>
             {
-                callback(i);
                 CloseSelect();
+                callback(i);
             });
             MonoViewOpenAnim anim = _selectPanel.GetComponent<MonoViewOpenAnim>();
             if (anim != null)

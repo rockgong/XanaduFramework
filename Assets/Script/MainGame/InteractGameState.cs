@@ -15,12 +15,10 @@ namespace MainGame
     abstract class BaseInteractCommand
     {
         protected MainGameCommandManager _mainGameCommandManager;
-        protected InteractCommandManager _interactCommandManager;
 
-        public virtual void Setup(MainGameCommandManager mgcMgr, InteractCommandManager icMgr)
+        public virtual void Setup(MainGameCommandManager mgcMgr)
         {
             _mainGameCommandManager = mgcMgr;
-            _interactCommandManager = icMgr;
         }
 
         public abstract void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop);

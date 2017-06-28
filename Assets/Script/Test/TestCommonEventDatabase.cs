@@ -25,6 +25,14 @@ namespace MainGame
 
                 return evt;
             }
+            else if (name == "Change3")
+            {
+                CommonEventNonPlayerSetDialog evt = new CommonEventNonPlayerSetDialog();
+                evt.nonPlayerId = 2;
+                evt.dialogId = 3;
+
+                return evt;
+            }
 
             return null;
         }

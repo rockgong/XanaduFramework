@@ -5,65 +5,80 @@ using GameKernal;
 
 namespace MainGame
 {
-		public class InteractCommandSelectData : BaseInteractCommandData
-		{
-			public string title;
-			public string[] options;
-			public int[] commandIDs;
-		}
+	public class InteractCommandSelectData : BaseInteractCommandData
+	{
+		public string title;
+		public string[] options;
+		public BaseInteractCommandData[] optionCommands;
+	}
 
-	    class InteractCommandSelect : BaseInteractCommand
+	class InteractCommandSelect : BaseInteractCommand
+	{
+	    public string title;
+	    public string[] options;
+		public BaseInteractCommand[] optionCommands;
+
+	    private BaseInteractCommand _selectCommand;
+
+        public override void Setup(MainGameCommandManager mgcMgr)
+        {
+            base.Setup(mgcMgr);
+
+            if (optionCommands != null)
+            {
+                for (int i = 0; i < optionCommands.Length; i++)
+                {
+                    optionCommands[i].Setup(mgcMgr);
+                }
+            }
+        }
+
+        public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
 	    {
-	        public string title;
-	        public string[] options;
-			public int[] commandIDs;
-
-	        private BaseInteractCommand _selectCommand;
-
-	        public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+	        view.ShowSelect(title, options, (i) =>
 	        {
-	            view.ShowSelect(title, options, (i) =>
+	            view.CloseSelect();
+
+	            if (i < optionCommands.Length)
 	            {
-	            	view.CloseSelect();
-
-	            	if (i < commandIDs.Length)
+                    BaseInteractCommand command = optionCommands[i];
+	            	if (command != null)
 	            	{
-	            		BaseInteractCommand command = _interactCommandManager.GetCommandById(commandIDs[i]);
-	            		if (command != null)
-	            		{
-	            			command.Setup(_mainGameCommandManager, _interactCommandManager);
-	            			command.Excute(view, player, nonPlayer, prop);
-	            		}
-	            		_selectCommand = command;
+	            		command.Excute(view, player, nonPlayer, prop);
 	            	}
-	            	else
-	            		_selectCommand = null;
-	            });
+	            	_selectCommand = command;
+	            }
+	            else
+	            	_selectCommand = null;
+	        });
 
-	            return;
-	        }
-
-	        public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
-	        {
-	            return view.viewState == InteractView.ViewState.None &&
-	            	(_selectCommand == null || _selectCommand.CheckOver(view, player, nonPlayer, prop));
-	        }
-
-	        public void SelectCallback(int i)
-	        {
-
-	        }
-
-	        public static BaseInteractCommand BuildHandler(BaseInteractCommandData data, InteractCommandBuilder builder)
-	        {
-	        	InteractCommandSelectData target = (InteractCommandSelectData)data;
-	        	InteractCommandSelect result = new InteractCommandSelect();
-
-	        	result.title = target.title;
-	        	result.options = target.options;
-	        	result.commandIDs = target.commandIDs;
-
-	        	return result;
-	        }
+	        return;
 	    }
+
+	    public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
+	    {
+	        return view.viewState == InteractView.ViewState.None &&
+	            (_selectCommand == null || _selectCommand.CheckOver(view, player, nonPlayer, prop));
+	    }
+
+	    public static BaseInteractCommand BuildHandler(BaseInteractCommandData data, InteractCommandBuilder builder)
+	    {
+	        InteractCommandSelectData target = (InteractCommandSelectData)data;
+	        InteractCommandSelect result = new InteractCommandSelect();
+
+	        result.title = target.title;
+	        result.options = target.options;
+	        	
+            if (target.optionCommands != null)
+            {
+            result.optionCommands = new BaseInteractCommand[target.optionCommands.Length];
+            for (int i = 0; i < result.optionCommands.Length; i++)
+            {
+                result.optionCommands[i] = builder.Build(target.optionCommands[i]);
+            }
+            }
+
+	        return result;
+	    }
+	}
 }

@@ -64,6 +64,7 @@ namespace MainGame
             _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
 
             _mainGameCommandManager.DoCommand("Change1");
+            _mainGameCommandManager.DoCommand("Change3");
 
             _playerStageManager.SwapPlayer(1, "4");
             /*
@@ -119,7 +120,7 @@ namespace MainGame
 
             int interactCommandId = _nonPlayerManager.GetInteractCommandIdByName(nonPlayer.name);
             BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-            command.Setup(_mainGameCommandManager, _interactCommandManager);
+            command.Setup(_mainGameCommandManager);
             commandList.Add(command);
             _interactGameState.SetCommandList(commandList);
 
