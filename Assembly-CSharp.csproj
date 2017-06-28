@@ -46,10 +46,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameKernal.cs" />
      <Compile Include="Assets\Script\Kernal\BasePlayer.cs" />
+     <Compile Include="Assets\Script\Kernal\BasePropObject.cs" />
      <Compile Include="Assets\Script\Kernal\BaseStage.cs" />
+     <Compile Include="Assets\Script\Kernal\BaseTrigger.cs" />
      <Compile Include="Assets\Script\Kernal\Factories.cs" />
      <Compile Include="Assets\Script\Kernal\GameCamera.cs" />
      <Compile Include="Assets\Script\Kernal\GameKernal.cs" />
@@ -57,19 +60,44 @@
      <Compile Include="Assets\Script\Kernal\KernalInterfaceDefine.cs" />
      <Compile Include="Assets\Script\Kernal\MonoAnimation.cs" />
      <Compile Include="Assets\Script\Kernal\MonoCamera.cs" />
+     <Compile Include="Assets\Script\Kernal\MonoDelegate.cs" />
      <Compile Include="Assets\Script\Kernal\MonoEntity.cs" />
      <Compile Include="Assets\Script\Kernal\MonoGameKernal.cs" />
+     <Compile Include="Assets\Script\Kernal\MonoPlayerConfig.cs" />
+     <Compile Include="Assets\Script\Kernal\MonoStage.cs" />
      <Compile Include="Assets\Script\Kernal\MonoTimer.cs" />
      <Compile Include="Assets\Script\Kernal\MonoView.cs" />
      <Compile Include="Assets\Script\Kernal\Player.cs" />
+     <Compile Include="Assets\Script\Kernal\PropObject.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
+     <Compile Include="Assets\Script\Kernal\Trigger.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\TestCommonEvent.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandDialog.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandMessage.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandSelect.cs" />
      <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
      <Compile Include="Assets\Script\MainGame\InteractView.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
      <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
+     <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
+     <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
+     <Compile Include="Assets\Script\MainGame\PlayerStageManager.cs" />
+     <Compile Include="Assets\Script\MainGame\PropObjectManager.cs" />
+     <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
+     <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
+     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
+     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
+     <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
      <Compile Include="Assets\Script\TestBehavior.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
+     <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />
+     <Compile Include="Assets\Script\UI\MonoViewOpenAnim.cs" />
      <Compile Include="Assets\Script\UI\UIUtils.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity55/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

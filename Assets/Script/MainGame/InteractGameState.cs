@@ -14,6 +14,15 @@ namespace MainGame
 
     abstract class BaseInteractCommand
     {
+        protected MainGameCommandManager _mainGameCommandManager;
+        protected InteractCommandManager _interactCommandManager;
+
+        public void Initialize(MainGameCommandManager mgcMgr, InteractCommandManager icMgr)
+        {
+            _mainGameCommandManager = mgcMgr;
+            _interactCommandManager = icMgr;
+        }
+
         public abstract void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop);
         public abstract bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop);
     }

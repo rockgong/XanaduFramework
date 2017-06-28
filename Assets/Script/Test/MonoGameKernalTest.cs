@@ -146,7 +146,8 @@ namespace MainGame
                 InteractCommandSelect slct = new InteractCommandSelect();
                 slct.title = "Exit ?";
                 slct.options = new string[] { "Yes", "No" };
-                slct.callback = (i) => { if (i == 0) Application.Quit(); };
+                //slct.callback = (i) => { if (i == 0) Application.Quit(); };
+                slct.commandIDs = new int[0];
                 commandList.Add(slct);
             }
             else if (nonPlayer.name == "nana")
