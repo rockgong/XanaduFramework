@@ -20,7 +20,7 @@ namespace MainGame
         	mgr.nonPlayerManager.SetInteractCommandIdByName(nonPlayerId, dialogId);
         }
 
-        public static BaseMainGameCommand BuildHandler(BaseCommonEvent evt)
+        public static BaseMainGameCommand BuildHandler(BaseCommonEvent evt, MainGameCommandBuilder builder)
         {
             CommonEventNonPlayerSetDialog targetEvt = (CommonEventNonPlayerSetDialog)evt;
 

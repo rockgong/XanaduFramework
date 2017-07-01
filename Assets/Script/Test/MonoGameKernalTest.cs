@@ -7,7 +7,7 @@ using System;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -25,6 +25,7 @@ namespace MainGame
         private MainGameCommandBuilder _mainGameCommandBuilder = new MainGameCommandBuilder();
         private InteractCommandManager _interactCommandManager = new InteractCommandManager();
         private InteractCommandBuilder _interactCommandBuilder = new InteractCommandBuilder();
+        private ValueManager _valueManager = new ValueManager();
 
         private string _commonEventName = "TestEvent";
 
@@ -58,8 +59,12 @@ namespace MainGame
             _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _playerStageManager.SwapPlayer(2, "4"));
             _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _playerStageManager.SwapPlayer(1, "4"));
 
+            _valueManager = new ValueManager();
+            _valueManager.Initialize(256, 256);
+            _valueManager.RegisterListener(this);
+
             _mainGameCommandBuilder.Initialize();
-            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>());
+            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
             _interactCommandBuilder.Initialize();
             _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
 
@@ -67,24 +72,6 @@ namespace MainGame
             _mainGameCommandManager.DoCommand("Change3");
 
             _playerStageManager.SwapPlayer(1, "4");
-            /*
-            INonPlayerCharacter nonPlayer = gameKernal.AddNonPlayerCharacter("nana", new NonPlayerCharacterDesc(playerPrototype));
-
-            // nonPlayer.position = new Vector3(0.0f, 0.0f, 5.0f);
-            nonPlayer.position = stage.GetStagePoint("1");
-
-            nonPlayer = gameKernal.AddNonPlayerCharacter("nono", new NonPlayerCharacterDesc(playerPrototype));
-
-            // nonPlayer.position = new Vector3(0.0f, 0.0f, -5.0f);
-            nonPlayer.position = stage.GetStagePoint("2");
-
-            GameObject propPrototype = Resources.Load<GameObject>("PropObject/TestProp");
-
-            IPropObject prop = gameKernal.AddPropObject("testprop", new PropObjectDesc(propPrototype));
-
-            // prop.position = new Vector3(0.0f, 0.0f, -10.0f);
-            prop.position = stage.GetStagePoint("3");
-            */
 
             ICamera cam = gameKernal.GetCamera();
 
@@ -163,6 +150,14 @@ namespace MainGame
             _nonPlayerManager.SetupAllNonPlayers(stageId);
             _propObjectManager.SetupAllPropObjects(stageId);
             _triggerManager.SetupTrigger(stageId);
+        }
+
+        public void OnValueChanged(int type, int index)
+        {
+            _mainGameCommandManager.DoCommand("Update");
+            Debug.Log("OnValueChanged Called");
+
+            return;
         }
     }
 }

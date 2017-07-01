@@ -33,6 +33,31 @@ namespace MainGame
 
                 return evt;
             }
+            else if (name == "Update")
+            {
+                CommonEventPredicate evt = new CommonEventPredicate();
+                CommonIntegerFromValue ifv = new CommonIntegerFromValue();
+                ifv.index = 0;
+                evt.predicateValue = ifv;
+                CommonEventNonPlayerSetDialog evtnpsd = new CommonEventNonPlayerSetDialog();
+                evtnpsd.nonPlayerId = 1;
+                evtnpsd.dialogId = 0;
+                evt.nonZeroEvent = evtnpsd;
+                evtnpsd = new CommonEventNonPlayerSetDialog();
+                evtnpsd.nonPlayerId = 1;
+                evtnpsd.dialogId = 2;
+                evt.zeroEvent = evtnpsd;
+
+                return evt;
+            }
+            else if (name == "SelectFirst")
+            {
+                CommonEventSetIntValue evt = new CommonEventSetIntValue();
+                evt.index = 0;
+                evt.targetValue = 1;
+
+                return evt;
+            }
 
             return null;
         }

@@ -17,17 +17,14 @@ namespace MainGame
             else if (id == 1)
             {
                 InteractCommandGroupData result = new InteractCommandGroupData();
-                result.members = new BaseInteractCommandData[3];
-                InteractCommandCommonEventData mem = new InteractCommandCommonEventData();
-                mem.eventName = "Change2";
-                result.members[0] = mem;
+                result.members = new BaseInteractCommandData[2];
                 InteractCommandDialogData dia = new InteractCommandDialogData();
                 dia.content = "Going to change dialog";
-                result.members[1] = dia;
+                result.members[0] = dia;
                 dia = new InteractCommandDialogData();
                 dia.content = "Hit me again";
                 dia.commandTarget = 0;
-                result.members[2] = dia;
+                result.members[1] = dia;
                 return result;
             }
             else if (id == 2)
@@ -43,9 +40,23 @@ namespace MainGame
                 result.options = new string[] { "First", "Second" };
                 result.optionCommands = new BaseInteractCommandData[]
                 {
-                    new InteractCommandDialogData()
+                    new InteractCommandGroupData()
                     {
-                        content = "You Select First"
+                        members = new BaseInteractCommandData[]
+                        {
+                            new InteractCommandDialogData()
+                            {
+                                content = "You Select First"
+                            },
+                            new InteractCommandDialogData()
+                            {
+                                content = "Thank you"
+                            },
+                            new InteractCommandCommonEventData()
+                            {
+                                eventName = "SelectFirst"
+                            }
+                        }
                     },
                     new InteractCommandGroupData()
                     {

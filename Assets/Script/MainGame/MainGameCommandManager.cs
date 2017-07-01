@@ -15,6 +15,11 @@ namespace MainGame
 
     }
 
+    public class BaseCommonString
+    {
+
+    }
+
     public interface ICommonEventDatabase
     {
         BaseCommonEvent GetCommonEvent(string name);
@@ -27,7 +32,26 @@ namespace MainGame
 
     abstract class BaseMainGameInteger
     {
+        protected ValueManager _valueManager;
+
+        public void Setup(ValueManager vMgr)
+        {
+            _valueManager = vMgr;
+        }
+
         public abstract int Evaluate();
+    }
+
+    abstract class BaseMainGameString
+    {
+        protected ValueManager _valueManager;
+
+        public void Setup(ValueManager vMgr)
+        {
+            _valueManager = vMgr;
+        }
+
+        public abstract int GetString();
     }
 
     class MainGameCommandManager
@@ -39,6 +63,7 @@ namespace MainGame
         private TriggerManager _triggerManager;
         private MainGameCommandBuilder _builder;
         private ICommonEventDatabase _database;
+        private ValueManager _valueManager;
 
         public IGameKernal gameKernal { get { return _gameKernal; } }
         public PlayerStageManager playerStageManager { get { return _playerStageManager; } }
@@ -47,8 +72,9 @@ namespace MainGame
         public TriggerManager triggerManager { get { return _triggerManager; } }
         public MainGameCommandBuilder builder { get { return _builder; } }
         public ICommonEventDatabase database { get { return _database; } }
+        public ValueManager valueManager { get { return _valueManager; } }
 
-        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db)
+        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db, ValueManager vm)
         {
             _gameKernal = gameKernal;
             _playerStageManager = psMgr;
@@ -57,6 +83,7 @@ namespace MainGame
             _triggerManager = tMgr;
             _builder = b;
             _database = db;
+            _valueManager = vm;
         }
 
         public void DoCommand(string name)

@@ -71,7 +71,13 @@
      <Compile Include="Assets\Script\Kernal\PropObject.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
      <Compile Include="Assets\Script\Kernal\Trigger.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonIntegerFromValue.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonIntegerLiteral.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
@@ -87,6 +93,7 @@
      <Compile Include="Assets\Script\MainGame\InteractView.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameIntegerBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
      <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
      <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
@@ -94,6 +101,7 @@
      <Compile Include="Assets\Script\MainGame\PlayerStageManager.cs" />
      <Compile Include="Assets\Script\MainGame\PropObjectManager.cs" />
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestInteractCommandDatabase.cs" />
