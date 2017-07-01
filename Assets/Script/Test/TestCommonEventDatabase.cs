@@ -37,7 +37,7 @@ namespace MainGame
             {
                 CommonEventPredicate evt = new CommonEventPredicate();
                 CommonIntegerFromValue ifv = new CommonIntegerFromValue();
-                ifv.index = 0;
+                ifv.index = new CommonIntegerLiteral() { val = 0};
                 evt.predicateValue = ifv;
                 CommonEventNonPlayerSetDialog evtnpsd = new CommonEventNonPlayerSetDialog();
                 evtnpsd.nonPlayerId = 1;

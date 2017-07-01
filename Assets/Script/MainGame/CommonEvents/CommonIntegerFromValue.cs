@@ -6,16 +6,17 @@ namespace MainGame
 {
     public class CommonIntegerFromValue : BaseCommonInteger
     {
-        public int index;
+        public BaseCommonInteger index;
     }
 
     class MainGameIntegerFromValue : BaseMainGameInteger
     {
-        public int index;
+        public BaseMainGameInteger index;
 
         public override int Evaluate()
         {
-            return _valueManager.GetIntValue(index);
+            index.Setup(_valueManager);
+            return _valueManager.GetIntValue(index.Evaluate());
         }
 
         public static BaseMainGameInteger BuildHandler(BaseCommonInteger data, MainGameIntegerBuilder builder)
@@ -23,7 +24,7 @@ namespace MainGame
             CommonIntegerFromValue target = (CommonIntegerFromValue)data;
             MainGameIntegerFromValue result = new MainGameIntegerFromValue();
 
-            result.index = target.index;
+            result.index = builder.Build(target.index, builder);
 
             return result;
         }
