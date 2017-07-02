@@ -137,6 +137,7 @@
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestInteractCommandDatabase.cs" />
+    <Compile Include="Assets\Script\Test\TestJson.cs" />
     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
@@ -154,6 +155,9 @@
     <Compile Include="Assets\ThirdParty\LitJson\JsonWriter.cs" />
     <Compile Include="Assets\ThirdParty\LitJson\Lexer.cs" />
     <Compile Include="Assets\ThirdParty\LitJson\ParserToken.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
