@@ -10,6 +10,16 @@ public class NestedConfig
     public string nestedSField = string.Empty;
 }
 
+public class NestedConfigA : NestedConfig
+{
+    public int derivedIField = 0;
+}
+
+public class NestedConfigB : NestedConfig
+{
+    public string derivedSField = string.Empty;
+}
+
 public class TestConfig
 {
     public int iField = 0;

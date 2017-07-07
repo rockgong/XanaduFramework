@@ -57,8 +57,15 @@ namespace Helper
 			}
 			else
 			{
-				FieldInfo[] fields = type.GetFields();
-				object result = System.Activator.CreateInstance(type);
+				System.Type targetType = null;
+				if (jsonData.Keys.Contains("$type"))
+					targetType = System.Type.GetType((string)jsonData["$type"]);
+
+				if (targetType == null)
+					targetType = type;
+
+				FieldInfo[] fields = targetType.GetFields();
+				object result = System.Activator.CreateInstance(targetType);
                 for (int i = 0; i < fields.Length; i++)
                 {
                     try

@@ -10,12 +10,16 @@
 	"nestedConfigArray" :
 	[
 		{
+			"$type" : "NestedConfigA",
 			"nestedIField" : 8,
-			"nestedSField" : "Yes"
+			"nestedSField" : "Yes",
+			"derivedIField" : 110
 		},
 		{
+			"$type" : "NestedConfigB",
 			"nestedIField" : 10,
-			"nestedSField" : "No"
+			"nestedSField" : "No",
+			"derivedSField" : "Danganronpa"
 		}
 	]
 }
