@@ -4,6 +4,7 @@ using UnityEngine;
 using GameKernal;
 using MainGame;
 using System;
+using Config;
 
 namespace MainGame
 {
@@ -63,8 +64,11 @@ namespace MainGame
             _valueManager.Initialize(256, 256);
             _valueManager.RegisterListener(this);
 
+            CommonEventDatabase commonEventDatabase = new CommonEventDatabase();
+            commonEventDatabase.LoadFromAsset("CommonEvent/CommonEvent");
             _mainGameCommandBuilder.Initialize();
-            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
+            // _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
+            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager);
             _interactCommandBuilder.Initialize();
             _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
 

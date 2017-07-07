@@ -1,0 +1,66 @@
+[
+	{
+		"name" : "Change1",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+			"nonPlayerId" : 1,
+			"dialogId" : 1
+		}
+	},
+	{
+		"name" : "Change2",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+			"nonPlayerId" : 1,
+			"dialogId" : 2
+		}
+	},
+	{
+		"name" : "Change3",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+			"nonPlayerId" : 2,
+			"dialogId" : 3
+		}
+	},
+	{
+		"name" : "Update",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventPredicate",
+			"predicateValue" :
+			{
+				"$type" : "MainGame.CommonIntegerFromValue",
+				"index" :
+				{
+					"$type" : "MainGame.CommonIntegerLiteral",
+					"val" : 0
+				}
+			},
+			"nonZeroEvent" :
+			{
+				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+				"nonPlayerId" : 1,
+				"dialogId" : 0
+			},
+			"zeroEvent" :
+			{
+				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+				"nonPlayerId" : 1,
+				"dialogId" : 2
+			}
+		}
+	},
+	{
+		"name" : "SelectFirst",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSetIntValue",
+			"index" : 0,
+			"targetValue" : 1
+		}
+	}
+]
