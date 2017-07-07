@@ -78,6 +78,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
     <Compile Include="Assets\Script\Helper\MathHelper.cs" />
     <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
     <Compile Include="Assets\Script\Kernal\BaseGameKernal.cs" />

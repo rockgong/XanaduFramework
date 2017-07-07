@@ -1,3 +1,21 @@
 {
-	"key" : "value"
+	"iField" : 5,
+	"sField" : "Hello",
+	"aField" : [1, 3, 4],
+	"nestedConfig" : 
+	{
+		"nestedIField" : 7,
+		"nestedSField" : "World"
+	},
+	"nestedConfigArray" :
+	[
+		{
+			"nestedIField" : 8,
+			"nestedSField" : "Yes"
+		},
+		{
+			"nestedIField" : 10,
+			"nestedSField" : "No"
+		}
+	]
 }
