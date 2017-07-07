@@ -1,0 +1,84 @@
+[
+	{
+		"id" : 0,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandDialogData",
+			"content" : "What are you doing"
+		}
+	},
+	{
+		"id" : 1,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members":
+			[
+				{
+					"$type" : "MainGame.InteractCommandDialogData",
+					"content" : "Dialog Will Change"
+				},
+				{
+					"$type" : "MainGame.InteractCommandDialogData",
+					"content" : "Hit me Again",
+					"commandTarget" : 0
+				}
+			]
+		}
+	},
+	{
+		"id" : 2,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandDialogData",
+			"content" : "Changed"
+		}
+	},
+	{
+		"id" : 3,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "My Choice",
+			"options" :
+			[
+				"First", "Second"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandDialogData",
+							"content" : "You Select First"
+						},
+						{
+							"$type" : "MainGame.InteractCommandDialogData",
+							"content" : "THX"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "SelectFirst"
+						}
+					]
+				},
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandDialogData",
+							"content" : "You Select Second"
+						},
+						{
+							"$type" : "MainGame.InteractCommandDialogData",
+							"content" : "Go ahead"
+						}
+					]
+				}
+			]
+		}
+	}
+]

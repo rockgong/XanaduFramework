@@ -69,8 +69,11 @@ namespace MainGame
             _mainGameCommandBuilder.Initialize();
             // _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
             _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager);
+            InteractCommandDatabase interactCommandDatabase = new InteractCommandDatabase();
+            interactCommandDatabase.LoadFromAsset("InteractCommand/InteractCommand");
             _interactCommandBuilder.Initialize();
-            _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
+            // _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
+            _interactCommandManager.Initialize(_interactGameState, interactCommandDatabase, _interactCommandBuilder);
 
             _mainGameCommandManager.DoCommand("Change1");
             _mainGameCommandManager.DoCommand("Change3");

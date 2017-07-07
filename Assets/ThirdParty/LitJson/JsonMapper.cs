@@ -485,6 +485,7 @@ namespace LitJson
             IJsonWrapper instance = factory ();
 
             if (reader.Token == JsonToken.String) {
+                UnityEngine.Debug.Log("===" + reader.Value == null ? string.Empty : reader.Value);
                 instance.SetString ((string) reader.Value);
                 return instance;
             }
@@ -530,6 +531,7 @@ namespace LitJson
                         break;
 
                     string property = (string) reader.Value;
+                    UnityEngine.Debug.Log("===" + reader.Value == null ? string.Empty : reader.Value);
 
                     ((IDictionary) instance)[property] = ReadValue (
                         factory, reader);
