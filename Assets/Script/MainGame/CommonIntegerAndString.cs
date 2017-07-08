@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameKernal;
 
 namespace MainGame
 {
@@ -12,6 +13,11 @@ namespace MainGame
     public class BaseCommonString
     {
 
+    }
+
+    public class BaseCommonVector3
+    {
+        
     }
 
     abstract class BaseCommonIntegerEval
@@ -36,5 +42,17 @@ namespace MainGame
         }
 
         public abstract string GetString();
+    }
+
+    abstract class BaseCommonVector3Eval
+    {
+        protected IGameKernal _gameKernal;
+
+        public void Setup(IGameKernal kernal)
+        {
+            _gameKernal = kernal;
+        }
+
+        public abstract Vector3 GetVector3();
     }
 }
