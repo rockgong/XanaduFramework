@@ -531,7 +531,6 @@ namespace LitJson
                         break;
 
                     string property = (string) reader.Value;
-                    UnityEngine.Debug.Log("===" + reader.Value == null ? string.Empty : reader.Value);
 
                     ((IDictionary) instance)[property] = ReadValue (
                         factory, reader);
