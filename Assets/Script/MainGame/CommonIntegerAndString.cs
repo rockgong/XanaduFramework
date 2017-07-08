@@ -35,6 +35,6 @@ namespace MainGame
             _valueManager = vMgr;
         }
 
-        public abstract int GetString();
+        public abstract string GetString();
     }
 }

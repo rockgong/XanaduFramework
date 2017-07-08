@@ -8,13 +8,13 @@ namespace MainGame
 {
     public class InteractCommandDialogData : BaseInteractCommandData
     {
-        public string content = string.Empty;
+        public BaseCommonString content = null;
         public int commandTarget = 1; // ) : Player; 1 : NonPlayer; 2 : PropObject
     }
 
     class InteractCommandDialog : BaseInteractCommand
     {
-        public string content = string.Empty;
+        public BaseCommonStringEval content = null;
         public CommandTarget commandTarget = CommandTarget.NonPlayer;
 
         public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
@@ -27,7 +27,7 @@ namespace MainGame
             else if (commandTarget == CommandTarget.PropObject && prop != null)
                 worldPosition = prop.viewPosition;
             Vector2 position = UIUtils.WorldPointToCanvasAnchoredPosition(worldPosition, new Vector2(1280.0f, 720.0f));
-            view.ShowDialog(content, position);
+            view.ShowDialog(content.GetString(), position);
         }
 
         public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
@@ -40,7 +40,7 @@ namespace MainGame
             InteractCommandDialogData target = (InteractCommandDialogData)data;
             InteractCommandDialog result = new InteractCommandDialog();
 
-            result.content = target.content;
+            result.content = builder.mainGameStringBuilder.Build(target.content, builder.mainGameStringBuilder);
             result.commandTarget = (CommandTarget)target.commandTarget;
 
             return result;

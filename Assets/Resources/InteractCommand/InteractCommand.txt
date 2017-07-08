@@ -4,7 +4,11 @@
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandDialogData",
-			"content" : "What are you doing"
+			"content" :
+			{
+				"$type" : "MainGame.CommonStringLiteral",
+				"val" : "Hahahahaha"
+			}
 		}
 	},
 	{
@@ -16,11 +20,19 @@
 			[
 				{
 					"$type" : "MainGame.InteractCommandDialogData",
-					"content" : "Dialog Will Change"
+					"content" :
+					{
+						"$type" : "MainGame.CommonStringLiteral",
+						"val" : "This text will change"
+					}
 				},
 				{
 					"$type" : "MainGame.InteractCommandDialogData",
-					"content" : "Hit me Again",
+					"content" :
+					{
+						"$type" : "MainGame.CommonStringLiteral",
+						"val" : "Hit ME AGAIN"
+					},
 					"commandTarget" : 0
 				}
 			]
@@ -31,7 +43,11 @@
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandDialogData",
-			"content" : "Changed"
+			"content" :
+			{
+				"$type" : "MainGame.CommonStringLiteral",
+				"val" : "CHANGED"
+			}
 		}
 	},
 	{
@@ -52,11 +68,19 @@
 					[
 						{
 							"$type" : "MainGame.InteractCommandDialogData",
-							"content" : "You Select First"
+							"content" :
+							{
+								"$type" : "MainGame.CommonStringLiteral",
+								"val" : "You Select FIRST"
+							}
 						},
 						{
 							"$type" : "MainGame.InteractCommandDialogData",
-							"content" : "THX"
+							"content" :
+							{
+								"$type" : "MainGame.CommonStringLiteral",
+								"val" : "THANKS"
+							}
 						},
 						{
 							"$type" : "MainGame.InteractCommandCommonEventData",
@@ -70,11 +94,19 @@
 					[
 						{
 							"$type" : "MainGame.InteractCommandDialogData",
-							"content" : "You Select Second"
+							"content" :
+							{
+								"$type" : "MainGame.CommonStringLiteral",
+								"val" : "You Select SECOND"
+							}
 						},
 						{
 							"$type" : "MainGame.InteractCommandDialogData",
-							"content" : "Go ahead"
+							"content" : 
+							{
+								"$type" : "MainGame.CommonStringLiteral",
+								"val" : "GO AHEAD"
+							}
 						}
 					]
 				}

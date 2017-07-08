@@ -108,6 +108,7 @@
     <Compile Include="Assets\Script\Kernal\Trigger.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerFromValue.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerLiteral.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonStringLiteral.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
@@ -131,6 +132,7 @@
     <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameIntegerBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
+    <Compile Include="Assets\Script\MainGame\MainGameStringBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
     <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
     <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
@@ -139,7 +141,6 @@
     <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
     <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
-    <Compile Include="Assets\Script\Test\TestInteractCommandDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestJson.cs" />
     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />

@@ -6,6 +6,15 @@ namespace MainGame
 {
     class InteractCommandBuilder
     {
+        private MainGameStringBuilder _mainGameStringBuilder;
+        public MainGameStringBuilder mainGameStringBuilder
+        {
+            get
+            {
+                return _mainGameStringBuilder;
+            }
+        }
+
         private Dictionary<System.Type, System.Func<BaseInteractCommandData, InteractCommandBuilder, BaseInteractCommand>> _handlers = new Dictionary<System.Type, System.Func<BaseInteractCommandData, InteractCommandBuilder, BaseInteractCommand>>();
 
         public void Initialize()
@@ -18,6 +27,12 @@ namespace MainGame
             _handlers[typeof(InteractCommandNonPlayerFaceData)] = InteractCommandDialog.BuildHandler;
             _handlers[typeof(InteractCommandCommonEventData)] = InteractCommandCommonEvent.BuildHandler;
             _handlers[typeof(InteractCommandGroupData)] = InteractCommandGroup.BuildHandler;
+
+            if (_mainGameStringBuilder == null)
+            {
+                _mainGameStringBuilder = new MainGameStringBuilder();
+                _mainGameStringBuilder.Initialize();
+            }
         }
 
         public BaseInteractCommand Build(BaseInteractCommandData evt)
