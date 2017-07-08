@@ -32,6 +32,8 @@ namespace MainGame
 
         void Start()
         {
+            TextMap.Initialize();
+            
             gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 
             GameObject playerPrototype = Resources.Load<GameObject>("Player/Player");

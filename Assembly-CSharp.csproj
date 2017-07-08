@@ -46,6 +46,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
+     <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -72,13 +74,15 @@
      <Compile Include="Assets\Script\Kernal\PropObject.cs" />
      <Compile Include="Assets\Script\Kernal\Stage.cs" />
      <Compile Include="Assets\Script\Kernal\Trigger.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerFromValue.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerLiteral.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonStringLiteral.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />
-     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonIntegerFromValue.cs" />
-     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonIntegerLiteral.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonIntegerAndString.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
@@ -96,6 +100,7 @@
      <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameIntegerBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameStringBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
      <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
      <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
@@ -104,13 +109,12 @@
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
-     <Compile Include="Assets\Script\Test\TestCommonEventDatabase.cs" />
-     <Compile Include="Assets\Script\Test\TestInteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
      <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
      <Compile Include="Assets\Script\TestBehavior.cs" />
+     <Compile Include="Assets\Script\TextMap\TextMap.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
      <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />
      <Compile Include="Assets\Script\UI\MonoViewOpenAnim.cs" />
@@ -124,7 +128,10 @@
      <Compile Include="Assets\ThirdParty\LitJson\JsonWriter.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\Lexer.cs" />
      <Compile Include="Assets\ThirdParty\LitJson\ParserToken.cs" />
+     <None Include="Assets\Resources\InteractCommand\InteractCommand.txt" />
      <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
+     <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
+     <None Include="Assets\Resources\TextMap\TextMap.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity55/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

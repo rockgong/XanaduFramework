@@ -31,7 +31,7 @@
 					"content" :
 					{
 						"$type" : "MainGame.CommonStringLiteral",
-						"val" : "Hit ME AGAIN"
+						"val" : "$1001"
 					},
 					"commandTarget" : 0
 				}
@@ -58,7 +58,7 @@
 			"title" : "My Choice",
 			"options" :
 			[
-				"First", "Second"
+				"第一项", "第二项"
 			],
 			"optionCommands" :
 			[

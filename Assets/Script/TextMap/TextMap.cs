@@ -15,10 +15,11 @@ namespace Config
             string[] lines = asset.text.Split('\n');
             for (int i = 0; i < lines.Length; i++)
             {
-                int indexOfTab = lines[i].IndexOf('\t');
+                Debug.Log("line : " + lines[i]);
+                int indexOfTab = lines[i].IndexOf(':');
                 if (indexOfTab != -1)
                 {
-                    _dict[lines[i].Substring(0, indexOfTab + 1)] = lines[i].Substring(indexOfTab + 1);
+                    _dict[lines[i].Substring(0, indexOfTab)] = lines[i].Substring(indexOfTab + 1);
                 }
             }
         }
