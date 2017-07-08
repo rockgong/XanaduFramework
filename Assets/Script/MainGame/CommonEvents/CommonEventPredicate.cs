@@ -13,7 +13,7 @@ namespace MainGame
 
 	class MainGameCommandPredicate : BaseMainGameCommand
 	{
-		public BaseMainGameInteger predicateValue;
+		public BaseCommonIntegerEval predicateValue;
 		public BaseMainGameCommand nonZeroCommand;
 		public BaseMainGameCommand zeroCommand;
 

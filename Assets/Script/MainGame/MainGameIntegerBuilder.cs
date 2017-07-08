@@ -6,15 +6,15 @@ namespace MainGame
 {
     class MainGameIntegerBuilder
     {
-        private Dictionary<System.Type, System.Func<BaseCommonInteger, MainGameIntegerBuilder, BaseMainGameInteger>> _handlers = new Dictionary<System.Type, System.Func<BaseCommonInteger, MainGameIntegerBuilder, BaseMainGameInteger>>();
+        private Dictionary<System.Type, System.Func<BaseCommonInteger, MainGameIntegerBuilder, BaseCommonIntegerEval>> _handlers = new Dictionary<System.Type, System.Func<BaseCommonInteger, MainGameIntegerBuilder, BaseCommonIntegerEval>>();
 
         public void Initialize()
         {
-            _handlers[typeof(CommonIntegerLiteral)] = MainGameIntegerLiteral.BuildHandler;
-            _handlers[typeof(CommonIntegerFromValue)] = MainGameIntegerFromValue.BuildHandler;
+            _handlers[typeof(CommonIntegerLiteral)] = CommonIntegerLiteralEval.BuildHandler;
+            _handlers[typeof(CommonIntegerFromValue)] = CommonIntegerFromValueEval.BuildHandler;
         }
 
-        public BaseMainGameInteger Build(BaseCommonInteger data, MainGameIntegerBuilder builder)
+        public BaseCommonIntegerEval Build(BaseCommonInteger data, MainGameIntegerBuilder builder)
         {
             System.Type evtType = data.GetType();
             if (_handlers.ContainsKey(evtType))

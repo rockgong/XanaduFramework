@@ -9,9 +9,9 @@ namespace MainGame
         public BaseCommonInteger index;
     }
 
-    class MainGameIntegerFromValue : BaseMainGameInteger
+    class CommonIntegerFromValueEval : BaseCommonIntegerEval
     {
-        public BaseMainGameInteger index;
+        public BaseCommonIntegerEval index;
 
         public override int Evaluate()
         {
@@ -19,10 +19,10 @@ namespace MainGame
             return _valueManager.GetIntValue(index.Evaluate());
         }
 
-        public static BaseMainGameInteger BuildHandler(BaseCommonInteger data, MainGameIntegerBuilder builder)
+        public static BaseCommonIntegerEval BuildHandler(BaseCommonInteger data, MainGameIntegerBuilder builder)
         {
             CommonIntegerFromValue target = (CommonIntegerFromValue)data;
-            MainGameIntegerFromValue result = new MainGameIntegerFromValue();
+            CommonIntegerFromValueEval result = new CommonIntegerFromValueEval();
 
             result.index = builder.Build(target.index, builder);
 

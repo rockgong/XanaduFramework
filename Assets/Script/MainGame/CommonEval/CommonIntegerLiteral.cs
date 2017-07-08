@@ -10,7 +10,7 @@ namespace MainGame
         public int val;
     }
 
-    class MainGameIntegerLiteral : BaseMainGameInteger
+    class CommonIntegerLiteralEval : BaseCommonIntegerEval
     {
         public int val;
 
@@ -19,10 +19,10 @@ namespace MainGame
             return val;
         }
 
-        public static BaseMainGameInteger BuildHandler(BaseCommonInteger data, MainGameIntegerBuilder builder)
+        public static BaseCommonIntegerEval BuildHandler(BaseCommonInteger data, MainGameIntegerBuilder builder)
         {
             CommonIntegerLiteral target = (CommonIntegerLiteral)data;
-            MainGameIntegerLiteral result = new MainGameIntegerLiteral();
+            CommonIntegerLiteralEval result = new CommonIntegerLiteralEval();
 
             result.val = target.val;
 

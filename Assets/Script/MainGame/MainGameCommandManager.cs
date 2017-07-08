@@ -10,15 +10,6 @@ namespace MainGame
         
     }
 
-    public class BaseCommonInteger
-    {
-
-    }
-
-    public class BaseCommonString
-    {
-
-    }
 
     public interface ICommonEventDatabase
     {
@@ -30,29 +21,7 @@ namespace MainGame
         public abstract void Excute(MainGameCommandManager mgr);
     }
 
-    abstract class BaseMainGameInteger
-    {
-        protected ValueManager _valueManager;
-
-        public void Setup(ValueManager vMgr)
-        {
-            _valueManager = vMgr;
-        }
-
-        public abstract int Evaluate();
-    }
-
-    abstract class BaseMainGameString
-    {
-        protected ValueManager _valueManager;
-
-        public void Setup(ValueManager vMgr)
-        {
-            _valueManager = vMgr;
-        }
-
-        public abstract int GetString();
-    }
+    
 
     class MainGameCommandManager
     {
