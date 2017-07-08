@@ -50,6 +50,7 @@
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Database\NonPlayerDatabase.cs" />
      <Compile Include="Assets\Script\Database\PropObjectDatabase.cs" />
+     <Compile Include="Assets\Script\Database\StageDatabase.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -132,6 +133,7 @@
      <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
      <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
      <None Include="Assets\Resources\Database\PropObject.txt" />
+     <None Include="Assets\Resources\Database\Stage.txt" />
      <None Include="Assets\Resources\Database\NonPlayer.txt" />
      <None Include="Assets\Resources\TextMap\TextMap.txt" />
  <Reference Include="UnityEngine.UI">

@@ -44,7 +44,8 @@ namespace MainGame
 
             // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
             
-            TestStageDatabase stageDb = GetComponent<TestStageDatabase>();
+            StageDatabase stageDb = new StageDatabase();
+            stageDb.Initialize();
             _playerStageManager.SetDatabase(stageDb);
             _playerStageManager.SetGameKernal(gameKernal);
             _playerStageManager.RegisterListener(this);
