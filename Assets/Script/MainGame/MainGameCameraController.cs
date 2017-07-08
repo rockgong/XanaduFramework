@@ -31,7 +31,7 @@ namespace MainGame
 
 		public void Startup()
 		{
-			_delegate = MonoDelegate.Create(ProcessCamera, "MainGameCameraControllerDelegate", 1);
+			_delegate = MonoDelegate.Create(ProcessCamera, "MainGameCameraControllerDelegate");
 		}
 
 		private void ProcessCamera()
