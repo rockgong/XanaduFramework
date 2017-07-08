@@ -13,9 +13,13 @@ namespace Config
 		{
 			public int ID;
 			public string PREFAB_NAME;
+			public BaseCommonVector3 CAMERA_LOOK;
+			public BaseCommonVector3 CAMERA_POS;
 
 			public int id {get{return ID;}}
 			public string prefabName{get{return PREFAB_NAME;}}
+			public BaseCommonVector3 cameraLook{get{return CAMERA_LOOK;}}
+			public BaseCommonVector3 cameraPos{get{return CAMERA_POS;}}
 		}
 
 		private StageDatabaseEntry[] _data = null;

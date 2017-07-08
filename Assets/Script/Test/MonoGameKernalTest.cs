@@ -27,6 +27,9 @@ namespace MainGame
         private InteractCommandManager _interactCommandManager = new InteractCommandManager();
         private InteractCommandBuilder _interactCommandBuilder = new InteractCommandBuilder();
         private ValueManager _valueManager = new ValueManager();
+        private MainGameCameraController _mainGameCameraController = new MainGameCameraController();
+        private StageDatabase _stageDatabase = new StageDatabase();
+        private CommonVector3Builder _commonVector3Builder = new CommonVector3Builder();
 
         private string _commonEventName = "TestEvent";
 
@@ -44,9 +47,10 @@ namespace MainGame
 
             // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
             
-            StageDatabase stageDb = new StageDatabase();
-            stageDb.Initialize();
-            _playerStageManager.SetDatabase(stageDb);
+            _commonVector3Builder.Initialize();
+            _stageDatabase = new StageDatabase();
+            _stageDatabase.Initialize();
+            _playerStageManager.SetDatabase(_stageDatabase);
             _playerStageManager.SetGameKernal(gameKernal);
             _playerStageManager.RegisterListener(this);
 
@@ -95,6 +99,10 @@ namespace MainGame
 
             gameKernal.Startup();
 
+            _mainGameCameraController.Initialize(gameKernal.GetCamera());
+
+            _mainGameState.SetCameraController(_mainGameCameraController);
+
             gameKernal.SetGameState(_mainGameState);
 
             _interactGameState.SetHost(this);
@@ -103,6 +111,7 @@ namespace MainGame
 
             _interactGameState.SetInteractView(_interactView);
             _interactView.SetListener(_interactGameState);
+
         }
 
         public void OnCommandProcessEnd()
@@ -161,9 +170,16 @@ namespace MainGame
 
         public void OnStageChanged(int stageId)
         {
+            Debug.Log("Stage Changed " + stageId.ToString());
+
             _nonPlayerManager.SetupAllNonPlayers(stageId);
             _propObjectManager.SetupAllPropObjects(stageId);
             _triggerManager.SetupTrigger(stageId);
+            IStageDatabaseEntry stageEntry = _stageDatabase.GetEntryById(stageId);
+            _mainGameCameraController.cameraTarget = _commonVector3Builder.Build(stageEntry.cameraLook, _commonVector3Builder);
+            _mainGameCameraController.cameraTarget.Setup(gameKernal);
+            _mainGameCameraController.cameraPosition = _commonVector3Builder.Build(stageEntry.cameraPos, _commonVector3Builder);
+            _mainGameCameraController.cameraPosition.Setup(gameKernal);
         }
 
         public void OnValueChanged(int type, int index)

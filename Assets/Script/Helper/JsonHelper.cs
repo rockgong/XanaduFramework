@@ -32,6 +32,13 @@ namespace Helper
 				else
 					throw new System.FormatException("Json Format Error : not double");
 			}
+			else if (type == typeof(float))
+			{
+				if (jsonData.IsDouble)
+					return (float)(double)jsonData;
+				else
+					throw new System.FormatException("Json Format Error : not double");
+			}
 			else if (type == typeof(bool))
 			{
 				if (jsonData.IsBoolean)

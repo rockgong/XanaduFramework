@@ -5,13 +5,19 @@ using GameKernal;
 
 namespace MainGame
 {
-	public class MainGameState : IGameState, IInputEventListener
+	class MainGameState : IGameState, IInputEventListener
 	{
 		private MonoGameInput _input;
 		private IPlayerCharacter _player;
 		private ICamera _camera;
 		private bool _mouseDown;
 		private IGameKernal _kernal;
+		private MainGameCameraController _camController;
+
+		public void SetCameraController(MainGameCameraController cc)
+		{
+			_camController = cc;
+		}
 
 		public void EnterState(IGameKernal kernal)
 		{
@@ -23,7 +29,8 @@ namespace MainGame
 			_input.listener = this;
 			_player = kernal.GetPlayerCharacter();
 			_camera = kernal.GetCamera();
-			kernal.SetCameraFollowPlayer(true);
+			// kernal.SetCameraFollowPlayer(true);
+			_camController.Startup();
 			_kernal = kernal;
 
 			return;
@@ -32,7 +39,8 @@ namespace MainGame
 		public void ExitState(IGameKernal kernal)
 		{
 			_input.listener = null;
-			kernal.SetCameraFollowPlayer(false);
+			// kernal.SetCameraFollowPlayer(false);
+			_camController.Shutdown();
             _player.velocity = 0.0f;
 
 			return;

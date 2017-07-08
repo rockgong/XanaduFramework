@@ -1,4 +1,38 @@
 [
-{"ID" : 1, "PREFAB_NAME" : "TestStage0"},
-{"ID" : 2, "PREFAB_NAME" : "TestStage"}
+{
+	"ID" : 1, "PREFAB_NAME" : "TestStage0",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Literal",
+		"x" : 0.0,
+		"y" : 15.0,
+		"z" : 0.0
+	}
+},
+{
+	"ID" : 2, "PREFAB_NAME" : "TestStage",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0,
+			"y" : 20.0,
+			"z" : -20.0
+		}
+	}
+}
 ]

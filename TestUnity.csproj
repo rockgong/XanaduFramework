@@ -80,6 +80,9 @@
   <ItemGroup>
     <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
     <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
+    <Compile Include="Assets\Script\Database\NonPlayerDatabase.cs" />
+    <Compile Include="Assets\Script\Database\PropObjectDatabase.cs" />
+    <Compile Include="Assets\Script\Database\StageDatabase.cs" />
     <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
     <Compile Include="Assets\Script\Helper\MathHelper.cs" />
     <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -109,12 +112,18 @@
     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerFromValue.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerLiteral.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEval\CommonStringLiteral.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Literal.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Multiply.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Player.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Plus.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3StagePoint.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />
     <Compile Include="Assets\Script\MainGame\CommonIntegerAndString.cs" />
+    <Compile Include="Assets\Script\MainGame\CommonVector3Builder.cs" />
     <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
     <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
@@ -128,6 +137,7 @@
     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandWait.cs" />
     <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
     <Compile Include="Assets\Script\MainGame\InteractView.cs" />
+    <Compile Include="Assets\Script\MainGame\MainGameCameraController.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
     <Compile Include="Assets\Script\MainGame\MainGameIntegerBuilder.cs" />
@@ -142,9 +152,6 @@
     <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
     <Compile Include="Assets\Script\Test\TestJson.cs" />
-    <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
-    <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
-    <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
     <Compile Include="Assets\Script\TestBehavior.cs" />
     <Compile Include="Assets\Script\TextMap\TextMap.cs" />
     <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
@@ -164,6 +171,9 @@
   <ItemGroup>
     <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
     <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
+    <None Include="Assets\Resources\Database\NonPlayer.txt" />
+    <None Include="Assets\Resources\Database\PropObject.txt" />
+    <None Include="Assets\Resources\Database\Stage.txt" />
     <None Include="Assets\Resources\InteractCommand\InteractCommand.txt" />
     <None Include="Assets\Resources\TextMap\TextMap.txt" />
   </ItemGroup>

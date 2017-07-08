@@ -9,6 +9,8 @@ namespace MainGame
     {
         int id { get; }
         string prefabName { get; }
+        BaseCommonVector3 cameraLook { get; }
+        BaseCommonVector3 cameraPos { get; }
     }
 
     public interface IStageDatabase

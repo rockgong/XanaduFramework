@@ -48,7 +48,7 @@ namespace MainGame
     {
         protected IGameKernal _gameKernal;
 
-        public void Setup(IGameKernal kernal)
+        public virtual void Setup(IGameKernal kernal)
         {
             _gameKernal = kernal;
         }

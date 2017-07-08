@@ -105,6 +105,7 @@
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandWait.cs" />
      <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
      <Compile Include="Assets\Script\MainGame\InteractView.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGameCameraController.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameIntegerBuilder.cs" />
