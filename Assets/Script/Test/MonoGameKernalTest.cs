@@ -49,10 +49,13 @@ namespace MainGame
             _playerStageManager.SetGameKernal(gameKernal);
             _playerStageManager.RegisterListener(this);
 
-            TestNonPlayerDatabase nonPlayerDb = GetComponent<TestNonPlayerDatabase>();
+            NonPlayerDatabase nonPlayerDb = new NonPlayerDatabase();
+            nonPlayerDb.Initialize();
             _nonPlayerManager.Initialize(nonPlayerDb, gameKernal);
             _nonPlayerManager.SetNonPlayerPosition(1, 1, "1");
             _nonPlayerManager.SetNonPlayerPosition(2, 2, "2");
+            _nonPlayerManager.SetNonPlayerPosition(3, 2, "3");
+            // _nonPlayerManager.SetNonPlayerPosition(4, 2, "1");
 
             TestPropObjectDatabase propObjectDb = GetComponent<TestPropObjectDatabase>();
             _propObjectManager.Initialize(propObjectDb, gameKernal);

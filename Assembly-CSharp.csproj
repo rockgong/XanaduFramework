@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
+     <Compile Include="Assets\Script\Database\NonPlayerDatabase.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -131,6 +132,7 @@
      <None Include="Assets\Resources\InteractCommand\InteractCommand.txt" />
      <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
      <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
+     <None Include="Assets\Resources\Database\NonPlayer.txt" />
      <None Include="Assets\Resources\TextMap\TextMap.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity55/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
