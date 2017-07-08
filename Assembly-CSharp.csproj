@@ -49,6 +49,7 @@
      <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Database\NonPlayerDatabase.cs" />
+     <Compile Include="Assets\Script\Database\PropObjectDatabase.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -111,8 +112,6 @@
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
-     <Compile Include="Assets\Script\Test\TestNonPlayerDatabase.cs" />
-     <Compile Include="Assets\Script\Test\TestPropObjectDatabase.cs" />
      <Compile Include="Assets\Script\Test\TestStageDatabase.cs" />
      <Compile Include="Assets\Script\TestBehavior.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />
@@ -132,6 +131,7 @@
      <None Include="Assets\Resources\InteractCommand\InteractCommand.txt" />
      <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
      <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
+     <None Include="Assets\Resources\Database\PropObject.txt" />
      <None Include="Assets\Resources\Database\NonPlayer.txt" />
      <None Include="Assets\Resources\TextMap\TextMap.txt" />
  <Reference Include="UnityEngine.UI">

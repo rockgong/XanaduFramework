@@ -57,7 +57,8 @@ namespace MainGame
             _nonPlayerManager.SetNonPlayerPosition(3, 2, "3");
             // _nonPlayerManager.SetNonPlayerPosition(4, 2, "1");
 
-            TestPropObjectDatabase propObjectDb = GetComponent<TestPropObjectDatabase>();
+            PropObjectDatabase propObjectDb = new PropObjectDatabase();
+            propObjectDb.Initialize();
             _propObjectManager.Initialize(propObjectDb, gameKernal);
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
