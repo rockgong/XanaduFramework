@@ -123,7 +123,6 @@
      <Compile Include="Assets\Script\Miscs\MonoScreenCover.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
-     <Compile Include="Assets\Script\TestBehavior.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
      <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />
