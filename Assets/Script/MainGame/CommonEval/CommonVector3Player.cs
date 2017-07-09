@@ -16,7 +16,7 @@ namespace MainGame
 		{
 			IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
 			if (player != null)
-				return player.position;
+				return player.viewPosition;
 			
 			return Vector3.zero;				
 		}

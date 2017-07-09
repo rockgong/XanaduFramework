@@ -10,7 +10,7 @@
 		"$type" : "MainGame.CommonVector3Literal",
 		"x" : 0.0,
 		"y" : 15.0,
-		"z" : 0.0
+		"z" : -20.0
 	}
 },
 {
@@ -30,7 +30,7 @@
 		{
 			"$type" : "MainGame.CommonVector3Literal",
 			"x" : 0.0,
-			"y" : 20.0,
+			"y" : 10.0,
 			"z" : -20.0
 		}
 	}
