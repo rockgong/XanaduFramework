@@ -149,6 +149,7 @@ namespace GameKernal
     {
         Vector3 lookPosition{get; set;}
         Vector3 offset{get; set;}
+        Vector3 easingTarget{get;}
         void EasingMoveTo(Vector3 position, System.Action onFinish = null);
     }
 

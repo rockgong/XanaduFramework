@@ -26,6 +26,13 @@ namespace GameKernal
                 		return;
                 	}
                 }
+                public virtual Vector3 easingTarget
+                {
+                        get
+                        {
+                                return Vector3.zero;
+                        }
+                }
 
                 public abstract void Initialize();
                 public abstract void Uninitialize();

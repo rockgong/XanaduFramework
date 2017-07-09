@@ -48,6 +48,12 @@ namespace MainGame
 			return;
 		}
 
+		public void CancelEasing()
+		{
+			ProcessCamera();
+			_camera.lookPosition = _camera.easingTarget;
+		}
+
 		public void Shutdown()
 		{
 			if (_delegate != null)

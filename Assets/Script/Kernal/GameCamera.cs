@@ -39,6 +39,16 @@ namespace GameKernal
 			}
 		}
 
+		public override Vector3 easingTarget
+		{
+			get
+			{
+				if (_monoCamera != null)
+					return _monoCamera.easingTargetPosition;
+				return Vector3.zero;
+			}
+		}
+
 		public void SetFollowTransform(Transform target)
 		{
 			_monoCamera.lookAtTransform = target;

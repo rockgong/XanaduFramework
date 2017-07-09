@@ -91,8 +91,6 @@ namespace MainGame
             _mainGameCommandManager.DoCommand("Change1");
             _mainGameCommandManager.DoCommand("Change3");
 
-            _playerStageManager.SwapPlayer(1, "spawn");
-
             ICamera cam = gameKernal.GetCamera();
 
             cam.lookPosition = player.viewPosition;
@@ -102,6 +100,8 @@ namespace MainGame
             gameKernal.Startup();
 
             _mainGameCameraController.Initialize(gameKernal.GetCamera());
+
+            _playerStageManager.SwapPlayer(1, "spawn");
 
             _mainGameState.SetCameraController(_mainGameCameraController);
 
@@ -168,7 +168,7 @@ namespace MainGame
 
         public void OnPlayerSwapped(int stageId, string stagePointName)
         {
-
+            _mainGameCameraController.CancelEasing();
         }
 
         public void OnStageChanged(int stageId)
