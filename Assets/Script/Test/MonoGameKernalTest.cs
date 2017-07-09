@@ -5,6 +5,7 @@ using GameKernal;
 using MainGame;
 using System;
 using Config;
+using Miscs;
 
 namespace MainGame
 {
@@ -30,6 +31,7 @@ namespace MainGame
         private MainGameCameraController _mainGameCameraController = new MainGameCameraController();
         private StageDatabase _stageDatabase = new StageDatabase();
         private CommonVector3Builder _commonVector3Builder = new CommonVector3Builder();
+        private MainTransfer _mainTransfer = new MainTransfer();
 
         private string _commonEventName = "TestEvent";
 
@@ -68,8 +70,8 @@ namespace MainGame
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
             _triggerManager.Initialize(gameKernal);
-            _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _playerStageManager.SwapPlayer(2, "4"));
-            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _playerStageManager.SwapPlayer(1, "4"));
+            _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
+            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "4")));
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -111,6 +113,7 @@ namespace MainGame
 
             _interactGameState.SetInteractView(_interactView);
             _interactView.SetListener(_interactGameState);
+            _mainTransfer.Initialize();
 
         }
 
