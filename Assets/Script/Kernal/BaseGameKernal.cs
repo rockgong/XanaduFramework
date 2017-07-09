@@ -139,7 +139,8 @@ namespace GameKernal
                 _currentState.ExitState(this);
 
             _currentState = state;
-            _currentState.EnterState(this);
+            if (_currentState != null)
+                _currentState.EnterState(this);
 
             return;
         }
