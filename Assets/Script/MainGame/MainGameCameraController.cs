@@ -42,7 +42,6 @@ namespace MainGame
 			Vector3 target = _cameraTarget.GetVector3();
 			Vector3 position = _cameraPosition.GetVector3();
 
-			// _camera.lookPosition = target;
 			_camera.EasingMoveTo(target);
 			_camera.offset = position - target;
 

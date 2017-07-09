@@ -34,22 +34,41 @@
 	"ID" : 2, "PREFAB_NAME" : "TestStage",
 	"CAMERA_LOOK" :
 	{
-		"$type" : "MainGame.CommonVector3Player"
-	},
-	"CAMERA_POS" :
-	{
 		"$type" : "MainGame.CommonVector3Plus",
 		"op0" :
 		{
-			"$type" : "MainGame.CommonVector3Player"
+			"$type" : "MainGame.CommonVector3Multiply",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.5, "y" : 0.5, "z" : 0.5
+			}
 		},
 		"op1" :
 		{
-			"$type" : "MainGame.CommonVector3Literal",
-			"x" : 0.0,
-			"y" : 10.0,
-			"z" : -20.0
+			"$type" : "MainGame.CommonVector3Multiply",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "1"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.5, "y" : 0.5, "z" : 0.5
+			}
 		}
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Literal",
+		"x" : 0.0,
+		"y" : 10.0,
+		"z" : -20.0
 	}
 }
 ]
