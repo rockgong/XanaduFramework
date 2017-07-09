@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameKernal;
 
 namespace MainGame
 {
@@ -14,6 +15,16 @@ namespace MainGame
 	{
 		public BaseCommonVector3Eval op0;
 		public BaseCommonVector3Eval op1;
+
+		public override void Setup(IGameKernal gameKernal)
+		{
+			base.Setup(gameKernal);
+
+			if (op0 != null)
+				op0.Setup(gameKernal);
+			if (op1 != null)
+				op1.Setup(gameKernal);
+		}
 
 		public override Vector3 GetVector3()
 		{

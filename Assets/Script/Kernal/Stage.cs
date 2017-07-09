@@ -11,7 +11,11 @@ namespace GameKernal
         public override Vector3 GetStagePoint(string name)
         {
             if (_stage != null)
-                return _stage.GetPointTrans(name).position;
+            {
+                Transform trans = _stage.GetPointTrans(name);
+                if (trans != null)
+                    return trans.position;
+            }
 
             return Vector3.zero;
         }
@@ -19,7 +23,11 @@ namespace GameKernal
         public override Vector3 GetStagePointSize(string name)
         {
             if (_stage != null)
-                return _stage.GetPointTrans(name).localScale;
+            {
+                Transform trans = _stage.GetPointTrans(name);
+                if (trans != null)
+                    return trans.localScale;
+            }
 
             return Vector3.zero;
         }

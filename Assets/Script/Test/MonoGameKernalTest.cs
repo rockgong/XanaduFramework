@@ -59,8 +59,8 @@ namespace MainGame
             NonPlayerDatabase nonPlayerDb = new NonPlayerDatabase();
             nonPlayerDb.Initialize();
             _nonPlayerManager.Initialize(nonPlayerDb, gameKernal);
-            _nonPlayerManager.SetNonPlayerPosition(1, 1, "1");
-            _nonPlayerManager.SetNonPlayerPosition(2, 2, "2");
+            _nonPlayerManager.SetNonPlayerPosition(1, 1, "npc_1");
+            _nonPlayerManager.SetNonPlayerPosition(2, 1, "npc_2");
             _nonPlayerManager.SetNonPlayerPosition(3, 2, "3");
             // _nonPlayerManager.SetNonPlayerPosition(4, 2, "1");
 
@@ -70,8 +70,8 @@ namespace MainGame
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
 
             _triggerManager.Initialize(gameKernal);
-            _triggerManager.AddTriggerInfo("swap1", 1, "2", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
-            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "4")));
+            _triggerManager.AddTriggerInfo("swap1", 1, "npc_3", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
+            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "spawn")));
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -91,7 +91,7 @@ namespace MainGame
             _mainGameCommandManager.DoCommand("Change1");
             _mainGameCommandManager.DoCommand("Change3");
 
-            _playerStageManager.SwapPlayer(1, "4");
+            _playerStageManager.SwapPlayer(1, "spawn");
 
             ICamera cam = gameKernal.GetCamera();
 

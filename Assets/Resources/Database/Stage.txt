@@ -1,16 +1,33 @@
 [
 {
-	"ID" : 1, "PREFAB_NAME" : "TestStage0",
+	"ID" : 1, "PREFAB_NAME" : "TestSchool",
 	"CAMERA_LOOK" :
 	{
 		"$type" : "MainGame.CommonVector3Player"
 	},
 	"CAMERA_POS" :
 	{
-		"$type" : "MainGame.CommonVector3Literal",
-		"x" : 0.0,
-		"y" : 15.0,
-		"z" : -20.0
+		"$type" : "MainGame.CommonVector3Multiply",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Plus",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "camera_base"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			}
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0,
+			"y" : 1.0,
+			"z" : 0.5
+		}
 	}
 },
 {
