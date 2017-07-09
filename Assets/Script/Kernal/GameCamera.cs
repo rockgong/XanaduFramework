@@ -49,6 +49,20 @@ namespace GameKernal
 			}
 		}
 
+		public override Transform attachTransform
+		{
+			get
+			{
+                if (_monoCamera != null)
+                    return _monoCamera.attachTransform;
+                return null;
+			}
+			set
+			{
+                _monoCamera.attachTransform = value;
+			}
+		}
+
 		public void SetFollowTransform(Transform target)
 		{
 			_monoCamera.lookAtTransform = target;

@@ -50,6 +50,7 @@
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Database\NonPlayerDatabase.cs" />
      <Compile Include="Assets\Script\Database\PropObjectDatabase.cs" />
+     <Compile Include="Assets\Script\Database\ScenarioPhaseDatabase.cs" />
      <Compile Include="Assets\Script\Database\StageDatabase.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
@@ -113,10 +114,15 @@
      <Compile Include="Assets\Script\MainGame\MainGameState.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameStringBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
+     <Compile Include="Assets\Script\MainGame\MonoScenarioScene.cs" />
      <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
      <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
      <Compile Include="Assets\Script\MainGame\PlayerStageManager.cs" />
      <Compile Include="Assets\Script\MainGame\PropObjectManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseWaitTime.cs" />
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Miscs\MainTransfer.cs" />
@@ -141,6 +147,7 @@
      <None Include="Assets\Resources\CommonEvent\TestCommonEvent.txt" />
      <None Include="Assets\Resources\CommonEvent\CommonEvent.txt" />
      <None Include="Assets\Resources\Database\PropObject.txt" />
+     <None Include="Assets\Resources\ScenarioPhase\ScenarioPhase.txt" />
      <None Include="Assets\Resources\Database\Stage.txt" />
      <None Include="Assets\Resources\Database\NonPlayer.txt" />
      <None Include="Assets\Resources\TextMap\TextMap.txt" />

@@ -9,7 +9,7 @@ using Miscs;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -18,6 +18,7 @@ namespace MainGame
 
         private MainGameState _mainGameState = new MainGameState();
         private InteractGameState _interactGameState = new InteractGameState();
+        private ScenarioGameState _scenarioGameState = new ScenarioGameState();
         private InteractView _interactView = new InteractView();
         private PlayerStageManager _playerStageManager = new PlayerStageManager();
         private NonPlayerManager _nonPlayerManager = new NonPlayerManager();
@@ -32,8 +33,12 @@ namespace MainGame
         private StageDatabase _stageDatabase = new StageDatabase();
         private CommonVector3Builder _commonVector3Builder = new CommonVector3Builder();
         private MainTransfer _mainTransfer = new MainTransfer();
+        private ScenarioPhaseBuilder _scenarioPhaseBuilder = new ScenarioPhaseBuilder();
+        private ScenarioPhaseDatabase _scenarioPhaseDatabase = new ScenarioPhaseDatabase();
+        private ScenarioPhaseManager _scenarioPhaseManager = new ScenarioPhaseManager();
 
-        private string _commonEventName = "TestEvent";
+        private string _sceneName = "TestScenario";
+        private string _scenarioId = "1";
 
         void Start()
         {
@@ -88,6 +93,10 @@ namespace MainGame
             // _interactCommandManager.Initialize(_interactGameState, GetComponent<TestInteractCommandDatabase>(), _interactCommandBuilder);
             _interactCommandManager.Initialize(_interactGameState, interactCommandDatabase, _interactCommandBuilder);
 
+            _scenarioPhaseDatabase.LoadFromAsset("ScenarioPhase/ScenarioPhase");
+            _scenarioPhaseBuilder.Initialize();
+            _scenarioPhaseManager.Initialize(_scenarioPhaseDatabase, _scenarioPhaseBuilder);
+
             _mainGameCommandManager.DoCommand("Change1");
             _mainGameCommandManager.DoCommand("Change3");
 
@@ -108,6 +117,7 @@ namespace MainGame
             gameKernal.SetGameState(_mainGameState);
 
             _interactGameState.SetHost(this);
+            _scenarioGameState.Initialize(gameKernal, this);
 
             _interactView.Initialize();
 
@@ -159,10 +169,18 @@ namespace MainGame
 
         private void OnGUI()
         {
-            _commonEventName = GUILayout.TextField(_commonEventName);
+            _sceneName = GUILayout.TextField(_sceneName);
+            _scenarioId = GUILayout.TextField(_scenarioId);
             if (GUILayout.Button("Excute"))
             {
-                _mainGameCommandManager.DoCommand(_commonEventName);
+                int scenarioId = int.Parse(_scenarioId);
+                BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
+                GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + _sceneName);
+                GameObject inst = GameObject.Instantiate<GameObject>(proto);
+                MonoScenarioScene scene = inst.GetComponent<MonoScenarioScene>();
+                _scenarioGameState.Setup(scene, phase);
+
+                _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
             }
         }
 
@@ -191,6 +209,11 @@ namespace MainGame
             Debug.Log("OnValueChanged Called");
 
             return;
+        }
+
+        public void OnScenarioEnd()
+        {
+            _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_mainGameState));
         }
     }
 }

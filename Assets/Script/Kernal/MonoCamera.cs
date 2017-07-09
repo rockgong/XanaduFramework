@@ -14,35 +14,44 @@ namespace GameKernal
 		public bool easingMoving = false;
         public float easingMoveThreshold = 0.01f;
 		public System.Action onFinish = null;
+        public Transform attachTransform = null;
 
 		private void LateUpdate()
 		{
-            if (lookAtTransform == null)
+            if (attachTransform == null)
             {
-                if (easingMoving)
+                if (lookAtTransform == null)
                 {
-                    lookAtPosition = GetEasingLookAtPosition(lookAtPosition, easingTargetPosition);
-                    if (
-                        (lookAtPosition - easingTargetPosition).magnitude < 0.01f
-                        )
+                    if (easingMoving)
                     {
-                        easingMoving = false;
-                        if (onFinish != null)
+                        lookAtPosition = GetEasingLookAtPosition(lookAtPosition, easingTargetPosition);
+                        if (
+                            (lookAtPosition - easingTargetPosition).magnitude < 0.01f
+                            )
                         {
-                            onFinish();
-                            onFinish = null;
+                            easingMoving = false;
+                            if (onFinish != null)
+                            {
+                                onFinish();
+                                onFinish = null;
+                            }
+                            lookAtPosition = easingTargetPosition;
                         }
-                        lookAtPosition = easingTargetPosition;
                     }
+                    transform.position = lookAtPosition + offset;
                 }
-                transform.position = lookAtPosition + offset;
+                else
+                {
+                    lookAtPosition = GetEasingLookAtPosition(lookAtPosition, lookAtTransform.position);
+                    transform.position = lookAtPosition + offset;
+                }
+                transform.LookAt(lookAtPosition);
             }
             else
             {
-                lookAtPosition = GetEasingLookAtPosition(lookAtPosition, lookAtTransform.position);
-                transform.position = lookAtPosition + offset;
+                transform.position = attachTransform.position;
+                transform.rotation = attachTransform.rotation;
             }
-			transform.LookAt(lookAtPosition);
 		}
 
 		private Vector3 GetEasingLookAtPosition(Vector3 current, Vector3 target)

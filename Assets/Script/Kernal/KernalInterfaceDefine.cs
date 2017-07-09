@@ -151,6 +151,7 @@ namespace GameKernal
         Vector3 offset{get; set;}
         Vector3 easingTarget{get;}
         void EasingMoveTo(Vector3 position, System.Action onFinish = null);
+        Transform attachTransform{get; set;}
     }
 
     //Trigger
