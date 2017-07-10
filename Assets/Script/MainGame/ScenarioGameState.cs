@@ -12,9 +12,13 @@ namespace MainGame
 
 	abstract class BaseScenarioPhase
 	{
-		public virtual void Setup()
-		{
+        protected IGameKernal _gameKernal;
+        protected MonoScenarioScene _scene;
 
+		public virtual void Setup(IGameKernal kernal, MonoScenarioScene scene)
+		{
+            _gameKernal = kernal;
+            _scene = scene;
 		}
 
 		public abstract void Enter();

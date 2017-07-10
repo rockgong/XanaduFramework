@@ -178,6 +178,7 @@ namespace MainGame
                 GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + _sceneName);
                 GameObject inst = GameObject.Instantiate<GameObject>(proto);
                 MonoScenarioScene scene = inst.GetComponent<MonoScenarioScene>();
+                phase.Setup(gameKernal, scene);
                 _scenarioGameState.Setup(scene, phase);
 
                 _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));

@@ -159,6 +159,7 @@ namespace MainGame
 						BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(int.Parse(_playScenarioId));
 						if (phase != null)
 						{
+							phase.Setup(gameKernal, inst.GetComponent<MonoScenarioScene>());
 							_scenarioGameState.Setup(inst.GetComponent<MonoScenarioScene>(), phase);
 							gameKernal.SetGameState(_scenarioGameState);
 							_playing = true;

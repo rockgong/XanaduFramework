@@ -19,6 +19,7 @@ namespace MainGame
         public void Initialize()
         {
         	_handlers[typeof(ScenarioPhaseDataWaitTime)] = ScenarioPhaseWaitTime.BuildHandler;
+            _handlers[typeof(ScenarioPhaseDataSetPosition)] = ScenarioPhaseSetPosition.BuildHandler;
 
         	if (_mainGameStringBuilder == null)
         	{

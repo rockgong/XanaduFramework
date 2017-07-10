@@ -66,6 +66,16 @@ namespace GameKernal
             return newPlayer;
         }
 
+        public override INonPlayerCharacter GetNonPlayerCharacter(string name)
+        {
+            for (int i = 0; i < _nonPlayer.Count; i++)
+            {
+                if (_nonPlayer[i].name == name)
+                    return _nonPlayer[i];
+            }
+            return null;
+        }
+
         public override void RemoveNonPlayerCharacter(string name)
         {
             for (int i = 0; i < _nonPlayer.Count; i++)

@@ -122,6 +122,7 @@
      <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseSetPosition.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseWaitTime.cs" />
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />

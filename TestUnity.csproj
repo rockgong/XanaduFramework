@@ -154,12 +154,14 @@
     <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+    <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseSetPosition.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseWaitTime.cs" />
     <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
     <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
     <Compile Include="Assets\Script\Miscs\MainTransfer.cs" />
     <Compile Include="Assets\Script\Miscs\MonoScreenCover.cs" />
     <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
+    <Compile Include="Assets\Script\Test\MonoScenarioTest.cs" />
     <Compile Include="Assets\Script\Test\TestJson.cs" />
     <Compile Include="Assets\Script\TextMap\TextMap.cs" />
     <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
