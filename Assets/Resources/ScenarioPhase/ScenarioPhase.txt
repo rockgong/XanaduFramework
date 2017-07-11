@@ -3,10 +3,25 @@
 		"id" : 1,
 		"data" :
 		{
-			"$type" : "MainGame.ScenarioPhaseDataSetPosition",
-			"targetName" : "nana",
-			"standPointName" : "center",
-			"lookPointName" : "center_look"
+			"$type" : "MainGame.ScenarioPhaseDataParallel",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataPlayAnimatin",
+					"targetName" : "nana",
+					"animationName" : "Talk"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataSetPosition",
+					"targetName" : "nana",
+					"standPointName" : "center",
+					"lookPointName" : "center_look"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				}
+			]
 		}
 	}
 ]

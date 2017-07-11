@@ -20,7 +20,7 @@ namespace MainGame
 		public override void Enter()
 		{
 			INonPlayerCharacter nonPlayer = _gameKernal.GetNonPlayerCharacter(targetName);
-			if (nonPlayer != null && string.IsNullOrEmpty(animationName))
+			if (nonPlayer != null && !string.IsNullOrEmpty(animationName))
 			{
 				nonPlayer.PlayAnimation(animationName);
 			}

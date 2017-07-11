@@ -154,7 +154,9 @@
     <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+    <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseParallel.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhasePlayAnimatin.cs" />
+    <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseSerial.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseSetPosition.cs" />
     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseWaitTime.cs" />
     <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />

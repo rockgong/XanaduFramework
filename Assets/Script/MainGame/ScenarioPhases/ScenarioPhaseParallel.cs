@@ -70,7 +70,7 @@ namespace MainGame
 			if (target != null)
 			{
 				result.members = new BaseScenarioPhase[target.members.Length];
-				for (int i = 0; i > target.members.Length; i++)
+				for (int i = 0; i < target.members.Length; i++)
 					result.members[i] = builder.Build(target.members[i]);
 			}
 

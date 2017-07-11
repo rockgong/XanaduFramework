@@ -39,7 +39,7 @@ namespace MainGame
 
 		public override bool CheckOver()
 		{
-			return false;
+			return true;
 		}
 		public override void Exit()
 		{
