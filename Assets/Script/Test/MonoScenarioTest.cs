@@ -19,6 +19,8 @@ namespace MainGame
 		private int _playerPrefabNameIndex;
 		private string _playerPointName;
 
+		private MonoScenarioScene _scene;
+
 		class NonPlayerInfo
 		{
 			public string name = string.Empty;
@@ -103,6 +105,12 @@ namespace MainGame
 				_playing = false;
 				gameKernal.SetGameState(null);
 			}
+
+			if (_scene != null)
+			{
+				GameObject.Destroy(_scene.gameObject);
+				_scene = null;
+			}
 		}
 
 		void OnGUI()
@@ -159,8 +167,9 @@ namespace MainGame
 						BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(int.Parse(_playScenarioId));
 						if (phase != null)
 						{
-							phase.Setup(gameKernal, inst.GetComponent<MonoScenarioScene>());
-							_scenarioGameState.Setup(inst.GetComponent<MonoScenarioScene>(), phase);
+							_scene = inst.GetComponent<MonoScenarioScene>();
+							phase.Setup(gameKernal, _scene);
+							_scenarioGameState.Setup(_scene, phase);
 							gameKernal.SetGameState(_scenarioGameState);
 							_playing = true;
 						}
