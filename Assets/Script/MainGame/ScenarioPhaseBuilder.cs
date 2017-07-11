@@ -20,6 +20,7 @@ namespace MainGame
         {
         	_handlers[typeof(ScenarioPhaseDataWaitTime)] = ScenarioPhaseWaitTime.BuildHandler;
             _handlers[typeof(ScenarioPhaseDataSetPosition)] = ScenarioPhaseSetPosition.BuildHandler;
+            _handlers[typeof(ScenarioPhaseDataPlayAnimatin)] = ScenarioPhasePlayAnimatin.BuildHandler;
 
         	if (_mainGameStringBuilder == null)
         	{
