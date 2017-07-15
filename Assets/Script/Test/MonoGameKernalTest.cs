@@ -37,6 +37,8 @@ namespace MainGame
         private ScenarioPhaseDatabase _scenarioPhaseDatabase = new ScenarioPhaseDatabase();
         private ScenarioPhaseManager _scenarioPhaseManager = new ScenarioPhaseManager();
 
+        private MonoScenarioScene _scenarioScene = null;
+
         private string _sceneName = "TestScenario";
         private string _scenarioId = "1";
 
@@ -46,7 +48,7 @@ namespace MainGame
             
             gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 
-            GameObject playerPrototype = Resources.Load<GameObject>("Player/Player");
+            GameObject playerPrototype = Resources.Load<GameObject>("Player/Player2");
 
             IPlayerCharacter player = gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(playerPrototype));
 
@@ -177,9 +179,9 @@ namespace MainGame
                 BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
                 GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + _sceneName);
                 GameObject inst = GameObject.Instantiate<GameObject>(proto);
-                MonoScenarioScene scene = inst.GetComponent<MonoScenarioScene>();
-                phase.Setup(gameKernal, scene);
-                _scenarioGameState.Setup(scene, phase);
+                _scenarioScene = inst.GetComponent<MonoScenarioScene>();
+                phase.Setup(gameKernal, _scenarioScene);
+                _scenarioGameState.Setup(_scenarioScene, phase);
 
                 _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
             }
@@ -214,7 +216,15 @@ namespace MainGame
 
         public void OnScenarioEnd()
         {
-            _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_mainGameState));
+            _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => 
+            {
+                gameKernal.SetGameState(_mainGameState);
+                if (_scenarioScene != null)
+                {
+                    GameObject.Destroy(_scenarioScene.gameObject);
+                    _scenarioScene = null;
+                }
+            });
         }
     }
 }

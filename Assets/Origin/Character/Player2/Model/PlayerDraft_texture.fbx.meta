@@ -1,0 +1,166 @@
+fileFormatVersion: 2
+guid: b7507850960e19f41802bece92f3f9bd
+timeCreated: 1500094722
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Camera
+    100004: Chest
+    100006: Foot_L
+    100008: Foot_L_end
+    100010: Foot_R
+    100012: Foot_R_end
+    100014: Glass
+    100016: Hair
+    100018: Hand_L
+    100020: Hand_L_end
+    100022: Hand_R
+    100024: Hand_R_end
+    100026: Head
+    100028: Head 1
+    100030: Head_end
+    100032: Hemi
+    100034: Hip_L
+    100036: Hip_R
+    100038: Lamp
+    100040: Leg
+    100042: LowerArm_L
+    100044: LowerArm_R
+    100046: LowerLeg_L
+    100048: LowerLeg_R
+    100050: Neck
+    100052: Pevit
+    100054: //RootNode
+    100056: Shirt
+    100058: Shoe_L
+    100060: Shoe_R
+    100062: Shoulder_L
+    100064: Shoulder_R
+    100066: UpperArm_L
+    100068: UpperArm_R
+    100070: UpperLeg_L
+    100072: UpperLeg_R
+    400000: Armature
+    400002: Camera
+    400004: Chest
+    400006: Foot_L
+    400008: Foot_L_end
+    400010: Foot_R
+    400012: Foot_R_end
+    400014: Glass
+    400016: Hair
+    400018: Hand_L
+    400020: Hand_L_end
+    400022: Hand_R
+    400024: Hand_R_end
+    400026: Head
+    400028: Head 1
+    400030: Head_end
+    400032: Hemi
+    400034: Hip_L
+    400036: Hip_R
+    400038: Lamp
+    400040: Leg
+    400042: LowerArm_L
+    400044: LowerArm_R
+    400046: LowerLeg_L
+    400048: LowerLeg_R
+    400050: Neck
+    400052: Pevit
+    400054: //RootNode
+    400056: Shirt
+    400058: Shoe_L
+    400060: Shoe_R
+    400062: Shoulder_L
+    400064: Shoulder_R
+    400066: UpperArm_L
+    400068: UpperArm_R
+    400070: UpperLeg_L
+    400072: UpperLeg_R
+    4300000: Leg
+    4300002: Shirt
+    4300004: Shoe_R
+    4300006: Shoe_L
+    4300008: Glass
+    4300010: Hair
+    4300012: Head
+    9500000: //RootNode
+    13700000: Glass
+    13700002: Hair
+    13700004: Head
+    13700006: Leg
+    13700008: Shirt
+    13700010: Shoe_L
+    13700012: Shoe_R
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
