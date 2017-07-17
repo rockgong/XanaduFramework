@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameKernal
 {
@@ -7,6 +8,7 @@ namespace GameKernal
     {
         private MonoEntity _entity;
         private MonoStage _stage;
+        private Scene _unityScene;
 
         public override Vector3 GetStagePoint(string name)
         {
@@ -32,20 +34,84 @@ namespace GameKernal
             return Vector3.zero;
         }
 
-        public override void Initialize(StageDesc desc)
+        public override void Initialize(StageDesc desc, System.Action onEnd = null)
         {
+            /*
             GameObject newGameObject = GameObject.Instantiate<GameObject>(desc.prototype);
             _entity = newGameObject.AddComponent<MonoEntity>();
             _entity.SetHost(this);
             _stage = _entity.GetComponent<MonoStage>();
+            */
+
+            if (_stage != null)
+            {
+                GameObject.Destroy(_stage.gameObject);
+                _stage = null;
+                _entity = null;
+            }
+            SceneManager.LoadScene(desc.sceneName, LoadSceneMode.Additive);
+
+            /*
+            if (_unityScene.isLoaded)
+            {
+                GameObject[] rootGOs = _unityScene.GetRootGameObjects();
+                if (rootGOs != null || rootGOs.Length > 0)
+                {
+                    _entity = rootGOs[0].AddComponent<MonoEntity>();
+                    _entity.SetHost(this);
+                    _stage = _entity.GetComponent<MonoStage>();
+                }
+                else
+                {
+                    Debug.Log("No Root GameObject");
+                }
+            }
+            else
+            {
+                Debug.Log("Failed To Load Scene");
+            }
+            */
+
+            MonoDelegate monoDelegate = null;
+            monoDelegate = MonoDelegate.Create(() =>
+            {
+                _unityScene = SceneManager.GetSceneByName(desc.sceneName);
+                if (_unityScene.isLoaded)
+                {
+                    if (monoDelegate != null)
+                        GameObject.Destroy(monoDelegate.gameObject);
+                    GameObject[] rootGOs = _unityScene.GetRootGameObjects();
+                    if (rootGOs != null || rootGOs.Length > 0)
+                    {
+                        _entity = rootGOs[0].AddComponent<MonoEntity>();
+                        _entity.SetHost(this);
+                        _stage = _entity.GetComponent<MonoStage>();
+                        if (onEnd != null)
+                            onEnd();
+                    }
+                    else
+                    {
+                        Debug.Log("No Root GameObject");
+                    }
+                }
+            }, "_Delegate", 0);
 
             return;
         }
 
         public override void Uninitialize()
         {
-            _entity.SetHost(null);
-            GameObject.Destroy(_entity.gameObject);
+            if (_entity != null)
+            {
+                _entity.SetHost(null);
+                _entity = null;
+            }
+            if (_unityScene != null)
+            {
+                SceneManager.UnloadSceneAsync(_unityScene);
+            }
+
+            Debug.Log("Uninitialize Called");
 
             return;
         }

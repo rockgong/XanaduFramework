@@ -8,7 +8,7 @@ namespace MainGame
     public interface IStageDatabaseEntry
     {
         int id { get; }
-        string prefabName { get; }
+        string sceneName { get; }
         BaseCommonVector3 cameraLook { get; }
         BaseCommonVector3 cameraPos { get; }
     }
@@ -71,33 +71,40 @@ namespace MainGame
         public void SwapPlayer(int stageId, string stagePointName)
         {
             IStage stage = null;
+            bool thisFrame = true;
             if (stageId == _currentStageId)
                 stage = _gameKernal.GetStage();
             else
             {
+                thisFrame = false;
                 IStageDatabaseEntry entry = _database.GetEntryById(stageId);
                 if (entry != null)
                 {
-                    GameObject proto = Resources.Load<GameObject>(string.Format("Stage/{0}", entry.prefabName));
-                    if (proto == null)
-                        Debug.LogError(string.Format("Missing stage prefab : {0}", entry.prefabName));
-                    stage = _gameKernal.SetupStage(new StageDesc(proto));
-                    for (int i = 0; i < _listeners.Count; i++)
-                        _listeners[i].OnStageChanged(stageId);
+                    stage = _gameKernal.SetupStage(new StageDesc(entry.sceneName), () =>
+                    {
+                        for (int i = 0; i < _listeners.Count; i++)
+                            _listeners[i].OnStageChanged(stageId);
+                        IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
+                        player.position = _gameKernal.GetStage().GetStagePoint(stagePointName);
+                        for (int i = 0; i < _listeners.Count; i++)
+                        _listeners[i].OnPlayerSwapped(stageId, stagePointName);
+                        _currentStageId = stageId;
+                    });
                 }
                 else
                     Debug.LogError(string.Format("Trying to swap to missing stage : {0}", stageId));
             }
 
-            if (stage != null)
+            if (thisFrame && stage != null)
             {
                 IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
                 player.position = _gameKernal.GetStage().GetStagePoint(stagePointName);
                 for (int i = 0; i < _listeners.Count; i++)
                     _listeners[i].OnPlayerSwapped(stageId, stagePointName);
+
+                _currentStageId = stageId;
             }
 
-            _currentStageId = stageId;
         }
     }
 }

@@ -12,12 +12,12 @@ namespace Config
 		class StageDatabaseEntry : IStageDatabaseEntry
 		{
 			public int ID;
-			public string PREFAB_NAME;
+			public string SCENE_NAME;
 			public BaseCommonVector3 CAMERA_LOOK;
 			public BaseCommonVector3 CAMERA_POS;
 
 			public int id {get{return ID;}}
-			public string prefabName{get{return PREFAB_NAME;}}
+			public string sceneName{get{return SCENE_NAME;}}
 			public BaseCommonVector3 cameraLook{get{return CAMERA_LOOK;}}
 			public BaseCommonVector3 cameraPos{get{return CAMERA_POS;}}
 		}

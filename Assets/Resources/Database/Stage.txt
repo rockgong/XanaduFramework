@@ -1,6 +1,6 @@
 [
 {
-	"ID" : 1, "PREFAB_NAME" : "TestSchool",
+	"ID" : 1, "SCENE_NAME" : "TestSchool",
 	"CAMERA_LOOK" :
 	{
 		"$type" : "MainGame.CommonVector3Player"
@@ -31,7 +31,7 @@
 	}
 },
 {
-	"ID" : 2, "PREFAB_NAME" : "TestStage",
+	"ID" : 2, "SCENE_NAME" : "TestStage",
 	"CAMERA_LOOK" :
 	{
 		"$type" : "MainGame.CommonVector3Plus",

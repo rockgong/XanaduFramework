@@ -110,7 +110,7 @@ namespace GameKernal
             return GameKernalErrorCode.OK;
         }
 
-        public virtual IStage SetupStage(StageDesc desc)
+        public virtual IStage SetupStage(StageDesc desc, System.Action onEnd = null)
         {
             return null;
         }

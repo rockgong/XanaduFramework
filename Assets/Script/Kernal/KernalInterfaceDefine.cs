@@ -44,11 +44,11 @@ namespace GameKernal
     // The Description of the Stage
     public struct StageDesc
     {
-        public GameObject prototype;
+        public string sceneName;
 
-        public StageDesc(GameObject prototype)
+        public StageDesc(string sceneName)
         {
-            this.prototype = prototype;
+            this.sceneName = sceneName;
         }
     }
 
@@ -97,7 +97,7 @@ namespace GameKernal
         void RemoveTrigger(string name);
         void RemoveTrigger(ITrigger handler);
         void ClearTrigger();
-        IStage SetupStage(StageDesc desc);
+        IStage SetupStage(StageDesc desc, System.Action onEnd = null);
         IStage GetStage();
         ICamera GetCamera();
         void SetGameState(IGameState state);

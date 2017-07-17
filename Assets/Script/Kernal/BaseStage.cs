@@ -21,7 +21,7 @@ namespace GameKernal
             return;
         }
 
-        public abstract void Initialize(StageDesc desc);
+        public abstract void Initialize(StageDesc desc, System.Action onEnd);
         public abstract void Uninitialize();
     }
 }

@@ -215,13 +215,13 @@ namespace GameKernal
             _trigger.Clear();
         }
 
-        public override IStage SetupStage(StageDesc desc)
+        public override IStage SetupStage(StageDesc desc, System.Action onEnd = null)
         {
             if (_stage != null)
                 _stage.Uninitialize();
 
             Stage newStage = new Stage();
-            newStage.Initialize(desc);
+            newStage.Initialize(desc, onEnd);
             _stage = newStage;
 
             return _stage;

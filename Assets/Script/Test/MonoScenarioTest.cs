@@ -67,9 +67,9 @@ namespace MainGame
 			ICamera camera = gameKernal.GetCamera();
 			camera.lookPosition = Vector3.zero;
 			camera.offset = new Vector3(0.0f, 200.0f, -100.0f);
-			GameObject proto = Resources.Load<GameObject>("Stage/" + stagePrefabNames[_stagePrefabIndex]);
-			gameKernal.SetupStage(new StageDesc(proto));
-			proto = Resources.Load<GameObject>("Player/" + playerPrefabNames[_playerPrefabNameIndex]);
+			//GameObject proto = Resources.Load<GameObject>("Stage/" + stagePrefabNames[_stagePrefabIndex]);
+			gameKernal.SetupStage(new StageDesc(stagePrefabNames[_stagePrefabIndex]));
+			GameObject proto = Resources.Load<GameObject>("Player/" + playerPrefabNames[_playerPrefabNameIndex]);
 			gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(proto));
 
 			_scenarioPhaseDatabase.LoadFromAsset("ScenarioPhase/ScenarioPhase");
@@ -140,8 +140,7 @@ namespace MainGame
 		{
 			_stagePrefabIndex = DrawSelection(stagePrefabNames, _stagePrefabIndex, 80, (from, to)=>
 			{
-				GameObject proto = Resources.Load<GameObject>("Stage/" + stagePrefabNames[to]);
-				gameKernal.SetupStage(new StageDesc(proto));
+				gameKernal.SetupStage(new StageDesc(stagePrefabNames[to]));
 			});
 			_playerPrefabNameIndex = DrawSelection(playerPrefabNames, _playerPrefabNameIndex, 80, (from, to)=>
 			{
