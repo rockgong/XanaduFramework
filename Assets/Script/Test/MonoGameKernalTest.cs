@@ -172,6 +172,7 @@ namespace MainGame
 
         private void OnGUI()
         {
+            /*
             _sceneName = GUILayout.TextField(_sceneName);
             _scenarioId = GUILayout.TextField(_scenarioId);
             if (GUILayout.Button("Excute"))
@@ -186,6 +187,7 @@ namespace MainGame
 
                 _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
             }
+            */
         }
 
         public void OnPlayerSwapped(int stageId, string stagePointName)
