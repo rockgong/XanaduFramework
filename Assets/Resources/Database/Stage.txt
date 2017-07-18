@@ -70,5 +70,44 @@
 		"y" : 10.0,
 		"z" : -20.0
 	}
+},
+{
+	"ID" : 3, "SCENE_NAME" : "TestOffice",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Multiply",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.5, "y" : 0.5, "z" : 0.5
+			}
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Multiply",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "center"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.5, "y" : 0.5, "z" : 0.5
+			}
+		}
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera"
+	}
 }
 ]

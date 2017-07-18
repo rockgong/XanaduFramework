@@ -78,7 +78,8 @@ namespace MainGame
 
             _triggerManager.Initialize(gameKernal);
             _triggerManager.AddTriggerInfo("swap1", 1, "npc_3", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
-            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "spawn")));
+            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(3, "spawn")));
+            _triggerManager.AddTriggerInfo("swap3", 3, "exit", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "spawn")));
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -112,7 +113,7 @@ namespace MainGame
 
             _mainGameCameraController.Initialize(gameKernal.GetCamera());
 
-            _playerStageManager.SwapPlayer(1, "spawn");
+            _playerStageManager.SwapPlayer(3, "spawn");
 
             _mainGameState.SetCameraController(_mainGameCameraController);
 
