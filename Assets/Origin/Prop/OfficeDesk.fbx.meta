@@ -10,11 +10,15 @@ ModelImporter:
     100004: Cube.002
     100006: Cube.003
     100008: //RootNode
+    100010: Camera
+    100012: Lamp
     400000: Cube
     400002: Cube.001
     400004: Cube.002
     400006: Cube.003
     400008: //RootNode
+    400010: Camera
+    400012: Lamp
     2300000: Cube
     2300002: Cube.001
     2300004: Cube.002
