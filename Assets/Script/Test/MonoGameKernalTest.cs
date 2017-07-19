@@ -75,6 +75,12 @@ namespace MainGame
             propObjectDb.Initialize();
             _propObjectManager.Initialize(propObjectDb, gameKernal);
             _propObjectManager.SetPropObjectPosition(1, 1, "3");
+            _propObjectManager.SetPropObjectPosition(2, 3, "monitor");
+            _propObjectManager.SetPropObjectPosition(3, 3, "locker_1");
+            _propObjectManager.SetPropObjectPosition(4, 3, "locker_2");
+            _propObjectManager.SetInteractCommandIdByName(2, 4);
+            _propObjectManager.SetInteractCommandIdByName(3, 5);
+            _propObjectManager.SetInteractCommandIdByName(4, 6);
 
             _triggerManager.Initialize(gameKernal);
             _triggerManager.AddTriggerInfo("swap1", 1, "npc_3", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
@@ -162,9 +168,10 @@ namespace MainGame
             //Temp Code
             List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
-            InteractCommandMessage msg = new InteractCommandMessage();
-            msg.content = "This is a Cube";
-            commandList.Add(msg);
+            int interactCommandId = _propObjectManager.GetInteractCommandIdByName(prop.name);
+            BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
+            command.Setup(_mainGameCommandManager);
+            commandList.Add(command);
             _interactGameState.SetCommandList(commandList);
 
             gameKernal.SetGameState(_interactGameState);

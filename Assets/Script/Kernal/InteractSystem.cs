@@ -80,7 +80,10 @@ namespace GameKernal
 			IInteractObject result = null;
 			for (int i = 0; i < _objectList.Count; i++)
 			{
-				if ((_objectList[i].position - _subject.position).magnitude < 3.0f)
+				Vector3 offset = _objectList[i].position - _subject.position;
+				offset = new Vector3(offset.x, 0.0f, offset.z);
+
+				if (offset.magnitude < 3.0f)
 				{
 					result = _objectList[i];
 					break;

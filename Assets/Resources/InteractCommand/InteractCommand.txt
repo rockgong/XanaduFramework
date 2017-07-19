@@ -112,5 +112,29 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 4,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandMessageData",
+			"content" : "显示器泛着红光，诡异又恐怖"
+		}
+	},
+	{
+		"id" : 5,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandMessageData",
+			"content" : "这是第一个置物柜"
+		}
+	},
+	{
+		"id" : 6,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandMessageData",
+			"content" : "这是第二个置物柜"
+		}
 	}
 ]
