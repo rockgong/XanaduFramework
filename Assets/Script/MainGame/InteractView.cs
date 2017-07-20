@@ -124,15 +124,12 @@ namespace MainGame
             return;
 		}
 
-		public void ShowDialog(string msg, Vector2 position)
+		public void ShowDialog(string msg)
 		{
 			Transform trans = _monoView.GetWidget<Transform>("dialog_root");
 			if (trans != null)
 			{
 				trans.gameObject.SetActive(true);
-				RectTransform rectTrans = trans as RectTransform;
-				if (rectTrans != null)
-					rectTrans.anchoredPosition = position;
 
                 MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
                 MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
