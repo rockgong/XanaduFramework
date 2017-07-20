@@ -55,7 +55,7 @@
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandSelectData",
-			"title" : "My Choice",
+			"title" : "请给出你的选择啦啦啦啦",
 			"options" :
 			[
 				"第一项", "第二项"
@@ -118,7 +118,7 @@
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandMessageData",
-			"content" : "显示器泛着红光，诡异又恐怖"
+			"content" : "显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖"
 		}
 	},
 	{

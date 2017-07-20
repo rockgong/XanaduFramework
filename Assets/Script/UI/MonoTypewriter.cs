@@ -9,6 +9,7 @@ namespace UIUtil
     {
         public Text targetText;
         public float maxWidth;
+        public bool useMaxWidth;
         public float speed = 1.0f;
         // Use this for initialization
         private string _content;
@@ -50,8 +51,11 @@ namespace UIUtil
                 return;
             targetText.text = content;
             _content = content;
-            targetText.rectTransform.sizeDelta = new Vector2(Mathf.Min(maxWidth, targetText.preferredWidth), targetText.preferredHeight);
-            targetText.rectTransform.sizeDelta = new Vector2(targetText.rectTransform.sizeDelta.x, targetText.preferredHeight);
+            if (useMaxWidth)
+            {
+                targetText.rectTransform.sizeDelta = new Vector2(Mathf.Min(maxWidth, targetText.preferredWidth), targetText.preferredHeight);
+                targetText.rectTransform.sizeDelta = new Vector2(targetText.rectTransform.sizeDelta.x, targetText.preferredHeight);
+            }
             targetText.text = string.Empty;
 
             _endTypeAction = endTypeAction;
