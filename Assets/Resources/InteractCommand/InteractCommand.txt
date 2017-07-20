@@ -7,7 +7,7 @@
 			"content" :
 			{
 				"$type" : "MainGame.CommonStringLiteral",
-				"val" : "Hahahahaha"
+				"val" : "来来来，下棋下棋"
 			}
 		}
 	},
