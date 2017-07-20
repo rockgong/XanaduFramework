@@ -7,13 +7,11 @@ namespace MainGame
 {
     public class MonoSelectPanel : MonoBehaviour
     {
-        public Text title;
         public Transform optionsRoot;
         public GameObject optionProto;
 
-        public void Setup(string optionTitle, string[] optionNames, System.Action<int> onSelect)
+        public void Setup(string[] optionNames, System.Action<int> onSelect)
         {
-            title.text = optionTitle;
             for (int i = 0; i < optionsRoot.childCount; i++)
                 GameObject.Destroy(optionsRoot.GetChild(i).gameObject);
             

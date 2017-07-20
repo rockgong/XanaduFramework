@@ -60,7 +60,7 @@ namespace MainGame
                                 _messageTypewriter.EndType();
                             }
                             else
-                            {
+							{
                                 CloseMessage();
                                 CloseDialog();
                                 if (_listener != null)
@@ -172,18 +172,39 @@ namespace MainGame
 
         public void ShowSelect(string title, string[] options, System.Action<int> callback)
         {
-            _selectPanel.gameObject.SetActive(true);
-            _selectPanel.Setup(title, options, (i) =>
+            Transform trans = _monoView.GetWidget<Transform>("message_root");
+            if (trans != null)
             {
-                CloseSelect();
-                callback(i);
-            });
-            MonoViewOpenAnim anim = _selectPanel.GetComponent<MonoViewOpenAnim>();
-            if (anim != null)
-            {
-                anim.Play(null);
-                _viewState = ViewState.Select;
+                trans.gameObject.SetActive(true);
+                MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+                MonoTypewriter tw = trans.GetComponent<MonoTypewriter>();
+                _selectPanel.Setup(options, (i) =>
+                {
+                    CloseSelect();
+                    callback(i);
+                });
+                if (tw != null)
+                    tw.Setup(title, () =>
+                    {
+                        _selectPanel.gameObject.SetActive(true);
+                        MonoViewOpenAnim _selectAnim = _selectPanel.GetComponent<MonoViewOpenAnim>();
+                        if (_selectAnim != null)
+                            _selectAnim.Play(null);
+                    });
+                if (anim != null)
+                {
+                    anim.Play(() =>
+                    {
+                        Button bgButton = _monoView.GetWidget<Button>("bg_button");
+                        bgButton.gameObject.SetActive(false);
+
+                        if (tw != null)
+                            tw.PlayTypewrite();
+                    });
+                    _viewState = ViewState.Select;
+                }
             }
+
 
             return;
         }
@@ -192,8 +213,14 @@ namespace MainGame
         {
             _selectPanel.gameObject.SetActive(false);
 
+            Transform trans = _monoView.GetWidget<Transform>("message_root");
+            if (trans != null)
+                trans.gameObject.SetActive(false);
+
             if (_listener != null)
                 _listener.OnViewClosed();
+
+
             _viewState = ViewState.None;
         }
 	}

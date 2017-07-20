@@ -14,6 +14,9 @@ namespace UIUtil
         private string _content;
         private float _letterCount = 0.0f;
         private bool _typing = false;
+
+        private System.Action _endTypeAction = null;
+
         void Start()
         {
 
@@ -29,7 +32,9 @@ namespace UIUtil
                 if (length >= _content.Length)
                 {
                     _typing = false;
-                    targetText.text = _content;
+					targetText.text = _content;
+					if (_endTypeAction != null)
+						_endTypeAction();
                 }
                 else
                 {
@@ -39,7 +44,7 @@ namespace UIUtil
             }
         }
 
-        public void Setup(string content)
+        public void Setup(string content, System.Action endTypeAction = null)
         {
             if (targetText == null)
                 return;
@@ -48,6 +53,8 @@ namespace UIUtil
             targetText.rectTransform.sizeDelta = new Vector2(Mathf.Min(maxWidth, targetText.preferredWidth), targetText.preferredHeight);
             targetText.rectTransform.sizeDelta = new Vector2(targetText.rectTransform.sizeDelta.x, targetText.preferredHeight);
             targetText.text = string.Empty;
+
+            _endTypeAction = endTypeAction;
         }
 
         public void PlayTypewrite()
@@ -62,6 +69,8 @@ namespace UIUtil
             {
                 _typing = false;
                 targetText.text = _content;
+                if (_endTypeAction != null)
+                    _endTypeAction();
             }
         }
 
