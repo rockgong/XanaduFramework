@@ -70,6 +70,20 @@ namespace GameKernal
             }
         }
 
+        public override Vector3 controlPosition
+        {
+            get
+            {
+                if (_entity != null)
+                {
+                    MonoPlayerConfig config = _entity.GetComponent<MonoPlayerConfig>();
+                    if (config != null)
+                        return config.controlTransform.position;
+                }
+                return Vector3.zero;
+            }
+        }
+
         public void OnCollisionEnter(MonoEntity entity, Collision collision)
         {
             //Do nothing...

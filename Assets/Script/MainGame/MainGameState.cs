@@ -73,7 +73,10 @@ namespace MainGame
 		private void SetPlayerYawFromMousePosition()
 		{
 			Ray cameraRay = Camera.main.ScreenPointToRay(_input.GetMousePosition());
-			Plane groundPlane = new Plane(Vector3.up, _player.position.y);
+			Plane groundPlane = new Plane(Vector3.up, _player.controlPosition);
+
+			Debug.Log(_player.position.y.ToString());
+
 			float enter;
 			if (groundPlane.Raycast(cameraRay, out enter))
 			{

@@ -111,6 +111,7 @@ namespace GameKernal
     {
         Vector3 position{get; set;}
         Vector3 viewPosition{get; set;}
+        Vector3 controlPosition {get; set;}
         float yaw{get; set;}
         float velocity{get; set;}
         void PlayAnimation(string name);

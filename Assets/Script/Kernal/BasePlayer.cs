@@ -36,6 +36,17 @@ namespace GameKernal
                 return;
             }
         }
+        public virtual Vector3 controlPosition
+        {
+            get
+            {
+                return Vector3.zero;
+            }
+            set
+            {
+                return;
+            }
+        }
 
         public float yaw{get; set;}
         public float velocity{get; set;}

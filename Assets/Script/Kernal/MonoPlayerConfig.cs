@@ -7,5 +7,6 @@ namespace GameKernal
     public class MonoPlayerConfig : MonoBehaviour
     {
         public Transform viewTransform;
+        public Transform controlTransform;
     }
 }
