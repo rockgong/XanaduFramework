@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
+using Helper;
 
 namespace MainGame
 {
@@ -23,12 +24,15 @@ namespace MainGame
         public IPropObjectDatabaseEntry data;
         public int stageId;
         public string stagePointName;
+        public string stageLookPointName;
+        public string animationStateName;
         public int interactCommandId;
     }
 
     interface IPropObjectManagerListener
     {
         void OnPropObjectPositionChanged(PropObjectInfo info);
+        void OnPropObjectAnimationStateChanged(PropObjectInfo info);
     }
 
     class PropObjectManager
@@ -77,17 +81,38 @@ namespace MainGame
             _listeners.Clear();
         }
 
-        public void SetPropObjectPosition(int id, int stageId, string stagePointName)
+        public void SetPropObjectPosition(int id, int stageId, string stagePointName, string stageLookPointName)
         {
-            PropObjectInfo info = GetPropObjectObject(id);
+            PropObjectInfo info = GetPropObjectInfo(id);
             if (info != null)
             {
                 if (info.stageId == stageId && info.stagePointName == stagePointName)
                     return;
                 info.stageId = stageId;
                 info.stagePointName = stagePointName;
+                info.stageLookPointName = stageLookPointName;
                 for (int i = 0; i < _listeners.Count; i++)
                     _listeners[i].OnPropObjectPositionChanged(info);
+            }
+        }
+
+        public void SetPropObjectPosition(int id, int stageId, string stagePointName)
+        {
+            SetPropObjectPosition(id, stageId, stagePointName, string.Empty);
+
+            return;
+        }
+        public void SetPropObjectAnimationStateName(int id, string animationStateName)
+        {
+            PropObjectInfo info = GetPropObjectInfo(id);
+            if (info != null)
+            {
+                if (info.animationStateName == animationStateName)
+                    return;
+
+                info.animationStateName = animationStateName;
+                for (int i = 0; i < _listeners.Count; i++)
+                    _listeners[i].OnPropObjectAnimationStateChanged(info);
             }
         }
 
@@ -104,6 +129,15 @@ namespace MainGame
                     IPropObject propObj = _gameKernal.AddPropObject(_propObjectInfoList[i].data.name, new PropObjectDesc(proto));
                     IStage stage = _gameKernal.GetStage();
                     propObj.position = stage.GetStagePoint(_propObjectInfoList[i].stagePointName);
+                    if (!string.IsNullOrEmpty(_propObjectInfoList[i].stageLookPointName))
+                    {
+                        Vector3 lookPoint = stage.GetStagePoint(_propObjectInfoList[i].stageLookPointName);
+                        Vector3 lookVector = lookPoint - propObj.position;
+                        float yaw = MathHelper.Vector3ToYaw(lookVector);
+                        propObj.yaw = yaw;
+                    }
+                    if (!string.IsNullOrEmpty(_propObjectInfoList[i].animationStateName))
+                        propObj.PlayAnimation(_propObjectInfoList[i].animationStateName);
                 }
             }
         }
@@ -128,7 +162,7 @@ namespace MainGame
             }
         }
 
-        private PropObjectInfo GetPropObjectObject(int id)
+        private PropObjectInfo GetPropObjectInfo(int id)
         {
             for (int i = 0; i < _propObjectInfoList.Count; i++)
             {
