@@ -30,6 +30,7 @@ namespace MainGame
         private MonoTypewriter _messageTypewriter = null;
         private MonoSelectPanel _selectPanel = null;
         private MonoDelegate _updateDelegate = null;
+        private System.Action _tempFadeAction = null;
 
         private ViewState _viewState;
         public ViewState viewState
@@ -261,7 +262,10 @@ namespace MainGame
                 trans.gameObject.SetActive(true);
                 MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
                 if (sc != null)
+                {
                     sc.targetAlpha = 1.0f;
+                    sc.action = null;
+                }
 
                 if (trans is RectTransform)
                 {
@@ -313,6 +317,8 @@ namespace MainGame
                 if (sc != null)
                 {
                     sc.targetAlpha = 0.0f;
+                    _tempFadeAction = sc.action;
+                    sc.action = null;
                 }
             }
         }
@@ -328,6 +334,7 @@ namespace MainGame
                     if (sc != null)
                     {
                         sc.targetAlpha = 1.0f;
+                        sc.action = _tempFadeAction;
                     }
                 }
             }
