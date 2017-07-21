@@ -2,15 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
+using System;
 
 namespace MainGame
 {
+    public class StageTransferData
+    {
+        public string triggerPointName;
+        public int stageId;
+        public string stagePointName;
+        public string stageLookPointName;
+    }
+
     public interface IStageDatabaseEntry
     {
         int id { get; }
         string sceneName { get; }
         BaseCommonVector3 cameraLook { get; }
         BaseCommonVector3 cameraPos { get; }
+        StageTransferData[] transfers {get; }
     }
 
     public interface IStageDatabase

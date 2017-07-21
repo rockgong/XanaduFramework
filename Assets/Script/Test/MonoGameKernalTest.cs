@@ -85,9 +85,7 @@ namespace MainGame
             _propObjectManager.SetInteractCommandIdByName(4, 6);
 
             _triggerManager.Initialize(gameKernal);
-            _triggerManager.AddTriggerInfo("swap1", 1, "npc_3", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.red, ()=> _playerStageManager.SwapPlayer(2, "4")));
-            _triggerManager.AddTriggerInfo("swap2", 2, "1", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(3, "spawn")));
-            _triggerManager.AddTriggerInfo("swap3", 3, "exit", () => _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> _playerStageManager.SwapPlayer(1, "spawn")));
+            InitAllStageTransferTrigger();
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -136,6 +134,33 @@ namespace MainGame
             _interactView.SetListener(_interactGameState);
             _mainTransfer.Initialize();
 
+        }
+
+        private void InitAllStageTransferTrigger()
+        {
+            List<IStageDatabaseEntry> entryList = _stageDatabase.GetEntryList();
+            if (entryList != null)
+            {
+                for (int i = 0; i < entryList.Count; i++)
+                {
+                    if (entryList[i].transfers == null)
+                        continue;
+                    for (int j = 0; j < entryList[i].transfers.Length; j++)
+                    {
+                        int toStageId = entryList[i].transfers[j].stageId;
+                        string toStagePointName = entryList[i].transfers[j].stagePointName;
+                        _triggerManager.AddTriggerInfo(string.Format("TRANSFER_{0}_{1}:{2}", entryList[i].id, entryList[i].transfers[j].stageId, entryList[i].transfers[j].stagePointName),
+                            entryList[i].id, entryList[i].transfers[j].triggerPointName, () => 
+                            {
+                                _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> 
+                                {
+                                    _playerStageManager.SwapPlayer(toStageId, toStagePointName);
+                                });
+                            }
+                        );
+                    }
+                }
+            }
         }
 
         public void OnCommandProcessEnd()
