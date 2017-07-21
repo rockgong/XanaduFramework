@@ -4,6 +4,7 @@ using UnityEngine;
 using GameKernal;
 using UnityEngine.UI;
 using UIUtil;
+using Miscs;
 
 namespace MainGame
 {
@@ -28,6 +29,7 @@ namespace MainGame
         private MonoTypewriter _dialogTypewriter = null;
         private MonoTypewriter _messageTypewriter = null;
         private MonoSelectPanel _selectPanel = null;
+        private MonoDelegate _updateDelegate = null;
 
         private ViewState _viewState;
         public ViewState viewState
@@ -104,6 +106,7 @@ namespace MainGame
                     });
                     _viewState = ViewState.Message;
             	}
+                HideReady();
             }
 
 			return;
@@ -120,6 +123,7 @@ namespace MainGame
             */
 
             _viewState = ViewState.None;
+            TryResumeReady();
 
             return;
 		}
@@ -148,6 +152,7 @@ namespace MainGame
 
                     _viewState = ViewState.Dialog;
                 }
+                HideReady();
             }
 
 			return;
@@ -163,6 +168,7 @@ namespace MainGame
 				_listener.OnViewClosed();
             */
             _viewState = ViewState.None;
+            TryResumeReady();
 
             return;
 		}
@@ -200,6 +206,7 @@ namespace MainGame
                     });
                     _viewState = ViewState.Select;
                 }
+                HideReady();
             }
 
 
@@ -219,6 +226,111 @@ namespace MainGame
 
 
             _viewState = ViewState.None;
+            TryResumeReady();
+        }
+
+        public void ShowReady(INonPlayerCharacter nonPlayer)
+        {
+            Transform trans = _monoView.GetWidget<Transform>("ready_root");
+            if (trans != null)
+            {
+                trans.gameObject.SetActive(true);
+                MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
+                if (sc != null)
+                    sc.targetAlpha = 1.0f;
+
+                if (trans is RectTransform)
+                {
+                    RectTransform rt = (RectTransform)trans;
+                    rt.anchoredPosition = UIUtils.WorldPointToCanvasAnchoredPosition(nonPlayer.viewPosition, new Vector2(1280.0f, 720.0f));
+                    _updateDelegate = MonoDelegate.Create(() =>
+                    {
+                        rt.anchoredPosition = UIUtils.WorldPointToCanvasAnchoredPosition(nonPlayer.viewPosition, new Vector2(1280.0f, 720.0f));
+                    }, "_ReadyToInteractDelegate");
+                }
+            }
+
+            return;
+        }
+
+        public void ShowReady(IPropObject propObject)
+        {
+            Transform trans = _monoView.GetWidget<Transform>("ready_root");
+            if (trans != null)
+            {
+                trans.gameObject.SetActive(true);
+                MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
+                if (sc != null)
+                    sc.targetAlpha = 1.0f;
+
+                if (trans is RectTransform)
+                {
+                    RectTransform rt = (RectTransform)trans;
+                    rt.anchoredPosition = UIUtils.WorldPointToCanvasAnchoredPosition(propObject.viewPosition, new Vector2(1280.0f, 720.0f));
+                    if (_updateDelegate != null)
+                        GameObject.Destroy(_updateDelegate.gameObject);
+                    _updateDelegate = MonoDelegate.Create(() =>
+                    {
+                        rt.anchoredPosition = UIUtils.WorldPointToCanvasAnchoredPosition(propObject.viewPosition, new Vector2(1280.0f, 720.0f));
+                    }, "_ReadyToInteractDelegate");
+                }
+            }
+
+            return;
+        }
+
+        public void CloseReady()
+        {
+            Transform trans = _monoView.GetWidget<Transform>("ready_root");
+            if (trans != null)
+            {
+                MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
+                if (sc != null)
+                {
+                    sc.targetAlpha = 0.0f;
+                    sc.action = () => 
+                    {
+                        trans.gameObject.SetActive(false);
+
+                        if (_updateDelegate != null)
+                        {
+                            GameObject.Destroy(_updateDelegate.gameObject);
+                            _updateDelegate = null;
+                        }
+                    };
+                }
+            }
+
+            return;
+        }
+
+        private void HideReady()
+        {
+            Transform trans = _monoView.GetWidget<Transform>("ready_root");
+            if (trans != null)
+            {
+                MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
+                if (sc != null)
+                {
+                    sc.targetAlpha = 0.0f;
+                }
+            }
+        }
+
+        private void TryResumeReady()
+        {
+            if (_updateDelegate != null)
+            {
+                Transform trans = _monoView.GetWidget<Transform>("ready_root");
+                if (trans != null)
+                {
+                    MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
+                    if (sc != null)
+                    {
+                        sc.targetAlpha = 1.0f;
+                    }
+                }
+            }
         }
 	}
 }

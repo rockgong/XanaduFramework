@@ -283,5 +283,26 @@ namespace GameKernal
                 }
             }
         }
+
+        public void OnReadyToInteractObjectChanged(IInteractObject from, IInteractObject to)
+        {
+            if (host != null)
+            {
+                if (from == null || from is INonPlayerCharacter)
+                {
+                    if (to == null || to is INonPlayerCharacter)
+                        host.OnReadyToInteractChanged((INonPlayerCharacter)from, (INonPlayerCharacter)to);
+                    else if (to is IPropObject)
+                        host.OnReadyToInteractChanged((INonPlayerCharacter)from, (IPropObject)to);
+                }
+                else if (from is IPropObject)
+                {
+                    if (to == null || to is INonPlayerCharacter)
+                        host.OnReadyToInteractChanged((IPropObject)from, (INonPlayerCharacter)to);
+                    else if (to is IPropObject)
+                        host.OnReadyToInteractChanged((IPropObject)from, (IPropObject)to);
+                }
+            }
+        }
     }
 }

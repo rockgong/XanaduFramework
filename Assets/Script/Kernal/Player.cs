@@ -66,7 +66,7 @@ namespace GameKernal
                     if (config != null)
                         return config.viewTransform.position;
                 }
-                return Vector3.zero;
+                return position;
             }
         }
 
@@ -181,12 +181,12 @@ namespace GameKernal
 
         public void OnGetReadyToInteract(IInteractObject obj)
         {
-            Debug.Log(string.Format("{0} is ready to act with ?", _entity.gameObject.name));
+
         }
 
         public void OnGetOutOfReadyToInteract(IInteractObject obj)
         {
-            Debug.Log(string.Format("{0} is out of ready to act with ?", _entity.gameObject.name));
+
         }
 
         public void OnInteractWith(IInteractObject obj)

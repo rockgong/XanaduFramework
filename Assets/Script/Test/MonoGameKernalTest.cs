@@ -6,6 +6,7 @@ using MainGame;
 using System;
 using Config;
 using Miscs;
+using UIUtil;
 
 namespace MainGame
 {
@@ -177,6 +178,40 @@ namespace MainGame
 
             gameKernal.SetGameState(_interactGameState);
         }
+
+        public void OnReadyToInteractChanged(INonPlayerCharacter from, INonPlayerCharacter to)
+        {
+            Debug.LogFormat("INonPlayerCharacter => {0}, INonPlayerCharacter => {1}", from == null ? "<NULL>" : from.name, to == null ? "<NULL>" : to.name);
+            if (to != null)
+                _interactView.ShowReady(to);
+            else
+                _interactView.CloseReady();
+        }
+        public void OnReadyToInteractChanged(INonPlayerCharacter from, IPropObject to)
+        {
+            Debug.LogFormat("INonPlayerCharacter => {0}, IPropObject => {1}", from == null ? "<NULL>" : from.name, to == null ? "<NULL>" : to.name);
+            if (to != null)
+                _interactView.ShowReady(to);
+            else
+                _interactView.CloseReady();
+        }
+        public void OnReadyToInteractChanged(IPropObject from, INonPlayerCharacter to)
+        {
+            Debug.LogFormat("IPropObject => {0}, INonPlayerCharacter => {1}", from == null ? "<NULL>" : from.name, to == null ? "<NULL>" : to.name);
+            if (to != null)
+                _interactView.ShowReady(to);
+            else
+                _interactView.CloseReady();
+        }
+        public void OnReadyToInteractChanged(IPropObject from, IPropObject to)
+        {
+            Debug.LogFormat("IPropObject => {0}, IPropObject => {1}", from == null ? "<NULL>" : from.name, to == null ? "<NULL>" : to.name);
+            if (to != null)
+                _interactView.ShowReady(to);
+            else
+                _interactView.CloseReady();
+        }
+
 
         private void OnGUI()
         {

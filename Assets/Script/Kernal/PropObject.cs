@@ -45,7 +45,7 @@ namespace GameKernal
                     if (config != null)
                         return config.viewTransform.position;
                 }
-                return Vector3.zero;
+                return position;
             }
         }
 

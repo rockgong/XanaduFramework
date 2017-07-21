@@ -74,6 +74,11 @@ namespace GameKernal
     {
         void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer);
         void OnInteract(IPlayerCharacter player, IPropObject nonPlayer);
+
+        void OnReadyToInteractChanged(INonPlayerCharacter from, INonPlayerCharacter to);
+        void OnReadyToInteractChanged(INonPlayerCharacter from, IPropObject to);
+        void OnReadyToInteractChanged(IPropObject from, INonPlayerCharacter to);
+        void OnReadyToInteractChanged(IPropObject from, IPropObject to);
     }
 
     // Game kernal itself

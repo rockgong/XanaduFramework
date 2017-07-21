@@ -23,6 +23,7 @@ namespace GameKernal
 
 	interface IInteractListener
 	{
+		void OnReadyToInteractObjectChanged(IInteractObject from, IInteractObject to);
 		void OnInteractHappen(IInteractSubject sub, IInteractObject obj);
 	}
 
@@ -101,7 +102,14 @@ namespace GameKernal
 				result.OnGetReadyToBeInteracted(_subject);
 			}
 
-			_readyToInteractObject = result;
+			if (_readyToInteractObject != result)
+			{
+				for (int i = 0; i < _listenerList.Count; i++)
+				{
+					_listenerList[i].OnReadyToInteractObjectChanged(_readyToInteractObject, result);
+				}
+				_readyToInteractObject = result;
+			}
 
 			return;
 		}
