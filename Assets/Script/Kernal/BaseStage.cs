@@ -13,6 +13,8 @@ namespace GameKernal
 
         public abstract Vector3 GetStagePoint(string name);
         public abstract Vector3 GetStagePointSize(string name);
+        public abstract void PlayerStageAnimation(string targetName, string animationStateName);
+
         
         public void SetHost(IStageHost host)
         {

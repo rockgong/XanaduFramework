@@ -34,6 +34,22 @@ namespace GameKernal
             return Vector3.zero;
         }
 
+        public override void PlayerStageAnimation(string targetName, string animationStateName)
+        {
+            if (_stage != null)
+            {
+                Transform trans = _stage.GetPointTrans(targetName);
+                if (trans != null)
+                {
+                    Animator animator = trans.GetComponent<Animator>();
+                    if (animator != null)
+                    {
+                        animator.Play(animationStateName);
+                    }
+                }
+            }
+        }
+
         public override void Initialize(StageDesc desc, System.Action onEnd = null)
         {
             /*

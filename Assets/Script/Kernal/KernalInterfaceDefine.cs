@@ -143,6 +143,7 @@ namespace GameKernal
     {
         Vector3 GetStagePoint(string name);
         Vector3 GetStagePointSize(string name);
+        void PlayerStageAnimation(string targetName, string animationStateName);
     }
 
     //Camera

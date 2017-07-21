@@ -24,6 +24,13 @@ namespace MainGame
         void OnStageChanged(int stageId);
     }
 
+    class StageAnimationEntry
+    {
+        public int stageId;
+        public string animationTargetName;
+        public string animationStateName;
+    }
+
     class PlayerStageManager
     {
         private IStageDatabase _database;
@@ -32,6 +39,7 @@ namespace MainGame
         private int _currentStageId = 0;
 
         private List<IPlayerStageManagerListener> _listeners = new List<IPlayerStageManagerListener>();
+        private List<StageAnimationEntry> _stageAnimations = new List<StageAnimationEntry>();
 
         public void SetDatabase(IStageDatabase db)
         {
@@ -85,7 +93,15 @@ namespace MainGame
                         for (int i = 0; i < _listeners.Count; i++)
                             _listeners[i].OnStageChanged(stageId);
                         IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
-                        player.position = _gameKernal.GetStage().GetStagePoint(stagePointName);
+                        IStage newStage = _gameKernal.GetStage();
+                        player.position = newStage.GetStagePoint(stagePointName);
+                        for (int i = 0; i < _stageAnimations.Count; i++)
+                        {
+                            if (_stageAnimations[i].stageId == stageId)
+                            {
+                                newStage.PlayerStageAnimation(_stageAnimations[i].animationTargetName, _stageAnimations[i].animationStateName);
+                            }
+                        }
                         for (int i = 0; i < _listeners.Count; i++)
                         _listeners[i].OnPlayerSwapped(stageId, stagePointName);
                         _currentStageId = stageId;
@@ -104,7 +120,30 @@ namespace MainGame
 
                 _currentStageId = stageId;
             }
+        }
 
+        public void SetStagePointAnimation(int stageId, string animationTargetName, string animationStateName)
+        {
+            StageAnimationEntry entry = null;
+            for (int i = 0; i < _stageAnimations.Count; i++)
+            {
+                if (_stageAnimations[i].stageId == stageId && _stageAnimations[i].animationTargetName == animationTargetName)
+                {
+                    entry = _stageAnimations[i];
+                    break;
+                }
+            }
+
+            if (entry == null)
+            {
+                entry = new StageAnimationEntry();
+                entry.stageId = stageId;
+                entry.animationTargetName = animationTargetName;
+                _stageAnimations.Add(entry);
+            }
+
+            if (entry != null)
+                entry.animationStateName = animationStateName;
         }
     }
 }
