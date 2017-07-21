@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
+using Helper;
 
 namespace MainGame
 {
@@ -23,12 +24,15 @@ namespace MainGame
         public INonPlayerDatabaseEntry data;
         public int stageId;
         public string stagePointName;
+        public string stageLookPointName;
+        public string animationStateName;
         public int interactCommandId;
     }
 
     interface INonPlayerManagerListener
     {
         void OnNonPlayerPositionChanged(NonPlayerInfo info);
+        void OnNonPlayerAnimationStateChanged(NonPlayerInfo info);
     }
 
     class NonPlayerManager
@@ -77,7 +81,7 @@ namespace MainGame
             _listeners.Clear();
         }
 
-        public void SetNonPlayerPosition(int id, int stageId, string stagePointName)
+        public void SetNonPlayerPosition(int id, int stageId, string stagePointName, string stageLookPointName)
         {
             NonPlayerInfo info = GetNonPlayerInfo(id);
             if (info != null)
@@ -86,8 +90,30 @@ namespace MainGame
                     return;
                 info.stageId = stageId;
                 info.stagePointName = stagePointName;
+                info.stageLookPointName = stageLookPointName;
                 for (int i = 0; i < _listeners.Count; i++)
                     _listeners[i].OnNonPlayerPositionChanged(info);
+            }
+        }
+
+        public void SetNonPlayerPosition(int id, int stageId, string stagePointName)
+        {
+            SetNonPlayerPosition(id, stageId, stagePointName, string.Empty);
+
+            return;
+        }
+
+        public void SetNonPlayerAnimationStateName(int id, string animationStateName)
+        {
+            NonPlayerInfo info = GetNonPlayerInfo(id);
+            if (info != null)
+            {
+                if (info.animationStateName == animationStateName)
+                    return;
+
+                info.animationStateName = animationStateName;
+                for (int i = 0; i < _listeners.Count; i++)
+                    _listeners[i].OnNonPlayerAnimationStateChanged(info);
             }
         }
 
@@ -104,6 +130,15 @@ namespace MainGame
                     INonPlayerCharacter nonPlayer = _gameKernal.AddNonPlayerCharacter(_nonPlayerInfoList[i].data.name, new NonPlayerCharacterDesc(proto));
                     IStage stage = _gameKernal.GetStage();
                     nonPlayer.position = stage.GetStagePoint(_nonPlayerInfoList[i].stagePointName);
+                    if (!string.IsNullOrEmpty(_nonPlayerInfoList[i].stageLookPointName))
+                    {
+                        Vector3 lookPoint = stage.GetStagePoint(_nonPlayerInfoList[i].stageLookPointName);
+                        Vector3 lookVector = lookPoint - nonPlayer.position;
+                        float yaw = MathHelper.Vector3ToYaw(lookVector);
+                        nonPlayer.yaw = yaw;
+                    }
+                    if (!string.IsNullOrEmpty(_nonPlayerInfoList[i].animationStateName))
+                        nonPlayer.PlayAnimation(_nonPlayerInfoList[i].animationStateName);
                 }
             }
         }

@@ -67,8 +67,9 @@ namespace MainGame
             nonPlayerDb.Initialize();
             _nonPlayerManager.Initialize(nonPlayerDb, gameKernal);
             _nonPlayerManager.SetNonPlayerPosition(1, 1, "npc_1");
-            _nonPlayerManager.SetNonPlayerPosition(2, 1, "npc_2");
+            _nonPlayerManager.SetNonPlayerPosition(2, 1, "npc_2", "npc_2_look");
             _nonPlayerManager.SetNonPlayerPosition(3, 2, "3");
+            _nonPlayerManager.SetNonPlayerAnimationStateName(1, "Run");
             // _nonPlayerManager.SetNonPlayerPosition(4, 2, "1");
 
             PropObjectDatabase propObjectDb = new PropObjectDatabase();
