@@ -39,6 +39,7 @@ namespace MainGame
         private ScenarioPhaseManager _scenarioPhaseManager = new ScenarioPhaseManager();
 
         private MonoScenarioScene _scenarioScene = null;
+        private List<ITrigger> _stageTransferTriggers = new List<ITrigger>();
 
         private string _sceneName = "TestScenario";
         private string _scenarioId = "1";
@@ -85,7 +86,6 @@ namespace MainGame
             _propObjectManager.SetInteractCommandIdByName(4, 6);
 
             _triggerManager.Initialize(gameKernal);
-            InitAllStageTransferTrigger();
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -134,33 +134,6 @@ namespace MainGame
             _interactView.SetListener(_interactGameState);
             _mainTransfer.Initialize();
 
-        }
-
-        private void InitAllStageTransferTrigger()
-        {
-            List<IStageDatabaseEntry> entryList = _stageDatabase.GetEntryList();
-            if (entryList != null)
-            {
-                for (int i = 0; i < entryList.Count; i++)
-                {
-                    if (entryList[i].transfers == null)
-                        continue;
-                    for (int j = 0; j < entryList[i].transfers.Length; j++)
-                    {
-                        int toStageId = entryList[i].transfers[j].stageId;
-                        string toStagePointName = entryList[i].transfers[j].stagePointName;
-                        _triggerManager.AddTriggerInfo(string.Format("TRANSFER_{0}_{1}:{2}", entryList[i].id, entryList[i].transfers[j].stageId, entryList[i].transfers[j].stagePointName),
-                            entryList[i].id, entryList[i].transfers[j].triggerPointName, () => 
-                            {
-                                _mainTransfer.Transfer(0.3f, 0.3f, Color.black, ()=> 
-                                {
-                                    _playerStageManager.SwapPlayer(toStageId, toStagePointName);
-                                });
-                            }
-                        );
-                    }
-                }
-            }
         }
 
         public void OnCommandProcessEnd()
@@ -275,6 +248,29 @@ namespace MainGame
             _mainGameCameraController.cameraTarget.Setup(gameKernal);
             _mainGameCameraController.cameraPosition = _commonVector3Builder.Build(stageEntry.cameraPos, _commonVector3Builder);
             _mainGameCameraController.cameraPosition.Setup(gameKernal);
+
+            for (int i = 0; i < _stageTransferTriggers.Count; i++)
+                gameKernal.RemoveTrigger(_stageTransferTriggers[i]);
+            _stageTransferTriggers.Clear();
+
+            IStageDatabaseEntry entry = _stageDatabase.GetEntryById(stageId);
+            if (entry != null && entry.transfers != null)
+            {
+                for (int i = 0; i < entry.transfers.Length; i++)
+                {
+                    StageTransferData curData = entry.transfers[i];
+                    IStage stage = gameKernal.GetStage();
+                    Vector3 position = stage.GetStagePoint(curData.triggerPointName);
+                    Vector3 size = stage.GetStagePointSize(curData.triggerPointName);
+                    ITrigger trigger = gameKernal.AddTrigger("TRANSFER_" + curData.stageId + "_" + curData.stagePointName, new TriggerDesc(position, size));
+                    trigger.onTriggerEnter = () => _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () =>
+                    {
+                        _playerStageManager.SwapPlayer(curData.stageId, curData.stagePointName);
+                    });
+                    trigger.onTriggerExit = null;
+                    _stageTransferTriggers.Add(trigger);
+                }
+            }
         }
 
         public void OnValueChanged(int type, int index)
