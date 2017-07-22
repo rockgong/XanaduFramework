@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
 using System;
+using Helper;
 
 namespace MainGame
 {
@@ -86,7 +87,7 @@ namespace MainGame
             _listeners.Clear();
         }
 
-        public void SwapPlayer(int stageId, string stagePointName)
+        public void SwapPlayer(int stageId, string stagePointName, string stageLookPointName = null)
         {
             IStage stage = null;
             bool thisFrame = true;
@@ -105,6 +106,16 @@ namespace MainGame
                         IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
                         IStage newStage = _gameKernal.GetStage();
                         player.position = newStage.GetStagePoint(stagePointName);
+
+                        if (string.IsNullOrEmpty(stageLookPointName))
+                            player.yaw = 0.0f;
+                        else
+                        {
+                            Vector3 lookPoint = newStage.GetStagePoint(stageLookPointName);
+                            Vector3 offset = lookPoint - player.position;
+                            player.yaw = MathHelper.Vector3ToYaw(offset);
+                        }
+
                         for (int i = 0; i < _stageAnimations.Count; i++)
                         {
                             if (_stageAnimations[i].stageId == stageId)

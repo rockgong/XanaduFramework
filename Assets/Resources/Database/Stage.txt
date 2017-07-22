@@ -83,7 +83,8 @@
 		{
 			"triggerPointName" : "1",
 			"stageId" : 3,
-			"stagePointName" : "spawn"
+			"stagePointName" : "spawn",
+			"stageLookPointName" : "spawn_look"
 		}
 	]
 },

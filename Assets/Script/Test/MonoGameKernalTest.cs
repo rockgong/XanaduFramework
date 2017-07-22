@@ -321,7 +321,7 @@ namespace MainGame
                     ITrigger trigger = gameKernal.AddTrigger("TRANSFER_" + curData.stageId + "_" + curData.stagePointName, new TriggerDesc(position, size));
                     trigger.onTriggerEnter = () => _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () =>
                     {
-                        _playerStageManager.SwapPlayer(curData.stageId, curData.stagePointName);
+                        _playerStageManager.SwapPlayer(curData.stageId, curData.stagePointName, curData.stageLookPointName);
                     });
                     trigger.onTriggerExit = null;
                     _stageTransferTriggers.Add(trigger);
