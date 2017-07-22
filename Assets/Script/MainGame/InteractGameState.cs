@@ -104,19 +104,29 @@ namespace MainGame
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
 
-            Vector3 theViewPosition = Vector3.zero;
-            if (_nonPlayer != null)
-                theViewPosition = _nonPlayer.viewPosition;
-            else if (_propObject != null)
-                theViewPosition = _propObject.position;
+            if (_nonPlayer != null || _propObject != null)
+            {
+                Vector3 theViewPosition = Vector3.zero;
+                if (_nonPlayer != null)
+                    theViewPosition = _nonPlayer.viewPosition;
+                else if (_propObject != null)
+                    theViewPosition = _propObject.viewPosition;
 
-			_camera.EasingMoveTo(theViewPosition, () =>
-			{
+    			_camera.EasingMoveTo(theViewPosition, () =>
+    			{
+                    if (_commandList.Count != 0)
+                        _commandList[0].Excute(_interactView, _player, _nonPlayer, _propObject);
+                    _monoDelegate = MonoDelegate.Create(ProcessCommand, "InteractDelegate");
+                    _commandProcessing = true;
+                });
+            }
+            else
+            {
                 if (_commandList.Count != 0)
                     _commandList[0].Excute(_interactView, _player, _nonPlayer, _propObject);
                 _monoDelegate = MonoDelegate.Create(ProcessCommand, "InteractDelegate");
                 _commandProcessing = true;
-            });
+            }
 
             _commandIndex = 0;
 

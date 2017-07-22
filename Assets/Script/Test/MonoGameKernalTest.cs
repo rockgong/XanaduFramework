@@ -85,7 +85,7 @@ namespace MainGame
             _propObjectManager.SetInteractCommandIdByName(3, 5);
             _propObjectManager.SetInteractCommandIdByName(4, 6);
 
-            _triggerManager.Initialize(gameKernal);
+            _triggerManager.Initialize(gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _mainTransfer);
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -133,6 +133,9 @@ namespace MainGame
             _interactGameState.SetInteractView(_interactView);
             _interactView.SetListener(_interactGameState);
             _mainTransfer.Initialize();
+
+            _triggerManager.AddTriggerInfo("my_test", 3, "test_trigger", 0, 0, null, null, 1);
+            _triggerManager.AddTriggerInfo("my_test2", 1, "test_trigger", 0, 1, "TestScenario", "npc_1");
 
         }
 
@@ -291,6 +294,8 @@ namespace MainGame
                     GameObject.Destroy(_scenarioScene.gameObject);
                     _scenarioScene = null;
                 }
+
+                _triggerManager.TryRemoveScenarioScene();
             });
         }
     }
