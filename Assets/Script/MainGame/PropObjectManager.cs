@@ -26,6 +26,9 @@ namespace MainGame
         public string stagePointName;
         public string stageLookPointName;
         public string animationStateName;
+        public int scenarioId = -1;
+        public string scenarioSceneName = null;
+        public string scenarioStagePointName = null;
         public int interactCommandId;
     }
 
@@ -114,6 +117,48 @@ namespace MainGame
                 for (int i = 0; i < _listeners.Count; i++)
                     _listeners[i].OnPropObjectAnimationStateChanged(info);
             }
+        }
+
+        public void SetPropObjectScenario(int id, int scenarioId, string sceneName, string stagePointName)
+        {
+            PropObjectInfo info = GetPropObjectInfo(id);
+            if (info != null)
+            {
+                info.scenarioId = scenarioId;
+                info.scenarioSceneName = sceneName;
+                info.scenarioStagePointName = stagePointName;
+            }
+        }
+
+        public int GetPropObjectScenarioIdByName(string name)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.name == name)
+                    return _propObjectInfoList[i].scenarioId;
+            }
+
+            return -1;
+        }
+        public string GetPropObjectScenarioSceneNameByName(string name)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.name == name)
+                    return _propObjectInfoList[i].scenarioSceneName;
+            }
+
+            return null;
+        }
+        public string GetPropObjectScenarioStagePointNameByName(string name)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.name == name)
+                    return _propObjectInfoList[i].scenarioStagePointName;
+            }
+
+            return null;
         }
 
         public void SetupAllPropObjects(int stageId)

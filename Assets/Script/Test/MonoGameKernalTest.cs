@@ -81,6 +81,7 @@ namespace MainGame
             _propObjectManager.SetPropObjectPosition(2, 3, "monitor");
             _propObjectManager.SetPropObjectPosition(3, 3, "locker_1");
             _propObjectManager.SetPropObjectPosition(4, 3, "locker_2");
+            _propObjectManager.SetPropObjectScenario(1, 1, "TestScenario", "3");
             _propObjectManager.SetInteractCommandIdByName(2, 4);
             _propObjectManager.SetInteractCommandIdByName(3, 5);
             _propObjectManager.SetInteractCommandIdByName(4, 6);
@@ -190,20 +191,46 @@ namespace MainGame
 
         public void OnInteract(IPlayerCharacter player, IPropObject prop)
         {
-            _interactGameState.player = player;
-            _interactGameState.nonPlayer = null;
-            _interactGameState.propObject = prop;
-
-            //Temp Code
-            List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
-
+            int scenarioId = _propObjectManager.GetPropObjectScenarioIdByName(prop.name);
+            string scenarioSceneName = _propObjectManager.GetPropObjectScenarioSceneNameByName(prop.name);
+            string scenerioStagePointName = _propObjectManager.GetPropObjectScenarioStagePointNameByName(prop.name);
             int interactCommandId = _propObjectManager.GetInteractCommandIdByName(prop.name);
-            BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-            command.Setup(_mainGameCommandManager);
-            commandList.Add(command);
-            _interactGameState.SetCommandList(commandList);
 
-            gameKernal.SetGameState(_interactGameState);
+            if (scenarioId >= 0 && !string.IsNullOrEmpty(scenarioSceneName) && !string.IsNullOrEmpty(scenerioStagePointName))
+            {
+                GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + (scenarioSceneName));
+                if (proto != null)
+                {
+                    Vector3 point = gameKernal.GetStage().GetStagePoint(scenerioStagePointName);
+                    GameObject inst = GameObject.Instantiate<GameObject>(proto);
+                    inst.transform.position = point;
+
+                    BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
+                    if (phase != null)
+                    {
+                        _scenarioScene = inst.GetComponent<MonoScenarioScene>();
+                        phase.Setup(gameKernal, _scenarioScene);
+                        _scenarioGameState.Setup(_scenarioScene, phase);
+                        _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
+                    }
+                }
+            }
+            else if (interactCommandId >= 0)
+            {
+                _interactGameState.player = player;
+                _interactGameState.nonPlayer = null;
+                _interactGameState.propObject = prop;
+
+                //Temp Code
+                List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
+
+                BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
+                command.Setup(_mainGameCommandManager);
+                commandList.Add(command);
+                _interactGameState.SetCommandList(commandList);
+
+                gameKernal.SetGameState(_interactGameState);
+            }
         }
 
         public void OnReadyToInteractChanged(INonPlayerCharacter from, INonPlayerCharacter to)
