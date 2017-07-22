@@ -26,6 +26,9 @@ namespace MainGame
         public string stagePointName;
         public string stageLookPointName;
         public string animationStateName;
+        public int scenarioId = -1;
+        public string scenarioSceneName = null;
+        public string scenarioStagePointName = null;
         public int interactCommandId;
     }
 
@@ -115,6 +118,48 @@ namespace MainGame
                 for (int i = 0; i < _listeners.Count; i++)
                     _listeners[i].OnNonPlayerAnimationStateChanged(info);
             }
+        }
+
+        public void SetNonPlayerScenario(int id, int scenarioId, string sceneName, string stagePointName)
+        {
+            NonPlayerInfo info = GetNonPlayerInfo(id);
+            if (info != null)
+            {
+                info.scenarioId = scenarioId;
+                info.scenarioSceneName = sceneName;
+                info.scenarioStagePointName = stagePointName;
+            }
+        }
+
+        public int GetNonPlayerScenarioIdByName(string name)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.name == name)
+                    return _nonPlayerInfoList[i].scenarioId;
+            }
+
+            return -1;
+        }
+        public string GetNonPlayerScenarioSceneNameByName(string name)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.name == name)
+                    return _nonPlayerInfoList[i].scenarioSceneName;
+            }
+
+            return null;
+        }
+        public string GetNonPlayerScenarioStagePointNameByName(string name)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.name == name)
+                    return _nonPlayerInfoList[i].scenarioStagePointName;
+            }
+
+            return null;
         }
 
         public void SetupAllNonPlayers(int stageId)

@@ -42,9 +42,11 @@
 			},
 			"nonZeroEvent" :
 			{
-				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+				"$type" : "MainGame.CommonEventNonPlayerSetScenario",
 				"nonPlayerId" : 1,
-				"dialogId" : 0
+				"scenarioId" : 1,
+				"scenarioSceneName" : "TestScenario",
+				"scenarioStagePointName" : "npc_1"
 			},
 			"zeroEvent" :
 			{

@@ -133,6 +133,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3StagePoint.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />

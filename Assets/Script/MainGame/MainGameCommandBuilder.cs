@@ -24,6 +24,7 @@ namespace MainGame
             _handlers[typeof(CommonEventPredicate)] = MainGameCommandPredicate.BuildHandler;
             _handlers[typeof(CommonEventSetIntValue)] = MainGameCommandSetIntValue.BuildHandler;
             _handlers[typeof(CommonEventSetStringValue)] = MainGameCommandSetStringValue.BuildHandler;
+            _handlers[typeof(CommonEventNonPlayerSetScenario)] = MainGameCommandNonPlayerSetScenario.BuildHandler;
 
             if (_integerBuilder == null)
             {

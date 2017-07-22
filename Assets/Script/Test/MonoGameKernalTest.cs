@@ -146,20 +146,46 @@ namespace MainGame
 
         public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
         {
-            _interactGameState.player = player;
-            _interactGameState.nonPlayer = nonPlayer;
-            _interactGameState.propObject = null;
-
-            //Temp Code
-            List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
-
+            int scenarioId = _nonPlayerManager.GetNonPlayerScenarioIdByName(nonPlayer.name);
+            string scenarioSceneName = _nonPlayerManager.GetNonPlayerScenarioSceneNameByName(nonPlayer.name);
+            string scenerioStagePointName = _nonPlayerManager.GetNonPlayerScenarioStagePointNameByName(nonPlayer.name);
             int interactCommandId = _nonPlayerManager.GetInteractCommandIdByName(nonPlayer.name);
-            BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-            command.Setup(_mainGameCommandManager);
-            commandList.Add(command);
-            _interactGameState.SetCommandList(commandList);
 
-            gameKernal.SetGameState(_interactGameState);
+            if (scenarioId >= 0 && !string.IsNullOrEmpty(scenarioSceneName) && !string.IsNullOrEmpty(scenerioStagePointName))
+            {
+                GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + (scenarioSceneName));
+                if (proto != null)
+                {
+                    Vector3 point = gameKernal.GetStage().GetStagePoint(scenerioStagePointName);
+                    GameObject inst = GameObject.Instantiate<GameObject>(proto);
+                    inst.transform.position = point;
+
+                    BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
+                    if (phase != null)
+                    {
+                        _scenarioScene = inst.GetComponent<MonoScenarioScene>();
+                        phase.Setup(gameKernal, _scenarioScene);
+                        _scenarioGameState.Setup(_scenarioScene, phase);
+                        _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
+                    }
+                }
+            }
+            else if (interactCommandId >= 0)
+            {
+                _interactGameState.player = player;
+                _interactGameState.nonPlayer = nonPlayer;
+                _interactGameState.propObject = null;
+
+                //Temp Code
+                List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
+
+                BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
+                command.Setup(_mainGameCommandManager);
+                commandList.Add(command);
+                _interactGameState.SetCommandList(commandList);
+
+                gameKernal.SetGameState(_interactGameState);
+            }
         }
 
         public void OnInteract(IPlayerCharacter player, IPropObject prop)
