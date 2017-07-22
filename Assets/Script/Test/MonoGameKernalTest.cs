@@ -119,7 +119,7 @@ namespace MainGame
 
             _mainGameCameraController.Initialize(gameKernal.GetCamera());
 
-            _playerStageManager.SwapPlayer(3, "spawn");
+            _playerStageManager.SwapPlayer(1, "spawn");
 
             _mainGameState.SetCameraController(_mainGameCameraController);
 
@@ -134,8 +134,8 @@ namespace MainGame
             _interactView.SetListener(_interactGameState);
             _mainTransfer.Initialize();
 
-            _triggerManager.AddTriggerInfo("my_test", 3, "test_trigger", 0, 0, null, null, 1);
-            _triggerManager.AddTriggerInfo("my_test2", 1, "test_trigger", 0, 1, "TestScenario", "npc_1");
+            _triggerManager.AddTriggerInfo("my_test", 3, "test_trigger", 0, 0, null, null, true, 1);
+            _triggerManager.AddTriggerInfo("my_test2", 1, "spawn", 0, 1, "TestScenario", "npc_1", false);
 
         }
 

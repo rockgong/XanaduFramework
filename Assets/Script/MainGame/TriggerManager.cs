@@ -14,6 +14,7 @@ namespace MainGame
         public int scenarioId = -1;
         public string scenarioSceneName = null;
         public string scenarioStagePointName = null;
+        public bool scenarioNeedTransfer = true;
         public int interactId = -1;
         public string commonEventName = null;
     }
@@ -46,7 +47,7 @@ namespace MainGame
             _triggerList = new List<TriggerInfo>();
         }
 
-        public void AddTriggerInfo(string name, int stageId, string stagePointName, int triggerType = 0, int scenarioId = -1, string scenarioSceneName = null, string scenarioStagePointName = null, int interactId = -1, string commonEventName = null)
+        public void AddTriggerInfo(string name, int stageId, string stagePointName, int triggerType = 0, int scenarioId = -1, string scenarioSceneName = null, string scenarioStagePointName = null, bool scenarioNeedTransfer = true, int interactId = -1, string commonEventName = null)
         {
             if (HasTriggerInfo(name))
                 return;
@@ -59,6 +60,7 @@ namespace MainGame
             newInfo.scenarioId = scenarioId;
             newInfo.scenarioSceneName = scenarioSceneName;
             newInfo.scenarioStagePointName = scenarioStagePointName;
+            newInfo.scenarioNeedTransfer = scenarioNeedTransfer;
             newInfo.interactId = interactId;
             newInfo.commonEventName = commonEventName;
 
@@ -120,7 +122,10 @@ namespace MainGame
                                     _scene = inst.GetComponent<MonoScenarioScene>();
                                     phase.Setup(_gameKernal, _scene);
                                     _scenarioGameState.Setup(_scene, phase);
-                                    _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
+                                    if (curTrigger.scenarioNeedTransfer)
+                                        _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
+                                    else
+                                        _gameKernal.SetGameState(_scenarioGameState);
                                 }
                             }
                         }
