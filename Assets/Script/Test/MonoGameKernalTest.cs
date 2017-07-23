@@ -384,6 +384,10 @@ namespace MainGame
 
         public void OnInventoryButtonPressed(InventoryInfo info)
         {
+            _interactGameState.player = null;
+            _interactGameState.nonPlayer = null;
+            _interactGameState.propObject = null;
+
             List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
             InteractCommandMessage message = new InteractCommandMessage();
             message.content = info.data.desc;
