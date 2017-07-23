@@ -37,6 +37,8 @@ namespace MainGame
         private ScenarioPhaseBuilder _scenarioPhaseBuilder = new ScenarioPhaseBuilder();
         private ScenarioPhaseDatabase _scenarioPhaseDatabase = new ScenarioPhaseDatabase();
         private ScenarioPhaseManager _scenarioPhaseManager = new ScenarioPhaseManager();
+        private InventoryDatabase _inventoryDatabase = new InventoryDatabase();
+        private InventoryManager _inventoryManager = new InventoryManager();
 
         private MonoScenarioScene _scenarioScene = null;
         private List<ITrigger> _stageTransferTriggers = new List<ITrigger>();
@@ -57,6 +59,16 @@ namespace MainGame
             // GameObject stagePrototype = Resources.Load<GameObject>("Stage/TestStage");
 
             // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
+            _inventoryDatabase.Initialize();
+            _inventoryManager.Initialize(_inventoryDatabase, 10);
+            _inventoryManager.AddInventory(1);
+            _inventoryManager.AddInventory(2);
+            _inventoryManager.AddInventory(3);
+            _inventoryManager.AddInventory(4);
+            _inventoryManager.ForEachInventory((info) =>
+            {
+                Debug.LogFormat("{0} : {1} : {2}", info.data.id, info.data.name, info.data.desc);
+            });
             
             _commonVector3Builder.Initialize();
             _stageDatabase = new StageDatabase();
