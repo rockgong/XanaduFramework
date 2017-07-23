@@ -10,7 +10,7 @@ using UIUtil;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener, IMenuViewListener
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -19,6 +19,7 @@ namespace MainGame
 
         private MainGameState _mainGameState = new MainGameState();
         private MainGameView _mainGameView = new MainGameView();
+        private MenuGameState _menuGameState = new MenuGameState();
         private MenuView _menuView = new MenuView();
         private InteractGameState _interactGameState = new InteractGameState();
         private ScenarioGameState _scenarioGameState = new ScenarioGameState();
@@ -128,8 +129,11 @@ namespace MainGame
             _mainGameView.SetVisible(false);
 			_mainGameView.SetListener(this);
 
+            _menuGameState.SetMenuView(_menuView);
+
             _menuView.Initialize();
             _menuView.SetVisible(false);
+            _menuView.SetListener(this);
 
             ICamera cam = gameKernal.GetCamera();
 
@@ -376,7 +380,12 @@ namespace MainGame
 
         public void OnMenuButtonPressed()
         {
-            _menuView.SetVisible(true);
+            gameKernal.SetGameState(_menuGameState);
+        }
+
+        public void OnBackButtonPressed()
+        {
+            gameKernal.SetGameState(_mainGameState);
         }
     }
 }
