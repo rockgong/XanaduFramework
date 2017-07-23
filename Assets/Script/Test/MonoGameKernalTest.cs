@@ -10,7 +10,7 @@ using UIUtil;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener, IMenuViewListener
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener, IMenuViewListener, IInventoryManagerListener
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -64,6 +64,7 @@ namespace MainGame
             // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
             _inventoryDatabase.Initialize();
             _inventoryManager.Initialize(_inventoryDatabase, 10);
+            _inventoryManager.RegisterListener(this);
             
             _commonVector3Builder.Initialize();
             _stageDatabase = new StageDatabase();
@@ -394,6 +395,20 @@ namespace MainGame
             commandList.Add(message);
             _interactGameState.SetCommandList(commandList);
             gameKernal.SetGameState(_interactGameState);
+        }
+
+        private void OnInventoryChanged()
+        {
+            _mainGameCommandManager.DoCommand("Update");
+        }
+
+        public void OnInventoryAdded(InventoryInfo info)
+        {
+            OnInventoryChanged();
+        }
+        public void OnInventoryRemoved(InventoryInfo info)
+        {
+            OnInventoryChanged();
         }
     }
 }
