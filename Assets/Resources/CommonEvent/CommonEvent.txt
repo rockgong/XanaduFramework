@@ -30,25 +30,15 @@
 		"name" : "Update",
 		"data" :
 		{
-			"$type" : "MainGame.CommonEventPredicate",
-			"predicateValue" :
+			"$type" : "MainGame.CommonEventHasInventory",
+			"inventoryId" : 1,
+			"yesEvent" :
 			{
-				"$type" : "MainGame.CommonIntegerFromValue",
-				"index" :
-				{
-					"$type" : "MainGame.CommonIntegerLiteral",
-					"val" : 0
-				}
-			},
-			"nonZeroEvent" :
-			{
-				"$type" : "MainGame.CommonEventNonPlayerSetScenario",
+				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 				"nonPlayerId" : 1,
-				"scenarioId" : 1,
-				"scenarioSceneName" : "TestScenario",
-				"scenarioStagePointName" : "npc_1"
+				"dialogId" : 0
 			},
-			"zeroEvent" :
+			"noEvent" :
 			{
 				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 				"nonPlayerId" : 1,
