@@ -64,14 +64,6 @@ namespace MainGame
             // IStage stage = gameKernal.SetupStage(new StageDesc(stagePrototype));
             _inventoryDatabase.Initialize();
             _inventoryManager.Initialize(_inventoryDatabase, 10);
-            _inventoryManager.AddInventory(1);
-            _inventoryManager.AddInventory(2);
-            _inventoryManager.AddInventory(3);
-            _inventoryManager.AddInventory(4);
-            _inventoryManager.ForEachInventory((info) =>
-            {
-                Debug.LogFormat("{0} : {1} : {2}", info.data.id, info.data.name, info.data.desc);
-            });
             
             _commonVector3Builder.Initialize();
             _stageDatabase = new StageDatabase();
@@ -111,7 +103,7 @@ namespace MainGame
             commonEventDatabase.LoadFromAsset("CommonEvent/CommonEvent");
             _mainGameCommandBuilder.Initialize();
             // _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
-            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager);
+            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager);
             InteractCommandDatabase interactCommandDatabase = new InteractCommandDatabase();
             interactCommandDatabase.LoadFromAsset("InteractCommand/InteractCommand");
             _interactCommandBuilder.Initialize();
