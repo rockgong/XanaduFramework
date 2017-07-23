@@ -132,6 +132,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Player.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Plus.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3StagePoint.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventAddInventory.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" />
