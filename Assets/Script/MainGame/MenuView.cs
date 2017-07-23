@@ -8,6 +8,7 @@ namespace MainGame
 {
 	interface IMenuViewListener
 	{
+		void OnInventoryButtonPressed(InventoryInfo info);
 		void OnBackButtonPressed();
 	}
 
@@ -16,7 +17,6 @@ namespace MainGame
 		private MonoView _monoView;
 		private IMenuViewListener _listener;
 		private Transform _inventoryListRoot;
-		private Transform _inventoryDescRoot;
 
 		private bool _showingInventory;
 
@@ -49,7 +49,6 @@ namespace MainGame
 					}
 
 					_inventoryListRoot = _monoView.GetWidget<Transform>("inventory_list_root");
-					_inventoryDescRoot = _monoView.GetWidget<Transform>("inventory_desc_root");
 					ShowInventory(false);
 				}
 			}
@@ -66,13 +65,45 @@ namespace MainGame
 			_listener = listener;
 		}
 
-		private void ShowInventory(bool show)
+		public void SetupInventoryList(InventoryManager mgr)
+		{
+			foreach (Transform trans in _inventoryListRoot)
+				GameObject.Destroy(trans.gameObject);
+			GameObject proto = Resources.Load<GameObject>("UI/InventoryButton");
+			if (proto != null)
+			{
+				mgr.ForEachInventory((info) =>
+				{
+					GameObject inst = GameObject.Instantiate(proto);
+					inst.transform.SetParent(_inventoryListRoot);
+					Button button = inst.GetComponent<Button>();
+					if (button != null)
+					{
+						button.onClick.AddListener(() =>
+						{
+							if (_listener != null)
+								_listener.OnInventoryButtonPressed(info);
+						});
+					}
+
+					MonoView itemView = inst.GetComponent<MonoView>();
+					if (itemView != null)
+					{
+						Text itemText = itemView.GetWidget<Text>("item_name");
+						if (itemText != null)
+						{
+							itemText.text = info.data.name;
+						}
+					}
+				});
+			}
+		}
+
+		public void ShowInventory(bool show)
 		{
 			_showingInventory = show;
 			if (_inventoryListRoot != null)
 				_inventoryListRoot.gameObject.SetActive(show);
-			if (_inventoryDescRoot != null)
-				_inventoryDescRoot.gameObject.SetActive(show);
 		}
 	}
 }

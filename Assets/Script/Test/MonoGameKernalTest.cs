@@ -380,12 +380,24 @@ namespace MainGame
 
         public void OnMenuButtonPressed()
         {
+            _menuView.SetupInventoryList(_inventoryManager);
+            _menuView.ShowInventory(false);
             gameKernal.SetGameState(_menuGameState);
         }
 
         public void OnBackButtonPressed()
         {
             gameKernal.SetGameState(_mainGameState);
+        }
+
+        public void OnInventoryButtonPressed(InventoryInfo info)
+        {
+            List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
+            InteractCommandMessage message = new InteractCommandMessage();
+            message.content = info.data.desc;
+            commandList.Add(message);
+            _interactGameState.SetCommandList(commandList);
+            gameKernal.SetGameState(_interactGameState);
         }
     }
 }

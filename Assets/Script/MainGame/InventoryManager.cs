@@ -17,7 +17,7 @@ namespace MainGame
 		List<IInventoryDatabaseEntry> GetEntryList();
 	}
 
-	class InventoryInfo
+	public class InventoryInfo
 	{
 		public IInventoryDatabaseEntry data;
 	}
