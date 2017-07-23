@@ -13,10 +13,16 @@ namespace MainGame
 		private bool _mouseDown;
 		private IGameKernal _kernal;
 		private MainGameCameraController _camController;
+		private MainGameView _mainGameView;
 
 		public void SetCameraController(MainGameCameraController cc)
 		{
 			_camController = cc;
+		}
+
+		public void SetMainGameView(MainGameView view)
+		{
+			_mainGameView = view;
 		}
 
 		public void EnterState(IGameKernal kernal)
@@ -33,6 +39,9 @@ namespace MainGame
 			_camController.Startup();
 			_kernal = kernal;
 
+			if (_mainGameView != null)
+				_mainGameView.SetVisible(true);
+
 			return;
 		}
 
@@ -42,6 +51,9 @@ namespace MainGame
 			// kernal.SetCameraFollowPlayer(false);
 			_camController.Shutdown();
             _player.velocity = 0.0f;
+
+			if (_mainGameView != null)
+				_mainGameView.SetVisible(false);
 
 			return;
 		}

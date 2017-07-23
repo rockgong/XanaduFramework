@@ -117,6 +117,7 @@
      <None Include="Assets\PostProcessing\Resources\Shaders\TAA.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\EyeAdaptation.cginc" />
      <None Include="Assets\PostProcessing\Resources\Shaders\GrainGen.shader" />
+     <None Include="Assets\Resources\Database\Inventory.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\FXAA.shader" />
      <None Include="Assets\Resources\Database\Stage.txt" />
      <None Include="Assets\PostProcessing\Resources\Shaders\DiskKernels.cginc" />

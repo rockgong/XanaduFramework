@@ -10,7 +10,7 @@ using UIUtil;
 
 namespace MainGame
 {
-    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost
+    public class MonoGameKernalTest : MonoBehaviour, IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener
     {
         public Vector3 cameraOffset;
         public string[] selectOptions;
@@ -18,6 +18,7 @@ namespace MainGame
         private IGameKernal gameKernal;
 
         private MainGameState _mainGameState = new MainGameState();
+        private MainGameView _mainGameView = new MainGameView();
         private InteractGameState _interactGameState = new InteractGameState();
         private ScenarioGameState _scenarioGameState = new ScenarioGameState();
         private InteractView _interactView = new InteractView();
@@ -122,6 +123,10 @@ namespace MainGame
             _mainGameCommandManager.DoCommand("Change1");
             _mainGameCommandManager.DoCommand("Change3");
 
+            _mainGameView.Initialize();
+            _mainGameView.SetVisible(false);
+			_mainGameView.SetListener(this);
+
             ICamera cam = gameKernal.GetCamera();
 
             cam.lookPosition = player.viewPosition;
@@ -135,6 +140,7 @@ namespace MainGame
             _playerStageManager.SwapPlayer(1, "spawn");
 
             _mainGameState.SetCameraController(_mainGameCameraController);
+            _mainGameState.SetMainGameView(_mainGameView);
 
             gameKernal.SetGameState(_mainGameState);
 
@@ -362,6 +368,11 @@ namespace MainGame
 
                 _triggerManager.TryRemoveScenarioScene();
             });
+        }
+
+        public void OnMenuButtonPressed()
+        {
+            Debug.Log("Main Menu Press !");
         }
     }
 }
