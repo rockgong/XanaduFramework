@@ -65,5 +65,24 @@
 				}
 			]
 		}
+	},
+	{
+		"name" : "SelectSecond",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 0,
+					"targetValue" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventRemoveInventory",
+					"inventoryId" : 1
+				}
+			]
+		}
 	}
 ]

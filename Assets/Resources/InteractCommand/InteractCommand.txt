@@ -107,6 +107,10 @@
 								"$type" : "MainGame.CommonStringLiteral",
 								"val" : "GO AHEAD"
 							}
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "SelectSecond"
 						}
 					]
 				}
