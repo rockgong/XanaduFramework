@@ -19,6 +19,7 @@ namespace MainGame
 
         private MainGameState _mainGameState = new MainGameState();
         private MainGameView _mainGameView = new MainGameView();
+        private MenuView _menuView = new MenuView();
         private InteractGameState _interactGameState = new InteractGameState();
         private ScenarioGameState _scenarioGameState = new ScenarioGameState();
         private InteractView _interactView = new InteractView();
@@ -126,6 +127,9 @@ namespace MainGame
             _mainGameView.Initialize();
             _mainGameView.SetVisible(false);
 			_mainGameView.SetListener(this);
+
+            _menuView.Initialize();
+            _menuView.SetVisible(false);
 
             ICamera cam = gameKernal.GetCamera();
 
@@ -372,7 +376,7 @@ namespace MainGame
 
         public void OnMenuButtonPressed()
         {
-            Debug.Log("Main Menu Press !");
+            _menuView.SetVisible(true);
         }
     }
 }
