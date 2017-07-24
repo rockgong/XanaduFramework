@@ -17,6 +17,9 @@ namespace GameKernal
 
         private MonoGameKernal _monoGameKernal;
 
+        private PlayerCharacterDesc _playerCharacterDesc;
+        private StageDesc _stageDesc;
+
         public override IPlayerCharacter GetPlayerCharacter()
         {
             return _player;
@@ -44,6 +47,8 @@ namespace GameKernal
             newPlayer.Initialize(desc);
             _player = newPlayer;
             _interactSystem.Initialize(_player);
+
+            _playerCharacterDesc = desc;
 
             return _player;
         }
@@ -224,6 +229,8 @@ namespace GameKernal
             newStage.Initialize(desc, onEnd);
             _stage = newStage;
 
+            _stageDesc = desc;
+
             return _stage;
         }
 
@@ -303,6 +310,28 @@ namespace GameKernal
                         host.OnReadyToInteractChanged((IPropObject)from, (IPropObject)to);
                 }
             }
+        }
+
+        public override GameKernalErrorCode Shutdown()
+        {
+            if (_player != null)
+            {
+                _player.Uninitialize();
+                _player = null;
+            }
+            if (_stage != null)
+            {
+                _stage.Uninitialize();
+                _stage = null;
+            }
+
+
+            return GameKernalErrorCode.OK;
+        }
+
+        public override GameKernalErrorCode Startup()
+        {
+            return GameKernalErrorCode.OK;
         }
     }
 }

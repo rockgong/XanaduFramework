@@ -158,6 +158,7 @@
      <Compile Include="Assets\Script\MainGame\InteractGameState.cs" />
      <Compile Include="Assets\Script\MainGame\InteractView.cs" />
      <Compile Include="Assets\Script\MainGame\InventoryManager.cs" />
+     <Compile Include="Assets\Script\MainGame\MainGame.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCameraController.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\MainGameCommandManager.cs" />
@@ -186,6 +187,7 @@
      <Compile Include="Assets\Script\Miscs\MainTransfer.cs" />
      <Compile Include="Assets\Script\Miscs\MonoScreenCover.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
+     <Compile Include="Assets\Script\Test\MonoMainGameTest.cs" />
      <Compile Include="Assets\Script\Test\MonoScenarioTest.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />

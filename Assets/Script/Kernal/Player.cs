@@ -11,26 +11,32 @@ namespace GameKernal
 
         public override void Initialize(PlayerCharacterDesc desc)
         {
-            GameObject gameObject = GameObject.Instantiate(desc.prototype);
-            _entity = gameObject.AddComponent<MonoEntity>();
-            _entity.SetHost(this);
+            if (_entity == null)
+            {
+                GameObject gameObject = GameObject.Instantiate(desc.prototype);
+                _entity = gameObject.AddComponent<MonoEntity>();
+                _entity.SetHost(this);
 
-            _rigidbody = gameObject.GetComponent<Rigidbody>();
-            _rigidbody.isKinematic = false;
-            _animator = gameObject.GetComponentInChildren<Animator>();
+                _rigidbody = gameObject.GetComponent<Rigidbody>();
+                _rigidbody.isKinematic = false;
+                _animator = gameObject.GetComponentInChildren<Animator>();
+            }
 
             return;
         }
 
         public override void Initialize(NonPlayerCharacterDesc desc)
         {
-            GameObject gameObject = GameObject.Instantiate(desc.prototype);
-            _entity = gameObject.AddComponent<MonoEntity>();
-            _entity.SetHost(this);
+            if (_entity == null)
+            {
+                GameObject gameObject = GameObject.Instantiate(desc.prototype);
+                _entity = gameObject.AddComponent<MonoEntity>();
+                _entity.SetHost(this);
 
-            _rigidbody = gameObject.GetComponent<Rigidbody>();
-            _rigidbody.isKinematic = true;
-            _animator = gameObject.GetComponentInChildren<Animator>();
+                _rigidbody = gameObject.GetComponent<Rigidbody>();
+                _rigidbody.isKinematic = true;
+                _animator = gameObject.GetComponentInChildren<Animator>();
+            }
 
             return;
         }
@@ -154,8 +160,12 @@ namespace GameKernal
 
         public override void Uninitialize()
         {
-            _entity.SetHost(null);
-            GameObject.Destroy(_entity.gameObject);
+            if (_entity != null)
+            {
+                _entity.SetHost(null);
+                GameObject.Destroy(_entity.gameObject);
+                _entity = null;
+            }
 
             return;
         }

@@ -166,5 +166,10 @@ namespace MainGame
             if (entry != null)
                 entry.animationStateName = animationStateName;
         }
+
+        public void ClearStageRecord()
+        {
+            _currentStageId = -1;
+        }
     }
 }
