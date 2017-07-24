@@ -98,9 +98,20 @@
 					"dialogId" : 5
 				},
 				{
-					"$type" : "MainGame.CommonEventPropObjectSetDialog",
-					"propObjectId" : 4,
-					"dialogId" : 6
+					"$type" : "MainGame.CommonEventHasInventory",
+					"inventoryId" : 1,
+					"yesEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetDialog",
+						"propObjectId" : 4,
+						"dialogId" : 7
+					},
+					"noEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetDialog",
+						"propObjectId" : 4,
+						"dialogId" : 6
+					}
 				}
 			]
 		}

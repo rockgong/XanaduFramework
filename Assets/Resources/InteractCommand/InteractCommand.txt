@@ -161,5 +161,35 @@
 			"$type" : "MainGame.InteractCommandMessageData",
 			"content" : "这是第二个置物柜"
 		}
+	},
+	{
+		"id" : 7,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "这是第二个置物柜",
+			"options" :
+			[
+				"用钥匙开启", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "你确定？",
+					"options" :
+					[
+						"确定", "还是算了"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "动画开箱动画还没做。。。"
+						}
+					]
+				}
+			]
+		}
 	}
 ]
