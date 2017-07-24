@@ -25,6 +25,7 @@ namespace MainGame
             _handlers[typeof(CommonEventSetIntValue)] = MainGameCommandSetIntValue.BuildHandler;
             _handlers[typeof(CommonEventSetStringValue)] = MainGameCommandSetStringValue.BuildHandler;
             _handlers[typeof(CommonEventNonPlayerSetScenario)] = MainGameCommandNonPlayerSetScenario.BuildHandler;
+            _handlers[typeof(CommonEventNonPlayerSetPosition)] = MainGameCommandNonPlayerSetPosition.BuildHandler;
             _handlers[typeof(CommonEventAddInventory)] = MainGameCommandAddInventory.BuildHandler;
             _handlers[typeof(CommonEventRemoveInventory)] = MainGameCommandRemoveInventory.BuildHandler;
             _handlers[typeof(CommonEventHasInventory)] = MainGameCommandHasInventory.BuildHandler;

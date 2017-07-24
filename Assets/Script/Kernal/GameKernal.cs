@@ -325,6 +325,13 @@ namespace GameKernal
                 _stage = null;
             }
 
+            for (int i = 0; i < _nonPlayer.Count; i++)
+                _nonPlayer[i].Uninitialize();
+            _nonPlayer.Clear();
+
+            for (int i = 0; i < _propObject.Count; i++)
+                _propObject[i].Uninitialize();
+            _propObject.Clear();
 
             return GameKernalErrorCode.OK;
         }

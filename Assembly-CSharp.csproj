@@ -136,6 +136,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventHasInventory.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetPosition.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventRemoveInventory.cs" />

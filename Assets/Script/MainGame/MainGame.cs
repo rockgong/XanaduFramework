@@ -53,6 +53,8 @@ namespace MainGame
         private MonoScenarioScene _scenarioScene = null;
         private List<ITrigger> _stageTransferTriggers = new List<ITrigger>();
 
+        private bool _running = false;
+
 		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer)
 		{
 			_gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
@@ -108,7 +110,6 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(propObjectDatabase, _gameKernal);
-
             _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer);
 
             _mainGameCommandBuilder.Initialize();
@@ -137,18 +138,32 @@ namespace MainGame
 
 		public void StartUp(int stageId, string stagePointName, string stageLookPointName = null)
 		{
+			if (_running)
+				return;
+
 			_gameKernal.SetupPlayerCharacter(new PlayerCharacterDesc(_playerProto));
 			if (_playerStageManager != null)
 				_playerStageManager.SwapPlayer(stageId, stagePointName, stageLookPointName);
 			_gameKernal.SetGameState(_mainGameState);
 			_gameKernal.Startup();
+
+            _nonPlayerManager.Initialize(_nonPlayerDatabase, _gameKernal);
+            _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer);
+
+			_mainGameCommandManager.DoCommand("Update");
+			_running = true;
 		}
 
 		public void ShutDown()
 		{
-			_gameKernal.SetGameState(null);
-			_gameKernal.Shutdown();
-			_playerStageManager.ClearStageRecord();
+			if (_running)
+			{
+				_gameKernal.SetGameState(null);
+				_gameKernal.Shutdown();
+				_playerStageManager.ClearStageRecord();
+				_running = false;
+			}
 		}
 
 		// Interface Implementing

@@ -12,6 +12,9 @@ namespace GameKernal
 
         public override void Initialize(PropObjectDesc desc)
         {
+            if (_entity != null)
+                return;
+
             GameObject gameObject = GameObject.Instantiate(desc.prototype);
             _entity = gameObject.AddComponent<MonoEntity>();
             _entity.SetHost(this);
@@ -122,8 +125,12 @@ namespace GameKernal
 
         public override void Uninitialize()
         {
-            _entity.SetHost(null);
-            GameObject.Destroy(_entity.gameObject);
+            if (_entity != null)
+            {
+                _entity.SetHost(null);
+                GameObject.Destroy(_entity.gameObject);
+                _entity = null;
+            }
 
             return;
         }

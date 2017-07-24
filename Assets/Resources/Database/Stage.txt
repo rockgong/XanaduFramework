@@ -32,7 +32,7 @@
 	"TRANSFERS" :
 	[
 		{
-			"triggerPointName" : "npc_3",
+			"triggerPointName" : "test_trigger",
 			"stageId" : 2,
 			"stagePointName" : "4"
 		}

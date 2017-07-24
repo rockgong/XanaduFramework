@@ -30,20 +30,22 @@
 		"name" : "Update",
 		"data" :
 		{
-			"$type" : "MainGame.CommonEventHasInventory",
-			"inventoryId" : 1,
-			"yesEvent" :
-			{
-				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
-				"nonPlayerId" : 1,
-				"dialogId" : 0
-			},
-			"noEvent" :
-			{
-				"$type" : "MainGame.CommonEventNonPlayerSetDialog",
-				"nonPlayerId" : 1,
-				"dialogId" : 2
-			}
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 1,
+					"stageId" : 1,
+					"stagePointName" : "npc_1"
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 2,
+					"stageId" : 1,
+					"stagePointName" : "npc_2"
+				}
+			]
 		}
 	},
 	{
