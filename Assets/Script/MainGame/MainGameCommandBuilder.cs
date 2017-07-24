@@ -20,12 +20,15 @@ namespace MainGame
         public void Initialize()
         {
             _handlers[typeof(CommonEventNonPlayerSetDialog)] = MainGameCommandNonPlayerSetDialog.BuildHandler;
+            _handlers[typeof(CommonEventPropObjectSetDialog)] = MainGameCommandPropObjectSetDialog.BuildHandler;
             _handlers[typeof(CommonEventGroup)] = MainGameCommandGroup.BuildHandler;
             _handlers[typeof(CommonEventPredicate)] = MainGameCommandPredicate.BuildHandler;
             _handlers[typeof(CommonEventSetIntValue)] = MainGameCommandSetIntValue.BuildHandler;
             _handlers[typeof(CommonEventSetStringValue)] = MainGameCommandSetStringValue.BuildHandler;
             _handlers[typeof(CommonEventNonPlayerSetScenario)] = MainGameCommandNonPlayerSetScenario.BuildHandler;
+            _handlers[typeof(CommonEventPropObjectSetScenario)] = MainGameCommandPropObjectSetScenario.BuildHandler;
             _handlers[typeof(CommonEventNonPlayerSetPosition)] = MainGameCommandNonPlayerSetPosition.BuildHandler;
+            _handlers[typeof(CommonEventPropObjectSetPosition)] = MainGameCommandPropObjectSetPosition.BuildHandler;
             _handlers[typeof(CommonEventAddInventory)] = MainGameCommandAddInventory.BuildHandler;
             _handlers[typeof(CommonEventRemoveInventory)] = MainGameCommandRemoveInventory.BuildHandler;
             _handlers[typeof(CommonEventHasInventory)] = MainGameCommandHasInventory.BuildHandler;

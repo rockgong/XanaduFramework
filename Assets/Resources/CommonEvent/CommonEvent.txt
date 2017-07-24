@@ -52,6 +52,27 @@
 					"stagePointName" : "npc_3"
 				},
 				{
+					"$type" : "MainGame.CommonEventPropObjectSetPosition",
+					"propObjectId" : 2,
+					"stageId" : 3,
+					"stagePointName" : "monitor"
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetPosition",
+					"propObjectId" : 3,
+					"stageId" : 3,
+					"stagePointName" : "locker_1"
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetPosition",
+					"propObjectId" : 4,
+					"stageId" : 3,
+					"stagePointName" : "locker_2"
+				},
+
+
+
+				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 1,
 					"dialogId" : 1
@@ -65,6 +86,21 @@
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 3,
 					"dialogId" : 3
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetDialog",
+					"propObjectId" : 2,
+					"dialogId" : 4
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetDialog",
+					"propObjectId" : 3,
+					"dialogId" : 5
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetDialog",
+					"propObjectId" : 4,
+					"dialogId" : 6
 				}
 			]
 		}

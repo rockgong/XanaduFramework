@@ -121,8 +121,29 @@
 		"id" : 4,
 		"data" :
 		{
-			"$type" : "MainGame.InteractCommandMessageData",
-			"content" : "显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖"
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖显示器泛着红光，诡异又恐怖"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "要做点什么吗",
+					"options" :
+					[
+						"敲打显示器", "什么都不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "你敲打了显示器"
+						}
+					]
+				}
+			]
 		}
 	},
 	{
