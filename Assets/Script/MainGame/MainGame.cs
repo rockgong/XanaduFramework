@@ -5,6 +5,13 @@ using GameKernal;
 
 namespace MainGame
 {
+    public interface IMainGameMemento
+    {
+        string[] stringValues{get;set;}
+        int[] intValues{get;set;}
+        int[] inventoryIds{get;set;}
+    }
+
 	public class MainGame : IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener, IMenuViewListener, IInventoryManagerListener
 	{
         private IGameKernal _gameKernal;
@@ -54,8 +61,9 @@ namespace MainGame
         private List<ITrigger> _stageTransferTriggers = new List<ITrigger>();
 
         private bool _running = false;
+        private bool _applyingMemento = false;
 
-		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer)
+		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, int valueStringCap = 4, int valueIntCap = 4)
 		{
 			_gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 			_playerProto = playerProto;
@@ -127,6 +135,8 @@ namespace MainGame
             _inventoryManager.Initialize(inventoryDatabase, 10);
             _inventoryManager.RegisterListener(this);
 
+            _valueManager.Initialize(valueStringCap, valueIntCap);
+
         	_stageDatabase = stageDatabase;
         	_nonPlayerDatabase = nonPlayerDatabase;
         	_propObjectDatabase = propObjectDatabase;
@@ -167,6 +177,64 @@ namespace MainGame
 				_running = false;
 			}
 		}
+
+        public void ApplyMemento(IMainGameMemento memento)
+        {
+            _applyingMemento = true;
+            _valueManager.Initialize(_valueManager.stringValueCapacity, _valueManager.intValueCapacity);
+            string[] stringValues = memento.stringValues;
+            if (stringValues != null)
+            {
+                for (int i = 0; i < stringValues.Length; i++)
+                {
+                    if (i >= _valueManager.stringValueCapacity)
+                        break;
+                    _valueManager.SetStringValue(i, stringValues[i]);
+                }
+            }
+
+            int[] intValues = memento.intValues;
+            if (intValues != null)
+            {
+                for (int i = 0; i < intValues.Length; i++)
+                {
+                    if (i >= _valueManager.intValueCapacity)
+                        break;
+                    _valueManager.SetIntValue(i, intValues[i]);
+                }
+            }
+
+            _inventoryManager.ClearInventory();
+            int[] inventoryIds = memento.inventoryIds;
+            if (inventoryIds != null)
+            {
+                for (int i = 0; i < inventoryIds.Length; i++)
+                {
+                    _inventoryManager.AddInventory(inventoryIds[i]);
+                }
+            }
+            _applyingMemento = false;
+
+            _mainGameCommandManager.DoCommand("Update");
+        }
+
+        public void DumpMemento(IMainGameMemento memento)
+        {
+            string[] stringValues = new string[_valueManager.stringValueCapacity];
+            for (int i = 0; i < stringValues.Length; i++)
+                stringValues[i] = _valueManager.GetStringValue(i);
+
+            int[] intValues = new int[_valueManager.intValueCapacity];
+            for (int i = 0; i < intValues.Length; i++)
+                intValues[i] = _valueManager.GetIntValue(i);
+
+            List<int> inventoryIdList = new List<int>(_inventoryManager.GetInventoryCount());
+            _inventoryManager.ForEachInventory((info) => inventoryIdList.Add(info.data.id));
+
+            memento.stringValues = stringValues;
+            memento.intValues = intValues;
+            memento.inventoryIds = inventoryIdList.ToArray();
+        }
 
 		// Interface Implementing
         public void OnCommandProcessEnd()
@@ -335,8 +403,8 @@ namespace MainGame
 
         public void OnValueChanged(int type, int index)
         {
-            _mainGameCommandManager.DoCommand("Update");
-            Debug.Log("OnValueChanged Called");
+            if (!_applyingMemento)
+                _mainGameCommandManager.DoCommand("Update");
 
             return;
         }
@@ -384,7 +452,8 @@ namespace MainGame
 
         private void OnInventoryChanged()
         {
-            _mainGameCommandManager.DoCommand("Update");
+            if (!_applyingMemento)
+                _mainGameCommandManager.DoCommand("Update");
         }
 
         public void OnInventoryAdded(InventoryInfo info)

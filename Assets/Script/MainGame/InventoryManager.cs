@@ -125,5 +125,10 @@ namespace MainGame
 		{
 			_inventoryInfoList.Clear();
 		}
+
+		public void ClearInventory()
+		{
+			_inventoryInfoList.Clear();
+		}
 	}
 }

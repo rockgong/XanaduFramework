@@ -23,6 +23,8 @@ public class MonoMainGameTest : MonoBehaviour
 	private string _startStageLookPointName = string.Empty;
 
 	private bool _running = false;
+
+	private MonoTestMemento _memento;
 	// Use this for initialization
 	void Start ()
 	{
@@ -37,6 +39,8 @@ public class MonoMainGameTest : MonoBehaviour
         _mainTransfer.Initialize();
 
 		_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer);
+
+		_memento = GetComponent<MonoTestMemento>();
 	}
 	
 	// Update is called once per frame
@@ -67,6 +71,17 @@ public class MonoMainGameTest : MonoBehaviour
 				_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName);
 				_running = true;
 			}
+		}
+
+
+		if (GUILayout.Button("DumpMem"))
+		{
+			_mainGame.DumpMemento(_memento);
+		}
+
+		if (GUILayout.Button("ApplyMem"))
+		{
+			_mainGame.ApplyMemento(_memento);
 		}
 	}
 }
