@@ -120,5 +120,10 @@ namespace MainGame
 				cb(_inventoryInfoList[i]);
 			}
 		}
+
+		public void Uninitialize()
+		{
+			_inventoryInfoList.Clear();
+		}
 	}
 }

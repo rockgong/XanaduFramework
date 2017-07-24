@@ -44,6 +44,27 @@
 					"nonPlayerId" : 2,
 					"stageId" : 1,
 					"stagePointName" : "npc_2"
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 3,
+					"stageId" : 1,
+					"stagePointName" : "npc_3"
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 1,
+					"dialogId" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 2,
+					"dialogId" : 2
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 3,
+					"dialogId" : 3
 				}
 			]
 		}
@@ -62,8 +83,7 @@
 				},
 				{
 					"$type" : "MainGame.CommonEventAddInventory",
-					"inventoryId" : 1,
-					"checkAlreadyHas" : 0
+					"inventoryId" : 1
 				}
 			]
 		}

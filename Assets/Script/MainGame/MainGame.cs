@@ -84,6 +84,7 @@ namespace MainGame
 
 	        // Initialization
 	        _mainGameState.SetCameraController(_mainGameCameraController);
+	        _mainGameState.SetMainGameView(_mainGameView);
 	        _mainGameCameraController.Initialize(_gameKernal.GetCamera());
 
             _mainGameView.Initialize();
@@ -162,6 +163,7 @@ namespace MainGame
 				_gameKernal.SetGameState(null);
 				_gameKernal.Shutdown();
 				_playerStageManager.ClearStageRecord();
+				_inventoryManager.Uninitialize();
 				_running = false;
 			}
 		}
