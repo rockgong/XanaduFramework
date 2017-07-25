@@ -10,6 +10,8 @@ namespace GameApp
 {
 	class SaveData : IMainGameMemento
 	{
+		public int stageId;
+		public string stagePointName = string.Empty;
 		private string[] _stringValues;
 		private int[] _intValues;
 		private int[] _inventoryIds;
@@ -50,7 +52,7 @@ namespace GameApp
 
         public override string ToString()
         {
-        	return string.Format("{0}", stringValues.Length == 0 ? "NULL" : stringValues[0]);
+			return string.Format("{0}", stringValues.Length == 0 ? "NoName" : stringValues[0]);
         }
 	}
 
@@ -131,8 +133,18 @@ namespace GameApp
 
 		public static void DataToStream(SaveData data, Stream stream)
 		{
+			//stageId
+			byte[] buf = BitConverter.GetBytes(data.stageId);
+			stream.Write(buf, 0, buf.Length);
+
+			//stagePointName
+			buf = System.Text.Encoding.Unicode.GetBytes(data.stagePointName);
+			byte[] tempBuf = BitConverter.GetBytes(buf.Length);
+			stream.Write(tempBuf, 0, tempBuf.Length);
+			stream.Write(buf, 0, buf.Length);
+
 			//string count
-			byte[] buf = BitConverter.GetBytes(data.stringValues.Length);
+			buf = BitConverter.GetBytes(data.stringValues.Length);
 			stream.Write(buf, 0, buf.Length);
 
 			//string content
@@ -169,10 +181,24 @@ namespace GameApp
 
 		public static void DataFromStream(SaveData data, Stream stream)
 		{
-			//string count
+			//stageId
 			byte[] buf = new byte[4];
 			stream.Read(buf, 0, buf.Length);
 			int intVal = BitConverter.ToInt32(buf, 0);
+			data.stageId = intVal;
+
+			//stagePointName
+			buf = new byte[4];
+			stream.Read(buf, 0, buf.Length);
+			int tempLength = BitConverter.ToInt32(buf, 0);
+			buf = new byte[tempLength];
+			stream.Read(buf, 0, buf.Length);
+			data.stagePointName = System.Text.Encoding.Unicode.GetString(buf);
+
+			//string count
+			buf = new byte[4];
+			stream.Read(buf, 0, buf.Length);
+			intVal = BitConverter.ToInt32(buf, 0);
 			data.stringValues = new string[intVal];
 
 			//string content

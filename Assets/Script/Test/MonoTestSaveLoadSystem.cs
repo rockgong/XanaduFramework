@@ -7,6 +7,8 @@ using System.Text;
 namespace GameApp
 {
 	class MonoTestSaveLoadSystem : MonoBehaviour, ISaveLoadViewListener {
+		public int stageId;
+		public string stagePointName;
 		public string[] stringValues;
 		public int[] intValues;
 		public int[] inventoryIds;
@@ -34,6 +36,8 @@ namespace GameApp
 			if (GUILayout.Button("Save"))
 			{
 				SaveData saveData = new SaveData();
+				saveData.stageId = stageId;
+				saveData.stagePointName = stagePointName;
 				saveData.stringValues = stringValues;
 				saveData.intValues = intValues;
 				saveData.inventoryIds = inventoryIds;
@@ -72,6 +76,13 @@ namespace GameApp
 		private string Stringify(SaveData saveData)
 		{
 			StringBuilder sb = new StringBuilder();
+
+			sb.Append("[");
+			sb.Append(saveData.stageId.ToString());
+			sb.Append(",");
+			sb.Append(saveData.stagePointName);
+			sb.Append("]");
+
 			sb.Append(saveData.stringValues.Length.ToString());
 			sb.Append(" ");
 			for (int i = 0; i < saveData.stringValues.Length; i++)
@@ -100,7 +111,10 @@ namespace GameApp
 
 		public void OnSaveLoadButtonPressed(SaveData data)
 		{
-			Debug.Log(data.ToString());
+			if (data != null)
+				Debug.Log(data.ToString());
+			else
+				Debug.Log("Null Data");
 		}
 		public void OnBackButtonPressed()
 		{
