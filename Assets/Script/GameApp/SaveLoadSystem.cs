@@ -47,6 +47,11 @@ namespace GameApp
         		_inventoryIds = value;
         	}
         }
+
+        public override string ToString()
+        {
+        	return string.Format("{0}", stringValues.Length == 0 ? "NULL" : stringValues[0]);
+        }
 	}
 
 	class SaveLoadSystem
