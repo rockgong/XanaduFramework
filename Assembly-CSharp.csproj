@@ -195,6 +195,7 @@
      <Compile Include="Assets\Script\Test\MonoMainGameTest.cs" />
      <Compile Include="Assets\Script\Test\MonoScenarioTest.cs" />
      <Compile Include="Assets\Script\Test\MonoTestMemento.cs" />
+     <Compile Include="Assets\Script\Test\MonoTestSaveLoadSystem.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
