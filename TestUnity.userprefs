@@ -1,15 +1,33 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\MainGame\InteractView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Test\MonoMainGameTest.cs">
     <Files>
       <File FileName="Assets\Script\Test\MonoGameKernalTest.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Kernal\InteractSystem.cs" Line="82" Column="5" />
-      <File FileName="Assets\Script\MainGame\InteractView.cs" Line="63" Column="8" />
-      <File FileName="Assets\Script\UI\MonoTypewriter.cs" Line="22" Column="4" />
+      <File FileName="Assets\Script\Kernal\InteractSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\InteractView.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\UI\MonoTypewriter.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\TriggerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Kernal\GameKernal.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\MainGameCommandManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\NonPlayerManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\PropObjectManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\MainGame\MainGame.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Test\MonoTestMemento.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Test\MonoMainGameTest.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\GameApp\SaveLoadSystem.cs" Line="134" Column="56" />
+      <File FileName="Assets\Script\Test\MonoTestSaveLoadSystem.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="D:\UnityProj\TestUnity\Assets\Script\MainGame\TriggerManager.cs" line="165" column="1" />
+      <Breakpoint file="D:\UnityProj\TestUnity\Assets\Script\Test\MonoGameKernalTest.cs" line="150" column="1" />
+      <Breakpoint file="D:\UnityProj\TestUnity\Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" line="22" column="1" />
+      <Breakpoint file="D:\UnityProj\TestUnity\Assets\Script\MainGame\MainGame.cs" line="223" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

@@ -32,6 +32,15 @@ namespace GameApp
 				if (_view != null)
 				{
 					_saveDataListRoot = _view.GetWidget<Transform>("save_data_list_root");
+					Button backButton = _view.GetWidget<Button>("back_button");
+					if (backButton != null)
+					{
+						backButton.onClick.AddListener(() =>
+						{
+							if (_listener != null)
+								_listener.OnBackButtonPressed();
+						});
+					}
 				}
 			}
 		}

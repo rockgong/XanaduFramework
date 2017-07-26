@@ -8,7 +8,7 @@ using System;
 
 namespace GameApp
 {
-	class SaveData : IMainGameMemento
+	public class SaveData : IMainGameMemento
 	{
 		public int stageId;
 		public string stagePointName = string.Empty;
@@ -52,11 +52,11 @@ namespace GameApp
 
         public override string ToString()
         {
-			return string.Format("{0}", stringValues.Length == 0 ? "NoName" : stringValues[0]);
+			return string.Format("[{0}:{1}] {2}", stageId, stagePointName, stringValues.Length == 0 ? "NoName" : stringValues[0]);
         }
 	}
 
-	class SaveLoadSystem
+	public class SaveLoadSystem
 	{
 		private string _basePath;
 		private int _capacity;
