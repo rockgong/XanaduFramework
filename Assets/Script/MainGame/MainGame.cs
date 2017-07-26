@@ -158,11 +158,6 @@ namespace MainGame
         	_transfer = transfer;
 		}
 
-        public void SetHost(IMainGameHost host)
-        {
-            _host = host;
-        }
-
 		public void StartUp(int stageId, string stagePointName, string stageLookPointName = null, int scenarioId = 0, string scenarioSceneName = null, string scenarioStagePointName = null)
 		{
 			if (_running)
@@ -290,7 +285,7 @@ namespace MainGame
             {
                 if (!_suspending)
                 {
-                    _gameKernal.SetGameState(null);
+                    _suspending = true;
                 }
             }
         }
@@ -301,7 +296,7 @@ namespace MainGame
             {
                 if (_suspending)
                 {
-                    _gameKernal.SetGameState(_mainGameState);
+                    _suspending = false;
                 }
             }
         }

@@ -57,6 +57,8 @@ namespace MainGame
         public void Initialize(int stringValueCapacity, int intValueCapacity)
         {
             _stringValues = new string[stringValueCapacity];
+            for (int i = 0; i < _stringValues.Length; i++)
+                _stringValues[i] = string.Empty;
             _intValues = new int[intValueCapacity];
         }
 

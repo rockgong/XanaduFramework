@@ -144,6 +144,7 @@ namespace GameApp
         {
         	Debug.LogFormat("Request Save ! {0}, {1}", stageId, stagePointName);
         	_mainGame.Suspend();
+			_saveLoadView.SetupSaveDataView(_saveLoadSystem);
         	_saveLoadView.SetVisible(true);
 			_currentSaveDataHandler = SaveDataHandler;
 			_currentSaveViewCloseHandler = SaveCloseHandler;
