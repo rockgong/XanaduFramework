@@ -12,6 +12,12 @@ namespace MainGame
         int[] inventoryIds{get;set;}
     }
 
+    public interface IMainGameHost
+    {
+        void OnRequestSaveSession(int stageId, string stagePointName);
+        bool suspending{get;}
+    }
+
 	public class MainGame : IInteractGameStateHost, IGameKernalHost, IPlayerStageManagerListener, IValueManagerListener, IScenarioGameStateHost, IMainGameViewListener, IMenuViewListener, IInventoryManagerListener
 	{
         private IGameKernal _gameKernal;
@@ -61,10 +67,15 @@ namespace MainGame
         private List<ITrigger> _stageTransferTriggers = new List<ITrigger>();
 
         private bool _running = false;
+        private bool _suspending = false;
         private bool _applyingMemento = false;
 
-		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, int valueStringCap = 4, int valueIntCap = 4)
+        private IMainGameHost _host;
+
+		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, IMainGameHost host, int valueStringCap = 4, int valueIntCap = 4)
 		{
+            _host = host;
+
 			_gameKernal = GameKernalFactory.CreateGameKernal(new GameKernalDesc(), this);
 			_playerProto = playerProto;
 
@@ -119,7 +130,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host);
 
             _mainGameCommandBuilder.Initialize();
             _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager);
@@ -147,6 +158,11 @@ namespace MainGame
         	_transfer = transfer;
 		}
 
+        public void SetHost(IMainGameHost host)
+        {
+            _host = host;
+        }
+
 		public void StartUp(int stageId, string stagePointName, string stageLookPointName = null, int scenarioId = 0, string scenarioSceneName = null, string scenarioStagePointName = null)
 		{
 			if (_running)
@@ -160,7 +176,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(_nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host);
 
 			_mainGameCommandManager.DoCommand("Update");
 			_running = true;
@@ -268,6 +284,33 @@ namespace MainGame
             memento.inventoryIds = inventoryIdList.ToArray();
         }
 
+        public void Suspend()
+        {
+            if (_running)
+            {
+                if (!_suspending)
+                {
+                    _gameKernal.SetGameState(null);
+                }
+            }
+        }
+
+        public void Resume()
+        {
+            if (_running)
+            {
+                if (_suspending)
+                {
+                    _gameKernal.SetGameState(_mainGameState);
+                }
+            }
+        }
+
+        public bool IsSuspending()
+        {
+            return _suspending;
+        }
+
 		// Interface Implementing
         public void OnCommandProcessEnd()
         {
@@ -310,7 +353,7 @@ namespace MainGame
                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                 BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                command.Setup(_mainGameCommandManager);
+                command.Setup(_mainGameCommandManager, _host);
                 commandList.Add(command);
                 _interactGameState.SetCommandList(commandList);
 
@@ -354,7 +397,7 @@ namespace MainGame
                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                 BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                command.Setup(_mainGameCommandManager);
+                command.Setup(_mainGameCommandManager, _host);
                 commandList.Add(command);
                 _interactGameState.SetCommandList(commandList);
 

@@ -138,8 +138,19 @@
 					"optionCommands" :
 					[
 						{
-							"$type" : "MainGame.InteractCommandMessageData",
-							"content" : "你敲打了显示器"
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "你敲打了显示器"
+								},
+								{
+									"$type" : "MainGame.InteractCommandSaveData",
+									"stageId" : 3,
+									"stagePointName" : "spawn"
+								}
+							]
 						}
 					]
 				}

@@ -28,12 +28,13 @@ namespace MainGame
         private ScenarioPhaseManager _scenarioPhaseManager;
         private MainGameCommandManager _mainGameCommandManager;
         private ITransfer _transfer;
+        private IMainGameHost _mainGameHost;
 
         private List<TriggerInfo> _triggerList;
 
         private MonoScenarioScene _scene = null;
 
-        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t)
+        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t, IMainGameHost mgh)
         {
             _gameKernal = gameKernal;
 
@@ -43,6 +44,7 @@ namespace MainGame
             _scenarioPhaseManager = spm;
             _mainGameCommandManager = mgm;
             _transfer = t;
+            _mainGameHost = mgh;
 
             _triggerList = new List<TriggerInfo>();
         }
@@ -137,7 +139,7 @@ namespace MainGame
                                 _interactGameState.player = null;
                                 _interactGameState.nonPlayer = null;
                                 _interactGameState.propObject = null;
-                                command.Setup(_mainGameCommandManager);
+                                command.Setup(_mainGameCommandManager, _mainGameHost);
                                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
                                 commandList.Add(command);
                                 _interactGameState.SetCommandList(commandList);

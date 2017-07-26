@@ -16,13 +16,13 @@ namespace MainGame
 
         private int _curIndex = 0;
 
-        public override void Setup(MainGameCommandManager mgcMgr)
+        public override void Setup(MainGameCommandManager mgcMgr, IMainGameHost mgh)
         {
-            base.Setup(mgcMgr);
+            base.Setup(mgcMgr, mgh);
             if (members == null)
                 return;
             for (int i = 0; i < members.Length; i++)
-                members[i].Setup(_mainGameCommandManager);
+                members[i].Setup(_mainGameCommandManager, _mainGameHost);
         }
 
         public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)

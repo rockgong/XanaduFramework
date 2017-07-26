@@ -7,7 +7,7 @@ using Miscs;
 
 namespace GameApp
 {
-	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener
+	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener, IMainGameHost
 	{
 		private MainGame.MainGame _mainGame = new MainGame.MainGame();
 
@@ -32,6 +32,14 @@ namespace GameApp
 
 		private bool _running = false;
 
+		public bool suspending {get {return _mainGame.IsSuspending();} }
+
+		private System.Action<int, SaveData> _currentSaveDataHandler = null;
+		private System.Action _currentSaveViewCloseHandler = null;
+
+		private int _saveStageId;
+		private string _saveStagePointName;
+
 		private MonoTestMemento _memento;
 		// Use this for initialization
 		void Start ()
@@ -50,7 +58,7 @@ namespace GameApp
 	        _saveLoadView.Initialize();
 	        _saveLoadView.SetListener(this);
 
-			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer);
+			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this);
 
 			_memento = GetComponent<MonoTestMemento>();
 		}
@@ -111,24 +119,73 @@ namespace GameApp
 				{
 					_saveLoadView.SetupSaveDataView(_saveLoadSystem);
 					_saveLoadView.SetVisible(true);
+					_currentSaveDataHandler = LoadDataHandler;
+					_currentSaveViewCloseHandler = LoadCloseHandler;
 				}
 				GUILayout.EndArea();
 			}
 		}
 
-		public void OnSaveLoadButtonPressed(SaveData data)
+		public void OnSaveLoadButtonPressed(int index, SaveData data)
 		{
-			if (data != null)
-			{
-				_saveLoadView.SetVisible(false);
-				_mainGame.ApplyMemento(data);
-				_mainGame.StartUp(data.stageId, data.stagePointName);
-				_running = true;
-			}
+			if (_currentSaveDataHandler != null)
+				_currentSaveDataHandler(index, data);
 		}
 		public void OnBackButtonPressed()
 		{
 			_saveLoadView.SetVisible(false);
+			if (_currentSaveViewCloseHandler != null)
+				_currentSaveViewCloseHandler();
+			_currentSaveDataHandler = null;
+			_currentSaveViewCloseHandler = null;
 		}
+
+        public void OnRequestSaveSession(int stageId, string stagePointName)
+        {
+        	Debug.LogFormat("Request Save ! {0}, {1}", stageId, stagePointName);
+        	_mainGame.Suspend();
+        	_saveLoadView.SetVisible(true);
+			_currentSaveDataHandler = SaveDataHandler;
+			_currentSaveViewCloseHandler = SaveCloseHandler;
+			_saveStageId = stageId;
+			_saveStagePointName = stagePointName;
+        }
+
+        private void LoadDataHandler(int index, SaveData data)
+        {
+        	if (data != null)
+        	{
+        		_saveLoadView.SetVisible(false);
+				_mainGame.ApplyMemento(data);
+				_mainGame.StartUp(data.stageId, data.stagePointName);
+				_running = true;
+				_currentSaveDataHandler = null;
+				_currentSaveViewCloseHandler = null;
+			}	
+        }
+
+        private void SaveDataHandler(int index, SaveData data)
+        {
+        	SaveData newData = new SaveData();
+        	_mainGame.DumpMemento(newData);
+        	newData.stageId = _saveStageId;
+        	newData.stagePointName = _saveStagePointName;
+        	_saveLoadSystem.SetSaveData(index, newData);
+        	_mainGame.Resume();
+    		_saveLoadView.SetVisible(false);
+			_currentSaveDataHandler = null;
+			_currentSaveViewCloseHandler = null;
+        }
+
+        private void LoadCloseHandler()
+        {
+        	return;
+        }
+
+        private void SaveCloseHandler()
+        {
+        	_mainGame.Resume();
+        	return;
+        }
 	}
 }

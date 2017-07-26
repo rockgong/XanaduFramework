@@ -9,7 +9,7 @@ namespace GameApp
 {
 	interface ISaveLoadViewListener
 	{
-		void OnSaveLoadButtonPressed(SaveData data);
+		void OnSaveLoadButtonPressed(int index, SaveData data);
 		void OnBackButtonPressed();
 	}
 
@@ -77,7 +77,7 @@ namespace GameApp
 						button.onClick.AddListener(() =>
 						{
 							if (_listener != null)
-								_listener.OnSaveLoadButtonPressed(data);
+								_listener.OnSaveLoadButtonPressed(i, data);
 						});
 					}
 

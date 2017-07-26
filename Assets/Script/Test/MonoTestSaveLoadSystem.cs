@@ -109,7 +109,7 @@ namespace GameApp
 			return sb.ToString();
 		}
 
-		public void OnSaveLoadButtonPressed(SaveData data)
+		public void OnSaveLoadButtonPressed(int index, SaveData data)
 		{
 			if (data != null)
 				Debug.Log(data.ToString());
