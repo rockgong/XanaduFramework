@@ -147,7 +147,7 @@ namespace MainGame
         	_transfer = transfer;
 		}
 
-		public void StartUp(int stageId, string stagePointName, string stageLookPointName = null)
+		public void StartUp(int stageId, string stagePointName, string stageLookPointName = null, int scenarioId = 0, string scenarioSceneName = null, string scenarioStagePointName = null)
 		{
 			if (_running)
 				return;
@@ -164,6 +164,38 @@ namespace MainGame
 
 			_mainGameCommandManager.DoCommand("Update");
 			_running = true;
+
+            if (scenarioId >= 0 && !string.IsNullOrEmpty(scenarioSceneName) && !string.IsNullOrEmpty(scenarioStagePointName))
+            {
+                GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + (scenarioSceneName));
+                if (proto != null)
+                {
+                    Vector3 point = _gameKernal.GetStage().GetStagePoint(scenarioStagePointName);
+                    GameObject inst = GameObject.Instantiate<GameObject>(proto);
+                    inst.transform.position = point;
+
+                    BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
+                    if (phase != null)
+                    {
+                        _scenarioScene = inst.GetComponent<MonoScenarioScene>();
+                        phase.Setup(_gameKernal, _scenarioScene);
+                        _scenarioGameState.Setup(_scenarioScene, phase);
+
+                        // Make 2 frame delay to wait for scene loading
+                        int frameCnt = 2;
+                        MonoDelegate del = null;
+                        del = MonoDelegate.Create(() =>
+                        {
+                            frameCnt --;
+                            if (frameCnt <= 0)
+                            {
+                                _gameKernal.SetGameState(_scenarioGameState);
+                                GameObject.Destroy(del.gameObject);
+                            }
+                        });
+                    }
+                }
+            }
 		}
 
 		public void ShutDown()

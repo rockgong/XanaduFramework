@@ -23,6 +23,9 @@ namespace GameApp
 		private string _startStageIdString = "1";
 		private string _startStageStartPointName = "spawn";
 		private string _startStageLookPointName = string.Empty;
+		private string _scenarioIdString = "0";
+		private string _scenarioSceneName = "TestScenario";
+		private string _scenarioStagePointName = "spawn";
 
 		private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
 		private SaveLoadView _saveLoadView = new SaveLoadView();
@@ -73,11 +76,15 @@ namespace GameApp
 				_startStageIdString = GUILayout.TextField(_startStageIdString);
 				_startStageStartPointName = GUILayout.TextField(_startStageStartPointName);
 				_startStageLookPointName = GUILayout.TextField(_startStageLookPointName);
+				_scenarioIdString = GUILayout.TextField(_scenarioIdString);
+				_scenarioSceneName = GUILayout.TextField(_scenarioSceneName);
+				_scenarioStagePointName = GUILayout.TextField(_scenarioStagePointName);
 
 				if (GUILayout.Button("Start"))
 				{
 					int startStageId = int.Parse(_startStageIdString);
-					_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName);
+					int scenarioId = int.Parse(_scenarioIdString);
+					_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName, scenarioId, _scenarioSceneName, _scenarioStagePointName);
 					_running = true;
 				}
 			}
