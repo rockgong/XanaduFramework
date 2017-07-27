@@ -30,6 +30,8 @@ namespace GameApp
 		private SaveLoadSystem _saveLoadSystem = new SaveLoadSystem();
 		private SaveLoadView _saveLoadView = new SaveLoadView();
 
+		private GeneralDialogView _generalDialogView = new GeneralDialogView();
+
 		private bool _running = false;
 
 		public bool suspending {get {return _mainGame.IsSuspending();} }
@@ -57,6 +59,7 @@ namespace GameApp
 	        _saveLoadSystem.Initialize(@"D:/", 10);
 	        _saveLoadView.Initialize();
 	        _saveLoadView.SetListener(this);
+	        _generalDialogView.Initialize();
 
 			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this);
 
@@ -156,12 +159,15 @@ namespace GameApp
         {
         	if (data != null)
         	{
-        		_saveLoadView.SetVisible(false);
-				_mainGame.ApplyMemento(data);
-				_mainGame.StartUp(data.stageId, data.stagePointName);
-				_running = true;
-				_currentSaveDataHandler = null;
-				_currentSaveViewCloseHandler = null;
+        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Sure ?", () =>
+        		{
+	        		_saveLoadView.SetVisible(false);
+					_mainGame.ApplyMemento(data);
+					_mainGame.StartUp(data.stageId, data.stagePointName);
+					_running = true;
+					_currentSaveDataHandler = null;
+					_currentSaveViewCloseHandler = null;
+        		});
 			}	
         }
 
@@ -171,20 +177,46 @@ namespace GameApp
         	_mainGame.DumpMemento(newData);
         	newData.stageId = _saveStageId;
         	newData.stagePointName = _saveStagePointName;
-        	_saveLoadSystem.SetSaveData(index, newData);
-        	_mainGame.Resume();
-    		_saveLoadView.SetVisible(false);
-			_currentSaveDataHandler = null;
-			_currentSaveViewCloseHandler = null;
+        	if (data != null)
+        	{
+        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Override ?", () =>
+        		{
+        			_saveLoadSystem.SetSaveData(index, newData);
+        			_saveLoadView.UpdateSingleSaveData(index, newData);
+        			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, "Complete !", () =>
+        			{
+			        	_mainGame.Resume();
+			    		_saveLoadView.SetVisible(false);
+						_currentSaveDataHandler = null;
+						_currentSaveViewCloseHandler = null;
+        			});
+        		});
+        	}
+        	else
+        	{
+        		_saveLoadSystem.SetSaveData(index, newData);
+    			_saveLoadView.UpdateSingleSaveData(index, newData);
+    			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, "Complete !", () =>
+    			{
+		        	_mainGame.Resume();
+		    		_saveLoadView.SetVisible(false);
+					_currentSaveDataHandler = null;
+					_currentSaveViewCloseHandler = null;
+    			});
+        	}
         }
 
         private void LoadCloseHandler()
         {
+			_currentSaveDataHandler = null;
+			_currentSaveViewCloseHandler = null;
         	return;
         }
 
         private void SaveCloseHandler()
         {
+			_currentSaveDataHandler = null;
+			_currentSaveViewCloseHandler = null;
         	_mainGame.Resume();
         	return;
         }

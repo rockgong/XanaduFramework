@@ -35,6 +35,7 @@ namespace GameApp
 					Button backButton = _view.GetWidget<Button>("back_button");
 					if (backButton != null)
 					{
+						backButton.onClick.RemoveAllListeners();
 						backButton.onClick.AddListener(() =>
 						{
 							if (_listener != null)
@@ -74,6 +75,7 @@ namespace GameApp
 					Button button = inst.GetComponent<Button>();
 					if (button != null)
 					{
+						button.onClick.RemoveAllListeners();
 						button.onClick.AddListener(() =>
 						{
 							if (_listener != null)
@@ -91,6 +93,38 @@ namespace GameApp
 						}
 					}
 				});
+			}
+		}
+
+		public void UpdateSingleSaveData(int index, SaveData saveData)
+		{	
+			if (_saveDataListRoot == null)
+				return;
+
+			Transform trans = _saveDataListRoot.GetChild(index);
+
+			if (trans != null)
+			{
+				Button button = trans.GetComponent<Button>();
+				if (button != null)
+				{
+					button.onClick.RemoveAllListeners();
+					button.onClick.AddListener(() =>
+					{
+						if (_listener != null)
+							_listener.OnSaveLoadButtonPressed(index, saveData);
+					});
+				}
+
+				MonoView itemView = trans.GetComponent<MonoView>();
+				if (itemView != null)
+				{
+					Text itemText = itemView.GetWidget<Text>("save_data_desc");
+					if (itemText != null)
+					{
+						itemText.text = saveData == null ? "NULL" : saveData.ToString();
+					}
+				}
 			}
 		}
 	}
