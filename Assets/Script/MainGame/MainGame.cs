@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
@@ -15,6 +15,7 @@ namespace MainGame
     public interface IMainGameHost
     {
         void OnRequestSaveSession(int stageId, string stagePointName);
+        void OnRequestBackToMain();
         bool suspending{get;}
     }
 
@@ -502,6 +503,12 @@ namespace MainGame
         }
 
         public void OnBackButtonPressed()
+        {
+            if (_host != null)
+                _host.OnRequestBackToMain();
+        }
+
+        public void OnBackToMainButtonPressed()
         {
             _gameKernal.SetGameState(_mainGameState);
         }

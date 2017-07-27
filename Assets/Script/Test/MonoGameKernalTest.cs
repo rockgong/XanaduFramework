@@ -383,6 +383,11 @@ namespace MainGame
             gameKernal.SetGameState(_mainGameState);
         }
 
+        public void OnBackToMainButtonPressed()
+        {
+            
+        }
+
         public void OnInventoryButtonPressed(InventoryInfo info)
         {
             _interactGameState.player = null;

@@ -178,6 +178,19 @@ namespace GameApp
 			_saveStagePointName = stagePointName;
         }
 
+        public void OnRequestBackToMain()
+        {
+        	_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Back To Title ?", () =>
+        	{
+        		_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
+        		{
+	        		_mainGame.ShutDown();
+			        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
+	        		_titleScene.Startup();
+        		});
+        	});
+        }
+
         private void LoadDataHandler(int index, SaveData data)
         {
         	if (data != null)

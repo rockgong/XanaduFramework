@@ -10,6 +10,7 @@ namespace MainGame
 	{
 		void OnInventoryButtonPressed(InventoryInfo info);
 		void OnBackButtonPressed();
+		void OnBackToMainButtonPressed();
 	}
 
 	class MenuView
@@ -32,6 +33,7 @@ namespace MainGame
 					Button button = _monoView.GetWidget<Button>("back_button");
 					if (button != null)
 					{
+						button.onClick.RemoveAllListeners();
 						button.onClick.AddListener(() =>
 						{
 							if (_listener != null)
@@ -42,9 +44,21 @@ namespace MainGame
 					button = _monoView.GetWidget<Button>("inventory_button");
 					if (button != null)
 					{
+						button.onClick.RemoveAllListeners();
 						button.onClick.AddListener(() =>
 						{
 							ShowInventory(!_showingInventory);
+						});
+					}
+
+					button = _monoView.GetWidget<Button>("back_to_main_button");
+					if (button != null)
+					{
+						button.onClick.RemoveAllListeners();
+						button.onClick.AddListener(() =>
+						{
+							if (_listener != null)
+								_listener.OnBackToMainButtonPressed();
 						});
 					}
 
