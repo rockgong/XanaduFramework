@@ -7,8 +7,9 @@ using Miscs;
 
 namespace GameApp
 {
-	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener, IMainGameHost
+	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener, IMainGameHost, ITitleSceneHost
 	{
+		private TitleScene _titleScene = new TitleScene();
 		private MainGame.MainGame _mainGame = new MainGame.MainGame();
 
 		private StageDatabase _stageDatabase = new StageDatabase();
@@ -20,6 +21,7 @@ namespace GameApp
 		private InventoryDatabase _inventoryDatabase = new InventoryDatabase();
 		private MainTransfer _mainTransfer = new MainTransfer();
 
+		private bool _hudToggle = false;
 		private string _startStageIdString = "1";
 		private string _startStageStartPointName = "spawn";
 		private string _startStageLookPointName = string.Empty;
@@ -43,6 +45,14 @@ namespace GameApp
 		private string _saveStagePointName;
 
 		private MonoTestMemento _memento;
+
+		public string titleViewPath;
+		public string titleStagePath;
+		public int startStageId;
+		public string startStagePointName;
+		public int startScenarioId;
+		public string startScenarioSceneName;
+		public string startScenarioStagePointName;
 		// Use this for initialization
 		void Start ()
 		{
@@ -61,9 +71,12 @@ namespace GameApp
 	        _saveLoadView.SetListener(this);
 	        _generalDialogView.Initialize();
 
+	        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
 			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this);
 
 			_memento = GetComponent<MonoTestMemento>();
+
+			_titleScene.Startup();
 		}
 		
 		// Update is called once per frame
@@ -74,59 +87,67 @@ namespace GameApp
 
 		void OnGUI()
 		{
-			if (_running)
+			if (GUILayout.Button("v", GUILayout.Width(30)))
 			{
-				if (GUILayout.Button("Stop"))
-				{
-					_mainGame.ShutDown();
-					_running = false;
-				}
-			}
-			else
-			{
-				_startStageIdString = GUILayout.TextField(_startStageIdString);
-				_startStageStartPointName = GUILayout.TextField(_startStageStartPointName);
-				_startStageLookPointName = GUILayout.TextField(_startStageLookPointName);
-				_scenarioIdString = GUILayout.TextField(_scenarioIdString);
-				_scenarioSceneName = GUILayout.TextField(_scenarioSceneName);
-				_scenarioStagePointName = GUILayout.TextField(_scenarioStagePointName);
-
-				if (GUILayout.Button("Start"))
-				{
-					int startStageId = int.Parse(_startStageIdString);
-					int scenarioId = int.Parse(_scenarioIdString);
-					_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName, scenarioId, _scenarioSceneName, _scenarioStagePointName);
-					_running = true;
-				}
+				_hudToggle = !_hudToggle;
 			}
 
-
-			if (GUILayout.Button("DumpMem"))
+			if (_hudToggle)
 			{
-				_mainGame.DumpMemento(_memento);
-			}
-
-			if (GUILayout.Button("ApplyMem"))
-			{
-				_mainGame.ApplyMemento(_memento);
-			}
-
-			if (!_running)
-			{
-				GUILayout.BeginArea(new Rect(100, 100, 100, 10000));
-				if (GUILayout.Button("New Game"))
+				if (_running)
 				{
-
+					if (GUILayout.Button("Stop"))
+					{
+						_mainGame.ShutDown();
+						_running = false;
+					}
 				}
-				if (GUILayout.Button("Load Game"))
+				else
 				{
-					_saveLoadView.SetupSaveDataView(_saveLoadSystem);
-					_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Load);
-					_saveLoadView.SetVisible(true);
-					_currentSaveDataHandler = LoadDataHandler;
-					_currentSaveViewCloseHandler = LoadCloseHandler;
+					_startStageIdString = GUILayout.TextField(_startStageIdString);
+					_startStageStartPointName = GUILayout.TextField(_startStageStartPointName);
+					_startStageLookPointName = GUILayout.TextField(_startStageLookPointName);
+					_scenarioIdString = GUILayout.TextField(_scenarioIdString);
+					_scenarioSceneName = GUILayout.TextField(_scenarioSceneName);
+					_scenarioStagePointName = GUILayout.TextField(_scenarioStagePointName);
+
+					if (GUILayout.Button("Start"))
+					{
+						int startStageId = int.Parse(_startStageIdString);
+						int scenarioId = int.Parse(_scenarioIdString);
+						_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName, scenarioId, _scenarioSceneName, _scenarioStagePointName);
+						_running = true;
+					}
 				}
-				GUILayout.EndArea();
+
+
+				if (GUILayout.Button("DumpMem"))
+				{
+					_mainGame.DumpMemento(_memento);
+				}
+
+				if (GUILayout.Button("ApplyMem"))
+				{
+					_mainGame.ApplyMemento(_memento);
+				}
+
+				if (!_running)
+				{
+					GUILayout.BeginArea(new Rect(100, 100, 100, 10000));
+					if (GUILayout.Button("New Game"))
+					{
+
+					}
+					if (GUILayout.Button("Load Game"))
+					{
+						_saveLoadView.SetupSaveDataView(_saveLoadSystem);
+						_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Load);
+						_saveLoadView.SetVisible(true);
+						_currentSaveDataHandler = LoadDataHandler;
+						_currentSaveViewCloseHandler = LoadCloseHandler;
+					}
+					GUILayout.EndArea();
+				}
 			}
 		}
 
@@ -163,12 +184,17 @@ namespace GameApp
         	{
         		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Sure ?", () =>
         		{
-	        		_saveLoadView.SetVisible(false);
-					_mainGame.ApplyMemento(data);
-					_mainGame.StartUp(data.stageId, data.stagePointName);
-					_running = true;
-					_currentSaveDataHandler = null;
-					_currentSaveViewCloseHandler = null;
+        			_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
+        			{
+		        		_saveLoadView.SetVisible(false);
+						_mainGame.ApplyMemento(data);
+						_mainGame.StartUp(data.stageId, data.stagePointName);
+						_running = true;
+						_currentSaveDataHandler = null;
+						_currentSaveViewCloseHandler = null;
+						_titleScene.Shutdown();
+						_titleScene.Uninitialize();
+        			});
         		});
 			}	
         }
@@ -221,6 +247,32 @@ namespace GameApp
 			_currentSaveViewCloseHandler = null;
         	_mainGame.Resume();
         	return;
+        }
+
+        public void OnSelect(int index)
+        {
+        	if (index == 0)
+        	{
+        		_mainTransfer.Transfer(0.5f, 0.2f, Color.white, () =>
+        		{
+					_mainGame.StartUp(startStageId, startStagePointName, string.Empty, startScenarioId, startScenarioSceneName, startScenarioStagePointName);
+					_titleScene.Shutdown();
+					_titleScene.Uninitialize();
+					_running = true;
+        		});
+        	}
+        	else if (index == 1)
+        	{
+				_saveLoadView.SetupSaveDataView(_saveLoadSystem);
+				_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Load);
+				_saveLoadView.SetVisible(true);
+				_currentSaveDataHandler = LoadDataHandler;
+				_currentSaveViewCloseHandler = LoadCloseHandler;
+        	}
+        	else if (index == 2)
+        	{
+        		Application.Quit();
+        	}
         }
 	}
 }

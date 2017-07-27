@@ -101,6 +101,7 @@
      <Compile Include="Assets\Script\GameApp\GeneralDialogView.cs" />
      <Compile Include="Assets\Script\GameApp\SaveLoadSystem.cs" />
      <Compile Include="Assets\Script\GameApp\SaveLoadView.cs" />
+     <Compile Include="Assets\Script\GameApp\TitleScene.cs" />
      <Compile Include="Assets\Script\Helper\JsonHelper.cs" />
      <Compile Include="Assets\Script\Helper\MathHelper.cs" />
      <Compile Include="Assets\Script\Kernal\BaseGameCamera.cs" />
@@ -199,6 +200,7 @@
      <Compile Include="Assets\Script\Test\MonoScenarioTest.cs" />
      <Compile Include="Assets\Script\Test\MonoTestMemento.cs" />
      <Compile Include="Assets\Script\Test\MonoTestSaveLoadSystem.cs" />
+     <Compile Include="Assets\Script\Test\MonoTitleSceneTest.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
