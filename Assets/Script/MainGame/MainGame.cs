@@ -504,13 +504,13 @@ namespace MainGame
 
         public void OnBackButtonPressed()
         {
-            if (_host != null)
-                _host.OnRequestBackToMain();
+            _gameKernal.SetGameState(_mainGameState);
         }
 
         public void OnBackToMainButtonPressed()
         {
-            _gameKernal.SetGameState(_mainGameState);
+            if (_host != null)
+                _host.OnRequestBackToMain();
         }
 
         public void OnInventoryButtonPressed(InventoryInfo info)
