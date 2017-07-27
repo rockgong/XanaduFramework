@@ -121,6 +121,7 @@ namespace GameApp
 				if (GUILayout.Button("Load Game"))
 				{
 					_saveLoadView.SetupSaveDataView(_saveLoadSystem);
+					_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Load);
 					_saveLoadView.SetVisible(true);
 					_currentSaveDataHandler = LoadDataHandler;
 					_currentSaveViewCloseHandler = LoadCloseHandler;
@@ -148,6 +149,7 @@ namespace GameApp
         	Debug.LogFormat("Request Save ! {0}, {1}", stageId, stagePointName);
         	_mainGame.Suspend();
 			_saveLoadView.SetupSaveDataView(_saveLoadSystem);
+			_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Save);
         	_saveLoadView.SetVisible(true);
 			_currentSaveDataHandler = SaveDataHandler;
 			_currentSaveViewCloseHandler = SaveCloseHandler;

@@ -15,6 +15,12 @@ namespace GameApp
 
 	class SaveLoadView
 	{
+		public enum SaveLoadMode
+		{
+			Save,
+			Load
+		}
+
 		private MonoView _view;
 		private ISaveLoadViewListener _listener;
 
@@ -50,6 +56,20 @@ namespace GameApp
 		{
 			if (_view != null)
 				_view.gameObject.SetActive(visible);
+		}
+
+		public void SwitchLabel(SaveLoadMode mode)
+		{
+			if (_view == null)
+				return;
+
+			Transform trans = null;
+			trans = _view.GetWidget<Transform>("save_label");
+			if (trans != null)
+				trans.gameObject.SetActive(mode == SaveLoadMode.Save);
+			trans = _view.GetWidget<Transform>("load_label");
+			if (trans != null)
+				trans.gameObject.SetActive(mode == SaveLoadMode.Load);
 		}
 
 		public void SetListener(ISaveLoadViewListener listener)
