@@ -10,6 +10,7 @@ namespace GameApp
 	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener, IMainGameHost, ITitleSceneHost
 	{
 		private TitleScene _titleScene = new TitleScene();
+		private ResultScene _resultScene = new ResultScene();
 		private MainGame.MainGame _mainGame = new MainGame.MainGame();
 
 		private StageDatabase _stageDatabase = new StageDatabase();
@@ -53,6 +54,7 @@ namespace GameApp
 		public int startScenarioId;
 		public string startScenarioSceneName;
 		public string startScenarioStagePointName;
+		public string[] resultViewPathList;
 		// Use this for initialization
 		void Start ()
 		{
@@ -292,6 +294,21 @@ namespace GameApp
         {
         	//TODO:
         	Debug.LogFormat("Result {0}", index);
+        	int finalIndex = Mathf.Clamp(index, 0, resultViewPathList.Length - 1);
+        	_resultScene.Initialize(resultViewPathList[finalIndex]);
+        	_mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
+        	{
+        		_mainGame.ShutDown();
+	        	_resultScene.Startup(2.0f, () =>
+	        	{
+	        		_mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
+	        		{
+	        			_resultScene.Uninitialize();
+				        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
+				        _titleScene.Startup();
+	        		});
+	        	});
+        	});
         }
 	}
 }
