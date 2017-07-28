@@ -287,5 +287,11 @@ namespace GameApp
         		Application.Quit();
         	}
         }
+
+        public void OnRequestResult(int index)
+        {
+        	//TODO:
+        	Debug.LogFormat("Result {0}", index);
+        }
 	}
 }

@@ -104,7 +104,7 @@ namespace MainGame
             commonEventDatabase.LoadFromAsset("CommonEvent/CommonEvent");
             _mainGameCommandBuilder.Initialize();
             // _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, GetComponent<TestCommonEventDatabase>(), _valueManager);
-            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager);
+            _mainGameCommandManager.Initialize(gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, null);
             InteractCommandDatabase interactCommandDatabase = new InteractCommandDatabase();
             interactCommandDatabase.LoadFromAsset("InteractCommand/InteractCommand");
             _interactCommandBuilder.Initialize();

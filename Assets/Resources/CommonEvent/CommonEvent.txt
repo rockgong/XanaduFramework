@@ -27,6 +27,14 @@
 		}
 	},
 	{
+		"name" : "Result_0",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventResult",
+			"index" : 0
+		}
+	},
+	{
 		"name" : "Update",
 		"data" :
 		{

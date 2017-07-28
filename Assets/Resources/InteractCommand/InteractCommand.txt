@@ -195,8 +195,18 @@
 					"optionCommands" :
 					[
 						{
-							"$type" : "MainGame.InteractCommandMessageData",
-							"content" : "动画开箱动画还没做。。。"
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "动画开箱动画还没做。。。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "Result_0"
+								}
+							]
 						}
 					]
 				}

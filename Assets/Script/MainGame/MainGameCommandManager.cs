@@ -34,6 +34,7 @@ namespace MainGame
         private ICommonEventDatabase _database;
         private ValueManager _valueManager;
         private InventoryManager _inventoryManager;
+        private IMainGameHost _mainGameHost;
 
         public IGameKernal gameKernal { get { return _gameKernal; } }
         public PlayerStageManager playerStageManager { get { return _playerStageManager; } }
@@ -44,8 +45,9 @@ namespace MainGame
         public ICommonEventDatabase database { get { return _database; } }
         public ValueManager valueManager { get { return _valueManager; } }
         public InventoryManager inventoryManager { get { return _inventoryManager; } }
+        public IMainGameHost mainGameHost { get { return _mainGameHost; } }
 
-        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db, ValueManager vm, InventoryManager im)
+        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db, ValueManager vm, InventoryManager im, IMainGameHost mgh)
         {
             _gameKernal = gameKernal;
             _playerStageManager = psMgr;
@@ -56,6 +58,7 @@ namespace MainGame
             _database = db;
             _valueManager = vm;
             _inventoryManager = im;
+            _mainGameHost = mgh;
         }
 
         public void DoCommand(string name)
