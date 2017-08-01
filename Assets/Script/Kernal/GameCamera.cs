@@ -72,6 +72,7 @@ namespace GameKernal
         {
         	_mainCamera = Camera.main;
         	_monoCamera = _mainCamera.gameObject.AddComponent<MonoCamera>();
+        	_monoCamera.grab = false;
 
         	return;
         }
@@ -80,6 +81,18 @@ namespace GameKernal
         	_mainCamera = null;
 
         	return;
+        }
+
+        public void StartGrab()
+        {
+        	if (_monoCamera != null)
+        		_monoCamera.grab = true;
+        }
+
+        public void StopGrab()
+        {
+        	if (_monoCamera != null)
+        		_monoCamera.grab = false;
         }
 
         public override void EasingMoveTo(Vector3 target, System.Action onFinish = null)

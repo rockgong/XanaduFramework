@@ -333,11 +333,17 @@ namespace GameKernal
                 _propObject[i].Uninitialize();
             _propObject.Clear();
 
+            if (_camera != null)
+                _camera.StopGrab();
+
             return GameKernalErrorCode.OK;
         }
 
         public override GameKernalErrorCode Startup()
         {
+            if (_camera != null)
+                _camera.StartGrab();
+
             return GameKernalErrorCode.OK;
         }
     }

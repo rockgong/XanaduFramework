@@ -5,6 +5,7 @@ using UnityEngine;
 namespace GameKernal
 {
 	public class MonoCamera : MonoBehaviour {
+        public bool grab = true;
 		public Transform lookAtTransform;
 		public Vector3 lookAtPosition;
 		public Vector3 offset;
@@ -18,6 +19,9 @@ namespace GameKernal
 
 		private void LateUpdate()
 		{
+            if (!grab)
+                return;
+
             if (attachTransform == null)
             {
                 if (lookAtTransform == null)
