@@ -82,9 +82,8 @@
 	[
 		{
 			"triggerPointName" : "1",
-			"stageId" : 3,
-			"stagePointName" : "spawn",
-			"stageLookPointName" : "spawn_look"
+			"stageId" : 4,
+			"stagePointName" : "spawn"
 		}
 	]
 },
@@ -131,6 +130,34 @@
 		{
 			"triggerPointName" : "exit",
 			"stageId" : 1,
+			"stagePointName" : "spawn"
+		}
+	]
+},
+{
+	"ID" : 4, "SCENE_NAME" : "TestStreet",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 15.0, "y" : 15.0, "z" : 15.0
+		}
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 3,
 			"stagePointName" : "spawn"
 		}
 	]

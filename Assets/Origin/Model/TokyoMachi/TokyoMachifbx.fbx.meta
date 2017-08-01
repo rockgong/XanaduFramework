@@ -1,0 +1,164 @@
+fileFormatVersion: 2
+guid: 5600d79e9d29dfc45a5843bac7d37c04
+timeCreated: 1501572216
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Cube.003
+    100002: FamilyMatCeil
+    100004: FamilyMatDoor1
+    100006: FamilyMatDoor2
+    100008: FamilyMatDoor3
+    100010: FamilyMatDoor4
+    100012: FamilyMatFrame
+    100014: Floor1
+    100016: Floor2
+    100018: Floor2.001
+    100020: Floor3
+    100022: MansionBase
+    100024: MansionBase2
+    100026: MansionBase2.001
+    100028: MansionFloor
+    100030: Obs1
+    100032: Obs1.001
+    100034: //RootNode
+    400000: Cube.003
+    400002: FamilyMatCeil
+    400004: FamilyMatDoor1
+    400006: FamilyMatDoor2
+    400008: FamilyMatDoor3
+    400010: FamilyMatDoor4
+    400012: FamilyMatFrame
+    400014: Floor1
+    400016: Floor2
+    400018: Floor2.001
+    400020: Floor3
+    400022: MansionBase
+    400024: MansionBase2
+    400026: MansionBase2.001
+    400028: MansionFloor
+    400030: Obs1
+    400032: Obs1.001
+    400034: //RootNode
+    2300000: Cube.003
+    2300002: FamilyMatCeil
+    2300004: FamilyMatDoor1
+    2300006: FamilyMatDoor2
+    2300008: FamilyMatDoor3
+    2300010: FamilyMatDoor4
+    2300012: FamilyMatFrame
+    2300014: Floor1
+    2300016: Floor2
+    2300018: Floor2.001
+    2300020: Floor3
+    2300022: MansionBase
+    2300024: MansionBase2
+    2300026: MansionBase2.001
+    2300028: MansionFloor
+    2300030: Obs1
+    2300032: Obs1.001
+    3300000: Cube.003
+    3300002: FamilyMatCeil
+    3300004: FamilyMatDoor1
+    3300006: FamilyMatDoor2
+    3300008: FamilyMatDoor3
+    3300010: FamilyMatDoor4
+    3300012: FamilyMatFrame
+    3300014: Floor1
+    3300016: Floor2
+    3300018: Floor2.001
+    3300020: Floor3
+    3300022: MansionBase
+    3300024: MansionBase2
+    3300026: MansionBase2.001
+    3300028: MansionFloor
+    3300030: Obs1
+    3300032: Obs1.001
+    4300000: MansionBase2.001
+    4300002: MansionBase2
+    4300004: Floor3
+    4300006: Obs1.001
+    4300008: Obs1
+    4300010: Floor2.001
+    4300012: Cube.003
+    4300014: Floor1
+    4300016: Floor2
+    4300018: MansionFloor
+    4300020: MansionBase
+    4300022: FamilyMatCeil
+    4300024: FamilyMatDoor4
+    4300026: FamilyMatDoor3
+    4300028: FamilyMatDoor2
+    4300030: FamilyMatDoor1
+    4300032: FamilyMatFrame
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
