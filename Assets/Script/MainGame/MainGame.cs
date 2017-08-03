@@ -404,7 +404,6 @@ namespace MainGame
 
         public void OnReadyToInteractChanged(INonPlayerCharacter from, INonPlayerCharacter to)
         {
-            Debug.LogFormat("OnReadyToInteractChanged : {0}, {1}", from == null ? "NULL" : from.name, to == null ? "NULL" : to.name);
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -412,7 +411,6 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(INonPlayerCharacter from, IPropObject to)
         {
-            Debug.LogFormat("OnReadyToInteractChanged : {0}, {1}", from == null ? "NULL" : from.name, to == null ? "NULL" : to.name);
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -420,7 +418,6 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(IPropObject from, INonPlayerCharacter to)
         {
-            Debug.LogFormat("OnReadyToInteractChanged : {0}, {1}", from == null ? "NULL" : from.name, to == null ? "NULL" : to.name);
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -428,7 +425,6 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(IPropObject from, IPropObject to)
         {
-            Debug.LogFormat("OnReadyToInteractChanged : {0}, {1}", from == null ? "NULL" : from.name, to == null ? "NULL" : to.name);
             if (to != null)
                 _interactView.ShowReady(to);
             else

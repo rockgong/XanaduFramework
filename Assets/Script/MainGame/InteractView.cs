@@ -232,7 +232,6 @@ namespace MainGame
 
         public void ShowReady(INonPlayerCharacter nonPlayer)
         {
-            Debug.Log("Show Ready Called");
             Transform trans = _monoView.GetWidget<Transform>("ready_root");
             if (trans != null)
             {
