@@ -161,5 +161,14 @@
 				}
 			]
 		}
+	},
+	{
+		"name" : "TestSwap",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSwap",
+			"stageId" : 4,
+			"stagePointName" : "spawn"
+		}
 	}
 ]

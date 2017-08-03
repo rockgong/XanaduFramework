@@ -161,8 +161,18 @@
 		"id" : 5,
 		"data" :
 		{
-			"$type" : "MainGame.InteractCommandMessageData",
-			"content" : "这是第一个置物柜"
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "这是第一个置物柜"
+				},
+				{
+					"$type" : "MainGame.InteractCommandCommonEventData",
+					"eventName" : "TestSwap"
+				}
+			]
 		}
 	},
 	{

@@ -33,6 +33,7 @@ namespace MainGame
             _handlers[typeof(CommonEventRemoveInventory)] = MainGameCommandRemoveInventory.BuildHandler;
             _handlers[typeof(CommonEventHasInventory)] = MainGameCommandHasInventory.BuildHandler;
             _handlers[typeof(CommonEventResult)] = MainGameCommandResult.BuildHandler;
+            _handlers[typeof(CommonEventSwap)] = MainGameCommandSwap.BuildHandler;
 
             if (_integerBuilder == null)
             {

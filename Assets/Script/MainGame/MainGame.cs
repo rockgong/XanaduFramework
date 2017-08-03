@@ -135,7 +135,7 @@ namespace MainGame
             _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host);
 
             _mainGameCommandBuilder.Initialize();
-            _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host);
+            _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host, transfer);
 
             _interactCommandBuilder.Initialize();
             _interactCommandManager.Initialize(_interactGameState, interactCommandDatabase, _interactCommandBuilder);

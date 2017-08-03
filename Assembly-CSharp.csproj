@@ -151,6 +151,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventResult.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSwap.cs" />
      <Compile Include="Assets\Script\MainGame\CommonIntegerAndString.cs" />
      <Compile Include="Assets\Script\MainGame\CommonVector3Builder.cs" />
      <Compile Include="Assets\Script\MainGame\ITransfer.cs" />
