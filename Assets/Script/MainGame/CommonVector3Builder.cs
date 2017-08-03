@@ -16,6 +16,7 @@ namespace MainGame
 			_handlers[typeof(CommonVector3Plus)] = CommonVector3PlusEval.BuildHandler;
 			_handlers[typeof(CommonVector3Multiply)] = CommonVector3MultiplyEval.BuildHandler;
 			_handlers[typeof(CommonVector3Clamp)] = CommonVector3ClampEval.BuildHandler;
+			_handlers[typeof(CommonVector3Lerp)] = CommonVector3LerpEval.BuildHandler;
 		}
 
 		public BaseCommonVector3Eval Build(BaseCommonVector3 data, CommonVector3Builder builder)
