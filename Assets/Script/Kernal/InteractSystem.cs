@@ -62,6 +62,11 @@ namespace GameKernal
 			return _objectList.FindAll(pred);
 		}
 
+		public void ClearInteractObject()
+		{
+			_objectList.Clear();
+		}
+
         public void AddInteractionListener(IInteractListener listener)
         {
             if (_listenerList.Contains(listener))

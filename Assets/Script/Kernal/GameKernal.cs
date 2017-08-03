@@ -336,6 +336,8 @@ namespace GameKernal
             if (_camera != null)
                 _camera.StopGrab();
 
+            _interactSystem.ClearInteractObject();
+
             return GameKernalErrorCode.OK;
         }
 
