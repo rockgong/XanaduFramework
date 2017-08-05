@@ -243,7 +243,7 @@
 		"op1" :
 		{
 			"$type" : "MainGame.CommonVector3Literal",
-			"x" : 0.0, "y" : 12.6, "z" : -22.0
+			"x" : 0.0, "y" : 9.6, "z" : -23.0
 		}
 	},
 	"TRANSFERS" :
