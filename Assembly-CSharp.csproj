@@ -133,8 +133,10 @@
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonIntegerLiteral.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonStringLiteral.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Clamp.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Cross.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Lerp.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Literal.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Minus.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Multiply.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Player.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Plus.cs" />
