@@ -22,12 +22,12 @@
 			[
 				{
 					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
-					"targetName" : "nana",
-					"animationName" : "Talk"
+					"targetName" : "gates",
+					"animationName" : "GateOpen"
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 5.5
+					"time" : 7.0
 				}
 			]
 		}
