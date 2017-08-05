@@ -54,7 +54,7 @@ Shader "Custom/Hatching" {
 				fixed3 hatchWeights0 : TEXCOORD1;
 				fixed3 hatchWeights1 : TEXCOORD2;
 				float3 worldPos : TEXCOORD3;
-				SHADOW_COORDS(4)
+				UNITY_SHADOW_COORDS(4)
 			};
 
 			v2f vert(a2v v){

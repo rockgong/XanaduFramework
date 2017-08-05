@@ -95,7 +95,7 @@ Shader "Custom/ToonShading" {
 				float2 uv : TEXCOORD0;
 				float3 worldNormal : TEXCOORD1;
 				float3 worldPos : TEXCOORD2;
-				SHADOW_COORDS(3)
+				UNITY_SHADOW_COORDS(3)
 			};
 
 			v2f vert(a2v v){
