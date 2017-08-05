@@ -198,5 +198,56 @@
 			"stagePointName" : "spawn"
 		}
 	]
+},
+{
+	"ID" : 101, "SCENE_NAME" : "Factory_00",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Clamp",
+		"targetPoint" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"clampPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_0"
+		},
+		"clampPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_1"
+		}
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0":
+		{
+			"$type" : "MainGame.CommonVector3Clamp",
+			"targetPoint" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"clampPoint0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_0"
+			},
+			"clampPoint1" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_1"
+			}
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0, "y" : 12.6, "z" : -22.0
+		}
+	},
+	"TRANSFERS" :
+	[
+	]
 }
 ]

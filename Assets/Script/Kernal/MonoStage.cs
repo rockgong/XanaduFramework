@@ -13,8 +13,14 @@ namespace GameKernal
 
     public class MonoStage : MonoBehaviour
     {
+        public bool enableFog = true;
         public StagePointEntry[] points;
         
+        private void Start()
+        {
+            RenderSettings.fog = enableFog;
+        }
+
         public Transform GetPointTrans(string name)
         {
             for (int i = 0; i < points.Length; i++)
