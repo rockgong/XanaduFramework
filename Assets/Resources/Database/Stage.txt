@@ -203,20 +203,59 @@
 	"ID" : 101, "SCENE_NAME" : "Factory_00",
 	"CAMERA_LOOK" :
 	{
-		"$type" : "MainGame.CommonVector3Clamp",
-		"targetPoint" :
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
 		{
-			"$type" : "MainGame.CommonVector3Player"
+			"$type" : "MainGame.CommonVector3Clamp",
+			"targetPoint" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"clampPoint0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_0"
+			},
+			"clampPoint1" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_1"
+			}
 		},
-		"clampPoint0" :
+		"op1" :
 		{
-			"$type" : "MainGame.CommonVector3StagePoint",
-			"pointName" : "stage_0"
-		},
-		"clampPoint1" :
-		{
-			"$type" : "MainGame.CommonVector3StagePoint",
-			"pointName" : "stage_1"
+			"$type" : "MainGame.CommonVector3Cross",
+			"op0" :
+			{
+				"$type" : "MainGame.CommonVector3Minus",
+				"op0" : 
+				{
+					"$type" : "MainGame.CommonVector3Player"
+				},
+				"op1" :
+				{
+					"$type" : "MainGame.CommonVector3Clamp",
+					"targetPoint" :
+					{
+						"$type" : "MainGame.CommonVector3Player"
+					},
+					"clampPoint0" :
+					{
+						"$type" : "MainGame.CommonVector3StagePoint",
+						"pointName" : "out_0"
+					},
+					"clampPoint1" :
+					{
+						"$type" : "MainGame.CommonVector3StagePoint",
+						"pointName" : "out_1"
+					}
+				}
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.3, "y" : 0.0, "z" : 0.0
+			}
 		}
 	},
 	"CAMERA_POS" :
