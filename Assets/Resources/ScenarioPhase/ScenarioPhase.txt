@@ -7,15 +7,23 @@
 			"members" : 
 			[
 				{
-					"$type" : "MainGame.ScenarioPhaseDataPlayAnimatin",
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 5.5
+				}
+			]
+		}
+	},
+	{
+		"id" : 2,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataParallel",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
 					"targetName" : "nana",
 					"animationName" : "Talk"
-				},
-				{
-					"$type" : "MainGame.ScenarioPhaseDataSetPosition",
-					"targetName" : "nana",
-					"standPointName" : "center",
-					"lookPointName" : "center_look"
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
