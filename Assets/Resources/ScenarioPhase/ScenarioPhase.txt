@@ -19,7 +19,7 @@
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 2.0
+					"time" : 5.5
 				}
 			]
 		}

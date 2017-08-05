@@ -183,9 +183,7 @@ namespace MainGame
                 GameObject proto = Resources.Load<GameObject>("ScenarioScene/" + (scenarioSceneName));
                 if (proto != null)
                 {
-                    Vector3 point = _gameKernal.GetStage().GetStagePoint(scenarioStagePointName);
                     GameObject inst = GameObject.Instantiate<GameObject>(proto);
-                    inst.transform.position = point;
 
                     BaseScenarioPhase phase = _scenarioPhaseManager.GetPhaseById(scenarioId);
                     if (phase != null)
@@ -202,6 +200,8 @@ namespace MainGame
                             frameCnt --;
                             if (frameCnt <= 0)
                             {
+                                Vector3 point = _gameKernal.GetStage().GetStagePoint(scenarioStagePointName);
+                                inst.transform.position = point;
                                 _gameKernal.SetGameState(_scenarioGameState);
                                 GameObject.Destroy(del.gameObject);
                             }
