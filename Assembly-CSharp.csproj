@@ -147,6 +147,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetPosition.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPredicate.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPropObjectSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPropObjectSetPosition.cs" />

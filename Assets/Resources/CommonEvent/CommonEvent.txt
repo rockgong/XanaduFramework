@@ -44,7 +44,7 @@
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
 					"nonPlayerId" : 1,
-					"stageId" : 1,
+					"stageId" : 101,
 					"stagePointName" : "npc_1"
 				},
 				{
@@ -81,9 +81,13 @@
 
 
 				{
-					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"$type" : "MainGame.CommonEventNonPlayerSetup",
 					"nonPlayerId" : 1,
-					"dialogId" : 1
+					"dialogId" : 1,
+					"scenarioId" : 2,
+					"scenarioSceneName" : "Gates_00",
+					"scenarioStagePointName" : "gates",
+					"orderCode" : 3
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",

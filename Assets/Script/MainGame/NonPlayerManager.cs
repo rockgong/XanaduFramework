@@ -30,6 +30,7 @@ namespace MainGame
         public string scenarioSceneName = null;
         public string scenarioStagePointName = null;
         public int interactCommandId;
+        public int orderCode = 1; // 1 : interact; 2 : scenario; 3 : interact -> scenario; 4 : scenario -> interact
     }
 
     interface INonPlayerManagerListener
@@ -205,6 +206,26 @@ namespace MainGame
             {
                 if (_nonPlayerInfoList[i].data.id == id)
                     _nonPlayerInfoList[i].interactCommandId = commandId;
+            }
+        }
+
+        public int GetOrderCodeIdByName(string name)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.name == name)
+                    return _nonPlayerInfoList[i].orderCode;
+            }
+
+            return 0;
+        }
+
+        public void SetOrderCodeIdByName(int id, int oc)
+        {
+            for (int i = 0; i < _nonPlayerInfoList.Count; i++)
+            {
+                if (_nonPlayerInfoList[i].data.id == id)
+                    _nonPlayerInfoList[i].orderCode = oc;
             }
         }
 

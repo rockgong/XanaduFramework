@@ -20,6 +20,7 @@ namespace MainGame
         public void Initialize()
         {
             _handlers[typeof(CommonEventNonPlayerSetDialog)] = MainGameCommandNonPlayerSetDialog.BuildHandler;
+            _handlers[typeof(CommonEventNonPlayerSetup)] = MainGameCommandNonPlayerSetup.BuildHandler;
             _handlers[typeof(CommonEventPropObjectSetDialog)] = MainGameCommandPropObjectSetDialog.BuildHandler;
             _handlers[typeof(CommonEventGroup)] = MainGameCommandGroup.BuildHandler;
             _handlers[typeof(CommonEventPredicate)] = MainGameCommandPredicate.BuildHandler;

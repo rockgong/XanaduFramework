@@ -28,6 +28,10 @@ namespace MainGame
 
 	class ScenarioGameState : IGameState
 	{
+        public int preparedInteractId;
+        public string preparedNonPlayerName;
+        public string preparedPropObjectName;
+
 		private MonoScenarioScene _scene;
 		private IGameKernal _gameKernal;
 		private IScenarioGameStateHost _host;
