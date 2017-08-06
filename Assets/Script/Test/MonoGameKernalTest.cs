@@ -94,7 +94,7 @@ namespace MainGame
             _propObjectManager.SetInteractCommandIdByName(3, 5);
             _propObjectManager.SetInteractCommandIdByName(4, 6);
 
-            _triggerManager.Initialize(gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _mainTransfer, null);
+            _triggerManager.Initialize(gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _mainTransfer, null, null);
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -184,7 +184,7 @@ namespace MainGame
                     if (phase != null)
                     {
                         _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                        phase.Setup(gameKernal, _scenarioScene);
+                        phase.Setup(gameKernal, _scenarioScene, null);
                         _scenarioGameState.Setup(_scenarioScene, phase);
                         _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
                     }
@@ -228,7 +228,7 @@ namespace MainGame
                     if (phase != null)
                     {
                         _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                        phase.Setup(gameKernal, _scenarioScene);
+                        phase.Setup(gameKernal, _scenarioScene, null);
                         _scenarioGameState.Setup(_scenarioScene, phase);
                         _mainTransfer.Transfer(0.3f, 0.3f, Color.white, () => gameKernal.SetGameState(_scenarioGameState));
                     }

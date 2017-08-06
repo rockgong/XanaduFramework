@@ -14,14 +14,14 @@ namespace MainGame
 	{
 		public BaseScenarioPhase[] members;
 
-		public override void Setup(IGameKernal kernal, MonoScenarioScene scene)
+		public override void Setup(IGameKernal kernal, MonoScenarioScene scene, InlineUIView iuv)
 		{
-			base.Setup(kernal, scene);
+			base.Setup(kernal, scene, iuv);
 
 			if (members != null)
 			{
 				for (int i = 0; i < members.Length; i++)
-					members[i].Setup(kernal, scene);
+					members[i].Setup(kernal, scene, iuv);
 			}
 		}
 

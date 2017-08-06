@@ -15,10 +15,10 @@ namespace MainGame
 			_basePath = basePath;
 		}
 
-		public void ShowUI(string name, System.Action endAction)
+		public bool ShowUI(string name, System.Action endAction)
 		{
 			if (_view != null)
-				return;
+				return false;
 
 			GameObject proto = Resources.Load<GameObject>(_basePath + "/" + name);
 			if (proto != null)
@@ -28,7 +28,11 @@ namespace MainGame
 				if (_view != null)
 					_view.endAction = () => CloseUI(false);
 				_endAction = endAction;
+
+				return true;
 			}
+
+			return false;
 		}
 
 		public void CloseUI(bool ignoreAction = false)

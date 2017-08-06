@@ -143,7 +143,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host, _inlineUIView);
 
             _mainGameCommandBuilder.Initialize();
             _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host, transfer, _inlineUIView);
@@ -184,7 +184,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(_nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host, _inlineUIView);
 
             _triggerManager.ClearAllTrigger();
 			_mainGameCommandManager.DoCommand("Update");
@@ -201,7 +201,7 @@ namespace MainGame
                     if (phase != null)
                     {
                         _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                        phase.Setup(_gameKernal, _scenarioScene);
+                        phase.Setup(_gameKernal, _scenarioScene, _inlineUIView);
                         _scenarioGameState.Setup(_scenarioScene, phase);
 
                         // Make 2 frame delay to wait for scene loading
@@ -337,7 +337,7 @@ namespace MainGame
                     if (phase != null)
                     {
                         _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                        phase.Setup(_gameKernal, _scenarioScene);
+                        phase.Setup(_gameKernal, _scenarioScene, _inlineUIView);
                         _scenarioGameState.Setup(_scenarioScene, phase);
                         _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
                     }
@@ -373,7 +373,7 @@ namespace MainGame
                         if (phase != null)
                         {
                             _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                            phase.Setup(_gameKernal, _scenarioScene);
+                            phase.Setup(_gameKernal, _scenarioScene, _inlineUIView);
                             _scenarioGameState.Setup(_scenarioScene, phase);
                             _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
                         }
@@ -438,7 +438,7 @@ namespace MainGame
                         if (phase != null)
                         {
                             _scenarioScene = inst.GetComponent<MonoScenarioScene>();
-                            phase.Setup(_gameKernal, _scenarioScene);
+                            phase.Setup(_gameKernal, _scenarioScene, _inlineUIView);
                             _scenarioGameState.Setup(_scenarioScene, phase);
                             _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
                         }

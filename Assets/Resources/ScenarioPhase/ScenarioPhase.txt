@@ -3,12 +3,29 @@
 		"id" : 1,
 		"data" :
 		{
-			"$type" : "MainGame.ScenarioPhaseDataParallel",
-			"members" : 
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
 			[
 				{
-					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 5.5
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" : 
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataInlineUI",
+							"uiName" : "InlineOpen",
+							"waitForEnd" : 1
+						}
+					]
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" : 
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 5.5
+						}
+					]
 				}
 			]
 		}

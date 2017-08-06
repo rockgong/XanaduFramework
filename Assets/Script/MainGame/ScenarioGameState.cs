@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GameKernal;
@@ -14,11 +14,13 @@ namespace MainGame
 	{
         protected IGameKernal _gameKernal;
         protected MonoScenarioScene _scene;
+        protected InlineUIView _inlineUIView;
 
-		public virtual void Setup(IGameKernal kernal, MonoScenarioScene scene)
+		public virtual void Setup(IGameKernal kernal, MonoScenarioScene scene, InlineUIView iuv)
 		{
             _gameKernal = kernal;
             _scene = scene;
+            _inlineUIView = iuv;
 		}
 
 		public abstract void Enter();
@@ -28,10 +30,6 @@ namespace MainGame
 
 	class ScenarioGameState : IGameState
 	{
-        public int preparedInteractId;
-        public string preparedNonPlayerName;
-        public string preparedPropObjectName;
-
 		private MonoScenarioScene _scene;
 		private IGameKernal _gameKernal;
 		private IScenarioGameStateHost _host;

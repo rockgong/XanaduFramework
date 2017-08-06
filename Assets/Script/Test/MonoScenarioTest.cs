@@ -167,7 +167,7 @@ namespace MainGame
 						if (phase != null)
 						{
 							_scene = inst.GetComponent<MonoScenarioScene>();
-							phase.Setup(gameKernal, _scene);
+							phase.Setup(gameKernal, _scene, null);
 							_scenarioGameState.Setup(_scene, phase);
 							gameKernal.SetGameState(_scenarioGameState);
 							_playing = true;

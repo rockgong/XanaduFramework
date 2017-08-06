@@ -29,12 +29,13 @@ namespace MainGame
         private MainGameCommandManager _mainGameCommandManager;
         private ITransfer _transfer;
         private IMainGameHost _mainGameHost;
+        private InlineUIView _inlineUIView;
 
         private List<TriggerInfo> _triggerList;
 
         private MonoScenarioScene _scene = null;
 
-        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t, IMainGameHost mgh)
+        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t, IMainGameHost mgh, InlineUIView iuv)
         {
             _gameKernal = gameKernal;
 
@@ -45,6 +46,7 @@ namespace MainGame
             _mainGameCommandManager = mgm;
             _transfer = t;
             _mainGameHost = mgh;
+            _inlineUIView = iuv;
 
             _triggerList = new List<TriggerInfo>();
         }
@@ -127,7 +129,7 @@ namespace MainGame
                                 if (phase != null)
                                 {
                                     _scene = inst.GetComponent<MonoScenarioScene>();
-                                    phase.Setup(_gameKernal, _scene);
+                                    phase.Setup(_gameKernal, _scene, _inlineUIView);
                                     _scenarioGameState.Setup(_scene, phase);
                                     if (curTrigger.scenarioNeedTransfer)
                                         _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
