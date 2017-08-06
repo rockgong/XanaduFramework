@@ -88,6 +88,7 @@ namespace GameKernal
                 if (_nonPlayer[i].name == name)
                 {
                     _nonPlayer[i].Uninitialize();
+                    _interactSystem.RemoveInteractObject(_nonPlayer[i]);
                     _nonPlayer.RemoveAt(i);
                     return;
                 }
@@ -99,6 +100,7 @@ namespace GameKernal
             if (handler is Player && _nonPlayer.Contains((Player)handler))
             {
                 ((Player)handler).Uninitialize();
+                _interactSystem.RemoveInteractObject((Player)handler);
                 _nonPlayer.Remove((Player)handler);
             }
         }
@@ -139,6 +141,7 @@ namespace GameKernal
                 if (_propObject[i].name == name)
                 {
                     _propObject[i].Uninitialize();
+                    _interactSystem.RemoveInteractObject(_propObject[i]);
                     _propObject.RemoveAt(i);
                     return;
                 }
@@ -150,6 +153,7 @@ namespace GameKernal
             if (handler is PropObject && _propObject.Contains((PropObject)handler))
             {
                 ((PropObject)handler).Uninitialize();
+                _interactSystem.RemoveInteractObject((PropObject)handler);
                 _propObject.Remove((PropObject)handler);
             }
         }

@@ -160,6 +160,7 @@ namespace MainGame
             _inventoryManager.RegisterListener(this);
 
             _valueManager.Initialize(valueStringCap, valueIntCap);
+			_valueManager.RegisterListener(this);
 
         	_stageDatabase = stageDatabase;
         	_nonPlayerDatabase = nonPlayerDatabase;

@@ -235,8 +235,26 @@
 		"id" : 10102,
 		"data" :
 		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "使用了正门钥匙卡"
+				},
+				{
+					"$type" : "MainGame.InteractCommandCommonEventData",
+					"eventName" : "OpenGate"
+				}
+			]
+		}
+	},
+	{
+		"id" : 10103,
+		"data" :
+		{
 			"$type" : "MainGame.InteractCommandMessageData",
-			"content" : "使用了正门钥匙卡"
+			"content" : "正门已经打开"
 		}
 	},
 	{

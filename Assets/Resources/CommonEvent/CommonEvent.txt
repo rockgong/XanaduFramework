@@ -56,13 +56,32 @@
 					"inventoryId" : 1,
 					"yesEvent" :
 					{
-						"$type" : "MainGame.CommonEventNonPlayerSetup",
-						"nonPlayerId" : 1,
-						"dialogId" : 10102,
-						"scenarioId" : 2,
-						"scenarioSceneName" : "Gates_00",
-						"scenarioStagePointName" : "gates",
-						"orderCode" : 3
+						"$type" : "MainGame.CommonEventPredicate",
+						"predicateValue" :
+						{
+							"$type" : "MainGame.CommonIntegerFromValue",
+							"index" :
+							{
+								"$type" : "MainGame.CommonIntegerLiteral",
+								"val" : 0
+							}
+						},
+						"zeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetup",
+							"nonPlayerId" : 1,
+							"dialogId" : 10102,
+							"scenarioId" : 2,
+							"scenarioSceneName" : "Gates_00",
+							"scenarioStagePointName" : "gates",
+							"orderCode" : 3
+						},
+						"nonZeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetup",
+							"nonPlayerId" : 1,
+							"dialogId" : 10103
+						}
 					},
 					"noEvent" :
 					{
@@ -196,8 +215,21 @@
 				{
 					"$type" : "MainGame.CommonEventAddInventory",
 					"inventoryId" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventRemovePropObject",
+					"propObjectName" : "card"
 				}
 			]
+		}
+	},
+	{
+		"name" : "OpenGate",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSetIntValue",
+			"index" : 0,
+			"targetValue" : 1
 		}
 	}
 ]

@@ -156,6 +156,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPropObjectSetScenario.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventPropObjectSetup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventRemoveInventory.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventRemovePropObject.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventResult.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetIntValue.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventSetStringValue.cs" />
