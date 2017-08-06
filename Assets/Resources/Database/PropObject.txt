@@ -1,5 +1,5 @@
 [
-{"ID" : 1, "NAME" : "box", "PREFAB_NAME" : "TestProp"},
+{"ID" : 1, "NAME" : "card", "PREFAB_NAME" : "Card"},
 {"ID" : 2, "NAME" : "monitor", "PREFAB_NAME" : "Empty"},
 {"ID" : 3, "NAME" : "locker_1", "PREFAB_NAME" : "Empty"},
 {"ID" : 4, "NAME" : "locker_2", "PREFAB_NAME" : "Empty"}

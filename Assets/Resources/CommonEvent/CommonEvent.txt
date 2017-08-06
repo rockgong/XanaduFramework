@@ -1,40 +1,5 @@
 [
 	{
-		"name" : "Change1",
-		"data" :
-		{
-			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
-			"nonPlayerId" : 1,
-			"dialogId" : 1
-		}
-	},
-	{
-		"name" : "Change2",
-		"data" :
-		{
-			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
-			"nonPlayerId" : 1,
-			"dialogId" : 2
-		}
-	},
-	{
-		"name" : "Change3",
-		"data" :
-		{
-			"$type" : "MainGame.CommonEventNonPlayerSetDialog",
-			"nonPlayerId" : 2,
-			"dialogId" : 3
-		}
-	},
-	{
-		"name" : "Result_0",
-		"data" :
-		{
-			"$type" : "MainGame.CommonEventResult",
-			"index" : 0
-		}
-	},
-	{
 		"name" : "Update",
 		"data" :
 		{
@@ -87,22 +52,29 @@
 
 
 				{
-					"$type" : "MainGame.CommonEventNonPlayerSetup",
-					"nonPlayerId" : 1,
-					"dialogId" : 1,
-					"scenarioId" : 2,
-					"scenarioSceneName" : "Gates_00",
-					"scenarioStagePointName" : "gates",
-					"orderCode" : 3
+					"$type" : "MainGame.CommonEventHasInventory",
+					"inventoryId" : 1,
+					"yesEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetup",
+						"nonPlayerId" : 1,
+						"dialogId" : 10102,
+						"scenarioId" : 2,
+						"scenarioSceneName" : "Gates_00",
+						"scenarioStagePointName" : "gates",
+						"orderCode" : 3
+					},
+					"noEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetup",
+						"nonPlayerId" : 1,
+						"dialogId" : 10101
+					}
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetup",
 					"propObjectId" : 1,
-					"dialogId" : 1,
-					"scenarioId" : 2,
-					"scenarioSceneName" : "Gates_00",
-					"scenarioStagePointName" : "gates",
-					"orderCode" : 4
+					"dialogId" : 20101
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
@@ -212,6 +184,20 @@
 				"stageId" : 4,
 				"stagePointName" : "spawn"
 			}
+		}
+	},
+	{
+		"name" : "GetKeyCard",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 1
+				}
+			]
 		}
 	}
 ]

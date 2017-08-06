@@ -222,5 +222,50 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 10101,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandMessageData",
+			"content" : "貌似是用来刷卡用的刷卡机"
+		}
+	},
+	{
+		"id" : 10102,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandMessageData",
+			"content" : "使用了正门钥匙卡"
+		}
+	},
+	{
+		"id" : 20101,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "地上有一张卡片",
+			"options" :
+			[
+				"捡起来", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "获得了正门钥匙卡"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "GetKeyCard"
+						}
+					]
+				}
+			]
+		}
 	}
 ]
