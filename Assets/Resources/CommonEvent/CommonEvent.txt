@@ -160,6 +160,34 @@
 					"stagePointName" : "trigger_1",
 					"name" : "inline_title",
 					"commonEventName" : "InlineTitle"
+				},
+
+
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 0
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 101,
+						"stagePointName" : "gates",
+						"animationName" : "GateClose_End"
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 101,
+						"stagePointName" : "gates",
+						"animationName" : "GateOpen_End"
+					}
 				}
 			]
 		}

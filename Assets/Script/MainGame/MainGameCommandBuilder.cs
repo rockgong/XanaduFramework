@@ -39,6 +39,7 @@ namespace MainGame
             _handlers[typeof(CommonEventInlineUI)] = MainGameCommandInlineUI.BuildHandler;
             _handlers[typeof(CommonEventAddTrigger)] = MainGameCommandAddTrigger.BuildHandler;
             _handlers[typeof(CommonEventRemovePropObject)] = MainGameCommandRemovePropObject.BuildHandler;
+            _handlers[typeof(CommonEventStageAnimation)] = MainGameCommandStageAnimation.BuildHandler;
 
             if (_integerBuilder == null)
             {
