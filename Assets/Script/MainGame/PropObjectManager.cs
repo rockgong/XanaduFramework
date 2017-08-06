@@ -30,6 +30,7 @@ namespace MainGame
         public string scenarioSceneName = null;
         public string scenarioStagePointName = null;
         public int interactCommandId;
+        public int orderCode = 1; // 1 : interact; 2 : scenario; 3 : interact -> scenario; 4 : scenario -> interact
     }
 
     interface IPropObjectManagerListener
@@ -204,6 +205,26 @@ namespace MainGame
             {
                 if (_propObjectInfoList[i].data.id == id)
                     _propObjectInfoList[i].interactCommandId = commandId;
+            }
+        }
+
+        public int GetOrderCodeIdByName(string name)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.name == name)
+                    return _propObjectInfoList[i].orderCode;
+            }
+
+            return 0;
+        }
+
+        public void SetOrderCodeIdByName(int id, int oc)
+        {
+            for (int i = 0; i < _propObjectInfoList.Count; i++)
+            {
+                if (_propObjectInfoList[i].data.id == id)
+                    _propObjectInfoList[i].orderCode = oc;
             }
         }
 

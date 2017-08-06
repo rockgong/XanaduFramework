@@ -61,6 +61,12 @@
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetPosition",
+					"propObjectId" : 1,
+					"stageId" : 101,
+					"stagePointName" : "prop_1"
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetPosition",
 					"propObjectId" : 2,
 					"stageId" : 3,
 					"stagePointName" : "monitor"
@@ -88,6 +94,15 @@
 					"scenarioSceneName" : "Gates_00",
 					"scenarioStagePointName" : "gates",
 					"orderCode" : 3
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetup",
+					"propObjectId" : 1,
+					"dialogId" : 1,
+					"scenarioId" : 2,
+					"scenarioSceneName" : "Gates_00",
+					"scenarioStagePointName" : "gates",
+					"orderCode" : 4
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
