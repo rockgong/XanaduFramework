@@ -25,10 +25,30 @@
 					"stagePointName" : "npc_3"
 				},
 				{
-					"$type" : "MainGame.CommonEventPropObjectSetPosition",
-					"propObjectId" : 1,
-					"stageId" : 101,
-					"stagePointName" : "prop_1"
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 0
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 1,
+						"stageId" : 101,
+						"stagePointName" : "prop_1"
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 1,
+						"stageId" : 0,
+						"stagePointName" : ""
+					}
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetPosition",

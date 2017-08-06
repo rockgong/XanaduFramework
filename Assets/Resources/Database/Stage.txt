@@ -194,7 +194,7 @@
 	[
 		{
 			"triggerPointName" : "exit",
-			"stageId" : 3,
+			"stageId" : 101,
 			"stagePointName" : "spawn"
 		}
 	]
