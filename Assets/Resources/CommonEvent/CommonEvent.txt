@@ -139,6 +139,16 @@
 						"propObjectId" : 4,
 						"dialogId" : 6
 					}
+				},
+
+
+
+				{
+					"$type" : "MainGame.CommonEventAddTrigger",
+					"stageId" : 101,
+					"stagePointName" : "trigger_1",
+					"name" : "inline_title",
+					"commonEventName" : "InlineTitle"
 				}
 			]
 		}
@@ -188,6 +198,20 @@
 			"$type" : "MainGame.CommonEventSwap",
 			"stageId" : 4,
 			"stagePointName" : "spawn"
+		}
+	},
+	{
+		"name" : "InlineTitle",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventInlineUI",
+			"uiName" : "InlineTitle",
+			"onEnd" :
+			{
+				"$type" : "MainGame.CommonEventSwap",
+				"stageId" : 4,
+				"stagePointName" : "spawn"
+			}
 		}
 	}
 ]

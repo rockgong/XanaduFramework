@@ -94,6 +94,11 @@ namespace MainGame
             return false;
         }
 
+        public void ClearAllTrigger()
+        {
+            _triggerList.Clear();
+        }
+
         public void SetupTrigger(int stageId)
         {
             _gameKernal.ClearTrigger();

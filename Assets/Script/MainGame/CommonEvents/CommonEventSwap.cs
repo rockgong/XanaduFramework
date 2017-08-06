@@ -21,7 +21,7 @@ namespace MainGame
 		{
 			if (mgr.playerStageManager != null)
 			{
-				mgr.transfer.Transfer(0.3f, 0.3f, Color.black, () => 
+				mgr.transfer.Transfer(0.3f, 0.3f, Color.white, () => 
 					mgr.playerStageManager.SwapPlayer(stageId, stagePointName, stageLookPointName)
 				);
 			}

@@ -36,6 +36,7 @@ namespace MainGame
         private InventoryManager _inventoryManager;
         private IMainGameHost _mainGameHost;
         private ITransfer _transfer;
+        private InlineUIView _inlineUIView;
 
         public IGameKernal gameKernal { get { return _gameKernal; } }
         public PlayerStageManager playerStageManager { get { return _playerStageManager; } }
@@ -48,8 +49,9 @@ namespace MainGame
         public InventoryManager inventoryManager { get { return _inventoryManager; } }
         public IMainGameHost mainGameHost { get { return _mainGameHost; } }
         public ITransfer transfer { get { return _transfer; } }
+        public InlineUIView inlineUIView { get { return _inlineUIView; } }
 
-        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db, ValueManager vm, InventoryManager im, IMainGameHost mgh, ITransfer t)
+        public void Initialize(IGameKernal gameKernal, PlayerStageManager psMgr, NonPlayerManager npMgr, PropObjectManager poMgr, TriggerManager tMgr, MainGameCommandBuilder b, ICommonEventDatabase db, ValueManager vm, InventoryManager im, IMainGameHost mgh, ITransfer t, InlineUIView iuv)
         {
             _gameKernal = gameKernal;
             _playerStageManager = psMgr;
@@ -62,6 +64,7 @@ namespace MainGame
             _inventoryManager = im;
             _mainGameHost = mgh;
             _transfer = t;
+            _inlineUIView = iuv;
         }
 
         public void DoCommand(string name)

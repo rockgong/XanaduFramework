@@ -30,6 +30,7 @@ namespace MainGame
         private InteractGameState _interactGameState;
         private ScenarioGameState _scenarioGameState;
         private InteractView _interactView;
+        private InlineUIView _inlineUIView;
 
         private PlayerStageManager _playerStageManager;
         private NonPlayerManager _nonPlayerManager;
@@ -81,7 +82,7 @@ namespace MainGame
         private string _preparedScenarioSceneName;
         private string _preparedScenarioStagePointName;
 
-		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, IMainGameHost host, int valueStringCap = 4, int valueIntCap = 4)
+		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, IMainGameHost host, string inlineUIPath, int valueStringCap = 4, int valueIntCap = 4)
 		{
             _host = host;
 
@@ -95,6 +96,7 @@ namespace MainGame
 	        _interactGameState = new InteractGameState();
 	        _scenarioGameState = new ScenarioGameState();
 	        _interactView = new InteractView();
+            _inlineUIView = new InlineUIView();
 	        _playerStageManager = new PlayerStageManager();
 	        _nonPlayerManager = new NonPlayerManager();
 	        _propObjectManager = new PropObjectManager();
@@ -133,6 +135,8 @@ namespace MainGame
             _interactView.Initialize();
             _interactView.SetListener(_interactGameState);
 
+            _inlineUIView.Initialize(inlineUIPath);
+
             _playerStageManager.SetDatabase(stageDatabase);
             _playerStageManager.SetGameKernal(_gameKernal);
             _playerStageManager.RegisterListener(this);
@@ -142,7 +146,7 @@ namespace MainGame
             _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host);
 
             _mainGameCommandBuilder.Initialize();
-            _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host, transfer);
+            _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host, transfer, _inlineUIView);
 
             _interactCommandBuilder.Initialize();
             _interactCommandManager.Initialize(_interactGameState, interactCommandDatabase, _interactCommandBuilder);
@@ -182,6 +186,7 @@ namespace MainGame
             _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
             _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host);
 
+            _triggerManager.ClearAllTrigger();
 			_mainGameCommandManager.DoCommand("Update");
 			_running = true;
 
@@ -226,6 +231,7 @@ namespace MainGame
 				_gameKernal.Shutdown();
 				_playerStageManager.ClearStageRecord();
 				_inventoryManager.Uninitialize();
+                _inlineUIView.CloseUI(true);
 				_running = false;
 			}
 		}

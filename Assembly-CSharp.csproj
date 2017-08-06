@@ -142,8 +142,10 @@
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Plus.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3StagePoint.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventAddInventory.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventAddTrigger.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventGroup.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventHasInventory.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventInlineUI.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetDialog.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetPosition.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventNonPlayerSetScenario.cs" />
@@ -161,6 +163,7 @@
      <Compile Include="Assets\Script\MainGame\CommonIntegerAndString.cs" />
      <Compile Include="Assets\Script\MainGame\CommonVector3Builder.cs" />
      <Compile Include="Assets\Script\MainGame\ITransfer.cs" />
+     <Compile Include="Assets\Script\MainGame\InlineUIView.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommandManager.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands.cs" />
@@ -187,6 +190,7 @@
      <Compile Include="Assets\Script\MainGame\MenuGameState.cs" />
      <Compile Include="Assets\Script\MainGame\MenuView.cs" />
      <Compile Include="Assets\Script\MainGame\MonoGameInput.cs" />
+     <Compile Include="Assets\Script\MainGame\MonoInlineUIView.cs" />
      <Compile Include="Assets\Script\MainGame\MonoScenarioScene.cs" />
      <Compile Include="Assets\Script\MainGame\MonoSelectPanel.cs" />
      <Compile Include="Assets\Script\MainGame\NonPlayerManager.cs" />
