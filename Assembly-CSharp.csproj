@@ -199,6 +199,7 @@
      <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseCameraAnimation.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseInlineUI.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseParallel.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhasePlayAnimatin.cs" />

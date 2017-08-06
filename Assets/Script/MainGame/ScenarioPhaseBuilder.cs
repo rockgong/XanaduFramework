@@ -23,6 +23,7 @@ namespace MainGame
             _handlers[typeof(ScenarioPhaseDataPlayAnimatin)] = ScenarioPhasePlayAnimatin.BuildHandler;
             _handlers[typeof(ScenarioPhaseDataInlineUI)] = ScenarioPhaseInlineUI.BuildHandler;
             _handlers[typeof(ScenarioPhaseDataStageAnimatin)] = ScenarioPhaseStageAnimatin.BuildHandler;
+            _handlers[typeof(ScenarioPhaseDataCameraAnimation)] = ScenarioPhaseCameraAnimation.BuildHandler;
             _handlers[typeof(ScenarioPhaseDataSerial)] = ScenarioPhaseSerial.BuildHandler;
             _handlers[typeof(ScenarioPhaseDataParallel)] = ScenarioPhaseParallel.BuildHandler;
 

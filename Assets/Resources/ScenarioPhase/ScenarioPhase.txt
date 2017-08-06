@@ -12,10 +12,13 @@
 					[
 						{
 							"$type" : "MainGame.ScenarioPhaseDataInlineUI",
-							"uiName" : "InlineOpen",
-							"waitForEnd" : 1
+							"uiName" : "InlineOpen"
 						}
 					]
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 1.0
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataParallel",
@@ -24,6 +27,10 @@
 						{
 							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
 							"time" : 5.5
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataCameraAnimation",
+							"animationName" : "Start_00_Cam"
 						}
 					]
 				}
