@@ -15,13 +15,13 @@
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
 					"nonPlayerId" : 2,
-					"stageId" : 1,
+					"stageId" : 103,
 					"stagePointName" : "npc_2"
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
 					"nonPlayerId" : 3,
-					"stageId" : 1,
+					"stageId" : 104,
 					"stagePointName" : "npc_3"
 				},
 				{
@@ -118,12 +118,12 @@
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 2,
-					"dialogId" : 2
+					"dialogId" : 10201
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 3,
-					"dialogId" : 3
+					"dialogId" : 10301
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetDialog",
@@ -278,6 +278,24 @@
 			"$type" : "MainGame.CommonEventSetIntValue",
 			"index" : 0,
 			"targetValue" : 1
+		}
+	},
+	{
+		"name" : "SwapUpLadder",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSwap",
+			"stageId" : 104,
+			"stagePointName" : "spawn_0c"
+		}
+	},
+	{
+		"name" : "SwapDownLadder",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSwap",
+			"stageId" : 103,
+			"stagePointName" : "spawn_2b"
 		}
 	}
 ]

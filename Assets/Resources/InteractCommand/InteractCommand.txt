@@ -258,6 +258,56 @@
 		}
 	},
 	{
+		"id" : 10201,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "仓库的梯子",
+			"options" :
+			[
+				"爬上去", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "SwapUpLadder"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 10301,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "仓库的梯子",
+			"options" :
+			[
+				"爬下去", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "SwapDownLadder"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		"id" : 20101,
 		"data" :
 		{
