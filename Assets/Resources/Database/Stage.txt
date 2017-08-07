@@ -474,5 +474,75 @@
 			"stagePointName" : "spawn_1a"
 		}
 	]
+},
+{
+	"ID" : 104, "SCENE_NAME" : "Factory_01",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Clamp",
+		"targetPoint" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"clampPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_0c"
+		},
+		"clampPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_1c"
+		}
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0":
+		{
+			"$type" : "MainGame.CommonVector3Lerp",
+			"lerpPoint0" :
+			{
+				"$type" : "MainGame.CommonVector3Clamp",
+				"targetPoint" :
+				{
+					"$type" : "MainGame.CommonVector3Player"
+				},
+				"clampPoint0" :
+				{
+					"$type" : "MainGame.CommonVector3StagePoint",
+					"pointName" : "stage_0c"
+				},
+				"clampPoint1" :
+				{
+					"$type" : "MainGame.CommonVector3StagePoint",
+					"pointName" : "stage_1c"
+				}
+			},
+			"lerpPoint1" :
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"lerpValue" : 3.0
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0, "y" : 2.6, "z" : 0.0
+		}
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "bound_0",
+			"stageId" : 102,
+			"stagePointName" : "spawn_0a"
+		},
+		{
+			"triggerPointName" : "bound_1",
+			"stageId" : 102,
+			"stagePointName" : "spawn_1a"
+		}
+	]
 }
 ]
