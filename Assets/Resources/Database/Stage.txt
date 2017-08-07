@@ -341,5 +341,71 @@
 	"TRANSFERS" :
 	[
 	]
+},
+{
+	"ID" : 102, "SCENE_NAME" : "Factory_01",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0, "y" : 30.0, "z" : -20.0
+		}
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "bound_0",
+			"stageId" : 103,
+			"stagePointName" : "spawn_0b"
+		},
+		{
+			"triggerPointName" : "bound_1",
+			"stageId" : 103,
+			"stagePointName" : "spawn_1b"
+		}
+	]
+},
+{
+	"ID" : 103, "SCENE_NAME" : "Factory_01",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0, "y" : 30.0, "z" : 20.0
+		}
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "bound_0",
+			"stageId" : 102,
+			"stagePointName" : "spawn_0a"
+		},
+		{
+			"triggerPointName" : "bound_1",
+			"stageId" : 102,
+			"stagePointName" : "spawn_1a"
+		}
+	]
 }
 ]

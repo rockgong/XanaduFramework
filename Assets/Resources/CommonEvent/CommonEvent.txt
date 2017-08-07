@@ -248,7 +248,7 @@
 			"onEnd" :
 			{
 				"$type" : "MainGame.CommonEventSwap",
-				"stageId" : 4,
+				"stageId" : 102,
 				"stagePointName" : "spawn"
 			}
 		}
