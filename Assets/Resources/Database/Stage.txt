@@ -434,6 +434,11 @@
 			"triggerPointName" : "bound_1",
 			"stageId" : 103,
 			"stagePointName" : "spawn_1b"
+		},
+		{
+			"triggerPointName" : "enter_storage",
+			"stageId" : 105,
+			"stagePointName" : "spawn"
 		}
 	]
 },
@@ -542,6 +547,27 @@
 			"triggerPointName" : "bound_1",
 			"stageId" : 102,
 			"stagePointName" : "spawn_1a"
+		}
+	]
+},
+{
+	"ID" : 105, "SCENE_NAME" : "Factory_02",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_look"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_pos"
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 102,
+			"stagePointName" : "spawn_3"
 		}
 	]
 }

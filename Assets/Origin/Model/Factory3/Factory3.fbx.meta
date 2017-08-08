@@ -1,0 +1,134 @@
+fileFormatVersion: 2
+guid: 0ee6013f97e09f14e886d0f99cd7be73
+timeCreated: 1502185920
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Battery
+    100002: BigCase
+    100004: Conveyer
+    100006: ConveyerNode
+    100008: ConveyerNodeDown
+    100010: ConveyerNodeUp
+    100012: //RootNode
+    100014: PowerMachine
+    100016: SmallCase
+    100018: Wall
+    100020: ConveyerHandler
+    100022: Cube
+    400000: Battery
+    400002: BigCase
+    400004: Conveyer
+    400006: ConveyerNode
+    400008: ConveyerNodeDown
+    400010: ConveyerNodeUp
+    400012: //RootNode
+    400014: PowerMachine
+    400016: SmallCase
+    400018: Wall
+    400020: ConveyerHandler
+    400022: Cube
+    2300000: Battery
+    2300002: BigCase
+    2300004: Conveyer
+    2300006: ConveyerNode
+    2300008: ConveyerNodeDown
+    2300010: ConveyerNodeUp
+    2300012: PowerMachine
+    2300014: SmallCase
+    2300016: Wall
+    2300018: ConveyerHandler
+    2300020: Cube
+    3300000: Battery
+    3300002: BigCase
+    3300004: Conveyer
+    3300006: ConveyerNode
+    3300008: ConveyerNodeDown
+    3300010: ConveyerNodeUp
+    3300012: PowerMachine
+    3300014: SmallCase
+    3300016: Wall
+    3300018: ConveyerHandler
+    3300020: Cube
+    4300000: PowerMachine
+    4300002: SmallCase
+    4300004: BigCase
+    4300006: Battery
+    4300008: ConveyerNode
+    4300010: ConveyerNodeDown
+    4300012: ConveyerNodeUp
+    4300014: Conveyer
+    4300016: Wall
+    4300018: ConveyerHandler
+    4300020: Cube
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
