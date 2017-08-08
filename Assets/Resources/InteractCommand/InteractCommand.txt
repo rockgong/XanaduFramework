@@ -239,12 +239,35 @@
 			"members" :
 			[
 				{
-					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "使用了正门钥匙卡"
-				},
-				{
-					"$type" : "MainGame.InteractCommandCommonEventData",
-					"eventName" : "OpenGate"
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "貌似是用来刷卡用的刷卡机",
+					"options" :
+					[
+						"使用正门钥匙卡", "什么都不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "使用了正门钥匙卡"
+								},
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 2,
+									"sceneName" : "Gates_00",
+									"stagePointName" : "gates"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "OpenGate"
+								}
+							]
+						}
+					]
 				}
 			]
 		}

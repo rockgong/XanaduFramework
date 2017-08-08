@@ -30,12 +30,13 @@ namespace MainGame
         private ITransfer _transfer;
         private IMainGameHost _mainGameHost;
         private InlineUIView _inlineUIView;
+        private IInteractGameStateHost _interactGameStateHost;
 
         private List<TriggerInfo> _triggerList;
 
         private MonoScenarioScene _scene = null;
 
-        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t, IMainGameHost mgh, InlineUIView iuv)
+        public void Initialize(IGameKernal gameKernal, InteractGameState igs, InteractCommandManager icm, ScenarioGameState sgs, ScenarioPhaseManager spm, MainGameCommandManager mgm, ITransfer t, IMainGameHost mgh, InlineUIView iuv, IInteractGameStateHost igsh)
         {
             _gameKernal = gameKernal;
 
@@ -47,6 +48,7 @@ namespace MainGame
             _transfer = t;
             _mainGameHost = mgh;
             _inlineUIView = iuv;
+            _interactGameStateHost = igsh;
 
             _triggerList = new List<TriggerInfo>();
         }
@@ -146,7 +148,7 @@ namespace MainGame
                                 _interactGameState.player = null;
                                 _interactGameState.nonPlayer = null;
                                 _interactGameState.propObject = null;
-                                command.Setup(_mainGameCommandManager, _mainGameHost);
+                                command.Setup(_mainGameCommandManager, _mainGameHost, _interactGameStateHost);
                                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
                                 commandList.Add(command);
                                 _interactGameState.SetCommandList(commandList);

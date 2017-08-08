@@ -28,6 +28,7 @@ namespace MainGame
             _handlers[typeof(InteractCommandNonPlayerFaceData)] = InteractCommandDialog.BuildHandler;
             _handlers[typeof(InteractCommandCommonEventData)] = InteractCommandCommonEvent.BuildHandler;
             _handlers[typeof(InteractCommandGroupData)] = InteractCommandGroup.BuildHandler;
+            _handlers[typeof(InteractCommandPrepareScenarioData)] = InteractCommandPrepareScenario.BuildHandler;
 
             if (_mainGameStringBuilder == null)
             {

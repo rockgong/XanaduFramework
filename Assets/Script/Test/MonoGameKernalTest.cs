@@ -94,7 +94,7 @@ namespace MainGame
             _propObjectManager.SetInteractCommandIdByName(3, 5);
             _propObjectManager.SetInteractCommandIdByName(4, 6);
 
-            _triggerManager.Initialize(gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _mainTransfer, null, null);
+            _triggerManager.Initialize(gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _mainTransfer, null, null, null);
 
             _valueManager = new ValueManager();
             _valueManager.Initialize(256, 256);
@@ -164,6 +164,11 @@ namespace MainGame
             gameKernal.SetGameState(_mainGameState);
         }
 
+        public void OnPrepareScenario(int id, string sceneName, string stagePointName)
+        {
+            return;
+        }
+
         public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
         {
             int scenarioId = _nonPlayerManager.GetNonPlayerScenarioIdByName(nonPlayer.name);
@@ -200,7 +205,7 @@ namespace MainGame
                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                 BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                command.Setup(_mainGameCommandManager, null);
+                command.Setup(_mainGameCommandManager, null, null);
                 commandList.Add(command);
                 _interactGameState.SetCommandList(commandList);
 
@@ -244,7 +249,7 @@ namespace MainGame
                 List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                 BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                command.Setup(_mainGameCommandManager, null);
+                command.Setup(_mainGameCommandManager, null, null);
                 commandList.Add(command);
                 _interactGameState.SetCommandList(commandList);
 

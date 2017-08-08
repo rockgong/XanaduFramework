@@ -20,15 +20,15 @@ namespace MainGame
 
 	    private BaseInteractCommand _selectCommand;
 
-        public override void Setup(MainGameCommandManager mgcMgr, IMainGameHost mgh)
+        public override void Setup(MainGameCommandManager mgcMgr, IMainGameHost mgh, IInteractGameStateHost igsh)
         {
-            base.Setup(mgcMgr, mgh);
+            base.Setup(mgcMgr, mgh, igsh);
 
             if (optionCommands != null)
             {
                 for (int i = 0; i < optionCommands.Length; i++)
                 {
-                    optionCommands[i].Setup(mgcMgr, mgh);
+                    optionCommands[i].Setup(mgcMgr, mgh, igsh);
                 }
             }
         }

@@ -90,11 +90,7 @@
 						{
 							"$type" : "MainGame.CommonEventNonPlayerSetup",
 							"nonPlayerId" : 1,
-							"dialogId" : 10102,
-							"scenarioId" : 2,
-							"scenarioSceneName" : "Gates_00",
-							"scenarioStagePointName" : "gates",
-							"orderCode" : 3
+							"dialogId" : 10102
 						},
 						"nonZeroEvent" :
 						{

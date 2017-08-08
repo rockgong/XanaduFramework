@@ -175,6 +175,7 @@
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandGroup.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandMessage.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandNonPlayerFace.cs" />
+     <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandPrepareScenario.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandSave.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandSelect.cs" />
      <Compile Include="Assets\Script\MainGame\InteractCommands\InteractCommandWait.cs" />

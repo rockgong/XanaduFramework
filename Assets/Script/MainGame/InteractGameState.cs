@@ -10,17 +10,20 @@ namespace MainGame
 	interface IInteractGameStateHost
 	{
 		void OnCommandProcessEnd();
+        void OnPrepareScenario(int id, string sceneName, string stagePointName);
 	}
 
     abstract class BaseInteractCommand
     {
         protected MainGameCommandManager _mainGameCommandManager;
         protected IMainGameHost _mainGameHost;
+        protected IInteractGameStateHost _interactGameStateHost;
 
-        public virtual void Setup(MainGameCommandManager mgcMgr, IMainGameHost mgh)
+        public virtual void Setup(MainGameCommandManager mgcMgr, IMainGameHost mgh, IInteractGameStateHost igsh)
         {
             _mainGameCommandManager = mgcMgr;
             _mainGameHost = mgh;
+            _interactGameStateHost = igsh;
         }
 
         public abstract void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop);

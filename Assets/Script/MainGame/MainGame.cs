@@ -143,7 +143,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host, _inlineUIView);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, transfer, _host, _inlineUIView, this);
 
             _mainGameCommandBuilder.Initialize();
             _mainGameCommandManager.Initialize(_gameKernal, _playerStageManager, _nonPlayerManager, _propObjectManager, _triggerManager, _mainGameCommandBuilder, commonEventDatabase, _valueManager, _inventoryManager, _host, transfer, _inlineUIView);
@@ -185,7 +185,7 @@ namespace MainGame
 
             _nonPlayerManager.Initialize(_nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
-            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host, _inlineUIView);
+            _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host, _inlineUIView, this);
 
             _triggerManager.ClearAllTrigger();
 			_mainGameCommandManager.DoCommand("Update");
@@ -351,6 +351,13 @@ namespace MainGame
             _preparedScenarioStagePointName = null;
         }
 
+        public void OnPrepareScenario(int id, string sceneName, string stagePointName)
+        {
+            _preparedScenarioId = id;
+            _preparedScenarioSceneName = sceneName;
+            _preparedScenarioStagePointName = stagePointName;
+        }
+
         public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
         {
             int scenarioId = _nonPlayerManager.GetNonPlayerScenarioIdByName(nonPlayer.name);
@@ -400,7 +407,7 @@ namespace MainGame
                     List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                     BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                    command.Setup(_mainGameCommandManager, _host);
+                    command.Setup(_mainGameCommandManager, _host, this);
                     commandList.Add(command);
                     _interactGameState.SetCommandList(commandList);
 
@@ -465,7 +472,7 @@ namespace MainGame
                     List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                     BaseInteractCommand command = _interactCommandManager.GetCommandById(interactCommandId);
-                    command.Setup(_mainGameCommandManager, _host);
+                    command.Setup(_mainGameCommandManager, _host, this);
                     commandList.Add(command);
                     _interactGameState.SetCommandList(commandList);
 
@@ -578,7 +585,7 @@ namespace MainGame
                     List<BaseInteractCommand> commandList = new List<BaseInteractCommand>();
 
                     BaseInteractCommand command = _interactCommandManager.GetCommandById(_preparedInteractId);
-                    command.Setup(_mainGameCommandManager, _host);
+                    command.Setup(_mainGameCommandManager, _host, this);
                     commandList.Add(command);
                     _interactGameState.SetCommandList(commandList);
 
