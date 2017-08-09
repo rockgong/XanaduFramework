@@ -552,6 +552,11 @@
 			"triggerPointName" : "enter_storage_back",
 			"stageId" : 109,
 			"stagePointName" : "spawn"
+		},
+		{
+			"triggerPointName" : "enter_storage_up",
+			"stageId" : 105,
+			"stagePointName" : "spawn_b"
 		}
 	]
 },
@@ -573,6 +578,11 @@
 			"triggerPointName" : "exit",
 			"stageId" : 102,
 			"stagePointName" : "spawn_3"
+		},
+		{
+			"triggerPointName" : "exit_b",
+			"stageId" : 104,
+			"stagePointName" : "spawn_1c"
 		}
 	]
 },
