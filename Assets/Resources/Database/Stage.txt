@@ -698,6 +698,41 @@
 			"triggerPointName" : "exit",
 			"stageId" : 104,
 			"stagePointName" : "spawn_6"
+		},
+		{
+			"triggerPointName" : "enter_lead_office",
+			"stageId" : 110,
+			"stagePointName" : "spawn"
+		}
+	]
+},
+{
+	"ID" : 110, "SCENE_NAME" : "LeadOffice",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 0.3
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_pos"
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 109,
+			"stagePointName" : "spawn_1"
 		}
 	]
 }
