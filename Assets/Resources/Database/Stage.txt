@@ -603,6 +603,41 @@
 			"triggerPointName" : "exit",
 			"stageId" : 102,
 			"stagePointName" : "spawn_4"
+		},
+		{
+			"triggerPointName" : "enter_bus",
+			"stageId" : 107,
+			"stagePointName" : "spawn"
+		}
+	]
+},
+{
+	"ID" : 107, "SCENE_NAME" : "BusInside",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 0.3
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_pos"
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 106,
+			"stagePointName" : "spawn_b"
 		}
 	]
 }
