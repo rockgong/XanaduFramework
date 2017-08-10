@@ -745,5 +745,127 @@
 			"stagePointName" : "spawn_1"
 		}
 	]
+},
+{
+	"ID" : 201, "SCENE_NAME" : "BusInside",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 0.3
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_pos"
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 202,
+			"stagePointName" : "spawn_b"
+		}
+	]
+},
+{
+	"ID" : 202, "SCENE_NAME" : "BusStop",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 0.3
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_pos_2"
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 203,
+			"stagePointName" : "spawn"
+		},
+		{
+			"triggerPointName" : "enter_bus",
+			"stageId" : 201,
+			"stagePointName" : "spawn"
+		}
+	]
+},
+{
+	"ID" : 203, "SCENE_NAME" : "County",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 1.0
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Clamp",
+		"targetPoint" :
+		{
+			"$type" : "MainGame.CommonVector3Plus",
+			"op0":
+			{
+				"$type" : "MainGame.CommonVector3Player"
+			},
+			"op1" :
+			{
+				"$type" : "MainGame.CommonVector3Literal",
+				"x" : 0.0, "y" : 20.0, "z" : 40.0
+			}
+		},
+		"clampPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_0"
+		},
+		"clampPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "stage_1"
+		}
+	},
+	"TRANSFERS" :
+	[
+		{
+			"triggerPointName" : "exit",
+			"stageId" : 102,
+			"stagePointName" : "spawn_4"
+		},
+		{
+			"triggerPointName" : "enter_bus",
+			"stageId" : 107,
+			"stagePointName" : "spawn"
+		}
+	]
 }
 ]
