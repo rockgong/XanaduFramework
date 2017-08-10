@@ -867,5 +867,28 @@
 			"stagePointName" : "spawn"
 		}
 	]
+},
+{
+	"ID" : 204, "SCENE_NAME" : "FinalStage",
+	"CAMERA_LOOK" :
+	{
+		"$type" : "MainGame.CommonVector3Player"
+	},
+	"CAMERA_POS" :
+	{
+		"$type" : "MainGame.CommonVector3Plus",
+		"op0" : 
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"op1" :
+		{
+			"$type" : "MainGame.CommonVector3Literal",
+			"x" : 0.0, "y" : 50.0, "z" : 50.0
+		}
+	},
+	"TRANSFERS" :
+	[
+	]
 }
 ]

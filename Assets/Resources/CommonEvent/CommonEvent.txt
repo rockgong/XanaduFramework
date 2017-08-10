@@ -25,6 +25,12 @@
 					"stagePointName" : "npc_3"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 4,
+					"stageId" : 204,
+					"stagePointName" : "flower"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
