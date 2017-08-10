@@ -2,5 +2,5 @@
 {"ID" : 1, "NAME" : "card_machine", "PREFAB_NAME" : "Empty"},
 {"ID" : 2, "NAME" : "factory_ladder_0", "PREFAB_NAME" : "Empty"},
 {"ID" : 3, "NAME" : "factory_ladder_1", "PREFAB_NAME" : "Empty"},
-{"ID" : 4, "NAME" : "nunu", "PREFAB_NAME" : "Player2"}
+{"ID" : 4, "NAME" : "flower", "PREFAB_NAME" : "Flower"}
 ]
