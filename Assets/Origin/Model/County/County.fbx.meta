@@ -18,6 +18,7 @@ ModelImporter:
     100020: Road_4
     100022: SellMachine
     100024: Gate
+    100026: Pot
     400000: Bench.001
     400002: BrokenHouse_1
     400004: BrokenHouse_2
@@ -31,6 +32,7 @@ ModelImporter:
     400020: Road_4
     400022: SellMachine
     400024: Gate
+    400026: Pot
     2300000: Bench.001
     2300002: BrokenHouse_1
     2300004: BrokenHouse_2
@@ -43,6 +45,7 @@ ModelImporter:
     2300018: Road_4
     2300020: SellMachine
     2300022: Gate
+    2300024: Pot
     3300000: Bench.001
     3300002: BrokenHouse_1
     3300004: BrokenHouse_2
@@ -55,6 +58,7 @@ ModelImporter:
     3300018: Road_4
     3300020: SellMachine
     3300022: Gate
+    3300024: Pot
     4300000: Grass
     4300002: SellMachine
     4300004: Road_2
@@ -67,6 +71,7 @@ ModelImporter:
     4300018: Bench.001
     4300020: OriginHouse
     4300022: Gate
+    4300024: Pot
   materials:
     importMaterials: 1
     materialName: 0

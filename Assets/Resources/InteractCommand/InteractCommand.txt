@@ -148,7 +148,7 @@
 								{
 									"$type" : "MainGame.InteractCommandSaveData",
 									"stageId" : 3,
-									"stagePointName" : "spawn"
+									"stagePointName" : "npc_1_load"
 								}
 							]
 						}
@@ -273,6 +273,25 @@
 		}
 	},
 	{
+		"id" : 10202,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "感觉到了温暖的气息"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSaveData",
+					"stageId" : 102,
+					"stagePointName" : "npc_1_load"
+				}
+			]
+		}
+	},
+	{
 		"id" : 10103,
 		"data" :
 		{
@@ -355,6 +374,25 @@
 							"eventName" : "GetKeyCard"
 						}
 					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 20302,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "感觉到了温暖的气息"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSaveData",
+					"stageId" : 203,
+					"stagePointName" : "npc_1_load"
 				}
 			]
 		}

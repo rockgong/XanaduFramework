@@ -31,6 +31,18 @@
 					"stagePointName" : "flower"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 5,
+					"stageId" : 102,
+					"stagePointName" : "npc_1"
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 6,
+					"stageId" : 203,
+					"stagePointName" : "npc_1"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -126,6 +138,16 @@
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 3,
 					"dialogId" : 10301
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 5,
+					"dialogId" : 10202
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 6,
+					"dialogId" : 20302
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetDialog",
