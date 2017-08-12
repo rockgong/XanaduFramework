@@ -75,22 +75,30 @@
 					}
 				},
 				{
-					"$type" : "MainGame.CommonEventPropObjectSetPosition",
-					"propObjectId" : 2,
-					"stageId" : 3,
-					"stagePointName" : "monitor"
-				},
-				{
-					"$type" : "MainGame.CommonEventPropObjectSetPosition",
-					"propObjectId" : 3,
-					"stageId" : 3,
-					"stagePointName" : "locker_1"
-				},
-				{
-					"$type" : "MainGame.CommonEventPropObjectSetPosition",
-					"propObjectId" : 4,
-					"stageId" : 3,
-					"stagePointName" : "locker_2"
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 1
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 2,
+						"stageId" : 106,
+						"stagePointName" : "prop_1"
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 2,
+						"stageId" : 0,
+						"stagePointName" : ""
+					}
 				},
 
 
@@ -136,6 +144,11 @@
 					"dialogId" : 20101
 				},
 				{
+					"$type" : "MainGame.CommonEventPropObjectSetup",
+					"propObjectId" : 2,
+					"dialogId" : 20201
+				},
+				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 2,
 					"dialogId" : 10201
@@ -148,43 +161,17 @@
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 5,
-					"dialogId" : 10202
+					"dialogId" : 10501
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 6,
-					"dialogId" : 20302
+					"dialogId" : 10601
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 7,
-					"dialogId" : 20303
-				},
-				{
-					"$type" : "MainGame.CommonEventPropObjectSetDialog",
-					"propObjectId" : 2,
-					"dialogId" : 4
-				},
-				{
-					"$type" : "MainGame.CommonEventPropObjectSetDialog",
-					"propObjectId" : 3,
-					"dialogId" : 5
-				},
-				{
-					"$type" : "MainGame.CommonEventHasInventory",
-					"inventoryId" : 1,
-					"yesEvent" :
-					{
-						"$type" : "MainGame.CommonEventPropObjectSetDialog",
-						"propObjectId" : 4,
-						"dialogId" : 7
-					},
-					"noEvent" :
-					{
-						"$type" : "MainGame.CommonEventPropObjectSetDialog",
-						"propObjectId" : 4,
-						"dialogId" : 6
-					}
+					"dialogId" : 10701
 				},
 
 
@@ -313,6 +300,29 @@
 			"$type" : "MainGame.CommonEventSetIntValue",
 			"index" : 0,
 			"targetValue" : 1
+		}
+	},
+	{
+		"name" : "GetLv1Card",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 2
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 1,
+					"targetValue" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventRemovePropObject",
+					"propObjectName" : "lv1"
+				}
+			]
 		}
 	},
 	{

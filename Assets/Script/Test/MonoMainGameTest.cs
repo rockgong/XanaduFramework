@@ -54,6 +54,7 @@ namespace GameApp
 		public int startScenarioId;
 		public string startScenarioSceneName;
 		public string startScenarioStagePointName;
+		public int[] startInventoryIds;
 		public string[] resultViewPathList;
 		// Use this for initialization
 		void Start ()
@@ -271,6 +272,8 @@ namespace GameApp
         		_mainTransfer.Transfer(0.5f, 0.2f, Color.white, () =>
         		{
 					_mainGame.StartUp(startStageId, startStagePointName, string.Empty, startScenarioId, startScenarioSceneName, startScenarioStagePointName);
+					for (int i = 0; i < startInventoryIds.Length; i++)
+						_mainGame.AddInventory(startInventoryIds[i]);
 					_titleScene.Shutdown();
 					_titleScene.Uninitialize();
 					_running = true;

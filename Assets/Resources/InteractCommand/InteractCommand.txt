@@ -273,25 +273,6 @@
 		}
 	},
 	{
-		"id" : 10202,
-		"data" :
-		{
-			"$type" : "MainGame.InteractCommandGroupData",
-			"members" : 
-			[
-				{
-					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "感觉到了温暖的气息"
-				},
-				{
-					"$type" : "MainGame.InteractCommandSaveData",
-					"stageId" : 102,
-					"stagePointName" : "npc_1_load"
-				}
-			]
-		}
-	},
-	{
 		"id" : 10103,
 		"data" :
 		{
@@ -350,36 +331,26 @@
 		}
 	},
 	{
-		"id" : 20101,
+		"id" : 10501,
 		"data" :
 		{
-			"$type" : "MainGame.InteractCommandSelectData",
-			"title" : "地上有一张卡片",
-			"options" :
-			[
-				"捡起来", "什么都不做"
-			],
-			"optionCommands" :
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
 			[
 				{
-					"$type" : "MainGame.InteractCommandGroupData",
-					"members" :
-					[
-						{
-							"$type" : "MainGame.InteractCommandMessageData",
-							"content" : "获得了正门钥匙卡"
-						},
-						{
-							"$type" : "MainGame.InteractCommandCommonEventData",
-							"eventName" : "GetKeyCard"
-						}
-					]
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "感觉到了温暖的气息"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSaveData",
+					"stageId" : 102,
+					"stagePointName" : "npc_1_load"
 				}
 			]
 		}
 	},
 	{
-		"id" : 20302,
+		"id" : 10601,
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandGroupData",
@@ -398,7 +369,7 @@
 		}
 	},
 	{
-		"id" : 20303,
+		"id" : 10701,
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandGroupData",
@@ -428,6 +399,64 @@
 									"stagePointName" : "gates"
 								}
 							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 20101,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "地上有一张卡片",
+			"options" :
+			[
+				"捡起来", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "获得了正门钥匙卡"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "GetKeyCard"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 20201,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "长椅上有一张卡片",
+			"options" :
+			[
+				"捡起来", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "获得了权限卡Lv1"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "GetLv1Card"
 						}
 					]
 				}

@@ -322,6 +322,12 @@ namespace MainGame
             return _suspending;
         }
 
+        public void AddInventory(int id)
+        {
+            if (_inventoryManager != null)
+                _inventoryManager.AddInventory(id);
+        }
+
 		// Interface Implementing
         public void OnCommandProcessEnd()
         {
