@@ -56,9 +56,9 @@ namespace MainGame
 			CommonVector3Clamp target = (CommonVector3Clamp)data;
 			CommonVector3ClampEval result = new CommonVector3ClampEval();
 
-			result.targetPoint = builder.Build(target.targetPoint, builder);
-			result.clampPoint0 = builder.Build(target.clampPoint0, builder);
-			result.clampPoint1 = builder.Build(target.clampPoint1, builder);
+			result.targetPoint = builder.Build(target.targetPoint);
+			result.clampPoint0 = builder.Build(target.clampPoint0);
+			result.clampPoint1 = builder.Build(target.clampPoint1);
 
 			return result;
 		}

@@ -41,8 +41,8 @@ namespace MainGame
 			CommonVector3Lerp target = (CommonVector3Lerp)data;
 			CommonVector3LerpEval result = new CommonVector3LerpEval();
 
-			result.lerpPoint0 = builder.Build(target.lerpPoint0, builder);
-			result.lerpPoint1 = builder.Build(target.lerpPoint1, builder);
+			result.lerpPoint0 = builder.Build(target.lerpPoint0);
+			result.lerpPoint1 = builder.Build(target.lerpPoint1);
 			result.lerpValue = target.lerpValue;
 
 			return result;

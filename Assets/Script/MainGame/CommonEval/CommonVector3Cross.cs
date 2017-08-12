@@ -39,8 +39,8 @@ namespace MainGame
 			CommonVector3Cross target = (CommonVector3Cross)data;
 			CommonVector3CrossEval result = new CommonVector3CrossEval();
 
-			result.op0 = builder.Build(target.op0, builder);
-			result.op1 = builder.Build(target.op1, builder);
+			result.op0 = builder.Build(target.op0);
+			result.op1 = builder.Build(target.op1);
 
 			return result;
 		}

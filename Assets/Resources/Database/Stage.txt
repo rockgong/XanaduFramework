@@ -872,7 +872,8 @@
 	"ID" : 204, "SCENE_NAME" : "FinalStage",
 	"CAMERA_LOOK" :
 	{
-		"$type" : "MainGame.CommonVector3Player"
+		"$type" : "MainGame.CommonVector3StagePoint",
+		"pointName" : "camera_look"
 	},
 	"CAMERA_POS" :
 	{
@@ -883,8 +884,44 @@
 		},
 		"op1" :
 		{
-			"$type" : "MainGame.CommonVector3Literal",
-			"x" : 0.0, "y" : 50.0, "z" : 50.0
+			"$type" : "MainGame.CommonVector3Clamp",
+			"targetPoint" :
+			{
+				"$type" : "MainGame.CommonVector3Plus",
+				"op0" :
+				{
+					"$type" : "MainGame.CommonVector3SetMag",
+					"op" :
+					{
+						"$type" : "MainGame.CommonVector3Minus",
+						"op0" :
+						{
+							"$type" : "MainGame.CommonVector3Player"
+						},
+						"op1" :
+						{
+							"$type" : "MainGame.CommonVector3StagePoint",
+							"pointName" : "camera_look"
+						}
+					},
+					"mag" : 10.0
+				},
+				"op1" :
+				{
+					"$type" : "MainGame.CommonVector3Literal",
+					"x" : 5.0, "y" : 2.0, "z" : 0.0
+				}
+			},
+			"clampPoint0" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_0"
+			},
+			"clampPoint1" :
+			{
+				"$type" : "MainGame.CommonVector3StagePoint",
+				"pointName" : "stage_1"
+			}
 		}
 	},
 	"TRANSFERS" :

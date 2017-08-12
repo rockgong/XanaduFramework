@@ -19,9 +19,10 @@ namespace MainGame
 			_handlers[typeof(CommonVector3Cross)] = CommonVector3CrossEval.BuildHandler;
 			_handlers[typeof(CommonVector3Clamp)] = CommonVector3ClampEval.BuildHandler;
 			_handlers[typeof(CommonVector3Lerp)] = CommonVector3LerpEval.BuildHandler;
+			_handlers[typeof(CommonVector3SetMag)] = CommonVector3SetMagEval.BuildHandler;
 		}
 
-		public BaseCommonVector3Eval Build(BaseCommonVector3 data, CommonVector3Builder builder)
+		public BaseCommonVector3Eval Build(BaseCommonVector3 data)
 		{
             System.Type evtType = data.GetType();
             if (_handlers.ContainsKey(evtType))

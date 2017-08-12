@@ -530,9 +530,9 @@ namespace MainGame
             _propObjectManager.SetupAllPropObjects(stageId);
             _triggerManager.SetupTrigger(stageId);
             IStageDatabaseEntry stageEntry = _stageDatabase.GetEntryById(stageId);
-            _mainGameCameraController.cameraTarget = _commonVector3Builder.Build(stageEntry.cameraLook, _commonVector3Builder);
+            _mainGameCameraController.cameraTarget = _commonVector3Builder.Build(stageEntry.cameraLook);
             _mainGameCameraController.cameraTarget.Setup(_gameKernal);
-            _mainGameCameraController.cameraPosition = _commonVector3Builder.Build(stageEntry.cameraPos, _commonVector3Builder);
+            _mainGameCameraController.cameraPosition = _commonVector3Builder.Build(stageEntry.cameraPos);
             _mainGameCameraController.cameraPosition.Setup(_gameKernal);
 
             for (int i = 0; i < _stageTransferTriggers.Count; i++)

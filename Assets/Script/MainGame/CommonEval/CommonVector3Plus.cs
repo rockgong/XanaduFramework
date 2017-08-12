@@ -39,8 +39,8 @@ namespace MainGame
 			CommonVector3Plus target = (CommonVector3Plus)data;
 			CommonVector3PlusEval result = new CommonVector3PlusEval();
 
-			result.op0 = builder.Build(target.op0, builder);
-			result.op1 = builder.Build(target.op1, builder);
+			result.op0 = builder.Build(target.op0);
+			result.op1 = builder.Build(target.op1);
 
 			return result;
 		}

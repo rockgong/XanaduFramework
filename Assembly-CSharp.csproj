@@ -140,6 +140,7 @@
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Multiply.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Player.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3Plus.cs" />
+     <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3SetMag.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEval\CommonVector3StagePoint.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventAddInventory.cs" />
      <Compile Include="Assets\Script\MainGame\CommonEvents\CommonEventAddTrigger.cs" />
