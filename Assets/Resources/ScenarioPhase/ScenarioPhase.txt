@@ -55,5 +55,51 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 3,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+					"targetName" : "power_machine",
+					"animationName" : "PowerMachineOn"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 1.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" : 
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 3.0
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataCameraAnimation",
+							"animationName" : "PowerMachine_00_Cam"
+						}
+					]
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+					"targetName" : "conveyer_handler",
+					"animationName" : "PowerMachineOn"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				}
+			]
+		}
 	}
 ]

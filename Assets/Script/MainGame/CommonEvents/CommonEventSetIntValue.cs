@@ -17,6 +17,7 @@ namespace MainGame
 
         public override void Excute(MainGameCommandManager mgr)
         {
+            Debug.LogFormat("SetIntValue Called : {0} , {1}", index, targetValue);
         	mgr.valueManager.SetIntValue(index, targetValue);
         }
 

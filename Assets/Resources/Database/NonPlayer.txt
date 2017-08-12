@@ -6,5 +6,6 @@
 {"ID" : 5, "NAME" : "save_point_0", "PREFAB_NAME" : "SavePoint"},
 {"ID" : 6, "NAME" : "save_point_1", "PREFAB_NAME" : "SavePoint"},
 {"ID" : 7, "NAME" : "final_door", "PREFAB_NAME" : "Empty"},
-{"ID" : 8, "NAME" : "power_machine", "PREFAB_NAME" : "Empty"}
+{"ID" : 8, "NAME" : "power_machine", "PREFAB_NAME" : "Empty"},
+{"ID" : 9, "NAME" : "conveyer_handler", "PREFAB_NAME" : "Empty"}
 ]
