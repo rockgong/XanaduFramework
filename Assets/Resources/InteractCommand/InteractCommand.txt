@@ -406,6 +406,83 @@
 		}
 	},
 	{
+		"id" : 10801,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "为仓库提供能源的装置。\n处于停止工作的状态。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "需要Lv1员工权限。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 10802,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "为仓库提供能源的装置。\n处于停止工作的状态。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "需要Lv1员工权限。",
+					"options" :
+					[
+						"使用权限卡", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "使用了权限卡。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "ActivePowerMachine"
+								},
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 2,
+									"sceneName" : "Gates_00",
+									"stagePointName" : "gates"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 10803,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "为仓库提供能源的装置。处于正常工作的状态。"
+				}
+			]
+		}
+	},
+	{
 		"id" : 20101,
 		"data" :
 		{

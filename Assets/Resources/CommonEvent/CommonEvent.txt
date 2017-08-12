@@ -49,6 +49,12 @@
 					"stagePointName" : "npc_2"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 8,
+					"stageId" : 105,
+					"stagePointName" : "npc_1"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -172,6 +178,41 @@
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 7,
 					"dialogId" : 10701
+				},				
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" : 
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 2
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventHasInventory",
+						"inventoryId" : 2,
+						"yesEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 8,
+							"dialogId" : 10802
+						},
+						"noEvent" : 
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 8,
+							"dialogId" : 10801
+						}
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 8,
+						"dialogId" : 10803
+					}
 				},
 
 
@@ -321,6 +362,21 @@
 				{
 					"$type" : "MainGame.CommonEventRemovePropObject",
 					"propObjectName" : "lv1"
+				}
+			]
+		}
+	},
+	{
+		"name" : "ActivePowerMachine",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 2,
+					"targetValue" : 1
 				}
 			]
 		}
