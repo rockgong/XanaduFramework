@@ -904,12 +904,12 @@
 							"pointName" : "camera_look"
 						}
 					},
-					"mag" : 10.0
+					"mag" : 15.0
 				},
 				"op1" :
 				{
 					"$type" : "MainGame.CommonVector3Literal",
-					"x" : 5.0, "y" : 2.0, "z" : 0.0
+					"x" : -5.0, "y" : 1.0, "z" : 0.0
 				}
 			},
 			"clampPoint0" :
