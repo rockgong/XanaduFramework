@@ -43,6 +43,12 @@
 					"stagePointName" : "npc_1"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 7,
+					"stageId" : 203,
+					"stagePointName" : "npc_2"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -148,6 +154,11 @@
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 6,
 					"dialogId" : 20302
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+					"nonPlayerId" : 7,
+					"dialogId" : 20303
 				},
 				{
 					"$type" : "MainGame.CommonEventPropObjectSetDialog",

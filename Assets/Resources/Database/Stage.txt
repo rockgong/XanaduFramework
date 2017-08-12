@@ -840,7 +840,7 @@
 			"op1" :
 			{
 				"$type" : "MainGame.CommonVector3Literal",
-				"x" : 0.0, "y" : 20.0, "z" : 40.0
+				"x" : -40.0, "y" : 20.0, "z" : 40.0
 			}
 		},
 		"clampPoint0" :
@@ -858,12 +858,12 @@
 	[
 		{
 			"triggerPointName" : "exit",
-			"stageId" : 102,
-			"stagePointName" : "spawn_4"
+			"stageId" : 202,
+			"stagePointName" : "spawn"
 		},
 		{
-			"triggerPointName" : "enter_bus",
-			"stageId" : 107,
+			"triggerPointName" : "enter_final",
+			"stageId" : 204,
 			"stagePointName" : "spawn"
 		}
 	]

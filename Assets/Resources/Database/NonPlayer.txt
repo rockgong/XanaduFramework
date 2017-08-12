@@ -4,5 +4,6 @@
 {"ID" : 3, "NAME" : "factory_ladder_1", "PREFAB_NAME" : "Empty"},
 {"ID" : 4, "NAME" : "flower", "PREFAB_NAME" : "Flower"},
 {"ID" : 5, "NAME" : "save_point_0", "PREFAB_NAME" : "SavePoint"},
-{"ID" : 6, "NAME" : "save_point_1", "PREFAB_NAME" : "SavePoint"}
+{"ID" : 6, "NAME" : "save_point_1", "PREFAB_NAME" : "SavePoint"},
+{"ID" : 7, "NAME" : "final_door", "PREFAB_NAME" : "Empty"}
 ]

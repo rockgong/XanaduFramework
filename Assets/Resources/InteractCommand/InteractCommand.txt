@@ -396,5 +396,42 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 20303,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "最后的门"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "已经做好准备了吗",
+					"options" :
+					[
+						"是的", "还没准备好"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 2,
+									"sceneName" : "Gates_00",
+									"stagePointName" : "gates"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
 	}
 ]
