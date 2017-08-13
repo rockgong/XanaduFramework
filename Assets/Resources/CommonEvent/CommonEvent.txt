@@ -351,6 +351,32 @@
 							}
 						]
 					}
+				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 3
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 105,
+						"stagePointName" : "battery",
+						"animationName" : "Empty"
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 105,
+						"stagePointName" : "battery",
+						"animationName" : "BatteryRun_End"
+					}
 				}
 			]
 		}

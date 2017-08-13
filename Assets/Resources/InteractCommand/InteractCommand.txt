@@ -529,6 +529,12 @@
 									"content" : "拉动了开关。"
 								},
 								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 4,
+									"sceneName" : "PowerMachine_00",
+									"stagePointName" : "conveyer_node_2"
+								},
+								{
 									"$type" : "MainGame.InteractCommandCommonEventData",
 									"eventName" : "ActiveConveyer"
 								}

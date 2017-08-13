@@ -101,5 +101,134 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 4,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" : 
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 4.0
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_0",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_1",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_2",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_3",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_4",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_5",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_6",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_7",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_8",
+							"animationName" : "ConveyerRun"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "battery",
+							"animationName" : "BatteryRun"
+						}
+					]
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" : 
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_0",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_1",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_2",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_3",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_4",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_5",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_6",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_7",
+							"animationName" : "Empty"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+							"targetName" : "conveyer_node_8",
+							"animationName" : "Empty"
+						}
+					]
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				}
+			]
+		}
 	}
 ]
