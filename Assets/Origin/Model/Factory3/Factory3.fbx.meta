@@ -17,6 +17,7 @@ ModelImporter:
     100018: Wall
     100020: ConveyerHandler
     100022: Cube
+    100024: Cable
     400000: Battery
     400002: BigCase
     400004: Conveyer
@@ -29,6 +30,7 @@ ModelImporter:
     400018: Wall
     400020: ConveyerHandler
     400022: Cube
+    400024: Cable
     2300000: Battery
     2300002: BigCase
     2300004: Conveyer
@@ -40,6 +42,7 @@ ModelImporter:
     2300016: Wall
     2300018: ConveyerHandler
     2300020: Cube
+    2300022: Cable
     3300000: Battery
     3300002: BigCase
     3300004: Conveyer
@@ -51,6 +54,7 @@ ModelImporter:
     3300016: Wall
     3300018: ConveyerHandler
     3300020: Cube
+    3300022: Cable
     4300000: PowerMachine
     4300002: SmallCase
     4300004: BigCase
@@ -62,6 +66,7 @@ ModelImporter:
     4300016: Wall
     4300018: ConveyerHandler
     4300020: Cube
+    4300022: Cable
   materials:
     importMaterials: 1
     materialName: 0

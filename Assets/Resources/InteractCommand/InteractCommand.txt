@@ -649,5 +649,34 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 20401,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "箱子上放着电缆",
+			"options" :
+			[
+				"捡起来", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "获得了电缆"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "GetCable"
+						}
+					]
+				}
+			]
+		}
 	}
 ]

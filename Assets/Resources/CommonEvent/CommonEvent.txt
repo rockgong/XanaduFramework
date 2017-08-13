@@ -158,6 +158,32 @@
 						}
 					}
 				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 5
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 4,
+						"stageId" : 105,
+						"stagePointName" : "npc_3"
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 4,
+						"stageId" : 0,
+						"stagePointName" : ""
+					}
+				},
 
 
 
@@ -210,6 +236,11 @@
 					"$type" : "MainGame.CommonEventPropObjectSetup",
 					"propObjectId" : 3,
 					"dialogId" : 20301
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetup",
+					"propObjectId" : 4,
+					"dialogId" : 20401
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
@@ -592,6 +623,29 @@
 				{
 					"$type" : "MainGame.CommonEventRemovePropObject",
 					"propObjectName" : "battery"
+				}
+			]
+		}
+	},
+	{
+		"name" : "GetCable",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 6
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 5,
+					"targetValue" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventRemovePropObject",
+					"propObjectName" : "cable"
 				}
 			]
 		}
