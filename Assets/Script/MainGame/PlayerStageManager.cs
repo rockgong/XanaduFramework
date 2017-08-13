@@ -171,5 +171,10 @@ namespace MainGame
         {
             _currentStageId = -1;
         }
+
+        public int GetCurrentStageId()
+        {
+            return _currentStageId;
+        }
     }
 }

@@ -50,6 +50,17 @@ namespace GameKernal
 
         public float yaw{get; set;}
         public float velocity{get; set;}
+        public virtual bool visible
+        {
+            get
+            {
+                return true;
+            }
+            set
+            {
+                return;
+            }
+        }
 
         public abstract void PlayAnimation(string name);
 

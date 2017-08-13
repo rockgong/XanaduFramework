@@ -75,12 +75,20 @@ namespace MainGame
 
         private IMainGameHost _host;
 
-        private int _preparedInteractId;
-        private string _preparedNonPlayerName;
-        private string _preparedPropObjectName;
-        private int _preparedScenarioId;
-        private string _preparedScenarioSceneName;
-        private string _preparedScenarioStagePointName;
+        class PrepareTask
+        {
+            public int preparedStageId;
+            public int preparedInteractId;
+            public string preparedNonPlayerName;
+            public string preparedPropObjectName;
+            public int preparedScenarioId;
+            public string preparedScenarioSceneName;
+            public string preparedScenarioStagePointName;
+        }
+
+        private int _lastScenarioId = -1;
+
+        private List<PrepareTask> _prepareTaskList = new List<PrepareTask>();
 
 		public void Initialize(GameObject playerProto, IStageDatabase stageDatabase, INonPlayerDatabase nonPlayerDatabase, IPropObjectDatabase propObjectDatabase, ICommonEventDatabase commonEventDatabase, IInteractCommandDatabase interactCommandDatabase, IScenarioPhaseDatabase scenarioPhaseDatabase, IInventoryDatabase inventoryDatabase, ITransfer transfer, IMainGameHost host, string inlineUIPath, int valueStringCap = 4, int valueIntCap = 4)
 		{
@@ -332,22 +340,23 @@ namespace MainGame
 		// Interface Implementing
         public void OnCommandProcessEnd()
         {
-            if (_preparedScenarioId >= 0  && !string.IsNullOrEmpty(_preparedScenarioSceneName) && !string.IsNullOrEmpty(_preparedScenarioStagePointName))
-            {
-                DoScenario(_preparedScenarioId, _preparedScenarioSceneName, _preparedScenarioStagePointName);
-            }
-            else
-                _gameKernal.SetGameState(_mainGameState);
-            _preparedScenarioId = 0;
-            _preparedScenarioSceneName = null;
-            _preparedScenarioStagePointName = null;
+            _gameKernal.SetGameState(_mainGameState);
+
+            DoPrepareTask();
         }
 
-        public void OnPrepareScenario(int id, string sceneName, string stagePointName)
+        public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int type)
         {
-            _preparedScenarioId = id;
-            _preparedScenarioSceneName = sceneName;
-            _preparedScenarioStagePointName = stagePointName;
+            PrepareTask pt = new PrepareTask();
+            pt.preparedStageId = stageId;
+            pt.preparedScenarioId = id;
+            pt.preparedScenarioSceneName = sceneName;
+            pt.preparedScenarioStagePointName = stagePointName;
+
+            if (type == 0 && _prepareTaskList.Count > 0)
+                _prepareTaskList[_prepareTaskList.Count - 1] = pt;
+            else
+                _prepareTaskList.Add(pt);
         }
 
         public void OnInteract(IPlayerCharacter player, INonPlayerCharacter nonPlayer)
@@ -361,26 +370,12 @@ namespace MainGame
             if (orderCode == 2 || orderCode == 4)
             {
                 DoScenario(scenarioId, scenarioSceneName, scenarioStagePointName);
-
-                if (orderCode == 4)
-                {
-                    _preparedInteractId = interactCommandId;
-                    _preparedNonPlayerName = nonPlayer.name;
-                    _preparedPropObjectName = null;
-                }
             }
             else if (orderCode == 1 || orderCode == 3)
             {
                 if (interactCommandId >= 0)
                 {
                     DoInteractCommand(interactCommandId, player, nonPlayer, null);
-                }
-
-                if (orderCode == 3)
-                {
-                    _preparedScenarioId = scenarioId;
-                    _preparedScenarioSceneName = scenarioSceneName;
-                    _preparedScenarioStagePointName = scenarioStagePointName;
                 }
             }
         }
@@ -396,26 +391,12 @@ namespace MainGame
             if (orderCode == 2 || orderCode == 4)
             {
                 DoScenario(scenarioId, scenarioSceneName, scenarioStagePointName);
-
-                if (orderCode == 4)
-                {
-                    _preparedInteractId = interactCommandId;
-                    _preparedNonPlayerName = null;
-                    _preparedPropObjectName = prop.name;
-                }
             }
             else if (orderCode == 1 || orderCode == 3)
             {
                 if (interactCommandId >= 0)
                 {
                     DoInteractCommand(interactCommandId, player, null, prop);
-                }
-
-                if (orderCode == 3)
-                {
-                    _preparedScenarioId = scenarioId;
-                    _preparedScenarioSceneName = scenarioSceneName;
-                    _preparedScenarioStagePointName = scenarioStagePointName;
                 }
             }
         }
@@ -489,6 +470,8 @@ namespace MainGame
                     _stageTransferTriggers.Add(trigger);
                 }
             }
+
+            DoPrepareTask();
         }
 
         public void OnValueChanged(int type, int index)
@@ -503,16 +486,7 @@ namespace MainGame
         {
             _transfer.Transfer(0.3f, 0.3f, Color.white, () => 
             {
-                if (_preparedInteractId > 0 && !(string.IsNullOrEmpty(_preparedNonPlayerName) && string.IsNullOrEmpty(_preparedPropObjectName)))
-                {
-                    IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
-                    INonPlayerCharacter nonPlayer = string.IsNullOrEmpty(_preparedNonPlayerName) ? null : _gameKernal.GetNonPlayerCharacter(_preparedNonPlayerName);
-                    IPropObject propObject = string.IsNullOrEmpty(_preparedPropObjectName) ? null : _gameKernal.GetPropObject(_preparedPropObjectName);
-
-                    DoInteractCommand(_preparedInteractId, player, nonPlayer, propObject);
-                }
-                else
-                    _gameKernal.SetGameState(_mainGameState);
+                _gameKernal.SetGameState(_mainGameState);
 
                 if (_scenarioScene != null)
                 {
@@ -522,9 +496,7 @@ namespace MainGame
 
                 _triggerManager.TryRemoveScenarioScene();
 
-                _preparedInteractId = 0;
-                _preparedNonPlayerName = null;
-                _preparedPropObjectName = null;
+                DoPrepareTask();
             });
         }
 
@@ -610,7 +582,45 @@ namespace MainGame
                     _transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
                 }
             }
+        }
 
+        private void DoPrepareTask()
+        {
+            if (_prepareTaskList.Count > 0)
+            {
+                if (_playerStageManager.GetCurrentStageId() != _prepareTaskList[0].preparedStageId && _prepareTaskList[0].preparedStageId != 0)
+                {
+                    _transfer.Transfer(0.3f, 0.3f, Color.white, () =>
+                        _playerStageManager.SwapPlayer(_prepareTaskList[0].preparedStageId, string.Empty)
+                    );
+                    _gameKernal.GetPlayerCharacter().visible = false;
+                }
+                else
+                {
+                    if (_prepareTaskList[0].preparedScenarioId != 0 && _prepareTaskList[0].preparedScenarioId != _lastScenarioId && !string.IsNullOrEmpty(_prepareTaskList[0].preparedScenarioSceneName) && !string.IsNullOrEmpty(_prepareTaskList[0].preparedScenarioStagePointName))
+                    {
+                        DoScenario(_prepareTaskList[0].preparedScenarioId, _prepareTaskList[0].preparedScenarioSceneName, _prepareTaskList[0].preparedScenarioStagePointName);
+                        _lastScenarioId = _prepareTaskList[0].preparedScenarioId;
+                    }
+                    else
+                    {
+                        if (_prepareTaskList[0].preparedInteractId != 0 && !string.IsNullOrEmpty(_prepareTaskList[0].preparedNonPlayerName) && !string.IsNullOrEmpty(_prepareTaskList[0].preparedPropObjectName))
+                        {
+                            IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
+                            INonPlayerCharacter nonPlayer = string.IsNullOrEmpty(_prepareTaskList[0].preparedNonPlayerName) ? null : _gameKernal.GetNonPlayerCharacter(_prepareTaskList[0].preparedNonPlayerName);
+                            IPropObject propObject = string.IsNullOrEmpty(_prepareTaskList[0].preparedPropObjectName) ? null : _gameKernal.GetPropObject(_prepareTaskList[0].preparedPropObjectName);
+                            DoInteractCommand(_prepareTaskList[0].preparedInteractId, player, nonPlayer, propObject);
+                        }
+                        _prepareTaskList.RemoveAt(0);
+                        DoPrepareTask();
+                    }
+                }
+            }
+            else
+            {
+                _gameKernal.GetPlayerCharacter().visible = true;
+                _lastScenarioId = 0;
+            }
         }
 	}
 }

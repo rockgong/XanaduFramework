@@ -90,6 +90,21 @@ namespace GameKernal
             }
         }
 
+        public override bool visible
+        {
+            get
+            {
+                if (_entity != null)
+                    return _entity.gameObject.activeSelf;
+                return true;
+            }
+            set
+            {
+                if (_entity != null)
+                    _entity.gameObject.SetActive(value);
+            }
+        }
+
         public void OnCollisionEnter(MonoEntity entity, Collision collision)
         {
             //Do nothing...
