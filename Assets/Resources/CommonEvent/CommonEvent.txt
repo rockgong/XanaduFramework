@@ -112,6 +112,52 @@
 						"stagePointName" : ""
 					}
 				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" :
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 3
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPropObjectSetPosition",
+						"propObjectId" : 3,
+						"stageId" : 0,
+						"stagePointName" : ""
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPredicate",
+						"predicateValue" :
+						{
+							"$type" : "MainGame.CommonIntegerFromValue",
+							"index" :
+							{
+								"$type" : "MainGame.CommonIntegerLiteral",
+								"val" : 4
+							}
+						},
+						"zeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventPropObjectSetPosition",
+							"propObjectId" : 3,
+							"stageId" : 109,
+							"stagePointName" : "battery"
+						},
+						"nonZeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventPropObjectSetPosition",
+							"propObjectId" : 3,
+							"stageId" : 0,
+							"stagePointName" : ""
+						}
+					}
+				},
 
 
 
@@ -159,6 +205,11 @@
 					"$type" : "MainGame.CommonEventPropObjectSetup",
 					"propObjectId" : 2,
 					"dialogId" : 20201
+				},
+				{
+					"$type" : "MainGame.CommonEventPropObjectSetup",
+					"propObjectId" : 3,
+					"dialogId" : 20301
 				},
 				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
@@ -518,6 +569,29 @@
 					"$type" : "MainGame.CommonEventSetIntValue",
 					"index" : 3,
 					"targetValue" : 1
+				}
+			]
+		}
+	},
+	{
+		"name" : "GetBattery",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 5
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 4,
+					"targetValue" : 1
+				},
+				{
+					"$type" : "MainGame.CommonEventRemovePropObject",
+					"propObjectName" : "battery"
 				}
 			]
 		}

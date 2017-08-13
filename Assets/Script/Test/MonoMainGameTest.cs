@@ -56,6 +56,8 @@ namespace GameApp
 		public string startScenarioStagePointName;
 		public int[] startInventoryIds;
 		public string[] resultViewPathList;
+		public int valueStringCap;
+		public int valueIntCap;
 		// Use this for initialization
 		void Start ()
 		{
@@ -75,7 +77,7 @@ namespace GameApp
 	        _generalDialogView.Initialize();
 
 	        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
-			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this, "UI/Inline");
+			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this, "UI/Inline", valueStringCap, valueIntCap);
 
 			_memento = GetComponent<MonoTestMemento>();
 

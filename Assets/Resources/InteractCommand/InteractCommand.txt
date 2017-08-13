@@ -620,5 +620,34 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 20301,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandSelectData",
+			"title" : "最新型号的蓄电池",
+			"options" :
+			[
+				"捡起来", "什么都不做"
+			],
+			"optionCommands" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandGroupData",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandMessageData",
+							"content" : "获得了蓄电池"
+						},
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "GetBattery"
+						}
+					]
+				}
+			]
+		}
 	}
 ]
