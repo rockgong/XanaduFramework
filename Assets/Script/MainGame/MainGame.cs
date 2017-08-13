@@ -183,6 +183,7 @@ namespace MainGame
 			_gameKernal.SetGameState(_mainGameState);
 			_gameKernal.Startup();
 
+            _valueManager.Initialize(_valueManager.stringValueCapacity, _valueManager.intValueCapacity);
             _nonPlayerManager.Initialize(_nonPlayerDatabase, _gameKernal);
             _propObjectManager.Initialize(_propObjectDatabase, _gameKernal);
             _triggerManager.Initialize(_gameKernal, _interactGameState, _interactCommandManager, _scenarioGameState, _scenarioPhaseManager, _mainGameCommandManager, _transfer, _host, _inlineUIView, this);
