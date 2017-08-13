@@ -564,6 +564,189 @@
 		}
 	},
 	{
+		"id" : 11001,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "悬挂电车的控制台。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "可以看到电缆线已经断裂。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11002,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "悬挂电车的控制台。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "可以看到电缆线已经断裂。",
+					"options" :
+					[
+						"更换电缆线", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "更换新的电缆线。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "失去电缆线。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "SetCable"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11003,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "悬挂电车的控制台。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "电缆已经可以正常工作，但是缺少电力供应。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11004,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "悬挂电车的控制台。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "已经做好前往市区的准备了？",
+					"options" :
+					[
+						"是的", "还没有"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandCommonEventData",
+							"eventName" : "ToCounty"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11101,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "安放蓄电池的插槽。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "目前没有蓄电池安放在上面。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11102,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "安放蓄电池的插槽。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "目前没有蓄电池安放在上面。",
+					"options" :
+					[
+						"安放蓄电池", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "安放了蓄电池。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "SetBattery"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11103,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "安放蓄电池的插槽。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "已经有蓄电池安放在上面。"
+				}
+			]
+		}
+	},
+	{
 		"id" : 20101,
 		"data" :
 		{

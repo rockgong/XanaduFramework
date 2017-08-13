@@ -61,6 +61,18 @@
 					"stagePointName" : "npc_2"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 10,
+					"stageId" : 107,
+					"stagePointName" : "npc_1"
+				},
+				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 11,
+					"stageId" : 107,
+					"stagePointName" : "npc_2"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -343,6 +355,95 @@
 							"nonPlayerId" : 9,
 							"dialogId" : 10903
 						}
+					}
+				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" : 
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 7
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventHasInventory",
+						"inventoryId" : 6,
+						"yesEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 10,
+							"dialogId" : 11002
+						},
+						"noEvent" : 
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 10,
+							"dialogId" : 11001
+						}
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventPredicate",
+						"predicateValue" : 
+						{
+							"$type" : "MainGame.CommonIntegerFromValue",
+							"index" :
+							{
+								"$type" : "MainGame.CommonIntegerLiteral",
+								"val" : 6
+							}
+						},
+						"zeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 10,
+							"dialogId" : 11003
+						},
+						"nonZeroEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 10,
+							"dialogId" : 11004
+						}
+					}
+				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" : 
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 6
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventHasInventory",
+						"inventoryId" : 5,
+						"yesEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 11,
+							"dialogId" : 11102
+						},
+						"noEvent" : 
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 11,
+							"dialogId" : 11101
+						}
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 11,
+						"dialogId" : 11103
 					}
 				},
 
@@ -651,6 +752,44 @@
 		}
 	},
 	{
+		"name" : "SetBattery",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventRemoveInventory",
+					"inventoryId" : 5
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 6,
+					"targetValue" : 1
+				}
+			]
+		}
+	},
+	{
+		"name" : "SetCable",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventRemoveInventory",
+					"inventoryId" : 6
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 7,
+					"targetValue" : 1
+				}
+			]
+		}
+	},
+	{
 		"name" : "SwapUpLadder",
 		"data" :
 		{
@@ -666,6 +805,15 @@
 			"$type" : "MainGame.CommonEventSwap",
 			"stageId" : 103,
 			"stagePointName" : "spawn_2b"
+		}
+	},
+	{
+		"name" : "ToCounty",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventSwap",
+			"stageId" : 201,
+			"stagePointName" : "spawn"
 		}
 	}
 ]
