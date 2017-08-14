@@ -879,6 +879,91 @@
 		}
 	},
 	{
+		"id" : 11401,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "一个锁着的保险箱。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "上面刻着Lv3的权限标识"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11402,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "一个锁着保险箱。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "上面刻着Lv3的权限标识",
+					"options" :
+					[
+						"使用权限卡Lv3", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "使用了权限卡Lv3。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "保险箱的锁打开了。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "获得了硬币。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 7,
+									"sceneName" : "SaveCase_00",
+									"stagePointName" : "save_case"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "SaveCaseOpen"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11403,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "一个空的保险箱"
+				}
+			]
+		}
+	},
+	{
 		"id" : 20101,
 		"data" :
 		{

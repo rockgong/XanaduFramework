@@ -85,6 +85,12 @@
 					"stagePointName" : "npc_1"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 14,
+					"stageId" : 105,
+					"stagePointName" : "npc_4"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -512,6 +518,33 @@
 						"dialogId" : 11301
 					}
 				},
+				{
+					"$type" : "MainGame.CommonEventHasInventory",
+					"inventoryId" : 8,
+					"yesEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 14,
+						"dialogId" : 11403
+					},
+					"noEvent" : 
+					{
+						"$type" : "MainGame.CommonEventHasInventory",
+						"inventoryId" : 4,
+						"yesEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 14,
+							"dialogId" : 11402
+						},
+						"noEvent" : 
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 14,
+							"dialogId" : 11401
+						}
+					}
+				},
 
 
 
@@ -625,6 +658,24 @@
 						"stageId" : 105,
 						"stagePointName" : "battery",
 						"animationName" : "BatteryRun_End"
+					}
+				},
+				{
+					"$type" : "MainGame.CommonEventHasInventory",
+					"inventoryId" : 8,
+					"yesEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 105,
+						"stagePointName" : "save_case",
+						"animationName" : "SaveCaseOpen"
+					},
+					"noEvent" :
+					{
+						"$type" : "MainGame.CommonEventStageAnimation",
+						"stageId" : 105,
+						"stagePointName" : "save_case",
+						"animationName" : "Empty"
 					}
 				}
 			]
@@ -887,6 +938,20 @@
 				{
 					"$type" : "MainGame.CommonEventAddInventory",
 					"inventoryId" : 4
+				}
+			]
+		}
+	},
+	{
+		"name" : "SaveCaseOpen",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 8
 				}
 			]
 		}
