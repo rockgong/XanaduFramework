@@ -273,6 +273,7 @@ namespace GameApp
         	{
         		_mainTransfer.Transfer(0.5f, 0.2f, Color.white, () =>
         		{
+        			_mainGame.ResetValueManager();
 					_mainGame.StartUp(startStageId, startStagePointName, string.Empty, startScenarioId, startScenarioSceneName, startScenarioStagePointName);
 					for (int i = 0; i < startInventoryIds.Length; i++)
 						_mainGame.AddInventory(startInventoryIds[i]);
