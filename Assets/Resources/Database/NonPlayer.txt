@@ -9,5 +9,7 @@
 {"ID" : 8, "NAME" : "power_machine", "PREFAB_NAME" : "Empty"},
 {"ID" : 9, "NAME" : "conveyer_handler", "PREFAB_NAME" : "Empty"},
 {"ID" : 10, "NAME" : "bus_driver", "PREFAB_NAME" : "Empty"},
-{"ID" : 11, "NAME" : "bus_subdriver", "PREFAB_NAME" : "Empty"}
+{"ID" : 11, "NAME" : "bus_subdriver", "PREFAB_NAME" : "Empty"},
+{"ID" : 12, "NAME" : "computer_0", "PREFAB_NAME" : "Empty"},
+{"ID" : 13, "NAME" : "computer_1", "PREFAB_NAME" : "Empty"}
 ]

@@ -418,7 +418,7 @@
 				},
 				{
 					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "需要Lv1员工权限。"
+					"content" : "需要Lv1以上的员工权限。"
 				}
 			]
 		}
@@ -436,7 +436,7 @@
 				},
 				{
 					"$type" : "MainGame.InteractCommandSelectData",
-					"title" : "需要Lv1员工权限。",
+					"title" : "需要Lv1以上员工权限。",
 					"options" :
 					[
 						"使用权限卡", "什么也不做"
@@ -760,6 +760,120 @@
 				{
 					"$type" : "MainGame.InteractCommandMessageData",
 					"content" : "已经有蓄电池安放在上面。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11201,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "职员办公室的电脑。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "运行着Lv1的权限卡升级程序"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11202,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "职员办公室的电脑。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "运行着Lv1的权限卡升级程序",
+					"options" :
+					[
+						"升级权限卡Lv1", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "权限卡从Lv1升级到了Lv2。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "Lv1ToLv2"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11301,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "管理办公室的电脑。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "运行着Lv2的权限卡升级程序"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11302,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "管理办公室的电脑。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "运行着Lv2的权限卡升级程序",
+					"options" :
+					[
+						"升级权限卡Lv2", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "权限卡从Lv2升级到了Lv3。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "Lv2ToLv3"
+								}
+							]
+						}
+					]
 				}
 			]
 		}
