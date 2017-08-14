@@ -100,7 +100,8 @@ namespace MainGame
                 if (entry != null)
                 {
                     stage = _gameKernal.SetupStage(new StageDesc(entry.sceneName), () =>
-                    {
+					{
+						_currentStageId = stageId;
                         for (int i = 0; i < _listeners.Count; i++)
                             _listeners[i].OnStageChanged(stageId);
                         IPlayerCharacter player = _gameKernal.GetPlayerCharacter();
@@ -125,7 +126,6 @@ namespace MainGame
                         }
                         for (int i = 0; i < _listeners.Count; i++)
                         _listeners[i].OnPlayerSwapped(stageId, stagePointName);
-                        _currentStageId = stageId;
                     });
                 }
                 else

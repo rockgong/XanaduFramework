@@ -663,8 +663,26 @@
 					"optionCommands" :
 					[
 						{
-							"$type" : "MainGame.InteractCommandCommonEventData",
-							"eventName" : "ToCounty"
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+							        "stageId" : 106,
+							        "scenarioId" : 6,
+							        "sceneName" : "Start_00",
+							        "stagePointName" : "bus",
+							        "type" : 0
+								},
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+							        "stageId" : 201,
+							        "scenarioId" : 0,
+							        "sceneName" : "",
+							        "stagePointName" : "",
+							        "type" : 1
+								}
+							]
 						}
 					]
 				}

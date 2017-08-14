@@ -230,5 +230,28 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 6,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+					"targetName" : "bus",
+					"animationName" : "BusRun"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 6.0
+				}
+			]
+		}
 	}
 ]
