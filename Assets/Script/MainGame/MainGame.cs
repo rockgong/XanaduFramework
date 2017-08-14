@@ -342,7 +342,7 @@ namespace MainGame
         {
             _gameKernal.SetGameState(_mainGameState);
 
-            DoPrepareTask(true);
+            DoPrepareTask(true, true);
         }
 
         public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int type)

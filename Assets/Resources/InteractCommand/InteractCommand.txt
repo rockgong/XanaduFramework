@@ -670,8 +670,8 @@
 									"$type" : "MainGame.InteractCommandPrepareScenarioData",
 							        "stageId" : 106,
 							        "scenarioId" : 6,
-							        "sceneName" : "Start_00",
-							        "stagePointName" : "bus",
+							        "sceneName" : "BusStop_00",
+							        "stagePointName" : "camera_look",
 							        "type" : 0
 								},
 								{
