@@ -348,7 +348,7 @@
 				{
 					"$type" : "MainGame.InteractCommandPrepareScenarioData",
 					"scenarioId" : 8,
-					"sceneName" : "Gates_00",
+					"sceneName" : "Ending_00",
 					"stagePointName" : "flower",
 					"resultIndex" : 0
 				}
@@ -386,16 +386,16 @@
 								{
 									"$type" : "MainGame.InteractCommandPrepareScenarioData",
 									"scenarioId" : 9,
-									"sceneName" : "Gates_00",
+									"sceneName" : "Ending_00",
 									"stagePointName" : "flower",
-									"resultIndex" : 0
+									"resultIndex" : 1
 								}
 							]
 						},
 						{
 							"$type" : "MainGame.InteractCommandPrepareScenarioData",
 							"scenarioId" : 8,
-							"sceneName" : "Gates_00",
+							"sceneName" : "Ending_00",
 							"stagePointName" : "flower",
 							"resultIndex" : 0
 						}

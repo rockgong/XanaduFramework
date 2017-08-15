@@ -289,9 +289,18 @@
 					"time" : 2.0
 				},
 				{
-					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
-					"targetName" : "save_case",
-					"animationName" : "SaveCaseOpen"
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataCameraAnimation",
+							"animationName" : "CamAnim_2"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 4.0
+						}
+					]
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
@@ -312,9 +321,18 @@
 					"time" : 2.0
 				},
 				{
-					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
-					"targetName" : "save_case",
-					"animationName" : "SaveCaseOpen"
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataCameraAnimation",
+							"animationName" : "CamAnim_1"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 20.0
+						}
+					]
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
