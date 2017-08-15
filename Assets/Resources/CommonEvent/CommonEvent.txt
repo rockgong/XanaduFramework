@@ -289,6 +289,22 @@
 					"dialogId" : 10301
 				},
 				{
+					"$type" : "MainGame.CommonEventHasInventory",
+					"inventoryId" : 9,
+					"yesEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 4,
+						"dialogId" : 10402
+					},
+					"noEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 4,
+						"dialogId" : 10401
+					}
+				},
+				{
 					"$type" : "MainGame.CommonEventNonPlayerSetDialog",
 					"nonPlayerId" : 5,
 					"dialogId" : 10501

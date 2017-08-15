@@ -331,6 +331,80 @@
 		}
 	},
 	{
+		"id" : 10401,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "曾经鲜艳地盛开过的巨大花朵。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "现在已经枯萎了，倒在地上。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandPrepareScenarioData",
+					"scenarioId" : 8,
+					"sceneName" : "Gates_00",
+					"stagePointName" : "flower",
+					"resultIndex" : 0
+				}
+			]
+		}
+	},
+	{
+		"id" : 10402,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "曾经鲜艳地盛开过的巨大花朵。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "现在已经枯萎了，倒在地上。",
+					"options" :
+					[
+						"用饮用水浇灌", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "把饮用水浇灌在花的根部。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandPrepareScenarioData",
+									"scenarioId" : 9,
+									"sceneName" : "Gates_00",
+									"stagePointName" : "flower",
+									"resultIndex" : 0
+								}
+							]
+						},
+						{
+							"$type" : "MainGame.InteractCommandPrepareScenarioData",
+							"scenarioId" : 8,
+							"sceneName" : "Gates_00",
+							"stagePointName" : "flower",
+							"resultIndex" : 0
+						}
+					]
+				}
+			]
+		}
+	},
+	{
 		"id" : 10501,
 		"data" :
 		{

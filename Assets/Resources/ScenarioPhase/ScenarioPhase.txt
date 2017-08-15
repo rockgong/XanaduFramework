@@ -276,5 +276,51 @@
 				}
 			]
 		}
+	},
+	{
+		"id" : 8,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+					"targetName" : "save_case",
+					"animationName" : "SaveCaseOpen"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				}
+			]
+		}
+	},
+	{
+		"id" : 9,
+		"data" :
+		{
+			"$type" : "MainGame.ScenarioPhaseDataSerial",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+					"targetName" : "save_case",
+					"animationName" : "SaveCaseOpen"
+				},
+				{
+					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+					"time" : 2.0
+				}
+			]
+		}
 	}
 ]

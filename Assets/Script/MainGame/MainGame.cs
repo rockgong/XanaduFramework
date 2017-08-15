@@ -84,6 +84,7 @@ namespace MainGame
             public int preparedScenarioId;
             public string preparedScenarioSceneName;
             public string preparedScenarioStagePointName;
+            public int resultIndex;
         }
 
         private int _lastScenarioId = -1;
@@ -247,6 +248,7 @@ namespace MainGame
 				_playerStageManager.ClearStageRecord();
 				_inventoryManager.Uninitialize();
                 _inlineUIView.CloseUI(true);
+                _prepareTaskList.Clear();
 				_running = false;
 			}
 		}
@@ -350,13 +352,14 @@ namespace MainGame
             DoPrepareTask(true, true);
         }
 
-        public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int type)
+        public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int resultIndex, int type)
         {
             PrepareTask pt = new PrepareTask();
             pt.preparedStageId = stageId;
             pt.preparedScenarioId = id;
             pt.preparedScenarioSceneName = sceneName;
             pt.preparedScenarioStagePointName = stagePointName;
+            pt.resultIndex = resultIndex;
 
             if (type == 0 && _prepareTaskList.Count > 0)
                 _prepareTaskList[_prepareTaskList.Count - 1] = pt;
@@ -614,7 +617,13 @@ namespace MainGame
                         _lastScenarioId = _prepareTaskList[0].preparedScenarioId;
                     }
                     else
-                    {
+					{
+						if (_prepareTaskList[0].resultIndex != -1)
+						{
+							_host.OnRequestResult(_prepareTaskList[0].resultIndex);
+							_lastScenarioId = 0;
+							return;
+						}
                         if (_prepareTaskList[0].preparedInteractId != 0 && !string.IsNullOrEmpty(_prepareTaskList[0].preparedNonPlayerName) && !string.IsNullOrEmpty(_prepareTaskList[0].preparedPropObjectName))
                         {
                             IPlayerCharacter player = _gameKernal.GetPlayerCharacter();

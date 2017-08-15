@@ -302,19 +302,19 @@ namespace GameApp
         	Debug.LogFormat("Result {0}", index);
         	int finalIndex = Mathf.Clamp(index, 0, resultViewPathList.Length - 1);
         	_resultScene.Initialize(resultViewPathList[finalIndex]);
-        	_mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
-        	{
+        	// _mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
+        	// {
         		_mainGame.ShutDown();
-	        	_resultScene.Startup(2.0f, () =>
+	        	_resultScene.Startup(5.0f, () =>
 	        	{
-	        		_mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
+	        		_mainTransfer.Transfer(0.7f, 0.6f, Color.white, () =>
 	        		{
 	        			_resultScene.Uninitialize();
 				        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
 				        _titleScene.Startup();
 	        		});
 	        	});
-        	});
+        	// });
         }
 	}
 }

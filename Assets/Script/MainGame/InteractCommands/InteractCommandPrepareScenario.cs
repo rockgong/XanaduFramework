@@ -12,6 +12,7 @@ namespace MainGame
         public int scenarioId = 0;
         public string sceneName = string.Empty;
         public string stagePointName = string.Empty;
+        public int resultIndex = -1;
         public int type = 0; // 0 : current; 1 : new
     }
 
@@ -21,12 +22,13 @@ namespace MainGame
         public int scenarioId = 0;
         public string sceneName = string.Empty;
         public string stagePointName = string.Empty;
+        public int resultIndex = -1;
         public int type = 0; // 0 : current; 1 : new
 
         public override void Excute(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
         {
             if (_interactGameStateHost != null)
-                _interactGameStateHost.OnPrepareScenario(stageId, scenarioId, sceneName, stagePointName, type);
+                _interactGameStateHost.OnPrepareScenario(stageId, scenarioId, sceneName, stagePointName, resultIndex, type);
         }
 
         public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
@@ -43,6 +45,7 @@ namespace MainGame
             result.scenarioId = target.scenarioId;
             result.sceneName = target.sceneName;
             result.stagePointName = target.stagePointName;
+            result.resultIndex = target.resultIndex;
             result.type = target.type;
 
             return result;

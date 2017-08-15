@@ -10,7 +10,7 @@ namespace MainGame
 	interface IInteractGameStateHost
 	{
 		void OnCommandProcessEnd();
-        void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int type);
+        void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int resultIndex, int type);
 	}
 
     abstract class BaseInteractCommand

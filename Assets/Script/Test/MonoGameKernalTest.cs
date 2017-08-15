@@ -164,7 +164,7 @@ namespace MainGame
             gameKernal.SetGameState(_mainGameState);
         }
 
-        public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int type)
+        public void OnPrepareScenario(int stageId, int id, string sceneName, string stagePointName, int resultIndex, int type)
         {
             return;
         }
