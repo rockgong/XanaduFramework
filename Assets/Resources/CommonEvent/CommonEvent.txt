@@ -91,6 +91,12 @@
 					"stagePointName" : "npc_4"
 				},
 				{
+					"$type" : "MainGame.CommonEventNonPlayerSetPosition",
+					"nonPlayerId" : 15,
+					"stageId" : 203,
+					"stagePointName" : "npc_3"
+				},
+				{
 					"$type" : "MainGame.CommonEventPredicate",
 					"predicateValue" :
 					{
@@ -545,6 +551,41 @@
 						}
 					}
 				},
+				{
+					"$type" : "MainGame.CommonEventPredicate",
+					"predicateValue" : 
+					{
+						"$type" : "MainGame.CommonIntegerFromValue",
+						"index" :
+						{
+							"$type" : "MainGame.CommonIntegerLiteral",
+							"val" : 10
+						}
+					},
+					"zeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventHasInventory",
+						"inventoryId" : 8,
+						"yesEvent" :
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 15,
+							"dialogId" : 11502
+						},
+						"noEvent" : 
+						{
+							"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+							"nonPlayerId" : 15,
+							"dialogId" : 11501
+						}
+					},
+					"nonZeroEvent" :
+					{
+						"$type" : "MainGame.CommonEventNonPlayerSetDialog",
+						"nonPlayerId" : 15,
+						"dialogId" : 11503
+					}
+				},
 
 
 
@@ -952,6 +993,29 @@
 				{
 					"$type" : "MainGame.CommonEventAddInventory",
 					"inventoryId" : 8
+				}
+			]
+		}
+	},
+	{
+		"name" : "CoinToWater",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventRemoveInventory",
+					"inventoryId" : 8
+				},
+				{
+					"$type" : "MainGame.CommonEventAddInventory",
+					"inventoryId" : 9
+				},
+				{
+					"$type" : "MainGame.CommonEventSetIntValue",
+					"index" : 10,
+					"targetValue" : 1
 				}
 			]
 		}

@@ -964,6 +964,81 @@
 		}
 	},
 	{
+		"id" : 11501,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "正常运转的自动贩卖机。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "里面还剩一瓶饮用水。"
+				}
+			]
+		}
+	},
+	{
+		"id" : 11502,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "正常运转的自动贩卖机。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandSelectData",
+					"title" : "里面还剩一瓶饮用水。",
+					"options" :
+					[
+						"投入硬币", "什么也不做"
+					],
+					"optionCommands" :
+					[
+						{
+							"$type" : "MainGame.InteractCommandGroupData",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.InteractCommandMessageData",
+									"content" : "投入硬币，并购买了饮用水。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "CoinToWater"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"id" : 11503,
+		"data" :
+		{
+			"$type" : "MainGame.InteractCommandGroupData",
+			"members" : 
+			[
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "正常运转的自动贩卖机。"
+				},
+				{
+					"$type" : "MainGame.InteractCommandMessageData",
+					"content" : "里面已经空空如也。"
+				}
+			]
+		}
+	},
+	{
 		"id" : 20101,
 		"data" :
 		{
