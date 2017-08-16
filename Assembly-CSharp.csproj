@@ -214,6 +214,7 @@
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Miscs\MainTransfer.cs" />
+     <Compile Include="Assets\Script\Miscs\MonoFinalGrassAnim.cs" />
      <Compile Include="Assets\Script\Miscs\MonoScreenCover.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\MonoMainGameTest.cs" />

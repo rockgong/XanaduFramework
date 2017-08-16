@@ -334,14 +334,25 @@
 							"animationName" : "DieToLive"
 						},
 						{
+							"$type" : "MainGame.ScenarioPhaseDataSerial",
+							"members" :
+							[
+								{
+									"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+									"time" : 7.0
+								},
+								{
+									"$type" : "MainGame.ScenarioPhaseDataStageAnimatin",
+									"targetName" : "grass_group",
+									"animationName" : "GrassBloom"
+								}
+							]
+						},
+						{
 							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-							"time" : 20.0
+							"time" : 28.0
 						}
 					]
-				},
-				{
-					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 2.0
 				}
 			]
 		}
