@@ -303,8 +303,18 @@
 					]
 				},
 				{
-					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 2.0
+					"$type" : "MainGame.ScenarioPhaseDataParallel",
+					"members" :
+					[
+						{
+							"$type" : "MainGame.ScenarioPhaseDataInlineUI",
+							"uiName" : "InlineBadEnd"
+						},
+						{
+							"$type" : "MainGame.ScenarioPhaseDataWaitTime",
+							"time" : 12.0
+						}
+					]
 				}
 			]
 		}
