@@ -19,7 +19,12 @@ namespace GameKernal
 
                 _rigidbody = gameObject.GetComponent<Rigidbody>();
                 _rigidbody.isKinematic = false;
-                _animator = gameObject.GetComponentInChildren<Animator>();
+                foreach (Transform t in gameObject.transform)
+                {
+                    _animator = t.GetComponentInChildren<Animator>();
+                    if (_animator != null)
+                        break;
+                }
             }
 
             return;
