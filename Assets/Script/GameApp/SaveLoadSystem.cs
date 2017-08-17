@@ -56,11 +56,18 @@ namespace GameApp
         }
 	}
 
+	public class SystemSaveData
+	{
+		public int completion;
+	}
+
 	public class SaveLoadSystem
 	{
 		private string _basePath;
 		private int _capacity;
 		private SaveData[] _saveData = null;
+		private SystemSaveData _systemSaveData = new SystemSaveData();
+		private const string SYSEM_FILE_NAME = "system_savedata";
 
 		public void Initialize(string basePath, int capacity)
 		{
@@ -72,6 +79,8 @@ namespace GameApp
 			{
 				_saveData[i] = LoadSaveData(i);
 			}
+
+			LoadSystemSaveData();
 		}
 
 		private SaveData LoadSaveData(int index)
@@ -113,6 +122,53 @@ namespace GameApp
 			}
 
 			return data;
+		}
+
+		public SystemSaveData GetSystemSaveData()
+		{
+			return _systemSaveData;
+		}
+
+		public void LoadSystemSaveData()
+		{
+			string filePath = _basePath + "/" + SYSEM_FILE_NAME;
+
+			if (!File.Exists(filePath))
+				SetSystemSaveData(new SystemSaveData());
+			else
+			{
+				try
+				{
+					FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+					SystemSaveDataFromStream(_systemSaveData, fs);
+					fs.Close();
+				}
+				catch(System.Exception ex)
+				{
+					return;
+				}
+			}
+		}
+
+		public SystemSaveData SetSystemSaveData(SystemSaveData data)
+		{
+			if (data == null)
+				return null;
+
+			_systemSaveData = data;
+			string filePath = _basePath + "/" + SYSEM_FILE_NAME;
+			try
+			{
+				FileStream fs = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+				SystemSaveDataToStream(_systemSaveData, fs);
+				fs.Close();
+			}
+			catch(System.Exception ex)
+			{
+				return null;
+			}
+
+			return _systemSaveData;
 		}
 
 		public SaveData SetSaveData(int index, SaveData data)
@@ -241,6 +297,22 @@ namespace GameApp
 				intVal = BitConverter.ToInt32(buf, 0);
 				data.inventoryIds[i] = intVal;
 			}
+		}
+
+		public static void SystemSaveDataFromStream(SystemSaveData data, Stream stream)
+		{
+			// completion
+			byte[] buf = new byte[4];
+			stream.Read(buf, 0, buf.Length);
+			int intVal = BitConverter.ToInt32(buf, 0);
+			data.completion = intVal;
+		}
+
+		public static void SystemSaveDataToStream(SystemSaveData data, Stream stream)
+		{
+			// completion
+			byte[] buf = BitConverter.GetBytes(data.completion);
+			stream.Write(buf, 0, buf.Length);
 		}
 
 		private static string GetSaveFileName(int index)

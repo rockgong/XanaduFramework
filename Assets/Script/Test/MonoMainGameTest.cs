@@ -47,8 +47,8 @@ namespace GameApp
 
 		private MonoTestMemento _memento;
 
-		public string titleViewPath;
-		public string titleStagePath;
+		public string[] titleViewPath;
+		public string[] titleStagePath;
 		public int startStageId;
 		public string startStagePointName;
 		public int startScenarioId;
@@ -76,7 +76,7 @@ namespace GameApp
 	        _saveLoadView.SetListener(this);
 	        _generalDialogView.Initialize();
 
-	        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
+	        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 			_mainGame.Initialize(playerProto, _stageDatabase, _nonPlayerDatabase, _propObjectDatabase, _commonEventDatabase, _interactCommandDatabase, _scenarioPhaseDatabase, _inventoryDatabase, _mainTransfer, this, "UI/Inline", valueStringCap, valueIntCap);
 
 			_memento = GetComponent<MonoTestMemento>();
@@ -156,6 +156,15 @@ namespace GameApp
 			}
 		}
 
+		private int GetTitleIndex()
+		{
+			if (titleViewPath.Length == 0 || titleStagePath.Length == 0)
+				return 0;
+
+			SystemSaveData data = _saveLoadSystem.GetSystemSaveData();
+			return Mathf.Clamp(data.completion, 0, Mathf.Min(titleViewPath.Length, titleStagePath.Length));
+		}
+
 		public void OnSaveLoadButtonPressed(int index, SaveData data)
 		{
 			if (_currentSaveDataHandler != null)
@@ -190,7 +199,7 @@ namespace GameApp
         		_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
         		{
 	        		_mainGame.ShutDown();
-			        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
+			        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 	        		_titleScene.Startup();
         		});
         	});
@@ -310,11 +319,19 @@ namespace GameApp
 	        		_mainTransfer.Transfer(0.7f, 0.6f, Color.white, () =>
 	        		{
 	        			_resultScene.Uninitialize();
-				        _titleScene.Initialize(titleViewPath, titleStagePath, 3, this);
+				        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 				        _titleScene.Startup();
 	        		});
 	        	});
         	// });
+
+			SystemSaveData systemSaveData = _saveLoadSystem.GetSystemSaveData();
+			if (index > systemSaveData.completion)
+			{
+				SystemSaveData newSystemSaveData = new SystemSaveData();
+				newSystemSaveData.completion = index;
+				_saveLoadSystem.SetSystemSaveData(newSystemSaveData);
+			}
         }
 	}
 }
