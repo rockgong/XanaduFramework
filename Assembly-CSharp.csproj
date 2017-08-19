@@ -91,6 +91,7 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+     <Compile Include="Assets\Script\Audio\SoundEffect.cs" />
      <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
      <Compile Include="Assets\Script\Database\InventoryDatabase.cs" />
@@ -217,6 +218,7 @@
      <Compile Include="Assets\Script\Miscs\MonoAnimationDrive.cs" />
      <Compile Include="Assets\Script\Miscs\MonoDummyEmit.cs" />
      <Compile Include="Assets\Script\Miscs\MonoFinalGrassAnim.cs" />
+     <Compile Include="Assets\Script\Miscs\MonoSE.cs" />
      <Compile Include="Assets\Script\Miscs\MonoScreenCover.cs" />
      <Compile Include="Assets\Script\Test\MonoGameKernalTest.cs" />
      <Compile Include="Assets\Script\Test\MonoMainGameTest.cs" />
@@ -226,6 +228,7 @@
      <Compile Include="Assets\Script\Test\MonoTitleSceneTest.cs" />
      <Compile Include="Assets\Script\Test\TestJson.cs" />
      <Compile Include="Assets\Script\TextMap\TextMap.cs" />
+     <Compile Include="Assets\Script\UI\MonoButtonSE.cs" />
      <Compile Include="Assets\Script\UI\MonoSizeCopy.cs" />
      <Compile Include="Assets\Script\UI\MonoTypewriter.cs" />
      <Compile Include="Assets\Script\UI\MonoViewOpenAnim.cs" />
