@@ -327,6 +327,10 @@
 			"members" :
 			[
 				{
+					"$type" : "MainGame.ScenarioPhaseDataBGM",
+					"bgmName" : "GoodEnd"
+				},
+				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
 					"time" : 2.0
 				},

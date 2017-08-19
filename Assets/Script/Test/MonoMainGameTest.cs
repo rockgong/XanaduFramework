@@ -4,6 +4,7 @@ using UnityEngine;
 using MainGame;
 using Config;
 using Miscs;
+using Audio;
 
 namespace GameApp
 {
@@ -82,6 +83,7 @@ namespace GameApp
 			_memento = GetComponent<MonoTestMemento>();
 
 			_titleScene.Startup();
+			BGM.Play("Title");
 		}
 		
 		// Update is called once per frame
@@ -201,6 +203,7 @@ namespace GameApp
 	        		_mainGame.ShutDown();
 			        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 	        		_titleScene.Startup();
+	        		BGM.Play("Title");
         		});
         	});
         }
@@ -216,6 +219,7 @@ namespace GameApp
 		        		_saveLoadView.SetVisible(false);
 						_mainGame.ApplyMemento(data);
 						_mainGame.StartUp(data.stageId, data.stagePointName);
+						BGM.Play("MainGame");
 						_running = true;
 						_currentSaveDataHandler = null;
 						_currentSaveViewCloseHandler = null;
@@ -284,6 +288,7 @@ namespace GameApp
         		{
         			_mainGame.ResetValueManager();
 					_mainGame.StartUp(startStageId, startStagePointName, string.Empty, startScenarioId, startScenarioSceneName, startScenarioStagePointName);
+					BGM.Play("MainGame");
 					for (int i = 0; i < startInventoryIds.Length; i++)
 						_mainGame.AddInventory(startInventoryIds[i]);
 					_titleScene.Shutdown();
@@ -321,6 +326,7 @@ namespace GameApp
 	        			_resultScene.Uninitialize();
 				        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 				        _titleScene.Startup();
+				        BGM.Play("Title");
 	        		});
 	        	});
         	// });

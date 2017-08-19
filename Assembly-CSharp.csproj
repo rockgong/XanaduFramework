@@ -91,6 +91,7 @@
      <Compile Include="Assets\PostProcessing\Runtime\Utils\MaterialFactory.cs" />
      <Compile Include="Assets\PostProcessing\Runtime\Utils\RenderTextureFactory.cs" />
      <Compile Include="Assets\PostProcessing\Utilities\CustomMotionTexture\ExampleWheelController.cs" />
+     <Compile Include="Assets\Script\Audio\BGM.cs" />
      <Compile Include="Assets\Script\Audio\SoundEffect.cs" />
      <Compile Include="Assets\Script\Database\CommonEventDatabase.cs" />
      <Compile Include="Assets\Script\Database\InteractCommandDatabase.cs" />
@@ -204,6 +205,7 @@
      <Compile Include="Assets\Script\MainGame\ScenarioGameState.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseBuilder.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhaseManager.cs" />
+     <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseBGM.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseCameraAnimation.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseInlineUI.cs" />
      <Compile Include="Assets\Script\MainGame\ScenarioPhases\ScenarioPhaseParallel.cs" />
