@@ -61,7 +61,7 @@ Shader "Custom/Hatching" {
 				v2f o;
 
 				o.pos = UnityObjectToClipPos(v.vertex);
-				o.uv = o.pos.xy * _TileFactor;
+				o.uv = o.pos * _TileFactor;
 
 				fixed3 worldLightDir = normalize(WorldSpaceLightDir(v.vertex));
 				fixed3 worldNormal = UnityObjectToWorldNormal(v.normal);
