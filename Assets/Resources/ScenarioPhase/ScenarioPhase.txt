@@ -18,7 +18,7 @@
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataWaitTime",
-					"time" : 13.0
+					"time" : 12.0
 				},
 				{
 					"$type" : "MainGame.ScenarioPhaseDataParallel",
