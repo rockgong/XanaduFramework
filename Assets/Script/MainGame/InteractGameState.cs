@@ -108,7 +108,7 @@ namespace MainGame
 			_kernal = kernal;
 			_camera = kernal.GetCamera();
 			_kernal.SetCameraFollowPlayer(false);
-
+/*
             if (_nonPlayer != null || _propObject != null)
             {
                 Vector3 theViewPosition = Vector3.zero;
@@ -127,11 +127,14 @@ namespace MainGame
             }
             else
             {
+                */
                 if (_commandList.Count != 0)
                     _commandList[0].Excute(_interactView, _player, _nonPlayer, _propObject);
                 _monoDelegate = MonoDelegate.Create(ProcessCommand, "InteractDelegate");
                 _commandProcessing = true;
+                /*
             }
+            */
 
             _commandIndex = 0;
 
