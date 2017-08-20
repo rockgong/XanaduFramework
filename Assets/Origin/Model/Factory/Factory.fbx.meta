@@ -16,6 +16,8 @@ ModelImporter:
     100016: Wall
     100018: Stone
     100020: CardMachine
+    100022: Camera
+    100024: Lamp
     400000: Arm
     400002: Container
     400004: Cylinder
@@ -27,6 +29,8 @@ ModelImporter:
     400016: Wall
     400018: Stone
     400020: CardMachine
+    400022: Camera
+    400024: Lamp
     2300000: Arm
     2300002: Container
     2300004: Cylinder
