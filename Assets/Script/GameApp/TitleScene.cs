@@ -61,12 +61,16 @@ namespace GameApp
 				_stage = inst.GetComponent<MonoStage>();
 				if (_stage != null)
 				{
-					Transform trans = _stage.GetPointTrans("camera_pos");
-					if (trans != null)
+					Transform transPos = _stage.GetPointTrans("camera_pos");
+					Transform transLook = _stage.GetPointTrans("camera_look");
+					if (transPos != null)
 					{
-						Camera.main.transform.position = trans.position;
+						Camera.main.transform.position = transPos.position;
 					}
-					Camera.main.transform.LookAt(_stage.transform.position);
+					if (transLook != null)
+					{
+						Camera.main.transform.LookAt(transLook.position);
+					}
 					_stage.gameObject.SetActive(false);
 				}
 			}
@@ -105,12 +109,16 @@ namespace GameApp
 			if (_stage != null)
 			{
 				_stage.gameObject.SetActive(true);
-				Transform trans = _stage.GetPointTrans("camera_pos");
-				if (trans != null)
+				Transform transPos = _stage.GetPointTrans("camera_pos");
+				Transform transLook = _stage.GetPointTrans("camera_look");
+				if (transPos != null)
 				{
-					Camera.main.transform.position = trans.position;
+					Camera.main.transform.position = transPos.position;
 				}
-				Camera.main.transform.LookAt(_stage.transform.position);
+				if (transLook != null)
+				{
+					Camera.main.transform.LookAt(transLook.position);
+				}
 			}
 
 			_startup = true;
