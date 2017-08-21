@@ -238,7 +238,10 @@ namespace MainGame
                 trans.gameObject.SetActive(true);
                 MonoScreenCover sc = trans.GetComponent<MonoScreenCover>();
                 if (sc != null)
+                {
                     sc.targetAlpha = 1.0f;
+                    sc.action = null;
+                }
 
                 if (trans is RectTransform)
                 {
