@@ -73,6 +73,9 @@ namespace MainGame
         private bool _suspending = false;
         private bool _applyingMemento = false;
 
+        private INonPlayerCharacter _currentInteractNonPlayer = null;
+        private IPropObject _currentInteractPropObject = null;
+
         private IMainGameHost _host;
 
         class PrepareTask
@@ -411,6 +414,9 @@ namespace MainGame
 
         public void OnReadyToInteractChanged(INonPlayerCharacter from, INonPlayerCharacter to)
         {
+            _currentInteractNonPlayer = to;
+            _currentInteractPropObject = null;
+
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -418,6 +424,9 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(INonPlayerCharacter from, IPropObject to)
         {
+            _currentInteractNonPlayer = null;
+            _currentInteractPropObject = to;
+
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -425,6 +434,9 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(IPropObject from, INonPlayerCharacter to)
         {
+            _currentInteractNonPlayer = to;
+            _currentInteractPropObject = null;
+
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -432,6 +444,9 @@ namespace MainGame
         }
         public void OnReadyToInteractChanged(IPropObject from, IPropObject to)
         {
+            _currentInteractNonPlayer = null;
+            _currentInteractPropObject = to;
+
             if (to != null)
                 _interactView.ShowReady(to);
             else
@@ -495,6 +510,15 @@ namespace MainGame
             _transfer.Transfer(0.3f, 0.3f, Color.white, () => 
             {
                 _gameKernal.SetGameState(_mainGameState);
+
+                if (_currentInteractNonPlayer != null)
+                {
+                    _interactView.ShowReady(_currentInteractNonPlayer);
+                }
+                else if (_currentInteractPropObject != null)
+                {
+                    _interactView.ShowReady(_currentInteractPropObject);
+                }
 
                 if (_scenarioScene != null)
                 {
@@ -588,7 +612,11 @@ namespace MainGame
                     phase.Setup(_gameKernal, _scenarioScene, _inlineUIView);
                     _scenarioGameState.Setup(_scenarioScene, phase);
 					if (needTransfer)
-                    	_transfer.Transfer(0.3f, 0.3f, Color.white, () => _gameKernal.SetGameState(_scenarioGameState));
+                    	_transfer.Transfer(0.3f, 0.3f, Color.white, () => 
+                        {
+                            _gameKernal.SetGameState(_scenarioGameState);
+                            _interactView.CloseReady();
+                        });
 					else
 						_gameKernal.SetGameState(_scenarioGameState);
                 }
