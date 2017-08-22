@@ -5,6 +5,7 @@ using MainGame;
 using Config;
 using Miscs;
 using Audio;
+using GameKernal;
 
 namespace GameApp
 {
@@ -59,6 +60,9 @@ namespace GameApp
 		public string[] resultViewPathList;
 		public int valueStringCap;
 		public int valueIntCap;
+
+		private float _totalPlayedTime = 0.0f;
+		private MonoDelegate _totalPlayTimeDelegate = null;
 		// Use this for initialization
 		void Start ()
 		{
@@ -159,6 +163,29 @@ namespace GameApp
 			}
 		}
 
+		private void StartPlayTime(float offsetTime)
+		{
+			if (_totalPlayTimeDelegate != null)
+				GameObject.Destroy(_totalPlayTimeDelegate.gameObject);
+
+			_totalPlayedTime = offsetTime;
+			MonoDelegate.Create(PlayTimeHandler, "_PlayTime");
+		}
+
+		private void StopPlayTime()
+		{
+			if (_totalPlayTimeDelegate != null)
+			{
+				GameObject.Destroy(_totalPlayTimeDelegate.gameObject);
+				_totalPlayTimeDelegate = null;
+			}
+		}
+
+		private void PlayTimeHandler()
+		{
+			_totalPlayedTime += Time.unscaledDeltaTime;
+		}
+
 		private int GetTitleIndex()
 		{
 			if (titleViewPath.Length == 0 || titleStagePath.Length == 0)
@@ -201,6 +228,7 @@ namespace GameApp
         	{
         		_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
         		{
+        			StopPlayTime();
 	        		_mainGame.ShutDown();
 			        _titleScene.Initialize(titleViewPath[GetTitleIndex()], titleStagePath[GetTitleIndex()], 3, this);
 	        		_titleScene.Startup();
@@ -219,6 +247,7 @@ namespace GameApp
         			{
 		        		_saveLoadView.SetVisible(false);
 						_mainGame.ApplyMemento(data);
+						StartPlayTime((float)data.playedTime);
 						_mainGame.StartUp(data.stageId, data.stagePointName);
 						BGM.Play("MainGame");
 						_running = true;
@@ -237,6 +266,7 @@ namespace GameApp
         	_mainGame.DumpMemento(newData);
         	newData.stageId = _saveStageId;
         	newData.stagePointName = _saveStagePointName;
+        	newData.playedTime = (int)_totalPlayedTime;
         	if (data != null)
         	{
         		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, TextMap.Map("1002"), () =>
@@ -288,6 +318,7 @@ namespace GameApp
         		_mainTransfer.Transfer(0.5f, 0.2f, Color.white, () =>
         		{
         			_mainGame.ResetValueManager();
+        			StartPlayTime(0f);
 					_mainGame.StartUp(startStageId, startStagePointName, string.Empty, startScenarioId, startScenarioSceneName, startScenarioStagePointName);
 					BGM.Play("MainGame");
 					for (int i = 0; i < startInventoryIds.Length; i++)
@@ -319,6 +350,7 @@ namespace GameApp
         	_resultScene.Initialize(resultViewPathList[finalIndex]);
         	// _mainTransfer.Transfer(0.5f, 0.3f, Color.red, () =>
         	// {
+        		StopPlayTime();
         		_mainGame.ShutDown();
 	        	_resultScene.Startup(5.0f, () =>
 	        	{

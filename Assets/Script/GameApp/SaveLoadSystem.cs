@@ -5,6 +5,7 @@ using MainGame;
 using System.IO;
 using System.Text;
 using System;
+using Config;
 
 namespace GameApp
 {
@@ -12,6 +13,8 @@ namespace GameApp
 	{
 		public int stageId;
 		public string stagePointName = string.Empty;
+		public int playedTime = 0;
+
 		private string[] _stringValues;
 		private int[] _intValues;
 		private int[] _inventoryIds;
@@ -52,7 +55,10 @@ namespace GameApp
 
         public override string ToString()
         {
-			return string.Format("[{0}:{1}] {2}", stageId, stagePointName, stringValues.Length == 0 ? "NoName" : stringValues[0]);
+        	int sec = playedTime % 60;
+        	int min = playedTime / 60;
+        	int hour = min / 60;
+			return string.Format("[{0}] {1} {2:D2}:{3:D2}:{4:D2}", TextMap.Map(string.Format("SP_{0}", stageId)), TextMap.Map("PlayTime"), hour, min, sec);
         }
 	}
 
@@ -199,6 +205,10 @@ namespace GameApp
 			stream.Write(tempBuf, 0, tempBuf.Length);
 			stream.Write(buf, 0, buf.Length);
 
+			//playedTime
+			buf = BitConverter.GetBytes(data.playedTime);
+			stream.Write(buf, 0, buf.Length);
+
 			//string count
 			buf = BitConverter.GetBytes(data.stringValues.Length);
 			stream.Write(buf, 0, buf.Length);
@@ -250,6 +260,12 @@ namespace GameApp
 			buf = new byte[tempLength];
 			stream.Read(buf, 0, buf.Length);
 			data.stagePointName = System.Text.Encoding.Unicode.GetString(buf);
+
+			//playedTime
+			buf = new byte[4];
+			stream.Read(buf, 0, buf.Length);
+			intVal = BitConverter.ToInt32(buf, 0);
+			data.playedTime = intVal;
 
 			//string count
 			buf = new byte[4];
