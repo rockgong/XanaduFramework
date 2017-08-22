@@ -167,7 +167,6 @@ namespace MainGame
             _gameKernal.ClearPropObject();
             for (int i = 0; i < _propObjectInfoList.Count; i++)
             {
-                Debug.LogFormat(" ==== {0} : {1} , {2} , {3}", _propObjectInfoList[i].data.id, _propObjectInfoList[i].data.name, _propObjectInfoList[i].stageId, _propObjectInfoList[i].stagePointName);
                 if (_propObjectInfoList[i].stageId == stageId)
                 {
                     GameObject proto = Resources.Load<GameObject>(string.Format("PropObject/{0}", _propObjectInfoList[i].data.prefabName));

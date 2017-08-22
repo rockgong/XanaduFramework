@@ -125,10 +125,7 @@ namespace GameKernal
             if (_unityScene != null)
             {
                 SceneManager.UnloadSceneAsync(_unityScene);
-                Debug.Log("Uninitialize Called Inner");
             }
-
-            Debug.Log("Uninitialize Called");
 
             return;
         }

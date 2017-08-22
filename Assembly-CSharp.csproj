@@ -101,6 +101,7 @@
      <Compile Include="Assets\Script\Database\ScenarioPhaseDatabase.cs" />
      <Compile Include="Assets\Script\Database\StageDatabase.cs" />
      <Compile Include="Assets\Script\GameApp\GeneralDialogView.cs" />
+     <Compile Include="Assets\Script\GameApp\MainGameApp.cs" />
      <Compile Include="Assets\Script\GameApp\ResultScene.cs" />
      <Compile Include="Assets\Script\GameApp\SaveLoadSystem.cs" />
      <Compile Include="Assets\Script\GameApp\SaveLoadView.cs" />

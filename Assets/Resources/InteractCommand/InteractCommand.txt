@@ -228,7 +228,7 @@
 		"data" :
 		{
 			"$type" : "MainGame.InteractCommandMessageData",
-			"content" : "貌似是用来刷卡用的刷卡机"
+			"content" : "能源采集厂大门的控制台，需要钥匙卡。"
 		}
 	},
 	{
@@ -240,7 +240,7 @@
 			[
 				{
 					"$type" : "MainGame.InteractCommandSelectData",
-					"title" : "貌似是用来刷卡用的刷卡机",
+					"title" : "能源采集厂大门的控制台，需要钥匙卡。",
 					"options" :
 					[
 						"使用正门钥匙卡", "什么都不做"

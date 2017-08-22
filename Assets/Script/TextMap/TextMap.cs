@@ -15,7 +15,6 @@ namespace Config
             string[] lines = asset.text.Split('\n');
             for (int i = 0; i < lines.Length; i++)
             {
-                Debug.Log("line : " + lines[i]);
                 int indexOfTab = lines[i].IndexOf(':');
                 if (indexOfTab != -1)
                 {

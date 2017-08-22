@@ -71,8 +71,6 @@ namespace Helper
 				if (targetType == null)
 					targetType = type;
 
-                Debug.Log(targetType.FullName);
-
 				FieldInfo[] fields = targetType.GetFields();
 				object result = System.Activator.CreateInstance(targetType);
                 for (int i = 0; i < fields.Length; i++)

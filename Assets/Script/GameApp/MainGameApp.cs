@@ -9,7 +9,7 @@ using GameKernal;
 
 namespace GameApp
 {
-	public class MonoMainGameTest : MonoBehaviour, ISaveLoadViewListener, IMainGameHost, ITitleSceneHost
+	public class MainGameApp : MonoBehaviour, ISaveLoadViewListener, IMainGameHost, ITitleSceneHost
 	{
 		private TitleScene _titleScene = new TitleScene();
 		private ResultScene _resultScene = new ResultScene();
@@ -79,7 +79,7 @@ namespace GameApp
 			_inventoryDatabase.Initialize();
 	        _mainTransfer.Initialize();
 
-	        _saveLoadSystem.Initialize(@"D:/", 5);
+	        _saveLoadSystem.Initialize(Application.persistentDataPath, 5);
 	        _saveLoadView.Initialize();
 	        _saveLoadView.SetListener(this);
 	        _generalDialogView.Initialize();
@@ -91,78 +91,6 @@ namespace GameApp
 
 			_titleScene.Startup();
 			BGM.Play("Title");
-		}
-		
-		// Update is called once per frame
-		void Update ()
-		{
-			
-		}
-
-		void OnGUI()
-		{
-			if (GUILayout.Button("v", GUILayout.Width(30)))
-			{
-				_hudToggle = !_hudToggle;
-			}
-
-			if (_hudToggle)
-			{
-				if (_running)
-				{
-					if (GUILayout.Button("Stop"))
-					{
-						_mainGame.ShutDown();
-						_running = false;
-					}
-				}
-				else
-				{
-					_startStageIdString = GUILayout.TextField(_startStageIdString);
-					_startStageStartPointName = GUILayout.TextField(_startStageStartPointName);
-					_startStageLookPointName = GUILayout.TextField(_startStageLookPointName);
-					_scenarioIdString = GUILayout.TextField(_scenarioIdString);
-					_scenarioSceneName = GUILayout.TextField(_scenarioSceneName);
-					_scenarioStagePointName = GUILayout.TextField(_scenarioStagePointName);
-
-					if (GUILayout.Button("Start"))
-					{
-						int startStageId = int.Parse(_startStageIdString);
-						int scenarioId = int.Parse(_scenarioIdString);
-						_mainGame.StartUp(startStageId, _startStageStartPointName, _startStageLookPointName, scenarioId, _scenarioSceneName, _scenarioStagePointName);
-						_running = true;
-					}
-				}
-
-
-				if (GUILayout.Button("DumpMem"))
-				{
-					_mainGame.DumpMemento(_memento);
-				}
-
-				if (GUILayout.Button("ApplyMem"))
-				{
-					_mainGame.ApplyMemento(_memento);
-				}
-
-				if (!_running)
-				{
-					GUILayout.BeginArea(new Rect(100, 100, 100, 10000));
-					if (GUILayout.Button("New Game"))
-					{
-
-					}
-					if (GUILayout.Button("Load Game"))
-					{
-						_saveLoadView.SetupSaveDataView(_saveLoadSystem);
-						_saveLoadView.SwitchLabel(SaveLoadView.SaveLoadMode.Load);
-						_saveLoadView.SetVisible(true);
-						_currentSaveDataHandler = LoadDataHandler;
-						_currentSaveViewCloseHandler = LoadCloseHandler;
-					}
-					GUILayout.EndArea();
-				}
-			}
 		}
 
 		private void StartPlayTime(float offsetTime)

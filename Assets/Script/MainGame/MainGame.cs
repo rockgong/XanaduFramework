@@ -460,8 +460,6 @@ namespace MainGame
 
         public void OnStageChanged(int stageId)
         {
-            Debug.Log("Stage Changed " + stageId.ToString());
-
             _nonPlayerManager.SetupAllNonPlayers(stageId);
             _propObjectManager.SetupAllPropObjects(stageId);
             _triggerManager.SetupTrigger(stageId);

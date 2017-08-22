@@ -178,10 +178,8 @@ namespace MainGame
 
         public void TryRemoveScenarioScene()
         {
-            Debug.Log("TryRemoveScenarioScene Called");
             if (_scene != null)
             {
-            Debug.Log("TryRemoveScenarioScene Called Inner");
                 GameObject.Destroy(_scene.gameObject);
                 _scene = null;
             }

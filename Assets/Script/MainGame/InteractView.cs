@@ -259,7 +259,6 @@ namespace MainGame
 
         public void ShowReady(IPropObject propObject)
         {
-            Debug.Log("Show Ready Called");
             Transform trans = _monoView.GetWidget<Transform>("ready_root");
             if (trans != null)
             {
