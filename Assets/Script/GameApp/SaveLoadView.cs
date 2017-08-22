@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MainGame;
 using GameKernal;
+using Config;
 
 namespace GameApp
 {
@@ -109,7 +110,7 @@ namespace GameApp
 						Text itemText = itemView.GetWidget<Text>("save_data_desc");
 						if (itemText != null)
 						{
-							itemText.text = data == null ? "NULL" : data.ToString();
+							itemText.text = data == null ? TextMap.Map("1005") : data.ToString();
 						}
 					}
 				});
@@ -142,7 +143,7 @@ namespace GameApp
 					Text itemText = itemView.GetWidget<Text>("save_data_desc");
 					if (itemText != null)
 					{
-						itemText.text = saveData == null ? "NULL" : saveData.ToString();
+						itemText.text = saveData == null ? TextMap.Map("1005") : saveData.ToString();
 					}
 				}
 			}

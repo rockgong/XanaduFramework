@@ -73,7 +73,7 @@ namespace GameApp
 			_inventoryDatabase.Initialize();
 	        _mainTransfer.Initialize();
 
-	        _saveLoadSystem.Initialize(@"D:/", 10);
+	        _saveLoadSystem.Initialize(@"D:/", 5);
 	        _saveLoadView.Initialize();
 	        _saveLoadView.SetListener(this);
 	        _generalDialogView.Initialize();
