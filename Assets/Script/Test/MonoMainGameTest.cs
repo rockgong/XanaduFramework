@@ -63,6 +63,8 @@ namespace GameApp
 
 		private float _totalPlayedTime = 0.0f;
 		private MonoDelegate _totalPlayTimeDelegate = null;
+
+		private bool _inTransfer = false;
 		// Use this for initialization
 		void Start ()
 		{
@@ -255,7 +257,9 @@ namespace GameApp
 						_currentSaveViewCloseHandler = null;
 						_titleScene.Shutdown();
 						_titleScene.Uninitialize();
+						_inTransfer = false;
         			});
+        			_inTransfer = true;
         		});
 			}	
         }
@@ -313,6 +317,9 @@ namespace GameApp
 
         public void OnSelect(int index)
         {
+        	if (_inTransfer)
+        		return;
+
         	if (index == 0)
         	{
         		_mainTransfer.Transfer(0.5f, 0.2f, Color.white, () =>
@@ -326,7 +333,9 @@ namespace GameApp
 					_titleScene.Shutdown();
 					_titleScene.Uninitialize();
 					_running = true;
+        			_inTransfer = false;
         		});
+        		_inTransfer = true;
         	}
         	else if (index == 1)
         	{
