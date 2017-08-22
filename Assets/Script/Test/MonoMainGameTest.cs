@@ -62,6 +62,7 @@ namespace GameApp
 		// Use this for initialization
 		void Start ()
 		{
+			TextMap.Initialize();
 			GameObject playerProto = Resources.Load<GameObject>("Player/Player2");
 			_stageDatabase.Initialize();
 			_nonPlayerDatabase.Initialize();
@@ -196,7 +197,7 @@ namespace GameApp
 
         public void OnRequestBackToMain()
         {
-        	_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Back To Title ?", () =>
+        	_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, TextMap.Map("1004"), () =>
         	{
         		_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
         		{
@@ -212,7 +213,7 @@ namespace GameApp
         {
         	if (data != null)
         	{
-        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Sure ?", () =>
+        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, TextMap.Map("1001"), () =>
         		{
         			_mainTransfer.Transfer(0.5f, 0.3f, Color.white, () =>
         			{
@@ -238,11 +239,11 @@ namespace GameApp
         	newData.stagePointName = _saveStagePointName;
         	if (data != null)
         	{
-        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, "Override ?", () =>
+        		_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.DoubleButton, TextMap.Map("1002"), () =>
         		{
         			_saveLoadSystem.SetSaveData(index, newData);
         			_saveLoadView.UpdateSingleSaveData(index, newData);
-        			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, "Complete !", () =>
+        			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, TextMap.Map("1003"), () =>
         			{
 			        	_mainGame.Resume();
 			    		_saveLoadView.SetVisible(false);
@@ -255,7 +256,7 @@ namespace GameApp
         	{
         		_saveLoadSystem.SetSaveData(index, newData);
     			_saveLoadView.UpdateSingleSaveData(index, newData);
-    			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, "Complete !", () =>
+    			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, TextMap.Map("1003"), () =>
     			{
 		        	_mainGame.Resume();
 		    		_saveLoadView.SetVisible(false);
