@@ -57,7 +57,7 @@ namespace MainGame
 
 	    public override bool CheckOver(InteractView view, IPlayerCharacter player, INonPlayerCharacter nonPlayer, IPropObject prop)
 	    {
-	        return view.viewState == InteractView.ViewState.None &&
+			return (view.viewState == InteractView.ViewState.None || view.viewState == InteractView.ViewState.GetInv)&&
 	            (_selectCommand == null || _selectCommand.CheckOver(view, player, nonPlayer, prop));
 	    }
 

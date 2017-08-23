@@ -889,6 +889,10 @@
 									"content" : "权限卡从Lv1升级到了Lv2。"
 								},
 								{
+									"$type" : "MainGame.InteractCommandGetInvData",
+									"content" : "权限卡Lv2"
+								},
+								{
 									"$type" : "MainGame.InteractCommandCommonEventData",
 									"eventName" : "Lv1ToLv2"
 								}
@@ -944,6 +948,10 @@
 								{
 									"$type" : "MainGame.InteractCommandMessageData",
 									"content" : "权限卡从Lv2升级到了Lv3。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandGetInvData",
+									"content" : "权限卡Lv3"
 								},
 								{
 									"$type" : "MainGame.InteractCommandCommonEventData",
@@ -1009,6 +1017,10 @@
 								{
 									"$type" : "MainGame.InteractCommandMessageData",
 									"content" : "获得了硬币。"
+								},
+								{
+									"$type" : "MainGame.InteractCommandGetInvData",
+									"content" : "硬币"
 								},
 								{
 									"$type" : "MainGame.InteractCommandPrepareScenarioData",
@@ -1088,6 +1100,10 @@
 									"content" : "投入硬币，并购买了饮用水。"
 								},
 								{
+									"$type" : "MainGame.InteractCommandGetInvData",
+									"content" : "饮用水"
+								},
+								{
 									"$type" : "MainGame.InteractCommandCommonEventData",
 									"eventName" : "CoinToWater"
 								}
@@ -1137,6 +1153,10 @@
 							"content" : "获得了正门钥匙卡"
 						},
 						{
+							"$type" : "MainGame.InteractCommandGetInvData",
+							"content" : "正门钥匙卡"
+						},
+						{
 							"$type" : "MainGame.InteractCommandCommonEventData",
 							"eventName" : "GetKeyCard"
 						}
@@ -1164,6 +1184,10 @@
 						{
 							"$type" : "MainGame.InteractCommandMessageData",
 							"content" : "获得了权限卡Lv1"
+						},
+						{
+							"$type" : "MainGame.InteractCommandGetInvData",
+							"content" : "权限卡Lv1"
 						},
 						{
 							"$type" : "MainGame.InteractCommandCommonEventData",
@@ -1195,6 +1219,10 @@
 							"content" : "获得了蓄电池"
 						},
 						{
+							"$type" : "MainGame.InteractCommandGetInvData",
+							"content" : "蓄电池"
+						},
+						{
 							"$type" : "MainGame.InteractCommandCommonEventData",
 							"eventName" : "GetBattery"
 						}
@@ -1222,6 +1250,10 @@
 						{
 							"$type" : "MainGame.InteractCommandMessageData",
 							"content" : "获得了电缆"
+						},
+						{
+							"$type" : "MainGame.InteractCommandGetInvData",
+							"content" : "电缆"
 						},
 						{
 							"$type" : "MainGame.InteractCommandCommonEventData",

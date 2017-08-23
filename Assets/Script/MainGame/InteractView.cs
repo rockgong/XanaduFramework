@@ -21,6 +21,7 @@ namespace MainGame
             Message,
             Dialog,
             Select,
+            GetInv
         }
 
 		private MonoView _monoView;
@@ -64,11 +65,14 @@ namespace MainGame
                             }
                             else
 							{
-                                CloseMessage();
-                                CloseDialog();
-                                if (_listener != null)
-                                    _listener.OnViewClosed();
-                                bgButton.gameObject.SetActive(false);
+                                if (_viewState != ViewState.GetInv)
+                                {
+                                    CloseMessage();
+                                    CloseDialog();
+                                    if (_listener != null)
+                                        _listener.OnViewClosed();
+                                    bgButton.gameObject.SetActive(false);
+                                }
                             }
 						});
                     _dialogTypewriter = _monoView.GetWidget<MonoTypewriter>("dialog_root");
@@ -341,6 +345,42 @@ namespace MainGame
                     }
                 }
             }
+        }
+
+        public void ShowGetInv(string name)
+        {
+            Transform trans = _monoView.GetWidget<Transform>("getinv_root");
+            if (trans != null)
+            {
+                trans.gameObject.SetActive(true);
+                MonoViewOpenAnim anim = trans.GetComponent<MonoViewOpenAnim>();
+
+                if (anim != null)
+                {
+                    Text nameText = _monoView.GetWidget<Text>("getinv_msg");
+                    if (nameText != null)
+                        nameText.text = string.Empty;
+                    anim.Play(() =>
+                    {
+                        if (nameText != null)
+                            nameText.text = name;
+                    });
+                    _viewState = ViewState.GetInv;
+                }
+                HideReady();
+            }
+
+            return;
+        }
+
+        public void CloseGetInv()
+        {
+            Transform trans = _monoView.GetWidget<Transform>("getinv_root");
+            if (trans != null)
+                trans.gameObject.SetActive(false);
+
+            _viewState = ViewState.None;
+            TryResumeReady();
         }
 	}
 }

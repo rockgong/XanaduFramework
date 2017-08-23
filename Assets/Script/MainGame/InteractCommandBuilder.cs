@@ -22,6 +22,7 @@ namespace MainGame
             _handlers[typeof(InteractCommandDialogData)] = InteractCommandDialog.BuildHandler;
             _handlers[typeof(InteractCommandSaveData)] = InteractCommandSave.BuildHandler;
             _handlers[typeof(InteractCommandMessageData)] = InteractCommandMessage.BuildHandler;
+            _handlers[typeof(InteractCommandGetInvData)] = InteractCommandGetInv.BuildHandler;
             _handlers[typeof(InteractCommandSelectData)] = InteractCommandSelect.BuildHandler;
             _handlers[typeof(InteractCommandWaitData)] = InteractCommandWait.BuildHandler;
             _handlers[typeof(InteractCommandAnimationData)] = InteractCommandAnimation.BuildHandler;
