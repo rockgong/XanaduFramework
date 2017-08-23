@@ -1062,5 +1062,19 @@
 			"stageId" : 201,
 			"stagePointName" : "spawn"
 		}
+	},
+	{
+		"name" : "FinalDoor",
+		"data" :
+		{
+			"$type" : "MainGame.CommonEventGroup",
+			"members" :
+			[
+				{
+					"$type" : "MainGame.CommonEventRemoveNonPlayer",
+					"nonPlayerName" : "final_door"
+				}
+			]
+		}
 	}
 ]

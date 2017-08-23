@@ -413,7 +413,7 @@
 			[
 				{
 					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "感觉到了温暖的气息"
+					"content" : "感觉到了温暖的气息。"
 				},
 				{
 					"$type" : "MainGame.InteractCommandSaveData",
@@ -432,7 +432,7 @@
 			[
 				{
 					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "感觉到了温暖的气息"
+					"content" : "感觉到了温暖的气息。"
 				},
 				{
 					"$type" : "MainGame.InteractCommandSaveData",
@@ -451,11 +451,11 @@
 			[
 				{
 					"$type" : "MainGame.InteractCommandMessageData",
-					"content" : "最后的门"
+					"content" : "就要面对最后的结果了。"
 				},
 				{
 					"$type" : "MainGame.InteractCommandSelectData",
-					"title" : "已经做好准备了吗",
+					"title" : "已经做好准备了吗？",
 					"options" :
 					[
 						"是的", "还没准备好"
@@ -471,6 +471,10 @@
 									"scenarioId" : 2,
 									"sceneName" : "Gates_00",
 									"stagePointName" : "gates"
+								},
+								{
+									"$type" : "MainGame.InteractCommandCommonEventData",
+									"eventName" : "FinalDoor"
 								}
 							]
 						}
