@@ -79,6 +79,7 @@ namespace GameApp
 			_inventoryDatabase.Initialize();
 	        _mainTransfer.Initialize();
 
+	        Debug.Log(Application.persistentDataPath);
 	        _saveLoadSystem.Initialize(@"D:/", 5);
 	        _saveLoadView.Initialize();
 	        _saveLoadView.SetListener(this);

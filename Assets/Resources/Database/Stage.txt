@@ -564,8 +564,17 @@
 	"ID" : 105, "SCENE_NAME" : "Factory_02",
 	"CAMERA_LOOK" :
 	{
-		"$type" : "MainGame.CommonVector3StagePoint",
-		"pointName" : "camera_look"
+		"$type" : "MainGame.CommonVector3Lerp",
+		"lerpPoint0" :
+		{
+			"$type" : "MainGame.CommonVector3StagePoint",
+			"pointName" : "camera_look"
+		},
+		"lerpPoint1" :
+		{
+			"$type" : "MainGame.CommonVector3Player"
+		},
+		"lerpValue" : 0.03
 	},
 	"CAMERA_POS" :
 	{
