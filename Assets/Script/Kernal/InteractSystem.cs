@@ -87,11 +87,13 @@ namespace GameKernal
 			for (int i = 0; i < _objectList.Count; i++)
 			{
 				Vector3 offset = _objectList[i].position - _subject.position;
+				float y = offset.y;
 				offset = new Vector3(offset.x, 0.0f, offset.z);
 
 				if (offset.magnitude < 3.0f)
 				{
-					result = _objectList[i];
+					if (Mathf.Abs(y) < 15.0f)
+						result = _objectList[i];
 					break;
 				}
 			}
