@@ -92,7 +92,7 @@ namespace GameKernal
 
 				if (offset.magnitude < 3.0f)
 				{
-					if (Mathf.Abs(y) < 15.0f)
+					if (y < 15.0f && y > -1.0f)
 						result = _objectList[i];
 					break;
 				}
