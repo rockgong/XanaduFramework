@@ -220,6 +220,7 @@
      <Compile Include="Assets\Script\MainGame\TriggerManager.cs" />
      <Compile Include="Assets\Script\MainGame\ValueManager.cs" />
      <Compile Include="Assets\Script\Miscs\MainTransfer.cs" />
+     <Compile Include="Assets\Script\Miscs\MonoAnimSE.cs" />
      <Compile Include="Assets\Script\Miscs\MonoAnimationDrive.cs" />
      <Compile Include="Assets\Script\Miscs\MonoDummyEmit.cs" />
      <Compile Include="Assets\Script\Miscs\MonoFinalGrassAnim.cs" />

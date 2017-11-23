@@ -277,6 +277,7 @@ namespace GameApp
         		{
         			_saveLoadSystem.SetSaveData(index, newData);
         			_saveLoadView.UpdateSingleSaveData(index, newData);
+        			SoundEffect.Play("Saved");
         			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, TextMap.Map("1003"), () =>
         			{
 			        	_mainGame.Resume();
@@ -290,6 +291,7 @@ namespace GameApp
         	{
         		_saveLoadSystem.SetSaveData(index, newData);
     			_saveLoadView.UpdateSingleSaveData(index, newData);
+        		SoundEffect.Play("Saved");
     			_generalDialogView.Open(GeneralDialogView.GeneralDialogMode.SingleButton, TextMap.Map("1003"), () =>
     			{
 		        	_mainGame.Resume();

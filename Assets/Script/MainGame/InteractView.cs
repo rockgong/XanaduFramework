@@ -5,6 +5,7 @@ using GameKernal;
 using UnityEngine.UI;
 using UIUtil;
 using Miscs;
+using Audio;
 
 namespace MainGame
 {
@@ -107,8 +108,11 @@ namespace MainGame
 		                bgButton.gameObject.SetActive(true);
 
                         if (tw != null)
+                        {
                             tw.PlayTypewrite();
+                        }
                     });
+                    SoundEffect.Play("Btn_1");
                     _viewState = ViewState.Message;
             	}
                 HideReady();
@@ -152,9 +156,11 @@ namespace MainGame
                         bgButton.gameObject.SetActive(true);
 
                         if (tw != null)
+                        {
                             tw.PlayTypewrite();
+                        }
                     });
-
+                    SoundEffect.Play("Btn_1");
                     _viewState = ViewState.Dialog;
                 }
                 HideReady();
@@ -207,8 +213,11 @@ namespace MainGame
                         bgButton.gameObject.SetActive(false);
 
                         if (tw != null)
+                        {
                             tw.PlayTypewrite();
+                        }
                     });
+                    SoundEffect.Play("Btn_1");
                     _viewState = ViewState.Select;
                 }
                 HideReady();
@@ -365,6 +374,7 @@ namespace MainGame
                         if (nameText != null)
                             nameText.text = name;
                     });
+                    SoundEffect.Play("Get_Item");
                     _viewState = ViewState.GetInv;
                 }
                 HideReady();
